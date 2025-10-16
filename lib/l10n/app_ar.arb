@@ -1,0 +1,93 @@
+{
+  "@@locale": "ar",
+
+  "accountSetupTitle": "أنا",
+  "@accountSetupTitle": {
+    "description": "العنوان الخاص بإعداد الحساب"
+  },
+
+  "roleProviderTitle": "مزود خدمة",
+  "@roleProviderTitle": {
+    "description": "العنوان الخاص بمزود الخدمة"
+  },
+
+  "roleProviderSubtitle": "أقدم خدمات احترافية",
+  "@roleProviderSubtitle": {
+    "description": "الوصف الخاص بمزود الخدمة"
+  },
+
+  "roleCustomerTitle": "باحث عن خدمة",
+  "@roleCustomerTitle": {
+    "description": "العنوان الخاص بالمستخدم الباحث عن خدمة"
+  },
+
+  "roleCustomerSubtitle": "أبحث عن خدمات منزلية.",
+  "@roleCustomerSubtitle": {
+    "description": "الوصف الخاص بالمستخدم الباحث عن خدمة"
+  },
+
+  "nextButton": "التالي",
+  "@nextButton": {
+    "description": "زر الانتقال إلى الخطوة التالية"
+  },
+
+  "enterPhoneTitle": "أدخل رقم هاتفك للتحقق",
+  "@enterPhoneTitle": {
+    "description": "عنوان إدخال رقم الهاتف للتحقق"
+  },
+
+  "sendCodeButton": "إرسال الكود",
+  "@sendCodeButton": {
+    "description": "زر إرسال كود التحقق إلى رقم الهاتف"
+  },
+
+  "enterPinTitle": "أدخل رمز التحقق المكون من 5 أرقام المرسل إلى رقم هاتفك",
+  "@enterPinTitle": {
+    "description": "العنوان الخاص بإدخال رمز التحقق"
+  },
+
+  "verifyButton": "تحقق",
+  "@verifyButton": {
+    "description": "زر تأكيد رمز التحقق"
+  },
+
+  "didNotReceiveCode": "لم تستلم الكود؟",
+  "@didNotReceiveCode": {
+    "description": "النص الذي يظهر إذا لم يستلم المستخدم الكود"
+  },
+
+  "sendAgain": "أرسل مرة أخرى",
+  "@sendAgain": {
+    "description": "زر إعادة إرسال الكود"
+  },
+
+  "allowLocationTitle": "اسمح لتطبيق “FixIt” باستخدام موقعك",
+  "@allowLocationTitle": {
+    "description": "العنوان الذي يطلب من المستخدم السماح باستخدام الموقع"
+  },
+
+  "allowLocationSubtitle": "نحتاج لمعرفة موقعك الدقيق حتى يتمكن العملاء من العثور عليك بسهولة بالقرب منك.",
+  "@allowLocationSubtitle": {
+    "description": "الوصف الذي يشرح سبب طلب الموقع"
+  },
+
+  "allowOnce": "السماح مرة واحدة",
+  "@allowOnce": {
+    "description": "زر السماح لمرة واحدة"
+  },
+
+  "allowWhileUsing": "السماح أثناء استخدام FixIt",
+  "@allowWhileUsing": {
+    "description": "زر السماح أثناء استخدام التطبيق فقط"
+  },
+
+  "donotAllow": "عدم السماح",
+  "@donotAllow": {
+    "description": "زر رفض السماح باستخدام الموقع"
+  },
+
+  "continueButton": "متابعة",
+  "@continueButton": {
+    "description": "زر المتابعة للخطوة التالية"
+  }
+}

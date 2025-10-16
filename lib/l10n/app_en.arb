@@ -1,0 +1,24 @@
+{
+  "@@locale": "en",
+  "accountSetupTitle": "I am",
+  "roleProviderTitle": "Service Provider",
+  "roleProviderSubtitle": "I offer professional services",
+  "roleCustomerTitle": "Looking for service",
+  "roleCustomerSubtitle": "I am looking for home services.",
+  "nextButton": "Next",
+  "enterPhoneTitle": "Enter your Phone number to verify",
+  "sendCodeButton": "Send Code",
+  "enterPinTitle": "Enter 5-digit PIN code sent to your phone number",
+"verifyButton": "Verify",
+"didNotReceiveCode": "Did not receive code?",
+"sendAgain": "Send again",
+"allowLocationTitle": "Allow “FixIt” to use your location",
+"allowLocationSubtitle": "We need to know your exact location so that Clients can find you easily near you.",
+"allowOnce": "Allow Once",
+"allowWhileUsing": "Allow While Using FixIt",
+"donotAllow": "Don’t Allow",
+"continueButton": "Continue"
+
+
+
+}
