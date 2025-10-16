@@ -1,5 +1,5 @@
 // setlocation_responsive.dart
-import 'package:dpei_project/presentation/screens/service/aboutoffer.dart';
+import 'package:dpei_project/presentation/screens/service_screens/aboutoffer.dart';
 import 'package:dpei_project/presentation/widgets/custombutton.dart';
 import 'package:flutter/material.dart';
 
@@ -8,7 +8,6 @@ class Setlocation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     final mediaQuery = MediaQuery.of(context);
     final screenWidth = mediaQuery.size.width;
     final screenHeight = mediaQuery.size.height;
@@ -23,9 +22,7 @@ class Setlocation extends StatelessWidget {
             Navigator.pop(context);
           },
           child: Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: screenWidth * 0.01,
-            ),
+            padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.01),
             child: Image.asset(
               'assets/images/locationfram.png',
               width: screenWidth * 3,
@@ -67,16 +64,17 @@ class Setlocation extends StatelessWidget {
               width: screenWidth * 0.85,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(6),
-                border: Border.all(
-                  color: const Color(0xffCACACA),
-                  width: 1,
-                ),
+                border: Border.all(color: const Color(0xffCACACA), width: 1),
               ),
               child: Row(
                 children: [
                   Padding(
                     padding: EdgeInsets.only(left: screenWidth * 0.04),
-                    child: Icon(Icons.location_on_outlined, color: Colors.black, size: screenWidth * 0.06),
+                    child: Icon(
+                      Icons.location_on_outlined,
+                      color: Colors.black,
+                      size: screenWidth * 0.06,
+                    ),
                   ),
                   SizedBox(width: screenWidth * 0.02),
                   const Expanded(
@@ -100,13 +98,13 @@ class Setlocation extends StatelessWidget {
               width: screenWidth * 0.85,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(6),
-                border: Border.all(
-                  color: const Color(0xffCACACA),
-                  width: 1,
-                ),
+                border: Border.all(color: const Color(0xffCACACA), width: 1),
               ),
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.04, vertical: screenHeight * 0.02),
+                padding: EdgeInsets.symmetric(
+                  horizontal: screenWidth * 0.04,
+                  vertical: screenHeight * 0.02,
+                ),
                 child: Text(
                   "Business name",
                   style: TextStyle(
@@ -124,13 +122,13 @@ class Setlocation extends StatelessWidget {
               width: screenWidth * 0.85,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(6),
-                border: Border.all(
-                  color: const Color(0xffCACACA),
-                  width: 1,
-                ),
+                border: Border.all(color: const Color(0xffCACACA), width: 1),
               ),
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.04, vertical: screenHeight * 0.02),
+                padding: EdgeInsets.symmetric(
+                  horizontal: screenWidth * 0.04,
+                  vertical: screenHeight * 0.02,
+                ),
                 child: Text(
                   "Business Address",
                   style: TextStyle(
@@ -143,13 +141,16 @@ class Setlocation extends StatelessWidget {
               ),
             ),
             SizedBox(height: screenHeight * 0.03),
-            buttonItem(context, text: "Next", onPressed: (
-            ) {
-                 Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const ServiceOffer ()),
-              );
-            }),
+            buttonItem(
+              context,
+              text: "Next",
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const ServiceOffer()),
+                );
+              },
+            ),
           ],
         ),
       ),

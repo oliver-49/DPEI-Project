@@ -1,5 +1,5 @@
 // ignore: unused_import
-import 'package:intl/intl.dart' as intl;
+// import 'package:intl/intl.dart' as intl;
 import 'app_localizations.dart';
 
 // ignore_for_file: type=lint
@@ -33,7 +33,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get sendCodeButton => 'إرسال الكود';
 
   @override
-  String get enterPinTitle => 'أدخل رمز التحقق المكون من 5 أرقام المرسل إلى رقم هاتفك';
+  String get enterPinTitle =>
+      'أدخل رمز التحقق المكون من 5 أرقام المرسل إلى رقم هاتفك';
 
   @override
   String get verifyButton => 'تحقق';
@@ -48,7 +49,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get allowLocationTitle => 'اسمح لتطبيق “FixIt” باستخدام موقعك';
 
   @override
-  String get allowLocationSubtitle => 'نحتاج لمعرفة موقعك الدقيق حتى يتمكن العملاء من العثور عليك بسهولة بالقرب منك.';
+  String get allowLocationSubtitle =>
+      'نحتاج لمعرفة موقعك الدقيق حتى يتمكن العملاء من العثور عليك بسهولة بالقرب منك.';
 
   @override
   String get allowOnce => 'السماح مرة واحدة';

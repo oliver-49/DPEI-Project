@@ -16,21 +16,18 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       locale: const Locale('ar'),
-      localizationsDelegates: const [
+
+      localizationsDelegates: [
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      supportedLocales: AppLocalizations.supportedLocales,
-      localeResolutionCallback: (locale, supportedLocales) {
-        return const Locale('ar'); // إجبار التطبيق على العربي
-      },
+
+      supportedLocales: const <Locale>[Locale('en', 'US'), Locale('ar', 'AE')],
 
       debugShowCheckedModeBanner: false,
-      builder: (context, child) {
-        return Directionality(textDirection: TextDirection.rtl, child: child!);
-      },
+
       home: BlocProvider(
         create: (context) => SelectionCubit(),
         child: const AccountSetup(),
