@@ -1,5 +1,5 @@
 import 'package:dpei_project/l10n/app_localizations.dart';
-import 'package:dpei_project/presentation/screens/account_service/Phone%20number/phonnumber_screen.dart';
+import 'package:dpei_project/presentation/screens/account_service/Phone%20number/phoneNumber_screen/phone_screen.dart';
 import 'package:dpei_project/presentation/screens/account_service/selectionview/selection_cubit.dart';
 import 'package:dpei_project/presentation/screens/customescreens/customerphone.dart';
 import 'package:dpei_project/presentation/widgets/custombutton.dart';
@@ -22,7 +22,7 @@ class AccountSetup extends StatelessWidget {
           if (state.destination == 'service_provider') {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (_) => const Phonnumber()),
+              MaterialPageRoute(builder: (_) => const PhoneNumberView()),
             );
           } else if (state.destination == 'customer') {
             Navigator.push(

@@ -1,5 +1,4 @@
-// account_setup_responsive.dart
-import 'package:dpei_project/presentation/screens/account_service/Phone%20number/phonnumber.dart';
+import 'package:dpei_project/presentation/screens/account_service/Phone%20number/phoneNumber_screen/phone_screen.dart';
 import 'package:dpei_project/presentation/screens/account_service/selectionview/selection_cubit.dart';
 import 'package:dpei_project/presentation/screens/customescreens/customerphone.dart';
 import 'package:dpei_project/presentation/widgets/custombutton.dart';
@@ -12,7 +11,6 @@ class AccountSetup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-   
     final mediaQuery = MediaQuery.of(context);
     final screenWidth = mediaQuery.size.width;
     final screenHeight = mediaQuery.size.height;
@@ -21,9 +19,15 @@ class AccountSetup extends StatelessWidget {
       listener: (context, state) {
         if (state is NavigationRequested) {
           if (state.destination == 'service_provider') {
-            Navigator.push(context, MaterialPageRoute(builder: (_) => Phonnumber()));
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => PhoneNumberView()),
+            );
           } else if (state.destination == 'customer') {
-            Navigator.push(context, MaterialPageRoute(builder: (_) => Customerphone()));
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => Customerphone()),
+            );
           }
         }
       },
@@ -36,26 +40,21 @@ class AccountSetup extends StatelessWidget {
               Navigator.pop(context);
             },
             child: Padding(
-        
-              padding: EdgeInsets.symmetric(
-                horizontal: screenWidth * 0.01,
-              ),
+              padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.01),
               child: Image.asset(
                 'assets/images/fram.png',
-            
+
                 width: screenWidth * 3,
               ),
             ),
           ),
         ),
         body: Padding(
-         
           padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.06),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-               
                 padding: EdgeInsets.only(
                   top: screenHeight * 0.04,
                   right: screenWidth * 0.5,
@@ -64,17 +63,19 @@ class AccountSetup extends StatelessWidget {
                   "I am",
                   style: TextStyle(
                     color: Color(0xff565656),
-                    fontSize: 48, 
+                    fontSize: 48,
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.w800,
                   ),
                 ),
               ),
-             
+
               SizedBox(height: screenHeight * 0.03),
               BlocBuilder<SelectionCubit, SelectionState>(
                 builder: (context, state) {
-                  final selectedOption = state is OptionSelected ? state.selectedOption : null;
+                  final selectedOption = state is OptionSelected
+                      ? state.selectedOption
+                      : null;
                   return Column(
                     children: [
                       containerItem(
@@ -82,24 +83,28 @@ class AccountSetup extends StatelessWidget {
                         text2: 'I offer professional services',
                         isSelected: selectedOption == 'Service Provider',
                         onTap: () {
-                          context.read<SelectionCubit>().selectOption('Service Provider');
+                          context.read<SelectionCubit>().selectOption(
+                            'Service Provider',
+                          );
                         },
                       ),
-                    
+
                       SizedBox(height: screenHeight * 0.02),
                       containerItem(
                         text1: 'Looking for service',
                         text2: 'I am looking for home services.',
                         isSelected: selectedOption == 'Looking for service',
                         onTap: () {
-                          context.read<SelectionCubit>().selectOption('Looking for service');
+                          context.read<SelectionCubit>().selectOption(
+                            'Looking for service',
+                          );
                         },
                       ),
                     ],
                   );
                 },
               ),
-          
+
               SizedBox(height: screenHeight * 0.06),
               buttonItem(
                 context,

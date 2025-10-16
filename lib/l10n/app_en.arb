@@ -89,5 +89,10 @@
   "continueButton": "Continue",
   "@continueButton": {
     "description": "Button text to continue"
+  },
+  "pleaseAllowLocation": "Please allow location access to proceed.",
+  "@pleaseAllowLocation": {
+    "description": "Message prompting user to allow location access"
   }
+
 }

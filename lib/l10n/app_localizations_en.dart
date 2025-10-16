@@ -1,4 +1,5 @@
-// import 'package:intl/intl.dart' as intl;
+// ignore: unused_import
+import 'package:intl/intl.dart' as intl;
 import 'app_localizations.dart';
 
 // ignore_for_file: type=lint
@@ -32,8 +33,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sendCodeButton => 'Send Code';
 
   @override
-  String get enterPinTitle =>
-      'Enter 5-digit PIN code sent to your phone number';
+  String get enterPinTitle => 'Enter 5-digit PIN code sent to your phone number';
 
   @override
   String get verifyButton => 'Verify';
@@ -48,8 +48,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get allowLocationTitle => 'Allow “FixIt” to use your location';
 
   @override
-  String get allowLocationSubtitle =>
-      'We need to know your exact location so that Clients can find you easily near you.';
+  String get allowLocationSubtitle => 'We need to know your exact location so that Clients can find you easily near you.';
 
   @override
   String get allowOnce => 'Allow Once';
