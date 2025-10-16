@@ -1,24 +1,93 @@
 {
   "@@locale": "en",
+
   "accountSetupTitle": "I am",
+  "@accountSetupTitle": {
+    "description": "Title for account setup page"
+  },
+
   "roleProviderTitle": "Service Provider",
+  "@roleProviderTitle": {
+    "description": "Title for selecting service provider role"
+  },
+
   "roleProviderSubtitle": "I offer professional services",
+  "@roleProviderSubtitle": {
+    "description": "Subtitle explaining provider role"
+  },
+
   "roleCustomerTitle": "Looking for service",
+  "@roleCustomerTitle": {
+    "description": "Title for selecting customer role"
+  },
+
   "roleCustomerSubtitle": "I am looking for home services.",
+  "@roleCustomerSubtitle": {
+    "description": "Subtitle explaining customer role"
+  },
+
   "nextButton": "Next",
+  "@nextButton": {
+    "description": "Button text for next step"
+  },
+
   "enterPhoneTitle": "Enter your Phone number to verify",
+  "@enterPhoneTitle": {
+    "description": "Prompt asking user to enter phone number"
+  },
+
   "sendCodeButton": "Send Code",
+  "@sendCodeButton": {
+    "description": "Button to send verification code"
+  },
+
   "enterPinTitle": "Enter 5-digit PIN code sent to your phone number",
-"verifyButton": "Verify",
-"didNotReceiveCode": "Did not receive code?",
-"sendAgain": "Send again",
-"allowLocationTitle": "Allow “FixIt” to use your location",
-"allowLocationSubtitle": "We need to know your exact location so that Clients can find you easily near you.",
-"allowOnce": "Allow Once",
-"allowWhileUsing": "Allow While Using FixIt",
-"donotAllow": "Don’t Allow",
-"continueButton": "Continue"
+  "@enterPinTitle": {
+    "description": "Prompt asking user to enter 5-digit PIN"
+  },
 
+  "verifyButton": "Verify",
+  "@verifyButton": {
+    "description": "Button to verify code"
+  },
 
+  "didNotReceiveCode": "Did not receive code?",
+  "@didNotReceiveCode": {
+    "description": "Message asking if user didn’t get code"
+  },
 
+  "sendAgain": "Send again",
+  "@sendAgain": {
+    "description": "Button text to resend verification code"
+  },
+
+  "allowLocationTitle": "Allow “FixIt” to use your location",
+  "@allowLocationTitle": {
+    "description": "Prompt asking for location permission"
+  },
+
+  "allowLocationSubtitle": "We need to know your exact location so that Clients can find you easily near you.",
+  "@allowLocationSubtitle": {
+    "description": "Subtitle explaining why location is needed"
+  },
+
+  "allowOnce": "Allow Once",
+  "@allowOnce": {
+    "description": "Option to allow location one time"
+  },
+
+  "allowWhileUsing": "Allow While Using FixIt",
+  "@allowWhileUsing": {
+    "description": "Option to allow location only while using the app"
+  },
+
+  "donotAllow": "Don’t Allow",
+  "@donotAllow": {
+    "description": "Option to deny location permission"
+  },
+
+  "continueButton": "Continue",
+  "@continueButton": {
+    "description": "Button text to continue"
+  }
 }

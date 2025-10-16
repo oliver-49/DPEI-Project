@@ -15,10 +15,8 @@ class NavigationRequested extends SelectionState {
 }
 
 class SelectionCubit extends Cubit<SelectionState> {
-  // الحالة الأولية: InitialSelection
   SelectionCubit() : super(InitialSelection());
 
-  // دالة لتحديد الاختيار
   void selectOption(String option) {
     emit(OptionSelected(option));
   }

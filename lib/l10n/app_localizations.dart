@@ -95,109 +95,109 @@ abstract class AppLocalizations {
     Locale('en')
   ];
 
-  /// No description provided for @accountSetupTitle.
+  /// Title for account setup page
   ///
   /// In en, this message translates to:
   /// **'I am'**
   String get accountSetupTitle;
 
-  /// No description provided for @roleProviderTitle.
+  /// Title for selecting service provider role
   ///
   /// In en, this message translates to:
   /// **'Service Provider'**
   String get roleProviderTitle;
 
-  /// No description provided for @roleProviderSubtitle.
+  /// Subtitle explaining provider role
   ///
   /// In en, this message translates to:
   /// **'I offer professional services'**
   String get roleProviderSubtitle;
 
-  /// No description provided for @roleCustomerTitle.
+  /// Title for selecting customer role
   ///
   /// In en, this message translates to:
   /// **'Looking for service'**
   String get roleCustomerTitle;
 
-  /// No description provided for @roleCustomerSubtitle.
+  /// Subtitle explaining customer role
   ///
   /// In en, this message translates to:
   /// **'I am looking for home services.'**
   String get roleCustomerSubtitle;
 
-  /// No description provided for @nextButton.
+  /// Button text for next step
   ///
   /// In en, this message translates to:
   /// **'Next'**
   String get nextButton;
 
-  /// No description provided for @enterPhoneTitle.
+  /// Prompt asking user to enter phone number
   ///
   /// In en, this message translates to:
   /// **'Enter your Phone number to verify'**
   String get enterPhoneTitle;
 
-  /// No description provided for @sendCodeButton.
+  /// Button to send verification code
   ///
   /// In en, this message translates to:
   /// **'Send Code'**
   String get sendCodeButton;
 
-  /// No description provided for @enterPinTitle.
+  /// Prompt asking user to enter 5-digit PIN
   ///
   /// In en, this message translates to:
   /// **'Enter 5-digit PIN code sent to your phone number'**
   String get enterPinTitle;
 
-  /// No description provided for @verifyButton.
+  /// Button to verify code
   ///
   /// In en, this message translates to:
   /// **'Verify'**
   String get verifyButton;
 
-  /// No description provided for @didNotReceiveCode.
+  /// Message asking if user didn’t get code
   ///
   /// In en, this message translates to:
   /// **'Did not receive code?'**
   String get didNotReceiveCode;
 
-  /// No description provided for @sendAgain.
+  /// Button text to resend verification code
   ///
   /// In en, this message translates to:
   /// **'Send again'**
   String get sendAgain;
 
-  /// No description provided for @allowLocationTitle.
+  /// Prompt asking for location permission
   ///
   /// In en, this message translates to:
   /// **'Allow “FixIt” to use your location'**
   String get allowLocationTitle;
 
-  /// No description provided for @allowLocationSubtitle.
+  /// Subtitle explaining why location is needed
   ///
   /// In en, this message translates to:
   /// **'We need to know your exact location so that Clients can find you easily near you.'**
   String get allowLocationSubtitle;
 
-  /// No description provided for @allowOnce.
+  /// Option to allow location one time
   ///
   /// In en, this message translates to:
   /// **'Allow Once'**
   String get allowOnce;
 
-  /// No description provided for @allowWhileUsing.
+  /// Option to allow location only while using the app
   ///
   /// In en, this message translates to:
   /// **'Allow While Using FixIt'**
   String get allowWhileUsing;
 
-  /// No description provided for @donotAllow.
+  /// Option to deny location permission
   ///
   /// In en, this message translates to:
   /// **'Don’t Allow'**
   String get donotAllow;
 
-  /// No description provided for @continueButton.
+  /// Button text to continue
   ///
   /// In en, this message translates to:
   /// **'Continue'**
