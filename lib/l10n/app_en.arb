@@ -93,6 +93,16 @@
   "pleaseAllowLocation": "Please allow location access to proceed.",
   "@pleaseAllowLocation": {
     "description": "Message prompting user to allow location access"
-  }
+  },
+"defaultLocationText": "No location selected yet",
+"@defaultLocationText": {},
+"businessNameHint": "Business name",
+"@businessNameHint": {},
+"businessAddressHint": "Business address",
+"@businessAddressHint": {},
+
+"errorFillAllFields": "Please fill in all fields",
+"@errorFillAllFields": {}
+
 
 }

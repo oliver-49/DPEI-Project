@@ -33,7 +33,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sendCodeButton => 'Send Code';
 
   @override
-  String get enterPinTitle => 'Enter 5-digit PIN code sent to your phone number';
+  String get enterPinTitle =>
+      'Enter 5-digit PIN code sent to your phone number';
 
   @override
   String get verifyButton => 'Verify';
@@ -48,7 +49,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get allowLocationTitle => 'Allow “FixIt” to use your location';
 
   @override
-  String get allowLocationSubtitle => 'We need to know your exact location so that Clients can find you easily near you.';
+  String get allowLocationSubtitle =>
+      'We need to know your exact location so that Clients can find you easily near you.';
 
   @override
   String get allowOnce => 'Allow Once';
@@ -61,4 +63,19 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get continueButton => 'Continue';
+
+  @override
+  String get pleaseAllowLocation => 'Please allow location access to proceed.';
+
+  @override
+  String get defaultLocationText => 'No location selected yet';
+
+  @override
+  String get businessNameHint => 'Business name';
+
+  @override
+  String get businessAddressHint => 'Business address';
+
+  @override
+  String get errorFillAllFields => 'Please fill in all fields';
 }

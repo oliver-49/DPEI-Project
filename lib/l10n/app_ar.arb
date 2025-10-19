@@ -93,5 +93,16 @@
     "pleaseAllowLocation": "يرجى السماح بالوصول إلى الموقع قبل المتابعة",
     "@pleaseAllowLocation": {
       "description": "رسالة تطلب من المستخدم السماح بالوصول إلى الموقع"
-}
+},
+"defaultLocationText": "لم يتم تحديد موقع بعد",
+"@defaultLocationText": {},
+"businessNameHint": "اسم النشاط التجاري",
+"@businessNameHint": {},
+"businessAddressHint": "عنوان النشاط التجاري",
+"@businessAddressHint": {},
+
+"errorFillAllFields": "من فضلك أدخل جميع البيانات",
+"@errorFillAllFields": {}
+
+
 }

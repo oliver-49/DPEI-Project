@@ -81,6 +81,7 @@ class VerifyCode extends StatelessWidget {
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        textDirection: TextDirection.ltr,
                         children: List.generate(
                           5,
                           (index) => _digitField(

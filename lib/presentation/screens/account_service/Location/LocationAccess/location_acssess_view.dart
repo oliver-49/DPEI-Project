@@ -1,6 +1,6 @@
 import 'package:dpei_project/l10n/app_localizations.dart';
 import 'package:dpei_project/presentation/screens/account_service/Location/LocationAccess/location_acssess_cubit.dart';
-import 'package:dpei_project/presentation/screens/account_service/Location/setlocation_view.dart';
+import 'package:dpei_project/presentation/screens/account_service/Location/set_location/setlocation_view.dart';
 import 'package:dpei_project/presentation/widgets/custombutton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -84,36 +84,15 @@ class LocationAccess extends StatelessWidget {
                     screenWidth,
                   ),
 
-                  if (state.errorMessage != null)
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 12),
-                      child: Center(
-                        child: Text(
-                          state.errorMessage!,
-                          style: TextStyle(
-                            color: Colors.red,
-                            fontSize: screenWidth * 0.035,
-                          ),
-                        ),
-                      ),
-                    ),
-
                   SizedBox(height: screenHeight * 0.05),
                   buttonItem(
                     context,
                     text: AppLocalizations.of(context)!.continueButton,
                     onPressed: () {
-                      final cubit = context.read<LocationAccessCubit>();
-                      if (state.selectedOption.isNotEmpty) {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (_) => const Setlocation(),
-                          ),
-                        );
-                      } else {
-                        cubit.showError('من فضلك اختر خيار للسماح بالموقع');
-                      }
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (_) => const Setlocation()),
+                      );
                     },
                   ),
                 ],
