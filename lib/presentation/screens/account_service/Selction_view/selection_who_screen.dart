@@ -1,11 +1,11 @@
-import 'package:dpei_project/l10n/app_localizations.dart';
-import 'package:dpei_project/presentation/screens/account_service/Phone%20number/phoneNumber_screen/phone_screen.dart';
-import 'package:dpei_project/presentation/screens/account_service/selectionview/selection_cubit.dart';
-import 'package:dpei_project/presentation/screens/customescreens/customerphone.dart';
-import 'package:dpei_project/presentation/widgets/custombutton.dart';
+import 'package:dpei_project/presentation/screens/account_service/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:dpei_project/presentation/screens/account_service/widgets.dart';
+import 'package:dpei_project/l10n/app_localizations.dart';
+import 'package:dpei_project/presentation/screens/account_service/Phone%20number/phoneNumber_screen/phone_screen.dart';
+import 'package:dpei_project/presentation/screens/customescreens/customerphone.dart';
+import 'package:dpei_project/presentation/widgets/custombutton.dart';
+import 'selection_cubit.dart';
 
 class AccountSetup extends StatelessWidget {
   const AccountSetup({super.key});
@@ -18,13 +18,13 @@ class AccountSetup extends StatelessWidget {
 
     return BlocListener<SelectionCubit, SelectionState>(
       listener: (context, state) {
-        if (state is NavigationRequested) {
-          if (state.destination == 'service_provider') {
+        if (state.navigateNext) {
+          if (state.selectedRole == 'Service Provider') {
             Navigator.push(
               context,
               MaterialPageRoute(builder: (_) => const PhoneNumberView()),
             );
-          } else if (state.destination == 'customer') {
+          } else if (state.selectedRole == 'Looking for service') {
             Navigator.push(
               context,
               MaterialPageRoute(builder: (_) => const Customerphone()),
@@ -33,13 +33,11 @@ class AccountSetup extends StatelessWidget {
         }
       },
       child: Scaffold(
-        backgroundColor: const Color(0xffFFFFFF),
+        backgroundColor: Colors.white,
         appBar: AppBar(
           backgroundColor: Colors.white,
           title: InkWell(
-            onTap: () {
-              Navigator.pop(context);
-            },
+            onTap: () => Navigator.pop(context),
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.01),
               child: Image.asset(
@@ -72,9 +70,6 @@ class AccountSetup extends StatelessWidget {
               SizedBox(height: screenHeight * 0.03),
               BlocBuilder<SelectionCubit, SelectionState>(
                 builder: (context, state) {
-                  final selectedOption = state is OptionSelected
-                      ? state.selectedOption
-                      : null;
                   return Column(
                     children: [
                       containerItem(
@@ -82,12 +77,10 @@ class AccountSetup extends StatelessWidget {
                         text2: AppLocalizations.of(
                           context,
                         )!.roleProviderSubtitle,
-                        isSelected: selectedOption == 'Service Provider',
-                        onTap: () {
-                          context.read<SelectionCubit>().selectOption(
-                            'Service Provider',
-                          );
-                        },
+                        isSelected: state.selectedRole == 'Service Provider',
+                        onTap: () => context
+                            .read<SelectionCubit>()
+                            .selectOption('Service Provider'),
                       ),
                       SizedBox(height: screenHeight * 0.02),
                       containerItem(
@@ -95,13 +88,24 @@ class AccountSetup extends StatelessWidget {
                         text2: AppLocalizations.of(
                           context,
                         )!.roleCustomerSubtitle,
-                        isSelected: selectedOption == 'Looking for service',
-                        onTap: () {
-                          context.read<SelectionCubit>().selectOption(
-                            'Looking for service',
-                          );
-                        },
+                        isSelected: state.selectedRole == 'Looking for service',
+                        onTap: () => context
+                            .read<SelectionCubit>()
+                            .selectOption('Looking for service'),
                       ),
+                      if (state.errorMessage != null)
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 10),
+                          child: Center(
+                            child: Text(
+                              state.errorMessage!,
+                              style: TextStyle(
+                                color: Colors.red,
+                                fontSize: screenWidth * 0.035,
+                              ),
+                            ),
+                          ),
+                        ),
                     ],
                   );
                 },
@@ -110,9 +114,7 @@ class AccountSetup extends StatelessWidget {
               buttonItem(
                 context,
                 text: AppLocalizations.of(context)!.nextButton,
-                onPressed: () {
-                  context.read<SelectionCubit>().onNextTapped();
-                },
+                onPressed: () => context.read<SelectionCubit>().onNextTapped(),
               ),
             ],
           ),

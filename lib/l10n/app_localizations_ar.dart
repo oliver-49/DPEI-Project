@@ -79,4 +79,124 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get errorFillAllFields => 'من فضلك أدخل جميع البيانات';
+
+  @override
+  String get serviceOfferTitle => 'عرض الخدمة';
+
+  @override
+  String get selectService => 'اختر خدمتك';
+
+  @override
+  String get selectExperience => 'اختر خبرتك';
+
+  @override
+  String get selectServiceArea => 'اختر منطقة الخدمة';
+
+  @override
+  String get loading => 'جارٍ التحميل...';
+
+  @override
+  String get optionCleaning => 'تنظيف';
+
+  @override
+  String get optionPlumbing => 'سباكة';
+
+  @override
+  String get optionElectrical => 'كهرباء';
+
+  @override
+  String get optionBeginner => 'مبتدئ';
+
+  @override
+  String get optionIntermediate => 'متوسط';
+
+  @override
+  String get optionExpert => 'خبير';
+
+  @override
+  String get plumbing => 'سباكة';
+
+  @override
+  String get electricity => 'كهرباء';
+
+  @override
+  String get cleaning => 'تنظيف';
+
+  @override
+  String get painting => 'دهان';
+
+  @override
+  String get gardening => 'حدائق';
+
+  @override
+  String get cairo => 'القاهرة';
+
+  @override
+  String get giza => 'الجيزة';
+
+  @override
+  String get alexandria => 'الإسكندرية';
+
+  @override
+  String get luxor => 'الأقصر';
+
+  @override
+  String get aswan => 'أسوان';
+
+  @override
+  String get suez => 'السويس';
+
+  @override
+  String get dakahlia => 'الدقهلية';
+
+  @override
+  String get sharqia => 'الشرقية';
+
+  @override
+  String get beheira => 'البحيرة';
+
+  @override
+  String get menofia => 'المنوفية';
+
+  @override
+  String get minya => 'المنيا';
+
+  @override
+  String get ismailia => 'الإسماعيلية';
+
+  @override
+  String get qalyubia => 'القليوبية';
+
+  @override
+  String get gharbia => 'الغربية';
+
+  @override
+  String get fayoum => 'الفيوم';
+
+  @override
+  String get serviceWorkingHours => 'ساعات عمل الخدمة';
+
+  @override
+  String get from => 'من';
+
+  @override
+  String get to => 'إلى';
+
+  @override
+  String get timeHint => 'HH:MM';
+
+  @override
+  String get documentsTitle => 'نحتاج إلى بعض المستندات';
+
+  @override
+  String get uploadServiceLicense => 'ارفع رخصة الخدمة الخاصة بك';
+
+  @override
+  String get uploadCertification => 'ارفع شهادتك';
+
+  @override
+  String get upload => 'رفع';
+
+  @override
+  String get change => 'تغيير';
 }

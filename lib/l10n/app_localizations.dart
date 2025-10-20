@@ -235,6 +235,246 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Please fill in all fields'**
   String get errorFillAllFields;
+
+  /// No description provided for @serviceOfferTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Service Offer'**
+  String get serviceOfferTitle;
+
+  /// No description provided for @selectService.
+  ///
+  /// In en, this message translates to:
+  /// **'Select Your Service'**
+  String get selectService;
+
+  /// No description provided for @selectExperience.
+  ///
+  /// In en, this message translates to:
+  /// **'Select Your Experience'**
+  String get selectExperience;
+
+  /// No description provided for @selectServiceArea.
+  ///
+  /// In en, this message translates to:
+  /// **'Select Service Area'**
+  String get selectServiceArea;
+
+  /// No description provided for @loading.
+  ///
+  /// In en, this message translates to:
+  /// **'Loading...'**
+  String get loading;
+
+  /// No description provided for @optionCleaning.
+  ///
+  /// In en, this message translates to:
+  /// **'Cleaning'**
+  String get optionCleaning;
+
+  /// No description provided for @optionPlumbing.
+  ///
+  /// In en, this message translates to:
+  /// **'Plumbing'**
+  String get optionPlumbing;
+
+  /// No description provided for @optionElectrical.
+  ///
+  /// In en, this message translates to:
+  /// **'Electrical'**
+  String get optionElectrical;
+
+  /// No description provided for @optionBeginner.
+  ///
+  /// In en, this message translates to:
+  /// **'Beginner'**
+  String get optionBeginner;
+
+  /// No description provided for @optionIntermediate.
+  ///
+  /// In en, this message translates to:
+  /// **'Intermediate'**
+  String get optionIntermediate;
+
+  /// No description provided for @optionExpert.
+  ///
+  /// In en, this message translates to:
+  /// **'Expert'**
+  String get optionExpert;
+
+  /// Service option: Plumbing
+  ///
+  /// In en, this message translates to:
+  /// **'Plumbing'**
+  String get plumbing;
+
+  /// Service option: Electricity
+  ///
+  /// In en, this message translates to:
+  /// **'Electricity'**
+  String get electricity;
+
+  /// Service option: Cleaning
+  ///
+  /// In en, this message translates to:
+  /// **'Cleaning'**
+  String get cleaning;
+
+  /// Service option: Painting
+  ///
+  /// In en, this message translates to:
+  /// **'Painting'**
+  String get painting;
+
+  /// Service option: Gardening
+  ///
+  /// In en, this message translates to:
+  /// **'Gardening'**
+  String get gardening;
+
+  /// Governorate: Cairo
+  ///
+  /// In en, this message translates to:
+  /// **'Cairo'**
+  String get cairo;
+
+  /// Governorate: Giza
+  ///
+  /// In en, this message translates to:
+  /// **'Giza'**
+  String get giza;
+
+  /// Governorate: Alexandria
+  ///
+  /// In en, this message translates to:
+  /// **'Alexandria'**
+  String get alexandria;
+
+  /// Governorate: Luxor
+  ///
+  /// In en, this message translates to:
+  /// **'Luxor'**
+  String get luxor;
+
+  /// Governorate: Aswan
+  ///
+  /// In en, this message translates to:
+  /// **'Aswan'**
+  String get aswan;
+
+  /// Governorate: Suez
+  ///
+  /// In en, this message translates to:
+  /// **'Suez'**
+  String get suez;
+
+  /// Governorate: Dakahlia
+  ///
+  /// In en, this message translates to:
+  /// **'Dakahlia'**
+  String get dakahlia;
+
+  /// Governorate: Sharqia
+  ///
+  /// In en, this message translates to:
+  /// **'Sharqia'**
+  String get sharqia;
+
+  /// Governorate: Beheira
+  ///
+  /// In en, this message translates to:
+  /// **'Beheira'**
+  String get beheira;
+
+  /// Governorate: Menofia
+  ///
+  /// In en, this message translates to:
+  /// **'Menofia'**
+  String get menofia;
+
+  /// Governorate: Minya
+  ///
+  /// In en, this message translates to:
+  /// **'Minya'**
+  String get minya;
+
+  /// Governorate: Ismailia
+  ///
+  /// In en, this message translates to:
+  /// **'Ismailia'**
+  String get ismailia;
+
+  /// Governorate: Qalyubia
+  ///
+  /// In en, this message translates to:
+  /// **'Qalyubia'**
+  String get qalyubia;
+
+  /// Governorate: Gharbia
+  ///
+  /// In en, this message translates to:
+  /// **'Gharbia'**
+  String get gharbia;
+
+  /// Governorate: Fayoum
+  ///
+  /// In en, this message translates to:
+  /// **'Fayoum'**
+  String get fayoum;
+
+  /// Title of service working hours section
+  ///
+  /// In en, this message translates to:
+  /// **'Service Working Hours'**
+  String get serviceWorkingHours;
+
+  /// Label for start time field
+  ///
+  /// In en, this message translates to:
+  /// **'From'**
+  String get from;
+
+  /// Label for end time field
+  ///
+  /// In en, this message translates to:
+  /// **'To'**
+  String get to;
+
+  /// Hint text for time input field
+  ///
+  /// In en, this message translates to:
+  /// **'HH:MM'**
+  String get timeHint;
+
+  /// Title of the upload documents section
+  ///
+  /// In en, this message translates to:
+  /// **'We need a few Documents.'**
+  String get documentsTitle;
+
+  /// Button text for uploading service license
+  ///
+  /// In en, this message translates to:
+  /// **'Upload your service license'**
+  String get uploadServiceLicense;
+
+  /// Button text for uploading certification
+  ///
+  /// In en, this message translates to:
+  /// **'Upload your certification'**
+  String get uploadCertification;
+
+  /// Text for the upload file button
+  ///
+  /// In en, this message translates to:
+  /// **'Upload'**
+  String get upload;
+
+  /// Text for changing uploaded file
+  ///
+  /// In en, this message translates to:
+  /// **'Change'**
+  String get change;
 }
 
 class _AppLocalizationsDelegate

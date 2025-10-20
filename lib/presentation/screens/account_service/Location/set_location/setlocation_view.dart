@@ -1,7 +1,7 @@
 import 'package:dpei_project/l10n/app_localizations.dart';
 import 'package:dpei_project/presentation/screens/account_service/Location/set_location/setlocation_cubit.dart';
 import 'package:dpei_project/presentation/screens/account_service/Location/set_location/setlocation_state.dart';
-import 'package:dpei_project/presentation/screens/service_screens/aboutoffer.dart';
+import 'package:dpei_project/presentation/screens/account_service/service_offer/about_offer/aboutoffer.dart';
 import 'package:dpei_project/presentation/widgets/custombutton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

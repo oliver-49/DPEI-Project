@@ -1,8 +1,10 @@
 import 'package:dpei_project/presentation/screens/account_service/Upload%20documents/upload_documents_cubit.dart';
+import 'package:dpei_project/presentation/screens/account_service/Upload%20documents/upload_documents_state.dart';
 import 'package:dpei_project/presentation/screens/account_service/acount_details/details_view.dart';
 import 'package:dpei_project/presentation/widgets/custombutton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:dpei_project/l10n/app_localizations.dart';
 
 class UploadDocuments extends StatelessWidget {
   const UploadDocuments({super.key});
@@ -15,89 +17,116 @@ class UploadDocuments extends StatelessWidget {
 
     return BlocProvider(
       create: (context) => UploadDocumentsCubit(),
-      child: Scaffold(
-        backgroundColor: const Color(0xffFFFFFF),
-        appBar: AppBar(
-          automaticallyImplyLeading: false,
-          backgroundColor: Colors.white,
-          title: InkWell(
-            onTap: () {
-              Navigator.pop(context);
-            },
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.01),
-              child: Image.asset(
-                'assets/images/uploadfram.png',
-                width: screenWidth * 3,
+      child: BlocListener<UploadDocumentsCubit, UploadDocumentsState>(
+        listener: (context, state) {
+          if (state is UploadDocumentsFailure) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(state.errorMessage),
+                backgroundColor: Colors.red,
+              ),
+            );
+          }
+        },
+        child: Scaffold(
+          backgroundColor: const Color(0xffFFFFFF),
+          appBar: AppBar(
+            automaticallyImplyLeading: false,
+            backgroundColor: Colors.white,
+            title: InkWell(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.01),
+                child: Image.asset(
+                  'assets/images/uploadfram.png',
+                  width: screenWidth * 3,
+                ),
               ),
             ),
           ),
-        ),
-        body: BlocBuilder<UploadDocumentsCubit, UploadDocumentsState>(
-          builder: (context, state) {
-            final cubit = context.read<UploadDocumentsCubit>();
-            return SingleChildScrollView(
-              child: Padding(
-                padding: EdgeInsets.only(
-                  top: screenHeight * 0.04,
-                  left: screenWidth * 0.06,
-                  right: screenWidth * 0.06,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "We need a few Documents.",
-                      style: TextStyle(
-                        fontFamily: 'Poppins',
-                        fontSize: screenWidth * 0.045,
-                        fontWeight: FontWeight.w500,
-                        color: const Color(0xff565656),
-                      ),
-                    ),
-                    SizedBox(height: screenHeight * 0.03),
+          body: BlocBuilder<UploadDocumentsCubit, UploadDocumentsState>(
+            builder: (context, state) {
+              final cubit = context.read<UploadDocumentsCubit>();
+              final bool isLoading = state is UploadDocumentsLoading;
+              final bool isNextEnabled = cubit.isNextButtonEnabled();
 
-                    _buildUploadButton(
-                      context,
-                      label: 'Upload your service license',
-                      fileType: 'license',
-                      filePath: state.licensePath,
-                      onPressed: () {
-                        cubit.pickFile(type: 'license');
-                      },
-                      screenWidth: screenWidth,
-                      screenHeight: screenHeight,
-                    ),
-                    SizedBox(height: screenHeight * 0.06),
-
-                    _buildUploadButton(
-                      context,
-                      label: 'Upload your certification',
-                      fileType: 'certification',
-                      filePath: state.certificationPath,
-                      onPressed: () {
-                        cubit.pickFile(type: 'certification');
-                      },
-                      screenWidth: screenWidth,
-                      screenHeight: screenHeight,
-                    ),
-                    SizedBox(height: screenHeight * 0.16),
-
-                    buttonItem(
-                      context,
-                      text: "Next",
-                      onPressed: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const AcountDetails(),
+              return SingleChildScrollView(
+                child: Padding(
+                  padding: EdgeInsets.only(
+                    top: screenHeight * 0.04,
+                    left: screenWidth * 0.06,
+                    right: screenWidth * 0.06,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        AppLocalizations.of(context)!.documentsTitle,
+                        style: TextStyle(
+                          fontFamily: 'Poppins',
+                          fontSize: screenWidth * 0.045,
+                          fontWeight: FontWeight.w500,
+                          color: const Color(0xff565656),
                         ),
                       ),
-                    ),
-                  ],
+                      SizedBox(height: screenHeight * 0.03),
+
+                      _buildUploadButton(
+                        context,
+                        label: AppLocalizations.of(
+                          context,
+                        )!.uploadServiceLicense,
+                        filePath: state.licensePath,
+                        onPressed: isLoading
+                            ? () {}
+                            : () {
+                                cubit.pickFile(type: 'license');
+                              },
+                        screenWidth: screenWidth,
+                        screenHeight: screenHeight,
+                        isLoading: isLoading && state.licensePath == null,
+                      ),
+                      SizedBox(height: screenHeight * 0.06),
+
+                      _buildUploadButton(
+                        context,
+                        label: AppLocalizations.of(
+                          context,
+                        )!.uploadCertification,
+                        filePath: state.certificationPath,
+                        onPressed: isLoading
+                            ? () {}
+                            : () {
+                                cubit.pickFile(type: 'certification');
+                              },
+                        screenWidth: screenWidth,
+                        screenHeight: screenHeight,
+                        isLoading: isLoading && state.certificationPath == null,
+                      ),
+                      SizedBox(height: screenHeight * 0.16),
+
+                      buttonItem(
+                        context,
+                        text: isLoading
+                            ? AppLocalizations.of(context)!.loading
+                            : AppLocalizations.of(context)!.nextButton,
+                        onPressed: isNextEnabled && !isLoading
+                            ? () => Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const AcountDetails(),
+                                ),
+                              )
+                            : null,
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            );
-          },
+              );
+            },
+          ),
         ),
       ),
     );
@@ -106,13 +135,15 @@ class UploadDocuments extends StatelessWidget {
   Widget _buildUploadButton(
     BuildContext context, {
     required String label,
-    required String fileType,
     String? filePath,
     required VoidCallback onPressed,
     required double screenWidth,
     required double screenHeight,
+    required bool isLoading,
   }) {
-    final buttonText = filePath != null ? 'Change' : 'Upload';
+    final buttonText = filePath != null
+        ? AppLocalizations.of(context)!.change
+        : AppLocalizations.of(context)!.upload;
 
     final buttonTextColor = const Color(0xff0054A5);
     final borderColor = filePath != null
@@ -159,6 +190,15 @@ class UploadDocuments extends StatelessWidget {
                       ),
                     ),
                   )
+                else if (isLoading)
+                  SizedBox(
+                    width: screenWidth * 0.05,
+                    height: screenWidth * 0.05,
+                    child: const CircularProgressIndicator(
+                      color: Color(0xff0054A5),
+                      strokeWidth: 2,
+                    ),
+                  )
                 else
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -179,7 +219,7 @@ class UploadDocuments extends StatelessWidget {
                     ],
                   ),
 
-                if (filePath != null)
+                if (filePath != null && !isLoading)
                   Text(
                     buttonText,
                     style: TextStyle(

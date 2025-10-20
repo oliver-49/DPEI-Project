@@ -1,11 +1,17 @@
 import 'package:dpei_project/l10n/app_localizations.dart';
-import 'package:dpei_project/presentation/screens/account_service/selectionview/selection.dart';
+import 'package:dpei_project/presentation/screens/account_service/Selction_view/selection_who_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:dpei_project/presentation/screens/account_service/selectionview/selection_cubit.dart';
+import 'package:dpei_project/presentation/screens/account_service/Selction_view/selection_cubit.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
   runApp(const MyApp());
 }
 

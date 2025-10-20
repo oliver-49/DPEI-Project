@@ -102,7 +102,155 @@
 "@businessAddressHint": {},
 
 "errorFillAllFields": "Please fill in all fields",
-"@errorFillAllFields": {}
+"@errorFillAllFields": {},
+
+  "serviceOfferTitle": "Service Offer",
+  "@serviceOfferTitle": {},
+  "selectService": "Select Your Service",
+  "@selectService": {},
+  "selectExperience": "Select Your Experience",
+  "@selectExperience": {},
+  "selectServiceArea": "Select Service Area",
+  "@selectServiceArea": {},
+
+  "loading": "Loading...",
+  "@loading": {},
+  "optionCleaning": "Cleaning",
+  "@optionCleaning": {},
+  "optionPlumbing": "Plumbing",
+  "@optionPlumbing": {},
+  "optionElectrical": "Electrical",
+  "@optionElectrical": {},
+  "optionBeginner": "Beginner",
+  "@optionBeginner": {},
+  "optionIntermediate": "Intermediate",
+  "@optionIntermediate": {},
+  "optionExpert": "Expert",
+  "@optionExpert": {},
+  "plumbing": "Plumbing",
+  "@plumbing": {
+    "description": "Service option: Plumbing"
+  },
+  "electricity": "Electricity",
+  "@electricity": {
+    "description": "Service option: Electricity"
+  },
+  "cleaning": "Cleaning",
+  "@cleaning": {
+    "description": "Service option: Cleaning"
+  },
+  "painting": "Painting",
+  "@painting": {
+    "description": "Service option: Painting"
+  },
+  "gardening": "Gardening",
+  "@gardening": {
+    "description": "Service option: Gardening"
+  },
+  "cairo": "Cairo",
+  "@cairo": {
+    "description": "Governorate: Cairo"
+  },
+  "giza": "Giza",
+  "@giza": {
+    "description": "Governorate: Giza"
+  },
+  "alexandria": "Alexandria",
+  "@alexandria": {
+    "description": "Governorate: Alexandria"
+  },
+  "luxor": "Luxor",
+  "@luxor": {
+    "description": "Governorate: Luxor"
+  },
+  "aswan": "Aswan",
+  "@aswan": {
+    "description": "Governorate: Aswan"
+  },
+  "suez": "Suez",
+  "@suez": {
+    "description": "Governorate: Suez"
+  },
+  "dakahlia": "Dakahlia",
+  "@dakahlia": {
+    "description": "Governorate: Dakahlia"
+  },
+  "sharqia": "Sharqia",
+  "@sharqia": {
+    "description": "Governorate: Sharqia"
+  },
+  "beheira": "Beheira",
+  "@beheira": {
+    "description": "Governorate: Beheira"
+  },
+  "menofia": "Menofia",
+  "@menofia": {
+    "description": "Governorate: Menofia"
+  },
+  "minya": "Minya",
+  "@minya": {
+    "description": "Governorate: Minya"
+  },
+  "ismailia": "Ismailia",
+  "@ismailia": {
+    "description": "Governorate: Ismailia"
+  },
+  "qalyubia": "Qalyubia",
+  "@qalyubia": {
+    "description": "Governorate: Qalyubia"
+  },
+  "gharbia": "Gharbia",
+  "@gharbia": {
+    "description": "Governorate: Gharbia"
+  },
+  "fayoum": "Fayoum",
+  "@fayoum": {
+    "description": "Governorate: Fayoum"
+  },
+  "serviceWorkingHours": "Service Working Hours",
+  "@serviceWorkingHours": {
+    "description": "Title of service working hours section"
+  },
+
+  "from": "From",
+  "@from": {
+    "description": "Label for start time field"
+  },
+
+  "to": "To",
+  "@to": {
+    "description": "Label for end time field"
+  },
+
+  "timeHint": "HH:MM",
+  "@timeHint": {
+    "description": "Hint text for time input field"
+  },
+
+  "documentsTitle": "We need a few Documents.",
+  "@documentsTitle": {
+    "description": "Title of the upload documents section"
+  },
+
+  "uploadServiceLicense": "Upload your service license",
+  "@uploadServiceLicense": {
+    "description": "Button text for uploading service license"
+  },
+
+  "uploadCertification": "Upload your certification",
+  "@uploadCertification": {
+    "description": "Button text for uploading certification"
+  },
+
+  "upload": "Upload",
+  "@upload": {
+    "description": "Text for the upload file button"
+  },
+
+  "change": "Change",
+  "@change": {
+    "description": "Text for changing uploaded file"
+  }
 
 
 }

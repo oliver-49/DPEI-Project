@@ -90,19 +90,234 @@
   "@continueButton": {
     "description": "زر المتابعة للخطوة التالية"
   },
-    "pleaseAllowLocation": "يرجى السماح بالوصول إلى الموقع قبل المتابعة",
-    "@pleaseAllowLocation": {
-      "description": "رسالة تطلب من المستخدم السماح بالوصول إلى الموقع"
-},
-"defaultLocationText": "لم يتم تحديد موقع بعد",
-"@defaultLocationText": {},
-"businessNameHint": "اسم النشاط التجاري",
-"@businessNameHint": {},
-"businessAddressHint": "عنوان النشاط التجاري",
-"@businessAddressHint": {},
 
-"errorFillAllFields": "من فضلك أدخل جميع البيانات",
-"@errorFillAllFields": {}
+  "pleaseAllowLocation": "يرجى السماح بالوصول إلى الموقع قبل المتابعة",
+  "@pleaseAllowLocation": {
+    "description": "رسالة تطلب من المستخدم السماح بالوصول إلى الموقع"
+  },
+
+  "defaultLocationText": "لم يتم تحديد موقع بعد",
+  "@defaultLocationText": {
+    "description": "النص الافتراضي عند عدم تحديد الموقع"
+  },
+
+  "businessNameHint": "اسم النشاط التجاري",
+  "@businessNameHint": {
+    "description": "نص تلميحي لإدخال اسم النشاط التجاري"
+  },
+
+  "businessAddressHint": "عنوان النشاط التجاري",
+  "@businessAddressHint": {
+    "description": "نص تلميحي لإدخال عنوان النشاط التجاري"
+  },
+
+  "errorFillAllFields": "من فضلك أدخل جميع البيانات",
+  "@errorFillAllFields": {
+    "description": "رسالة خطأ عند ترك أي حقل فارغ"
+  },
+
+  "serviceOfferTitle": "عرض الخدمة",
+  "@serviceOfferTitle": {
+    "description": "عنوان صفحة عرض الخدمة"
+  },
+
+  "selectService": "اختر خدمتك",
+  "@selectService": {
+    "description": "النص الخاص باختيار الخدمة"
+  },
+
+  "selectExperience": "اختر خبرتك",
+  "@selectExperience": {
+    "description": "النص الخاص باختيار مستوى الخبرة"
+  },
+
+  "selectServiceArea": "اختر منطقة الخدمة",
+  "@selectServiceArea": {
+    "description": "النص الخاص باختيار منطقة الخدمة"
+  },
+
+  "loading": "جارٍ التحميل...",
+  "@loading": {
+    "description": "النص أثناء تحميل البيانات"
+  },
+
+  "optionCleaning": "تنظيف",
+  "@optionCleaning": {
+    "description": "خدمة: تنظيف"
+  },
+
+  "optionPlumbing": "سباكة",
+  "@optionPlumbing": {
+    "description": "خدمة: سباكة"
+  },
+
+  "optionElectrical": "كهرباء",
+  "@optionElectrical": {
+    "description": "خدمة: كهرباء"
+  },
+
+  "optionBeginner": "مبتدئ",
+  "@optionBeginner": {
+    "description": "مستوى خبرة مبتدئ"
+  },
+
+  "optionIntermediate": "متوسط",
+  "@optionIntermediate": {
+    "description": "مستوى خبرة متوسط"
+  },
+
+  "optionExpert": "خبير",
+  "@optionExpert": {
+    "description": "مستوى خبرة خبير"
+  },
+
+  "plumbing": "سباكة",
+  "@plumbing": {
+    "description": "خدمة: سباكة"
+  },
+
+  "electricity": "كهرباء",
+  "@electricity": {
+    "description": "خدمة: كهرباء"
+  },
+
+  "cleaning": "تنظيف",
+  "@cleaning": {
+    "description": "خدمة: تنظيف"
+  },
+
+  "painting": "دهان",
+  "@painting": {
+    "description": "خدمة: دهان"
+  },
+
+  "gardening": "حدائق",
+  "@gardening": {
+    "description": "خدمة: حدائق"
+  },
+
+  "cairo": "القاهرة",
+  "@cairo": {
+    "description": "محافظة: القاهرة"
+  },
+
+  "giza": "الجيزة",
+  "@giza": {
+    "description": "محافظة: الجيزة"
+  },
+
+  "alexandria": "الإسكندرية",
+  "@alexandria": {
+    "description": "محافظة: الإسكندرية"
+  },
+
+  "luxor": "الأقصر",
+  "@luxor": {
+    "description": "محافظة: الأقصر"
+  },
+
+  "aswan": "أسوان",
+  "@aswan": {
+    "description": "محافظة: أسوان"
+  },
+
+  "suez": "السويس",
+  "@suez": {
+    "description": "محافظة: السويس"
+  },
+
+  "dakahlia": "الدقهلية",
+  "@dakahlia": {
+    "description": "محافظة: الدقهلية"
+  },
+
+  "sharqia": "الشرقية",
+  "@sharqia": {
+    "description": "محافظة: الشرقية"
+  },
+
+  "beheira": "البحيرة",
+  "@beheira": {
+    "description": "محافظة: البحيرة"
+  },
+
+  "menofia": "المنوفية",
+  "@menofia": {
+    "description": "محافظة: المنوفية"
+  },
+
+  "minya": "المنيا",
+  "@minya": {
+    "description": "محافظة: المنيا"
+  },
+
+  "ismailia": "الإسماعيلية",
+  "@ismailia": {
+    "description": "محافظة: الإسماعيلية"
+  },
+
+  "qalyubia": "القليوبية",
+  "@qalyubia": {
+    "description": "محافظة: القليوبية"
+  },
+
+  "gharbia": "الغربية",
+  "@gharbia": {
+    "description": "محافظة: الغربية"
+  },
+
+  "fayoum": "الفيوم",
+  "@fayoum": {
+    "description": "محافظة: الفيوم"
+  },
+  
+  "serviceWorkingHours": "ساعات عمل الخدمة",
+  "@serviceWorkingHours": {
+    "description": "عنوان قسم تحديد ساعات العمل"
+  },
+
+  "from": "من",
+  "@from": {
+    "description": "عنوان خانة وقت البداية"
+  },
+
+  "to": "إلى",
+  "@to": {
+    "description": "عنوان خانة وقت النهاية"
+  },
 
 
-}
+  "timeHint": "HH:MM",
+  "@timeHint": {
+    "description": "نص تلميحي لحقل الوقت"
+  },
+
+  "documentsTitle": "نحتاج إلى بعض المستندات",
+  "@documentsTitle": {
+    "description": "عنوان قسم رفع المستندات"
+  },
+
+  "uploadServiceLicense": "ارفع رخصة الخدمة الخاصة بك",
+  "@uploadServiceLicense": {
+    "description": "نص زر رفع رخصة الخدمة"
+  },
+
+  "uploadCertification": "ارفع شهادتك",
+  "@uploadCertification": {
+    "description": "نص زر رفع الشهادة"
+  },
+
+  "upload": "رفع",
+  "@upload": {
+    "description": "نص زر رفع الملف"
+  },
+
+  "change": "تغيير",
+  "@change": {
+    "description": "نص زر تغيير الملف بعد رفعه"
+  }
+
+
+}  
+
+  

@@ -1,4 +1,4 @@
-part of 'upload_documents_cubit.dart';
+import 'package:equatable/equatable.dart';
 
 sealed class UploadDocumentsState extends Equatable {
   final String? licensePath;
@@ -11,10 +11,16 @@ sealed class UploadDocumentsState extends Equatable {
 }
 
 final class UploadDocumentsInitial extends UploadDocumentsState {
-  const UploadDocumentsInitial() : super(licensePath: null, certificationPath: null);
+  const UploadDocumentsInitial()
+    : super(licensePath: null, certificationPath: null);
 }
 
-final class UploadDocumentsLoading extends UploadDocumentsState {}
+final class UploadDocumentsLoading extends UploadDocumentsState {
+  const UploadDocumentsLoading({super.licensePath, super.certificationPath});
+
+  @override
+  List<Object?> get props => [licensePath, certificationPath];
+}
 
 final class UploadDocumentsSuccess extends UploadDocumentsState {
   const UploadDocumentsSuccess({
@@ -25,8 +31,13 @@ final class UploadDocumentsSuccess extends UploadDocumentsState {
 
 final class UploadDocumentsFailure extends UploadDocumentsState {
   final String errorMessage;
-  const UploadDocumentsFailure({required this.errorMessage});
-  
+
+  const UploadDocumentsFailure({
+    required this.errorMessage,
+    super.licensePath,
+    super.certificationPath,
+  });
+
   @override
-  List<Object?> get props => [errorMessage];
+  List<Object?> get props => [errorMessage, licensePath, certificationPath];
 }
