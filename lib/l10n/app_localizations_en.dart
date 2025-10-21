@@ -198,4 +198,41 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get change => 'Change';
+
+  @override
+  String get accountDetails => 'Account Details';
+
+  @override
+  String get addAccountDetails => 'Add Account Details';
+
+  @override
+  String get ownerName => 'Owner Name';
+
+  @override
+  String get nicNumber => 'NIC Number';
+
+  @override
+  String get phoneNumber => 'Phone Number';
+
+  @override
+  String get nicExpiryDate => 'NIC Expiry Date';
+
+  @override
+  String get dateFormat => 'DD/MM/YYYY';
+
+  @override
+  String get submitting => 'Submitting...';
+
+  @override
+  String get next => 'Next';
+
+  @override
+  String get applicationReceived => 'Your application has been received!';
+
+  @override
+  String get applicationReceivedMessage =>
+      'Thank you for submitting your application. Our team will review it soon.';
+
+  @override
+  String get home => 'Home';
 }

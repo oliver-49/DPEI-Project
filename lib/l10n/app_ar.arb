@@ -315,6 +315,54 @@
   "change": "تغيير",
   "@change": {
     "description": "نص زر تغيير الملف بعد رفعه"
+  },
+  "accountDetails": "تفاصيل الحساب",
+  "@accountDetails": {
+    "description": "عنوان صفحة تفاصيل الحساب في شريط التطبيق"
+  },
+  "addAccountDetails": "إضافة تفاصيل الحساب",
+  "@addAccountDetails": {
+    "description": "عنوان يطلب من المستخدم إدخال تفاصيل حسابه"
+  },
+  "ownerName": "اسم المالك",
+  "@ownerName": {
+    "description": "نص إرشادي لحقل إدخال اسم المالك"
+  },
+  "nicNumber": "رقم البطاقة القومية",
+  "@nicNumber": {
+    "description": "نص إرشادي لحقل رقم البطاقة القومية"
+  },
+  "phoneNumber": "رقم الهاتف",
+  "@phoneNumber": {
+    "description": "نص إرشادي لحقل رقم الهاتف"
+  },
+  "nicExpiryDate": "تاريخ انتهاء البطاقة",
+  "@nicExpiryDate": {
+    "description": "عنوان الحقل الخاص بتاريخ انتهاء البطاقة"
+  },
+  "dateFormat": "يوم/شهر/سنة",
+  "@dateFormat": {
+    "description": "نص إرشادي يوضح شكل التاريخ المطلوب إدخاله"
+  },
+  "submitting": "جاري الإرسال...",
+  "@submitting": {
+    "description": "نص يظهر أثناء إرسال البيانات"
+  },
+  "next": "التالي",
+  "@next": {
+    "description": "نص الزر للانتقال إلى الخطوة التالية"
+  },
+  "applicationReceived": "تم استلام طلبك بنجاح!",
+  "@applicationReceived": {
+    "description": "رسالة تأكيد بعد إرسال الطلب بنجاح"
+  },
+  "applicationReceivedMessage": "شكرًا لتقديمك الطلب، سيتم مراجعته قريبًا من قبل فريقنا.",
+  "@applicationReceivedMessage": {
+    "description": "رسالة إضافية توضح أنه سيتم مراجعة الطلب قريبًا"
+  },
+  "home": "الصفحة الرئيسية",
+  "@home": {
+    "description": "زر يعيد المستخدم إلى الصفحة الرئيسية"
   }
 
 

@@ -250,6 +250,54 @@
   "change": "Change",
   "@change": {
     "description": "Text for changing uploaded file"
+  },
+  "accountDetails": "Account Details",
+  "@accountDetails": {
+    "description": "Title of the account details screen in the app bar"
+  },
+  "addAccountDetails": "Add Account Details",
+  "@addAccountDetails": {
+    "description": "Heading instructing the user to add their account details"
+  },
+  "ownerName": "Owner Name",
+  "@ownerName": {
+    "description": "Placeholder text for the owner's name input field"
+  },
+  "nicNumber": "NIC Number",
+  "@nicNumber": {
+    "description": "Placeholder text for the NIC (National ID) number field"
+  },
+  "phoneNumber": "Phone Number",
+  "@phoneNumber": {
+    "description": "Placeholder text for the phone number input field"
+  },
+  "nicExpiryDate": "NIC Expiry Date",
+  "@nicExpiryDate": {
+    "description": "Label for the field showing when the NIC expires"
+  },
+  "dateFormat": "DD/MM/YYYY",
+  "@dateFormat": {
+    "description": "Hint text showing the required date format"
+  },
+  "submitting": "Submitting...",
+  "@submitting": {
+    "description": "Text displayed while the form is being submitted"
+  },
+  "next": "Next",
+  "@next": {
+    "description": "Button text to proceed to the next step"
+  },
+  "applicationReceived": "Your application has been received!",
+  "@applicationReceived": {
+    "description": "Confirmation message shown after successful submission"
+  },
+  "applicationReceivedMessage": "Thank you for submitting your application. Our team will review it soon.",
+  "@applicationReceivedMessage": {
+    "description": "Additional message explaining that the application will be reviewed"
+  },
+  "home": "Home",
+  "@home": {
+    "description": "Button text that takes the user back to the home screen"
   }
 
 

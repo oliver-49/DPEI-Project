@@ -24,7 +24,7 @@ class VerifyCode extends StatelessWidget {
           if (state.isSuccess) {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (_) => const LocationAccess()),
+              MaterialPageRoute(builder: (_) => const LocationAccessUI()),
             );
           } else if (state.errorMessage != null) {
             ScaffoldMessenger.of(

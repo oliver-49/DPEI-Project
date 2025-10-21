@@ -475,6 +475,78 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Change'**
   String get change;
+
+  /// Title of the account details screen in the app bar
+  ///
+  /// In en, this message translates to:
+  /// **'Account Details'**
+  String get accountDetails;
+
+  /// Heading instructing the user to add their account details
+  ///
+  /// In en, this message translates to:
+  /// **'Add Account Details'**
+  String get addAccountDetails;
+
+  /// Placeholder text for the owner's name input field
+  ///
+  /// In en, this message translates to:
+  /// **'Owner Name'**
+  String get ownerName;
+
+  /// Placeholder text for the NIC (National ID) number field
+  ///
+  /// In en, this message translates to:
+  /// **'NIC Number'**
+  String get nicNumber;
+
+  /// Placeholder text for the phone number input field
+  ///
+  /// In en, this message translates to:
+  /// **'Phone Number'**
+  String get phoneNumber;
+
+  /// Label for the field showing when the NIC expires
+  ///
+  /// In en, this message translates to:
+  /// **'NIC Expiry Date'**
+  String get nicExpiryDate;
+
+  /// Hint text showing the required date format
+  ///
+  /// In en, this message translates to:
+  /// **'DD/MM/YYYY'**
+  String get dateFormat;
+
+  /// Text displayed while the form is being submitted
+  ///
+  /// In en, this message translates to:
+  /// **'Submitting...'**
+  String get submitting;
+
+  /// Button text to proceed to the next step
+  ///
+  /// In en, this message translates to:
+  /// **'Next'**
+  String get next;
+
+  /// Confirmation message shown after successful submission
+  ///
+  /// In en, this message translates to:
+  /// **'Your application has been received!'**
+  String get applicationReceived;
+
+  /// Additional message explaining that the application will be reviewed
+  ///
+  /// In en, this message translates to:
+  /// **'Thank you for submitting your application. Our team will review it soon.'**
+  String get applicationReceivedMessage;
+
+  /// Button text that takes the user back to the home screen
+  ///
+  /// In en, this message translates to:
+  /// **'Home'**
+  String get home;
 }
 
 class _AppLocalizationsDelegate

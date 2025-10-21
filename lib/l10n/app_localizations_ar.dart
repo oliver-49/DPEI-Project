@@ -199,4 +199,41 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get change => 'تغيير';
+
+  @override
+  String get accountDetails => 'تفاصيل الحساب';
+
+  @override
+  String get addAccountDetails => 'إضافة تفاصيل الحساب';
+
+  @override
+  String get ownerName => 'اسم المالك';
+
+  @override
+  String get nicNumber => 'رقم البطاقة القومية';
+
+  @override
+  String get phoneNumber => 'رقم الهاتف';
+
+  @override
+  String get nicExpiryDate => 'تاريخ انتهاء البطاقة';
+
+  @override
+  String get dateFormat => 'يوم/شهر/سنة';
+
+  @override
+  String get submitting => 'جاري الإرسال...';
+
+  @override
+  String get next => 'التالي';
+
+  @override
+  String get applicationReceived => 'تم استلام طلبك بنجاح!';
+
+  @override
+  String get applicationReceivedMessage =>
+      'شكرًا لتقديمك الطلب، سيتم مراجعته قريبًا من قبل فريقنا.';
+
+  @override
+  String get home => 'الصفحة الرئيسية';
 }
