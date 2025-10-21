@@ -26,7 +26,7 @@ class LocationAccessUI extends StatelessWidget {
           ),
         ),
       ),
-      body: Padding(
+      body: SingleChildScrollView(
         padding: EdgeInsets.symmetric(
           horizontal: screenWidth * 0.06,
           vertical: screenHeight * 0.04,
@@ -59,21 +59,18 @@ class LocationAccessUI extends StatelessWidget {
             SizedBox(height: screenHeight * 0.05),
 
             buildOption(
-              context,
               "once",
               AppLocalizations.of(context)!.allowOnce,
               screenWidth,
               selectedOption,
             ),
             buildOption(
-              context,
               "whileUsing",
               AppLocalizations.of(context)!.allowWhileUsing,
               screenWidth,
               selectedOption,
             ),
             buildOption(
-              context,
               "donotAllow",
               AppLocalizations.of(context)!.donotAllow,
               screenWidth,
@@ -81,16 +78,30 @@ class LocationAccessUI extends StatelessWidget {
             ),
 
             SizedBox(height: screenHeight * 0.05),
-            buttonItem(
-              context,
-              text: AppLocalizations.of(context)!.continueButton,
-              onPressed: () {
-                Navigator.push(
+
+            ValueListenableBuilder<String>(
+              valueListenable: selectedOption,
+              builder: (context, value, _) {
+                return buttonItem(
                   context,
-                  MaterialPageRoute(builder: (_) => Setlocation()),
+                  text: AppLocalizations.of(context)!.continueButton,
+                  onPressed: value.isNotEmpty
+                      ? () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => const Setlocation(),
+                            ),
+                          );
+                        }
+                      : null,
                 );
               },
             ),
+
+            SizedBox(
+              height: screenHeight * 0.04,
+            ), // padding تحت عشان المساحة متضربش
           ],
         ),
       ),
@@ -98,7 +109,6 @@ class LocationAccessUI extends StatelessWidget {
   }
 
   Widget buildOption(
-    BuildContext context,
     String value,
     String text,
     double screenWidth,
@@ -110,16 +120,35 @@ class LocationAccessUI extends StatelessWidget {
         child: ValueListenableBuilder<String>(
           valueListenable: selectedOption,
           builder: (context, currentValue, _) {
-            return InkWell(
+            final isSelected = currentValue == value;
+            return GestureDetector(
               onTap: () => selectedOption.value = value,
-              child: Text(
-                text,
-                style: TextStyle(
-                  color: currentValue == value
-                      ? const Color(0xff0054A5)
-                      : const Color(0xff565656),
-                  fontWeight: FontWeight.w700,
-                  fontSize: screenWidth * 0.04,
+              child: Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 8,
+                ),
+                decoration: BoxDecoration(
+                  color: isSelected
+                      ? const Color(0xffE0F0FF)
+                      : Colors.transparent,
+                  borderRadius: BorderRadius.circular(8),
+                  border: Border.all(
+                    color: isSelected
+                        ? const Color(0xff0054A5)
+                        : Colors.grey.shade300,
+                    width: 1.5,
+                  ),
+                ),
+                child: Text(
+                  text,
+                  style: TextStyle(
+                    color: isSelected
+                        ? const Color(0xff0054A5)
+                        : const Color(0xff565656),
+                    fontWeight: FontWeight.w700,
+                    fontSize: screenWidth * 0.04,
+                  ),
                 ),
               ),
             );
