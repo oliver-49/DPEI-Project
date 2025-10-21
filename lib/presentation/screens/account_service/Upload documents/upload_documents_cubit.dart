@@ -11,43 +11,34 @@ class UploadDocumentsCubit extends Cubit<UploadDocumentsState> {
       final result = await FilePicker.platform.pickFiles(
         type: FileType.custom,
         allowedExtensions: ['pdf', 'jpg', 'jpeg', 'png'],
+        withData: true,
       );
 
-      if (result != null) {
-        final filePath = result.files.single.path;
-
-        emit(
-          UploadDocumentsLoading(
-            licensePath: state.licensePath,
-            certificationPath: state.certificationPath,
-          ),
-        );
-
-        await Future.delayed(const Duration(milliseconds: 500));
+      if (result != null && result.files.single.bytes != null) {
+        final fileBytes = result.files.single.bytes!;
 
         if (type == 'license') {
           emit(
             UploadDocumentsSuccess(
-              licensePath: filePath,
-              certificationPath: state.certificationPath,
+              licenseBytes: fileBytes,
+              certificationBytes: state.certificationBytes,
             ),
           );
         } else if (type == 'certification') {
           emit(
             UploadDocumentsSuccess(
-              licensePath: state.licensePath,
-              certificationPath: filePath,
+              licenseBytes: state.licenseBytes,
+              certificationBytes: fileBytes,
             ),
           );
         }
-      } else {}
+      }
     } catch (e) {
       emit(
         UploadDocumentsFailure(
-          errorMessage:
-              'An error occurred during file picking: ${e.toString()}',
-          licensePath: state.licensePath,
-          certificationPath: state.certificationPath,
+          errorMessage: 'Error picking file: $e',
+          licenseBytes: state.licenseBytes,
+          certificationBytes: state.certificationBytes,
         ),
       );
       debugPrint('File Picker Error: $e');
@@ -55,6 +46,6 @@ class UploadDocumentsCubit extends Cubit<UploadDocumentsState> {
   }
 
   bool isNextButtonEnabled() {
-    return state.licensePath != null && state.certificationPath != null;
+    return state.licenseBytes != null && state.certificationBytes != null;
   }
 }
