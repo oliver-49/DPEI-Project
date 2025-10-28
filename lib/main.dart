@@ -1,3 +1,19 @@
+// import 'package:device_preview/device_preview.dart';
+// import 'package:fixit/booking_services/cubit/booking_cubit.dart';
+// import 'package:fixit/booking_services/view/providerprofile.dart';
+// import 'package:flutter/foundation.dart';
+// import 'package:flutter/material.dart';
+// import 'package:flutter_bloc/flutter_bloc.dart';
+// import 'package:get/get.dart';
+
+// void main() => runApp(
+//   DevicePreview(
+//     enabled: !kReleaseMode,
+//     builder: (context) => BlocProvider(
+//       create: (context) => BookingCubit(),
+//       child: MyApp()), // Wrap your app
+//   ),
+// );
 import 'package:dpei_project/navigation_page.dart';
 import 'package:dpei_project/utalities/Services/logic/service_cubit.dart';
 import 'package:flutter/material.dart';
@@ -79,14 +95,23 @@ void main() {
         child: MyApp()));
 }
 
-class MyApp extends StatelessWidget {
-    MyApp({super.key});
+// class MyApp extends StatelessWidget {
+//     MyApp({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: NavigationPage(),
-      debugShowCheckedModeBanner: false,
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return GetMaterialApp(
+//       useInheritedMediaQuery: true,
+//       locale: DevicePreview.locale(context),
+//       builder: DevicePreview.appBuilder,
+//       debugShowCheckedModeBanner: false,
+//       theme: ThemeData(
+//         scaffoldBackgroundColor: Color(0xfff9f9f9),
+//       ),
+//       home:  ProviderProfile(),
+//     return MaterialApp(
+//       home: NavigationPage(),
+//       debugShowCheckedModeBanner: false,
+//     );
+//   }
+// }
