@@ -1,122 +1,92 @@
+import 'package:dpei_project/navigation_page.dart';
+import 'package:dpei_project/utalities/Services/logic/service_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+  List<Map<String, List<Map<String, String>>>> servicesCard = [
+    {
+      "Maintenance": [
+        {"img": "assets/images/Air Conditenior.png", "job": "Air Condition"},
+        {"img": "assets/images/Multimeter.png", "job": "Electric"},
+        {"img": "assets/images/image 100.png", "job": "Siding repair"},
+        {"img": "assets/images/Car Wash.png", "job": "Car Wash"},
+      ],
+    },
+    {
+      "Cleaning": [
+        {"img": "assets/images/Spin Mop.png", "job": "Home Flooring"},
+        {"img": "assets/images/image 101.png", "job": "Gutter"},
+        {"img": "assets/images/Frame 1000003290.png", "job": "Carpet"},
+        {"img": "assets/images/Pliers.png", "job": "Pliers"},
+      ],
+    },
+    {
+      "Home improvement": [
+        {"img": "assets/images/image 109.png", "job": "Drilling"},
+        {"img": "assets/images/image 102.png", "job": "lawn "},
+        {"img": "assets/images/image 103.png", "job": "Weed control"},
+        {"img": "assets/images/Water Tap.png", "job": "Water Tap"},
+      ],
+    },
+    {
+      "Security": [
+        {"img": "assets/images/CCTV (1).png", "job": "Cameras"},
+        {"img": "assets/images/image 104 (1).png", "job": "Burglar alarm"},
+        {"img": "assets/images/image 105 (1).png", "job": "Sturdy lock"},
+        {"img": "assets/images/Cctv (2).png", "job": "Cctv"},
+      ],
+    },
+    {
+      "Car Maintenance": [
+        {"img": "assets/images/Car Waxing.png", "job": "Car washer"},
+        {"img": "assets/images/image 109 (1).png", "job": "Oil change"},
+        {"img": "assets/images/image 110.png", "job": "Car battery"},
+        {"img": "assets/images/Car Wash.png", "job": "Car Waxing"},
+      ],
+    },
+    {
+      "Handyman Services": [
+        {"img": "assets/images/image 108 (1).png", "job": "Furniture"},
+        {"img": "assets/images/image 111.png", "job": "Door"},
+        {"img": "assets/images/image 112.png", "job": "Shelving "},
+        {
+          "img":
+              "assets/images/Painter holding paint roller and paint bucket.png",
+          "job": "Painting",
+        },
+      ],
+    },
+    {
+      "Other services": [
+        {"img": "assets/images/image 113.png", "job": "Interior"},
+        {"img": "assets/images/image 114.png", "job": "Exterior"},
+        {"img": "assets/images/image 115.png", "job": "Wall "},
+        {"img": "assets/images/image 116.png", "job": "Dish wash  "},
+        {"img": "assets/images/image 117 (1).png", "job": "Loading"},
+        {"img": "assets/images/image 118.png", "job": "Cutting"},
+        {
+          "img": "assets/images/Boy mopping the floor.png",
+          "job": "Mopping Floor",
+        },
+      ],
+    },
+  ];
 
 void main() {
-  runApp(const MyApp());
+  runApp( BlocProvider(
+        create: (context) => ServiceCubit()..getServices(
+      servicesCard[0].values.first,),
+        child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+    MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
-    return Scaffold(
-      appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text('You have pushed the button this many times:'),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      home: NavigationPage(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
