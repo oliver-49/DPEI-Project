@@ -1,0 +1,304 @@
+{
+  "@@locale": "en",
+
+  "accountSetupTitle": "I am",
+  "@accountSetupTitle": {
+    "description": "Title for account setup page"
+  },
+
+  "roleProviderTitle": "Service Provider",
+  "@roleProviderTitle": {
+    "description": "Title for selecting service provider role"
+  },
+
+  "roleProviderSubtitle": "I offer professional services",
+  "@roleProviderSubtitle": {
+    "description": "Subtitle explaining provider role"
+  },
+
+  "roleCustomerTitle": "Looking for service",
+  "@roleCustomerTitle": {
+    "description": "Title for selecting customer role"
+  },
+
+  "roleCustomerSubtitle": "I am looking for home services.",
+  "@roleCustomerSubtitle": {
+    "description": "Subtitle explaining customer role"
+  },
+
+  "nextButton": "Next",
+  "@nextButton": {
+    "description": "Button text for next step"
+  },
+
+  "enterPhoneTitle": "Enter your Phone number to verify",
+  "@enterPhoneTitle": {
+    "description": "Prompt asking user to enter phone number"
+  },
+
+  "sendCodeButton": "Send Code",
+  "@sendCodeButton": {
+    "description": "Button to send verification code"
+  },
+
+  "enterPinTitle": "Enter 5-digit PIN code sent to your phone number",
+  "@enterPinTitle": {
+    "description": "Prompt asking user to enter 5-digit PIN"
+  },
+
+  "verifyButton": "Verify",
+  "@verifyButton": {
+    "description": "Button to verify code"
+  },
+
+  "didNotReceiveCode": "Did not receive code?",
+  "@didNotReceiveCode": {
+    "description": "Message asking if user didn’t get code"
+  },
+
+  "sendAgain": "Send again",
+  "@sendAgain": {
+    "description": "Button text to resend verification code"
+  },
+
+  "allowLocationTitle": "Allow “FixIt” to use your location",
+  "@allowLocationTitle": {
+    "description": "Prompt asking for location permission"
+  },
+
+  "allowLocationSubtitle": "We need to know your exact location so that Clients can find you easily near you.",
+  "@allowLocationSubtitle": {
+    "description": "Subtitle explaining why location is needed"
+  },
+
+  "allowOnce": "Allow Once",
+  "@allowOnce": {
+    "description": "Option to allow location one time"
+  },
+
+  "allowWhileUsing": "Allow While Using FixIt",
+  "@allowWhileUsing": {
+    "description": "Option to allow location only while using the app"
+  },
+
+  "donotAllow": "Don’t Allow",
+  "@donotAllow": {
+    "description": "Option to deny location permission"
+  },
+
+  "continueButton": "Continue",
+  "@continueButton": {
+    "description": "Button text to continue"
+  },
+  "pleaseAllowLocation": "Please allow location access to proceed.",
+  "@pleaseAllowLocation": {
+    "description": "Message prompting user to allow location access"
+  },
+"defaultLocationText": "No location selected yet",
+"@defaultLocationText": {},
+"businessNameHint": "Business name",
+"@businessNameHint": {},
+"businessAddressHint": "Business address",
+"@businessAddressHint": {},
+
+"errorFillAllFields": "Please fill in all fields",
+"@errorFillAllFields": {},
+
+  "serviceOfferTitle": "Service Offer",
+  "@serviceOfferTitle": {},
+  "selectService": "Select Your Service",
+  "@selectService": {},
+  "selectExperience": "Select Your Experience",
+  "@selectExperience": {},
+  "selectServiceArea": "Select Service Area",
+  "@selectServiceArea": {},
+
+  "loading": "Loading...",
+  "@loading": {},
+  "optionCleaning": "Cleaning",
+  "@optionCleaning": {},
+  "optionPlumbing": "Plumbing",
+  "@optionPlumbing": {},
+  "optionElectrical": "Electrical",
+  "@optionElectrical": {},
+  "optionBeginner": "Beginner",
+  "@optionBeginner": {},
+  "optionIntermediate": "Intermediate",
+  "@optionIntermediate": {},
+  "optionExpert": "Expert",
+  "@optionExpert": {},
+  "plumbing": "Plumbing",
+  "@plumbing": {
+    "description": "Service option: Plumbing"
+  },
+  "electricity": "Electricity",
+  "@electricity": {
+    "description": "Service option: Electricity"
+  },
+  "cleaning": "Cleaning",
+  "@cleaning": {
+    "description": "Service option: Cleaning"
+  },
+  "painting": "Painting",
+  "@painting": {
+    "description": "Service option: Painting"
+  },
+  "gardening": "Gardening",
+  "@gardening": {
+    "description": "Service option: Gardening"
+  },
+  "cairo": "Cairo",
+  "@cairo": {
+    "description": "Governorate: Cairo"
+  },
+  "giza": "Giza",
+  "@giza": {
+    "description": "Governorate: Giza"
+  },
+  "alexandria": "Alexandria",
+  "@alexandria": {
+    "description": "Governorate: Alexandria"
+  },
+  "luxor": "Luxor",
+  "@luxor": {
+    "description": "Governorate: Luxor"
+  },
+  "aswan": "Aswan",
+  "@aswan": {
+    "description": "Governorate: Aswan"
+  },
+  "suez": "Suez",
+  "@suez": {
+    "description": "Governorate: Suez"
+  },
+  "dakahlia": "Dakahlia",
+  "@dakahlia": {
+    "description": "Governorate: Dakahlia"
+  },
+  "sharqia": "Sharqia",
+  "@sharqia": {
+    "description": "Governorate: Sharqia"
+  },
+  "beheira": "Beheira",
+  "@beheira": {
+    "description": "Governorate: Beheira"
+  },
+  "menofia": "Menofia",
+  "@menofia": {
+    "description": "Governorate: Menofia"
+  },
+  "minya": "Minya",
+  "@minya": {
+    "description": "Governorate: Minya"
+  },
+  "ismailia": "Ismailia",
+  "@ismailia": {
+    "description": "Governorate: Ismailia"
+  },
+  "qalyubia": "Qalyubia",
+  "@qalyubia": {
+    "description": "Governorate: Qalyubia"
+  },
+  "gharbia": "Gharbia",
+  "@gharbia": {
+    "description": "Governorate: Gharbia"
+  },
+  "fayoum": "Fayoum",
+  "@fayoum": {
+    "description": "Governorate: Fayoum"
+  },
+  "serviceWorkingHours": "Service Working Hours",
+  "@serviceWorkingHours": {
+    "description": "Title of service working hours section"
+  },
+
+  "from": "From",
+  "@from": {
+    "description": "Label for start time field"
+  },
+
+  "to": "To",
+  "@to": {
+    "description": "Label for end time field"
+  },
+
+  "timeHint": "HH:MM",
+  "@timeHint": {
+    "description": "Hint text for time input field"
+  },
+
+  "documentsTitle": "We need a few Documents.",
+  "@documentsTitle": {
+    "description": "Title of the upload documents section"
+  },
+
+  "uploadServiceLicense": "Upload your service license",
+  "@uploadServiceLicense": {
+    "description": "Button text for uploading service license"
+  },
+
+  "uploadCertification": "Upload your certification",
+  "@uploadCertification": {
+    "description": "Button text for uploading certification"
+  },
+
+  "upload": "Upload",
+  "@upload": {
+    "description": "Text for the upload file button"
+  },
+
+  "change": "Change",
+  "@change": {
+    "description": "Text for changing uploaded file"
+  },
+  "accountDetails": "Account Details",
+  "@accountDetails": {
+    "description": "Title of the account details screen in the app bar"
+  },
+  "addAccountDetails": "Add Account Details",
+  "@addAccountDetails": {
+    "description": "Heading instructing the user to add their account details"
+  },
+  "ownerName": "Owner Name",
+  "@ownerName": {
+    "description": "Placeholder text for the owner's name input field"
+  },
+  "nicNumber": "NIC Number",
+  "@nicNumber": {
+    "description": "Placeholder text for the NIC (National ID) number field"
+  },
+  "phoneNumber": "Phone Number",
+  "@phoneNumber": {
+    "description": "Placeholder text for the phone number input field"
+  },
+  "nicExpiryDate": "NIC Expiry Date",
+  "@nicExpiryDate": {
+    "description": "Label for the field showing when the NIC expires"
+  },
+  "dateFormat": "DD/MM/YYYY",
+  "@dateFormat": {
+    "description": "Hint text showing the required date format"
+  },
+  "submitting": "Submitting...",
+  "@submitting": {
+    "description": "Text displayed while the form is being submitted"
+  },
+  "next": "Next",
+  "@next": {
+    "description": "Button text to proceed to the next step"
+  },
+  "applicationReceived": "Your application has been received!",
+  "@applicationReceived": {
+    "description": "Confirmation message shown after successful submission"
+  },
+  "applicationReceivedMessage": "Thank you for submitting your application. Our team will review it soon.",
+  "@applicationReceivedMessage": {
+    "description": "Additional message explaining that the application will be reviewed"
+  },
+  "home": "Home",
+  "@home": {
+    "description": "Button text that takes the user back to the home screen"
+  }
+
+
+}

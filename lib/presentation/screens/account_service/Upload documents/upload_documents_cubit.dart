@@ -1,34 +1,51 @@
 import 'package:bloc/bloc.dart';
-import 'package:equatable/equatable.dart';
+import 'package:dpei_project/presentation/screens/account_service/Upload%20documents/upload_documents_state.dart';
 import 'package:file_picker/file_picker.dart';
-
-part 'upload_documents_state.dart';
+import 'package:flutter/foundation.dart';
 
 class UploadDocumentsCubit extends Cubit<UploadDocumentsState> {
-  UploadDocumentsCubit() : super(UploadDocumentsInitial());
+  UploadDocumentsCubit() : super(const UploadDocumentsInitial());
 
   Future<void> pickFile({required String type}) async {
     try {
-      final result = await FilePicker.platform.pickFiles();
+      final result = await FilePicker.platform.pickFiles(
+        type: FileType.custom,
+        allowedExtensions: ['pdf', 'jpg', 'jpeg', 'png'],
+        withData: true,
+      );
 
-      if (result != null) {
-        final filePath = result.files.single.path;
-        emit(UploadDocumentsLoading());
+      if (result != null && result.files.single.bytes != null) {
+        final fileBytes = result.files.single.bytes!;
 
-        // Here you can add your logic to upload the file to a server
-        // For now, we just update the state with the file path
-        
         if (type == 'license') {
-          emit(UploadDocumentsSuccess(licensePath: filePath, certificationPath: state.certificationPath));
+          emit(
+            UploadDocumentsSuccess(
+              licenseBytes: fileBytes,
+              certificationBytes: state.certificationBytes,
+            ),
+          );
         } else if (type == 'certification') {
-          emit(UploadDocumentsSuccess(licensePath: state.licensePath, certificationPath: filePath));
+          emit(
+            UploadDocumentsSuccess(
+              licenseBytes: state.licenseBytes,
+              certificationBytes: fileBytes,
+            ),
+          );
         }
-
-      } else {
-        // User canceled the picker
       }
     } catch (e) {
-      emit(UploadDocumentsFailure(errorMessage: e.toString()));
+      emit(
+        UploadDocumentsFailure(
+          errorMessage: 'Error picking file: $e',
+          licenseBytes: state.licenseBytes,
+          certificationBytes: state.certificationBytes,
+        ),
+      );
+      debugPrint('File Picker Error: $e');
     }
+  }
+
+  bool isNextButtonEnabled() {
+    return state.licenseBytes != null && state.certificationBytes != null;
   }
 }
