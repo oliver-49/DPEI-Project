@@ -1,3 +1,4 @@
+import 'package:fixit/core/stores/app_box.dart';
 import 'package:fixit/l10n/app_localizations.dart';
 import 'package:fixit/presentation/screens/account_service/Selction_view/selection_cubit.dart';
 import 'package:fixit/presentation/screens/account_service/Selction_view/selection_who_screen.dart';
@@ -11,7 +12,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-
+  await AppBox.init();
   runApp(const MyApp());
 }
 

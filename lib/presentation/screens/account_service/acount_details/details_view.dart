@@ -1,4 +1,6 @@
+import 'package:fixit/core/stores/app_box.dart';
 import 'package:fixit/l10n/app_localizations.dart';
+import 'package:fixit/presentation/homescreen.dart';
 import 'package:fixit/presentation/widgets/custombutton.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -281,15 +283,22 @@ class AcountDetails extends StatelessWidget {
                                                   buttonItem(
                                                     context,
                                                     text: t.home,
-                                                    onPressed: () {
+                                                    onPressed: () async {
                                                       Navigator.pop(
                                                         dialogContext,
                                                       );
-                                                      // Navigator.pushAndRemoveUntil(
-                                                      //  // context,
-                                                      //   //MaterialPageRoute(builder: (_) => const HomeScreen()),
-                                                      //   // (route) => false,
-                                                      // );
+                                                      await AppBox.setSetupDone(
+                                                        true,
+                                                      );
+                                                      Navigator.pushAndRemoveUntil(
+                                                        // ignore: use_build_context_synchronously
+                                                        context,
+                                                        MaterialPageRoute(
+                                                          builder: (_) =>
+                                                              const HomeScreen(),
+                                                        ),
+                                                        (route) => false,
+                                                      );
                                                     },
                                                   ),
                                                 ],
