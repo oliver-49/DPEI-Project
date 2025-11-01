@@ -1,7 +1,7 @@
-import 'package:dpei_project/l10n/app_localizations.dart';
-import 'package:dpei_project/presentation/screens/account_service/Phone%20number/verify%20code/verify_code_cubit.dart';
-import 'package:dpei_project/presentation/screens/account_service/Location/LocationAccess/location_acssess_view.dart';
-import 'package:dpei_project/presentation/widgets/custombutton.dart';
+import 'package:fixit/l10n/app_localizations.dart';
+import 'package:fixit/presentation/screens/account_service/Location/LocationAccess/location_acssess_view.dart';
+import 'package:fixit/presentation/screens/account_service/Phone%20number/verify%20code/verify_code_cubit.dart';
+import 'package:fixit/presentation/widgets/custombutton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

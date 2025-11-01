@@ -1,4 +1,5 @@
-import 'package:dpei_project/presentation/screens/account_service/service_offer/work_hour/workHour_state.dart';
+
+import 'package:fixit/presentation/screens/account_service/service_offer/work_hour/workhour_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class WorkhourCubit extends Cubit<WorkhourState> {
@@ -13,7 +14,7 @@ class WorkhourCubit extends Cubit<WorkhourState> {
   }
 
   void saveDataLocally() {
-    // هنا ممكن تستخدم SharedPreferences أو Hive لتخزين fromTime و toTime
+    
   }
 
   void submitToFirebase() {
@@ -24,7 +25,6 @@ class WorkhourCubit extends Cubit<WorkhourState> {
 
     emit(state.copyWith(isLoading: true));
 
-    // هنا ممكن تضيف الكود لرفع البيانات على Firebase
     Future.delayed(const Duration(seconds: 1), () {
       emit(state.copyWith(isLoading: false));
     });

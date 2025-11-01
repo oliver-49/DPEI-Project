@@ -1,10 +1,12 @@
-import 'package:dpei_project/presentation/screens/account_service/Upload%20documents/upload_documents_cubit.dart';
-import 'package:dpei_project/presentation/screens/account_service/Upload%20documents/upload_documents_state.dart';
-import 'package:dpei_project/presentation/screens/account_service/acount_details/details_view.dart';
-import 'package:dpei_project/presentation/widgets/custombutton.dart';
+
+import 'package:fixit/l10n/app_localizations.dart';
+import 'package:fixit/presentation/screens/account_service/Upload%20documents/upload_documents_cubit.dart';
+import 'package:fixit/presentation/screens/account_service/Upload%20documents/upload_documents_state.dart';
+import 'package:fixit/presentation/screens/account_service/acount_details/details_view.dart';
+import 'package:fixit/presentation/widgets/custombutton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:dpei_project/l10n/app_localizations.dart';
+
 
 class UploadDocuments extends StatelessWidget {
   const UploadDocuments({super.key});

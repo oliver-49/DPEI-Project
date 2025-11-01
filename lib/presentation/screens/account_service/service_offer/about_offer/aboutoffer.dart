@@ -1,10 +1,12 @@
+import 'package:fixit/l10n/app_localizations.dart';
+import 'package:fixit/presentation/screens/account_service/service_offer/work_hour/workhour_view.dart';
+import 'package:fixit/presentation/widgets/custombutton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:dpei_project/presentation/widgets/custombutton.dart';
-import 'package:dpei_project/presentation/screens/account_service/service_offer/work_hour/workhour_view.dart';
+
 import 'service_offer_cubit.dart';
 import 'service_offer_state.dart';
-import 'package:dpei_project/l10n/app_localizations.dart';
+
 
 class ServiceOffer extends StatelessWidget {
   const ServiceOffer({super.key});

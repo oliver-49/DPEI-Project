@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
-import 'package:dpei_project/presentation/screens/account_service/acount_details/acount_details_state.dart';
+
+import 'package:fixit/presentation/screens/account_service/acount_details/acount_details_state.dart';
 
 class AccountDetailsCubit extends Cubit<AccountDetailsState> {
   AccountDetailsCubit() : super(const AccountDetailsInitial());

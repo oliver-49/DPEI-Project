@@ -1,6 +1,6 @@
-import 'package:dpei_project/l10n/app_localizations.dart';
-import 'package:dpei_project/presentation/screens/account_service/Location/set_location/setlocation_view.dart';
-import 'package:dpei_project/presentation/widgets/custombutton.dart';
+import 'package:fixit/l10n/app_localizations.dart';
+import 'package:fixit/presentation/screens/account_service/Location/set_location/setlocation_view.dart';
+import 'package:fixit/presentation/widgets/custombutton.dart';
 import 'package:flutter/material.dart';
 
 class LocationAccessUI extends StatelessWidget {

@@ -5,11 +5,11 @@
 // gestures. You can also use WidgetTester to find child widgets in the widget
 // tree, read text, and verify that the values of widget properties are correct.
 
+import 'package:fixit/main.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 // تم تصحيح الاستيراد ليطابق اسم مشروعك (dpei_project).
 // وهذا يحل مشكلة "MyApp is not defined".
-import 'package:dpei_project/main.dart';
 
 void main() {
   testWidgets('Initial counter value test', (WidgetTester tester) async {
