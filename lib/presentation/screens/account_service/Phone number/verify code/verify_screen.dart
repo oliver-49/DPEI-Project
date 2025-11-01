@@ -92,19 +92,28 @@ class VerifyCode extends StatelessWidget {
                     onPressed: state.isLoading
                         ? null
                         : () {
-                            context.read<VerifyCodeCubit>().verifyCode();
-                            if (state.isSuccess) {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (_) => LocationAccessUI(),
-                                ),
-                              );
-                            } else if (state.errorMessage != null) {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(content: Text(state.errorMessage!)),
-                              );
-                            }
+                            context.read<VerifyCodeCubit>().verifyCode(
+                              onError: () {
+                                // امسح الأرقام بعد الخطأ
+                                for (final c in controllers) {
+                                  c.clear();
+                                }
+                                FocusScope.of(context).unfocus();
+                              },
+                              onSuccess: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (_) => LocationAccessUI(),
+                                  ),
+                                );
+                              },
+                              showError: (msg) {
+                                ScaffoldMessenger.of(
+                                  context,
+                                ).showSnackBar(SnackBar(content: Text(msg)));
+                              },
+                            );
                           },
                   ),
                   SizedBox(height: screenHeight * 0.03),

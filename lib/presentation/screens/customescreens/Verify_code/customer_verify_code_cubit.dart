@@ -1,14 +1,14 @@
 import 'dart:async';
-import 'dart:ui';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class VerifyCodeState {
+class CustomerVerifyCodeState {
   final List<String> digits;
   final bool isSuccess;
   final String? errorMessage;
   final bool isLoading;
   final int resendCountdown;
-  VerifyCodeState({
+
+  CustomerVerifyCodeState({
     required this.digits,
     this.isSuccess = false,
     this.errorMessage,
@@ -16,14 +16,14 @@ class VerifyCodeState {
     this.resendCountdown = 60,
   });
 
-  VerifyCodeState copyWith({
+  CustomerVerifyCodeState copyWith({
     List<String>? digits,
     bool? isSuccess,
     String? errorMessage,
     bool? isLoading,
     int? resendCountdown,
   }) {
-    return VerifyCodeState(
+    return CustomerVerifyCodeState(
       digits: digits ?? this.digits,
       isSuccess: isSuccess ?? this.isSuccess,
       errorMessage: errorMessage,
@@ -33,10 +33,11 @@ class VerifyCodeState {
   }
 }
 
-class VerifyCodeCubit extends Cubit<VerifyCodeState> {
+class CustomerVerifyCodeCubit extends Cubit<CustomerVerifyCodeState> {
   Timer? _timer;
 
-  VerifyCodeCubit() : super(VerifyCodeState(digits: List.filled(5, ""))) {
+  CustomerVerifyCodeCubit()
+    : super(CustomerVerifyCodeState(digits: List.filled(5, ""))) {
     startCountdown();
   }
 
@@ -48,27 +49,20 @@ class VerifyCodeCubit extends Cubit<VerifyCodeState> {
     );
   }
 
-  void verifyCode({
-    required VoidCallback onSuccess,
-    required VoidCallback onError,
-    required Function(String) showError,
-  }) {
+  void verifyCode() {
     final code = state.digits.join();
     emit(state.copyWith(isLoading: true, errorMessage: null, isSuccess: false));
 
     Future.delayed(const Duration(seconds: 1), () {
       if (code == "12345") {
         emit(state.copyWith(isSuccess: true, isLoading: false));
-        onSuccess();
       } else {
         emit(
           state.copyWith(
-            errorMessage: "الكود غلط! حاول تاني",
+            errorMessage: "الكود غير صحيح، حاول مرة أخرى.",
             isLoading: false,
           ),
         );
-        showError("الكود غلط! حاول تاني");
-        onError();
       }
     });
   }

@@ -1,14 +1,14 @@
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:fixit/l10n/app_localizations.dart';
-import 'package:fixit/presentation/screens/account_service/Phone%20number/verify%20code/verify_screen.dart';
+import 'package:fixit/presentation/screens/customescreens/Verify_code/customer_verify_code_view.dart';
 import 'package:fixit/presentation/widgets/custombutton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/services.dart';
-import 'phone_cubit.dart';
+import 'customer_phone_cubit.dart';
 
-class PhoneNumberView extends StatelessWidget {
-  const PhoneNumberView({super.key});
+class CustomerPhoneView extends StatelessWidget {
+  const CustomerPhoneView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,10 +18,10 @@ class PhoneNumberView extends StatelessWidget {
     final phoneController = TextEditingController();
 
     return BlocProvider(
-      create: (_) => PhoneNumberCubit(),
-      child: BlocBuilder<PhoneNumberCubit, PhoneNumberState>(
+      create: (_) => CustomerPhoneCubit(),
+      child: BlocBuilder<CustomerPhoneCubit, CustomerPhoneState>(
         builder: (context, state) {
-          final cubit = context.read<PhoneNumberCubit>();
+          final cubit = context.read<CustomerPhoneCubit>();
 
           return Scaffold(
             backgroundColor: Colors.white,
@@ -122,7 +122,8 @@ class PhoneNumberView extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (_) => VerifyCode(phoneNumber: fullNumber),
+                          builder: (_) =>
+                              CustomerVerifyCode(phoneNumber: fullNumber),
                         ),
                       );
                     },
