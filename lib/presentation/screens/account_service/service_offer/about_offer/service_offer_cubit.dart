@@ -2,7 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'service_offer_state.dart';
 
 class ServiceOfferCubit extends Cubit<ServiceOfferState> {
-  ServiceOfferCubit() : super(ServiceOfferState());
+  ServiceOfferCubit() : super(const ServiceOfferState());
 
   void selectService(String value) {
     emit(state.copyWith(selectedService: value, errorMessage: null));
@@ -16,23 +16,30 @@ class ServiceOfferCubit extends Cubit<ServiceOfferState> {
     emit(state.copyWith(selectedArea: value, errorMessage: null));
   }
 
-  void saveDataLocally() {
-    // هنا ممكن تضيف الكود لتخزين البيانات على SharedPreferences أو Hive
-  }
+  void saveDataLocally() {}
 
-  void submitToFirebase() {
+  Future<bool> submitToFirebase() async {
     if (state.selectedService == null ||
         state.selectedExperience == null ||
         state.selectedArea == null) {
-      emit(state.copyWith(errorMessage: 'Please fill all fields'));
-      return;
+      emit(state.copyWith(errorMessage: 'من فضلك املأ كل الحقول'));
+      return false;
     }
 
-    emit(state.copyWith(isLoading: true));
+    emit(state.copyWith(isLoading: true, errorMessage: null));
 
-    // هنا ممكن تضيف الكود لرفع البيانات على Firebase
-    Future.delayed(const Duration(seconds: 1), () {
+    try {
+      await Future.delayed(const Duration(seconds: 1));
       emit(state.copyWith(isLoading: false));
-    });
+      return true;
+    } catch (e) {
+      emit(
+        state.copyWith(
+          isLoading: false,
+          errorMessage: 'حدث خطأ غير متوقع. حاول مرة أخرى.',
+        ),
+      );
+      return false;
+    }
   }
 }

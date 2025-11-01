@@ -1,4 +1,3 @@
-
 import 'package:fixit/l10n/app_localizations.dart';
 import 'package:fixit/presentation/screens/account_service/Upload%20documents/upload_documents_screen.dart';
 import 'package:fixit/presentation/screens/account_service/service_offer/work_hour/workhour_state.dart';
@@ -6,9 +5,7 @@ import 'package:fixit/presentation/widgets/custombutton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-
 import 'workhour_cubit.dart';
-
 
 class Workhour extends StatelessWidget {
   const Workhour({super.key});
@@ -19,11 +16,48 @@ class Workhour extends StatelessWidget {
     final screenWidth = mediaQuery.size.width;
     final screenHeight = mediaQuery.size.height;
 
+    String formatTime(BuildContext ctx, TimeOfDay? t) {
+      if (t == null) return '';
+
+      MaterialLocalizations.of(ctx);
+
+      final h = t.hour.toString().padLeft(2, '0');
+      final m = t.minute.toString().padLeft(2, '0');
+      return '$h:$m';
+    }
+
+    Future<void> pickTime({
+      required BuildContext ctx,
+      required TimeOfDay? initial,
+      required ValueChanged<TimeOfDay> onPicked,
+    }) async {
+      final picked = await showTimePicker(
+        context: ctx,
+        initialTime: initial ?? TimeOfDay.now(),
+        initialEntryMode: TimePickerEntryMode.dial,
+        builder: (context, child) {
+          final mq = MediaQuery.of(context);
+          return MediaQuery(
+            data: mq.copyWith(alwaysUse24HourFormat: true),
+            child: child!,
+          );
+        },
+      );
+      if (picked != null) onPicked(picked);
+    }
+
     return BlocProvider(
       create: (_) => WorkhourCubit(),
       child: BlocBuilder<WorkhourCubit, WorkhourState>(
         builder: (context, state) {
           final cubit = context.read<WorkhourCubit>();
+
+          final fromCtrl = TextEditingController(
+            text: formatTime(context, state.fromTime),
+          );
+          final toCtrl = TextEditingController(
+            text: formatTime(context, state.toTime),
+          );
 
           return Scaffold(
             backgroundColor: const Color(0xffFFFFFF),
@@ -62,31 +96,44 @@ class Workhour extends StatelessWidget {
                   ),
                   SizedBox(height: screenHeight * 0.03),
 
-                  buildTimeField(
-                    context,
-                    AppLocalizations.of(context)!.from,
-                    state.fromTime,
-                    (value) => cubit.setFromTime(value),
-                    screenWidth,
-                    screenHeight,
+                  _buildTimeField(
+                    context: context,
+                    label: AppLocalizations.of(context)!.from,
+                    controller: fromCtrl,
+                    onTap: () => pickTime(
+                      ctx: context,
+                      initial: state.fromTime,
+                      onPicked: cubit.setFromTime,
+                    ),
+                    screenWidth: screenWidth,
+                    screenHeight: screenHeight,
                   ),
                   SizedBox(height: screenHeight * 0.02),
 
-                  buildTimeField(
-                    context,
-                    AppLocalizations.of(context)!.to,
-                    state.toTime,
-                    (value) => cubit.setToTime(value),
-                    screenWidth,
-                    screenHeight,
+                  _buildTimeField(
+                    context: context,
+                    label: AppLocalizations.of(context)!.to,
+                    controller: toCtrl,
+                    onTap: () => pickTime(
+                      ctx: context,
+                      initial: state.toTime,
+                      onPicked: cubit.setToTime,
+                    ),
+                    screenWidth: screenWidth,
+                    screenHeight: screenHeight,
                   ),
-                  SizedBox(height: screenHeight * 0.15),
+                  SizedBox(height: screenHeight * 0.04),
 
                   if (state.errorMessage != null)
-                    Text(
-                      state.errorMessage!,
-                      style: TextStyle(color: Colors.red),
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 8.0),
+                      child: Text(
+                        state.errorMessage!,
+                        style: const TextStyle(color: Colors.red),
+                      ),
                     ),
+
+                  SizedBox(height: screenHeight * 0.08),
 
                   buttonItem(
                     context,
@@ -95,15 +142,17 @@ class Workhour extends StatelessWidget {
                         : AppLocalizations.of(context)!.nextButton,
                     onPressed: state.isLoading
                         ? null
-                        : () {
+                        : () async {
+                            FocusScope.of(context).unfocus();
                             cubit.saveDataLocally();
-                            cubit.submitToFirebase();
-                            if (!state.isLoading &&
-                                state.errorMessage == null) {
+                            final ok = await cubit.submitToFirebase();
+                            if (!ok) return;
+
+                            if (context.mounted) {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (_) => UploadDocuments(),
+                                  builder: (_) => const UploadDocuments(),
                                 ),
                               );
                             }
@@ -118,14 +167,14 @@ class Workhour extends StatelessWidget {
     );
   }
 
-  Widget buildTimeField(
-    BuildContext context,
-    String label,
-    String? initialValue,
-    Function(String) onChanged,
-    double screenWidth,
-    double screenHeight,
-  ) {
+  Widget _buildTimeField({
+    required BuildContext context,
+    required String label,
+    required TextEditingController controller,
+    required VoidCallback onTap,
+    required double screenWidth,
+    required double screenHeight,
+  }) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -142,7 +191,10 @@ class Workhour extends StatelessWidget {
           width: screenWidth * 0.85,
           height: screenHeight * 0.07,
           child: TextFormField(
-            initialValue: initialValue,
+            controller: controller,
+            readOnly: true,
+            showCursor: false,
+            onTap: onTap,
             decoration: InputDecoration(
               focusedBorder: const OutlineInputBorder(
                 borderSide: BorderSide(color: Color(0xff0054A5)),
@@ -153,9 +205,8 @@ class Workhour extends StatelessWidget {
                 borderRadius: BorderRadius.circular(6.0),
                 borderSide: const BorderSide(color: Color(0xffCACACA)),
               ),
+              suffixIcon: const Icon(Icons.access_time),
             ),
-            keyboardType: TextInputType.datetime,
-            onChanged: onChanged,
           ),
         ),
       ],

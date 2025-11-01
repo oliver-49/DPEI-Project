@@ -7,7 +7,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'service_offer_cubit.dart';
 import 'service_offer_state.dart';
 
-
 class ServiceOffer extends StatelessWidget {
   const ServiceOffer({super.key});
 
@@ -101,13 +100,7 @@ class ServiceOffer extends StatelessWidget {
                     AppLocalizations.of(context)!.selectExperience,
                     state.selectedExperience,
                     (value) => cubit.selectExperience(value!),
-                    [
-                      '1 سنة',
-                      '2 سنة',
-                      '3 سنوات',
-                      '5 سنوات',
-                      'أكثر من 5 سنوات',
-                    ].map((e) => e).toList(),
+                    ['1 سنة', '2 سنة', '3 سنوات', '5 سنوات', 'أكثر من 5 سنوات'],
                     screenWidth,
                     screenHeight,
                   ),
@@ -122,13 +115,18 @@ class ServiceOffer extends StatelessWidget {
                     screenWidth,
                     screenHeight,
                   ),
-                  SizedBox(height: screenHeight * 0.17),
+                  SizedBox(height: screenHeight * 0.02),
 
                   if (state.errorMessage != null)
-                    Text(
-                      state.errorMessage!,
-                      style: TextStyle(color: Colors.red),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
+                      child: Text(
+                        state.errorMessage!,
+                        style: const TextStyle(color: Colors.red),
+                      ),
                     ),
+
+                  SizedBox(height: screenHeight * 0.12),
 
                   buttonItem(
                     context,
@@ -137,14 +135,20 @@ class ServiceOffer extends StatelessWidget {
                         : AppLocalizations.of(context)!.nextButton,
                     onPressed: state.isLoading
                         ? null
-                        : () {
+                        : () async {
+                            FocusScope.of(context).unfocus();
                             cubit.saveDataLocally();
-                            cubit.submitToFirebase();
-                            if (!state.isLoading &&
-                                state.errorMessage == null) {
+
+                            final ok = await cubit.submitToFirebase();
+
+                            if (!ok) return;
+
+                            if (context.mounted) {
                               Navigator.push(
                                 context,
-                                MaterialPageRoute(builder: (_) => Workhour()),
+                                MaterialPageRoute(
+                                  builder: (_) => const Workhour(),
+                                ),
                               );
                             }
                           },
@@ -170,8 +174,8 @@ class ServiceOffer extends StatelessWidget {
     return DropdownButtonFormField<String>(
       initialValue: selectedValue,
       decoration: InputDecoration(
-        focusedBorder: OutlineInputBorder(
-          borderSide: const BorderSide(color: Color(0xff0054A5)),
+        focusedBorder: const OutlineInputBorder(
+          borderSide: BorderSide(color: Color(0xff0054A5)),
         ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(6),
