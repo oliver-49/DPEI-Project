@@ -1,18 +1,124 @@
-import 'package:dpei_project/l10n/app_localizations.dart';
-import 'package:dpei_project/presentation/screens/account_service/Selction_view/selection_who_screen.dart';
+// import 'package:fixit/ye/navigation_page.dart';
+// import 'package:fixit/ye/utalities/Services/logic/service_cubit.dart';
+// import 'package:flutter/material.dart';
+// import 'package:flutter_bloc/flutter_bloc.dart';
+
+//   List<Map<String, List<Map<String, String>>>> servicesCard = [
+//     {
+//       "Maintenance": [
+//         {"img": "assets/images/Air Conditenior.png", "job": "Air Condition"},
+//         {"img": "assets/images/Multimeter.png", "job": "Electric"},
+//         {"img": "assets/images/image 100.png", "job": "Siding repair"},
+//         {"img": "assets/images/Car Wash.png", "job": "Car Wash"},
+//       ],
+//     },
+//     {
+//       "Cleaning": [
+//         {"img": "assets/images/Spin Mop.png", "job": "Home Flooring"},
+//         {"img": "assets/images/image 101.png", "job": "Gutter"},
+//         {"img": "assets/images/Frame 1000003290.png", "job": "Carpet"},
+//         {"img": "assets/images/Pliers.png", "job": "Pliers"},
+//       ],
+//     },
+//     {
+//       "Home improvement": [
+//         {"img": "assets/images/image 109.png", "job": "Drilling"},
+//         {"img": "assets/images/image 102.png", "job": "lawn "},
+//         {"img": "assets/images/image 103.png", "job": "Weed control"},
+//         {"img": "assets/images/Water Tap.png", "job": "Water Tap"},
+//       ],
+//     },
+//     {
+//       "Security": [
+//         {"img": "assets/images/CCTV (1).png", "job": "Cameras"},
+//         {"img": "assets/images/image 104 (1).png", "job": "Burglar alarm"},
+//         {"img": "assets/images/image 105 (1).png", "job": "Sturdy lock"},
+//         {"img": "assets/images/Cctv (2).png", "job": "Cctv"},
+//       ],
+//     },
+//     {
+//       "Car Maintenance": [
+//         {"img": "assets/images/Car Waxing.png", "job": "Car washer"},
+//         {"img": "assets/images/image 109 (1).png", "job": "Oil change"},
+//         {"img": "assets/images/image 110.png", "job": "Car battery"},
+//         {"img": "assets/images/Car Wash.png", "job": "Car Waxing"},
+//       ],
+//     },
+//     {
+//       "Handyman Services": [
+//         {"img": "assets/images/image 108 (1).png", "job": "Furniture"},
+//         {"img": "assets/images/image 111.png", "job": "Door"},
+//         {"img": "assets/images/image 112.png", "job": "Shelving "},
+//         {
+//           "img":
+//               "assets/images/Painter holding paint roller and paint bucket.png",
+//           "job": "Painting",
+//         },
+//       ],
+//     },
+//     {
+//       "Other services": [
+//         {"img": "assets/images/image 113.png", "job": "Interior"},
+//         {"img": "assets/images/image 114.png", "job": "Exterior"},
+//         {"img": "assets/images/image 115.png", "job": "Wall "},
+//         {"img": "assets/images/image 116.png", "job": "Dish wash  "},
+//         {"img": "assets/images/image 117 (1).png", "job": "Loading"},
+//         {"img": "assets/images/image 118.png", "job": "Cutting"},
+//         {
+//           "img": "assets/images/Boy mopping the floor.png",
+//           "job": "Mopping Floor",
+//         },
+//       ],
+//     },
+//   ];
+
+// void main() {
+//   runApp(
+//       // BlocProvider(
+//       //   create: (context) => ServiceCubit()..getServices(
+//       // servicesCard[0].values.first,),
+//       //   child: MyApp())
+//           MyApp()
+//         );
+// }
+
+// class MyApp extends StatelessWidget {
+//     MyApp({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       home: NavigationPage(),
+//       debugShowCheckedModeBanner: false,
+//     );
+//   }
+// }
+
+
+
+// aya 
+import 'package:fixit/basma/basma.dart';
+import 'package:fixit/gitHub/booking_services/cubit/booking_cubit.dart';
+import 'package:fixit/gitHub/core/services/firebase_options.dart';
+import 'package:fixit/l10n/app_localizations.dart';
+import 'package:fixit/gitHub/presentation/screens/account_service/Selction_view/selection_who_screen.dart';
+import 'package:fixit/ye/navigation_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:dpei_project/presentation/screens/account_service/Selction_view/selection_cubit.dart';
+import 'package:fixit/gitHub/presentation/screens/account_service/Selction_view/selection_cubit.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'core/services/firebase_options.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
-  runApp(const MyApp());
+  runApp( 
+     BlocProvider(
+        create: (context) => BookingCubit(),
+      child:  MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -20,7 +126,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp (
       locale: const Locale("ar"),
 
       localizationsDelegates: [
@@ -34,487 +140,1003 @@ class MyApp extends StatelessWidget {
 
       debugShowCheckedModeBanner: false,
 
-      home: BlocProvider(
-        create: (context) => SelectionCubit(),
-        child: const AccountSetup(),
-      ),
-    );
-  }
-}
-import 'package:flutter/material.dart';
-
-// Define primary colors used in the design
-const Color strongBlue = Color(0xFF0D47A1); 
-const Color lightBlueFill = Color(0xFFE3F2FD); // Very light blue for background elements
-const Color darkBlueAccent = Color(0xFF1565C0); 
-const Color primaryTextColor = Color(0xFF212121);
-const Color secondaryTextColor = Color(0xFF424242);
-const Color redAccent = Color(0xFFD32F2F); // Red for the 24/7 indicator
-
-void main() {
-  runApp(const HelpAndSupportApp());
-}
-
-class HelpAndSupportApp extends StatelessWidget {
-  const HelpAndSupportApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Help & Support',
-      theme: ThemeData(
-        primaryColor: strongBlue,
-        scaffoldBackgroundColor: Colors.white,
-        fontFamily: 'Roboto',
-      ),
-      home: const HelpAndSupportScreen(),
+      home: 
+     
+          NavigationPage(),
+      // BlocProvider(
+      //   create: (context) => SelectionCubit(),
+      //   child: const AccountSetup(),
+      // ),
     );
   }
 }
 
-// --- Custom Widget for the Support Icon (Closest match to the image) ---
-class SupportIcon extends StatelessWidget {
-  const SupportIcon({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Container(
-        width: 200, // Slightly wider container
-        height: 180,
-        // Overall shadow mimicking the floating image effect
-        decoration: BoxDecoration(
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.shade200,
-              blurRadius: 20,
-              offset: const Offset(0, 10),
-            ),
-          ],
-        ),
-        child: Stack(
-          alignment: Alignment.center,
-          children: [
-            // 1. The Main Headset/Support Agent Icon
-            Container(
-              decoration: BoxDecoration(
-                 color: lightBlueFill, // Light blue base color for the background circle
-                 shape: BoxShape.circle,
-                 border: Border.all(color: darkBlueAccent.withOpacity(0.5), width: 1.5)
-              ),
-              padding: const EdgeInsets.all(30),
-              child: const Icon(
-                Icons.support_agent_rounded, 
-                color: strongBlue, 
-                size: 80,
-              ),
-            ),
+
+// // basma
+
+// import 'package:flutter/material.dart';
+
+// // -----------------------------------------------------------------------------
+// // ************************** I. الثوابت والألوان **************************
+// // -----------------------------------------------------------------------------
+
+// const Color primaryBlue = Color(0xFF1976D2); 
+// const Color lightGreyBackground = Color(0xFFF7F7F7);
+
+// // -----------------------------------------------------------------------------
+// // ************************** II. الـ Widgets المساعدة *************************
+// // -----------------------------------------------------------------------------
+
+// // --- 1. ProfileListItem (لعناصر القائمة في شاشة Profile) ---
+// class ProfileListItem extends StatelessWidget {
+//   final IconData? icon;
+//   final String title;
+//   final Widget? leadingWidget; 
+//   final Widget? trailingWidget; 
+//   final VoidCallback? onTap;
+
+//   const ProfileListItem({
+//     Key? key,
+//     this.icon,
+//     required this.title,
+//     this.leadingWidget,
+//     this.trailingWidget,
+//     this.onTap,
+//   }) : super(key: key);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     // تحديد لون الأيقونة: إذا كان هناك leadingWidget نستخدم لونه، وإلا نستخدم اللون الأزرق الافتراضي.
+//     final Color iconColor = (leadingWidget is Icon)
+//         ? (leadingWidget as Icon).color ?? primaryBlue
+//         : primaryBlue;
+    
+//     // تعديل لون الخط لزر الخروج
+//     final TextStyle titleStyle = TextStyle(
+//         fontSize: 16,
+//         color: title == 'Logout' ? Colors.black : Colors.black87,
+//         fontWeight: title == 'Logout' ? FontWeight.w500 : FontWeight.normal,
+//     );
+
+
+//     return Padding(
+//       padding: const EdgeInsets.only(bottom: 8.0),
+//       child: InkWell(
+//         onTap: onTap,
+//         child: Container(
+//           padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 0),
+//           child: Row(
+//             children: [
+//               // Leading Icon or Widget
+//               if (leadingWidget != null)
+//                 leadingWidget!
+//               else if (icon != null)
+//                 Icon(icon, color: iconColor),
+//               const SizedBox(width: 15),
+
+//               // Title
+//               Expanded(
+//                 child: Text(
+//                   title,
+//                   style: titleStyle,
+//                 ),
+//               ),
+
+//               // Trailing Widget (Default: Arrow)
+//               trailingWidget ??
+//                   const Icon(
+//                     Icons.arrow_forward_ios,
+//                     size: 16,
+//                     color: Colors.black54,
+//                   ),
+//             ],
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
+
+// // --- 2. CustomInputField (لحقول الإدخال في شاشة Edit Profile) ---
+// class CustomInputField extends StatelessWidget {
+//   final String label;
+//   final String initialValue;
+//   final bool readOnly;
+//   final Widget? suffixIcon;
+//   final bool isDate;
+//   final Widget? prefixWidget;
+//   final TextInputType keyboardType;
+
+//   const CustomInputField({
+//     Key? key,
+//     required this.label,
+//     required this.initialValue,
+//     this.readOnly = false,
+//     this.suffixIcon,
+//     this.isDate = false,
+//     this.prefixWidget,
+//     this.keyboardType = TextInputType.text,
+//   }) : super(key: key);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Column(
+//       crossAxisAlignment: CrossAxisAlignment.start,
+//       children: [
+//         Padding(
+//           padding: const EdgeInsets.only(bottom: 8.0),
+//           child: Text(
+//             label,
+//             style: const TextStyle(
+//               fontSize: 14,
+//               color: Colors.black54,
+//             ),
+//           ),
+//         ),
+//         TextFormField(
+//           initialValue: initialValue,
+//           readOnly: readOnly,
+//           keyboardType: keyboardType,
+//           style: const TextStyle(fontSize: 16),
+//           decoration: InputDecoration(
+//             contentPadding: const EdgeInsets.symmetric(
+//               vertical: 12,
+//               horizontal: 15,
+//             ),
+//             border: OutlineInputBorder(
+//               borderRadius: BorderRadius.circular(10),
+//               borderSide: const BorderSide(color: Colors.grey, width: 1),
+//             ),
+//             enabledBorder: OutlineInputBorder(
+//               borderRadius: BorderRadius.circular(10),
+//               borderSide: const BorderSide(color: Colors.grey, width: 1),
+//             ),
+//             focusedBorder: OutlineInputBorder(
+//               borderRadius: BorderRadius.circular(10),
+//               borderSide: const BorderSide(color: primaryBlue, width: 2),
+//             ),
+//             suffixIcon: suffixIcon,
+//             prefixIcon: prefixWidget,
+//           ),
+//           onTap: isDate
+//               ? () async {
+//                   await showDatePicker(
+//                     context: context,
+//                     initialDate: DateTime(2006, 11, 28),
+//                     firstDate: DateTime(1900),
+//                     lastDate: DateTime.now(),
+//                   );
+//                 }
+//               : null,
+//         ),
+//         const SizedBox(height: 20),
+//       ],
+//     );
+//   }
+// }
+
+
+// // --- Reusable Widget: Custom Text Field (A slightly modified version for this screen) ---
+// class CustomProfessionField extends StatelessWidget {
+//   final String label;
+//   final String initialValue;
+//   final Widget? suffixWidget;
+//   final bool readOnly;
+//   final double? widthFactor; // For use in split rows
+//   final int maxLines;
+
+//   const CustomProfessionField({
+//     Key? key,
+//     required this.label,
+//     required this.initialValue,
+//     this.suffixWidget,
+//     this.readOnly = false,
+//     this.widthFactor,
+//     this.maxLines = 1,
+//   }) : super(key: key);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     // If widthFactor is provided, wrap in FractionallySizedBox
+//     Widget textField = Column(
+//       crossAxisAlignment: CrossAxisAlignment.start,
+//       children: [
+//         Padding(
+//           padding: const EdgeInsets.only(bottom: 8.0),
+//           child: Text(
+//             label,
+//             style: const TextStyle(
+//               fontSize: 14,
+//               color: Colors.black54,
+//             ),
+//           ),
+//         ),
+//         TextFormField(
+//           initialValue: initialValue,
+//           readOnly: readOnly,
+//           maxLines: maxLines,
+//           style: const TextStyle(fontSize: 16),
+//           decoration: InputDecoration(
+//             contentPadding: EdgeInsets.symmetric(
+//               vertical: maxLines > 1 ? 15 : 12, // More padding for multi-line
+//               horizontal: 15,
+//             ),
+//             border: OutlineInputBorder(
+//               borderRadius: BorderRadius.circular(10),
+//               borderSide: const BorderSide(color: Colors.grey, width: 1),
+//             ),
+//             enabledBorder: OutlineInputBorder(
+//               borderRadius: BorderRadius.circular(10),
+//               borderSide: const BorderSide(color: Colors.grey, width: 1),
+//             ),
+//             focusedBorder: OutlineInputBorder(
+//               borderRadius: BorderRadius.circular(10),
+//               borderSide: const BorderSide(color: primaryBlue, width: 2),
+//             ),
+//             suffixIcon: suffixWidget,
+//           ),
+//           onTap: () {
+//             // Logic for opening time picker or date picker if needed
+//           },
+//         ),
+//         const SizedBox(height: 20),
+//       ],
+//     );
+
+//     if (widthFactor != null) {
+//       return Expanded(child: textField);
+//     }
+//     return textField;
+//   }
+// }
+
+// // --- Reusable Widget for File Upload Items ---
+
+// class FileUploadItem extends StatelessWidget {
+//   final String label;
+//   final String fileName;
+//   final VoidCallback onUpload;
+//   final Color primaryBlue = const Color(0xFF1976D2);
+
+//   const FileUploadItem({
+//     Key? key,
+//     required this.label,
+//     required this.fileName,
+//     required this.onUpload,
+//   }) : super(key: key);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Column(
+//       crossAxisAlignment: CrossAxisAlignment.start,
+//       children: [
+//         Padding(
+//           padding: const EdgeInsets.only(bottom: 8.0),
+//           child: Text(
+//             label,
+//             style: const TextStyle(
+//               fontSize: 14,
+//               color: Colors.black54,
+//             ),
+//           ),
+//         ),
+//         Container(
+//           padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
+//           decoration: BoxDecoration(
+//             border: Border.all(color: Colors.grey, width: 1),
+//             borderRadius: BorderRadius.circular(10),
+//           ),
+//           child: Row(
+//             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//             children: [
+//               Text(
+//                 fileName,
+//                 style: const TextStyle(
+//                   fontSize: 16,
+//                   color: Colors.black,
+//                   // Style for PDF/file name based on image
+//                   fontWeight: FontWeight.w500, 
+//                 ),
+//               ),
+//               GestureDetector(
+//                 onTap: onUpload,
+//                 child: Text(
+//                   'Change',
+//                   style: TextStyle(
+//                     fontSize: 16,
+//                     color: primaryBlue,
+//                     fontWeight: FontWeight.bold,
+//                   ),
+//                 ),
+//               ),
+//             ],
+//           ),
+//         ),
+//         const SizedBox(height: 20),
+//       ],
+//     );
+//   }
+// }
+
+
+// // --- Main Profession Screen Widget ---
+
+// class ProfessionScreen extends StatelessWidget {
+//   const ProfessionScreen({Key? key}) : super(key: key);
+
+//   final Color primaryBlue = const Color(0xFF1976D2);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         backgroundColor: Colors.white,
+//         elevation: 0,
+//         leading: IconButton(
+//           icon: const Icon(Icons.arrow_back, color: Colors.black),
+//           onPressed: () => Navigator.of(context).pop(),
+//         ),
+//         title: const Text(
+//           'Profession',
+//           style: TextStyle(
+//             color: Colors.black,
+//             fontWeight: FontWeight.bold,
+//           ),
+//         ),
+//         centerTitle: false,
+//       ),
+//       body: Padding(
+//         padding: const EdgeInsets.all(16.0),
+//         child: SingleChildScrollView(
+//           child: Column(
+//             crossAxisAlignment: CrossAxisAlignment.start,
+//             children: [
+//               // 1. Service Name
+//               const CustomProfessionField(
+//                 label: 'Service name',
+//                 initialValue: 'Cleaner',
+//               ),
+
+//               // 2. Expert in
+//               // Note: maxLines is used to simulate the height seen in the image
+//               const CustomProfessionField(
+//                 label: 'Expert in',
+//                 initialValue: 'Home clean, lawn clean, Washing',
+//                 maxLines: 2,
+//               ),
+
+//               // 3. Service Timing (Split Row)
+//               const Padding(
+//                 padding: EdgeInsets.only(bottom: 8.0),
+//                 child: Text(
+//                   'Service Timing',
+//                   style: TextStyle(
+//                     fontSize: 14,
+//                     color: Colors.black54,
+//                   ),
+//                 ),
+//               ),
+//               Row(
+//                 children: [
+//                   // From Time
+//                   Expanded(
+//                     child: CustomProfessionField(
+//                       label: 'From',
+//                       initialValue: '9:00AM',
+//                       readOnly: true, // Typically readOnly for TimePicker
+//                       suffixWidget: Icon(
+//                         Icons.access_time, 
+//                         color: primaryBlue.withOpacity(0), // Invisible icon to push text left
+//                       ),
+//                     ),
+//                   ),
+//                   const SizedBox(width: 15),
+
+//                   // To Time
+//                   Expanded(
+//                     child: CustomProfessionField(
+//                       label: 'TO',
+//                       initialValue: '10:00PM',
+//                       readOnly: true,
+//                       suffixWidget: Icon(
+//                         Icons.access_time, 
+//                         color: primaryBlue.withOpacity(0),
+//                       ),
+//                     ),
+//                   ),
+//                 ],
+//               ),
+
+//               // 4. Experience in years (Split Row)
+//               Row(
+//                 crossAxisAlignment: CrossAxisAlignment.end,
+//                 children: [
+//                   // Experience Value
+//                   Expanded(
+//                     flex: 1, // Takes less space
+//                     child: CustomProfessionField(
+//                       label: 'Experience in years',
+//                       initialValue: '4',
+//                       // Removed suffixWidget here
+//                     ),
+//                   ),
+//                   const SizedBox(width: 15),
+                  
+//                   // 'years' Text on the right
+//                   // We use the same CustomProfessionField structure but modify it
+//                   Expanded(
+//                     flex: 1, // Takes more space
+//                     child: Padding(
+//                       padding: const EdgeInsets.only(bottom: 20.0), // Align with input field
+//                       child: Container(
+//                         height: 50, // Match input field height
+//                         alignment: Alignment.centerLeft,
+//                         padding: const EdgeInsets.only(left: 10),
+//                         child: const Text(
+//                           'years',
+//                           style: TextStyle(fontSize: 16, color: Colors.black54),
+//                         ),
+//                       ),
+//                     ),
+//                   ),
+//                 ],
+//               ),
+
+
+//               // 5. Service Area
+//               const CustomProfessionField(
+//                 label: 'Service Area',
+//                 initialValue: 'Tijuana, Baja California',
+//               ),
+
+//               // 6. Upload Services License
+//               FileUploadItem(
+//                 label: 'Upload your services license',
+//                 fileName: 'License.pdf',
+//                 onUpload: () {
+//                   // Logic to open file picker for license
+//                 },
+//               ),
+
+//               // 7. Upload Certification
+//               FileUploadItem(
+//                 label: 'Upload your Certification',
+//                 fileName: 'Certificate.pdf',
+//                 onUpload: () {
+//                   // Logic to open file picker for certificate
+//                 },
+//               ),
+              
+//               const SizedBox(height: 10),
+
+//               // 8. Save Button
+//               SizedBox(
+//                 width: double.infinity,
+//                 height: 50,
+//                 child: ElevatedButton(
+//                   onPressed: () {
+//                     // Logic to save profession details
+//                   },
+//                   style: ElevatedButton.styleFrom(
+//                     backgroundColor: primaryBlue,
+//                     shape: RoundedRectangleBorder(
+//                       borderRadius: BorderRadius.circular(10),
+//                     ),
+//                     elevation: 5,
+//                   ),
+//                   child: const Text(
+//                     'Save',
+//                     style: TextStyle(
+//                       fontSize: 18,
+//                       fontWeight: FontWeight.bold,
+//                       color: Colors.white,
+//                     ),
+//                   ),
+//                 ),
+//               ),
+//             ],
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
+
+
+// // -----------------------------------------------------------------------------
+// // ************************** III. الشاشات (Pages) ****************************
+// // -----------------------------------------------------------------------------
+
+// // --- 1. EditProfileScreen (الشاشة الثانية) ---
+// class EditProfileScreen extends StatelessWidget {
+//   const EditProfileScreen({Key? key}) : super(key: key);
+  
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         backgroundColor: Colors.white,
+//         elevation: 0,
+//         leading: IconButton(
+//           icon: const Icon(Icons.arrow_back, color: Colors.black),
+//           // زر الرجوع
+//           onPressed: () => Navigator.of(context).pop(),
+//         ),
+//         title: const Text(
+//           'Edit Profile',
+//           style: TextStyle(
+//             color: Colors.black,
+//             fontWeight: FontWeight.bold,
+//           ),
+//         ),
+//         centerTitle: false,
+//       ),
+//       body: Padding(
+//         padding: const EdgeInsets.all(16.0),
+//         child: SingleChildScrollView(
+//           child: Column(
+//             crossAxisAlignment: CrossAxisAlignment.start,
+//             children: [
+//               // --- Profile Image with Edit Button ---
+//               Center(
+//                 child: Stack(
+//                   children: [
+//                     const CircleAvatar(
+//                       radius: 50,
+//                       // يجب وضع صورة هنا أو استخدام لون
+//                       backgroundImage: AssetImage('assets/profile_edit.png'),
+//                       backgroundColor: lightGreyBackground,
+//                     ),
+//                     Positioned(
+//                       bottom: 0,
+//                       right: 0,
+//                       child: Container(
+//                         height: 30,
+//                         width: 30,
+//                         decoration: BoxDecoration(
+//                           color: primaryBlue,
+//                           shape: BoxShape.circle,
+//                           border: Border.all(
+//                             color: Colors.white,
+//                             width: 2,
+//                           ),
+//                         ),
+//                         child: const Icon(
+//                           Icons.edit,
+//                           color: Colors.white,
+//                           size: 16,
+//                         ),
+//                       ),
+//                     ),
+//                   ],
+//                 ),
+//               ),
+//               const SizedBox(height: 30),
+
+//               // --- Form Fields ---
+//               const CustomInputField(
+//                 label: 'Name',
+//                 initialValue: 'Mahrama',
+//               ),
+//               const CustomInputField(
+//                 label: 'Email',
+//                 initialValue: 'Mahrama@gmail.com',
+//                 keyboardType: TextInputType.emailAddress,
+//               ),
+
+//               // --- Date of Birth Field ---
+//               const CustomInputField(
+//                 label: 'Date of Birth',
+//                 initialValue: '28/11/2006',
+//                 readOnly: true,
+//                 isDate: true,
+//                 suffixIcon: Icon(
+//                   Icons.calendar_today_outlined,
+//                   color: primaryBlue,
+//                 ),
+//               ),
+
+//               // --- Country Dropdown Field ---
+//               const Padding(
+//                 padding: EdgeInsets.only(bottom: 8.0),
+//                 child: Text(
+//                   'Country',
+//                   style: TextStyle(
+//                     fontSize: 14,
+//                     color: Colors.black54,
+//                   ),
+//                 ),
+//               ),
+//               Container(
+//                 padding: const EdgeInsets.symmetric(horizontal: 15),
+//                 decoration: BoxDecoration(
+//                   border: Border.all(color: Colors.grey, width: 1),
+//                   borderRadius: BorderRadius.circular(10),
+//                 ),
+//                 child: DropdownButtonHideUnderline(
+//                   child: DropdownButton<String>(
+//                     isExpanded: true,
+//                     value: 'Mexico',
+//                     items: <String>['Mexico', 'USA', 'Canada', 'Other']
+//                         .map((String value) {
+//                       return DropdownMenuItem<String>(
+//                         value: value,
+//                         child: Text(value, style: const TextStyle(fontSize: 16)),
+//                       );
+//                     }).toList(),
+//                     onChanged: (String? newValue) {
+//                       // Logic to handle country change
+//                     },
+//                     icon: const Icon(Icons.keyboard_arrow_down, color: Colors.black54),
+//                   ),
+//                 ),
+//               ),
+//               const SizedBox(height: 20),
+
+//               // --- Phone Number Field (FIXED WhatsApp icon issue) ---
+//               CustomInputField(
+//                 label: 'Phone number',
+//                 initialValue: '+92 3459864343',
+//                 keyboardType: TextInputType.phone,
+//                 prefixWidget: Container(
+//                   padding: const EdgeInsets.symmetric(horizontal: 10),
+//                   child: Row(
+//                     mainAxisSize: MainAxisSize.min,
+//                     children: [
+//                       // تم استخدام Icons.chat كبديل لـ Icons.whatsapp
+//                       const Icon(Icons.chat, color: Colors.green),
+//                       const SizedBox(width: 5),
+//                       const Text(
+//                         'v',
+//                         style: TextStyle(fontSize: 16, color: Colors.black54),
+//                       ),
+//                       const Icon(Icons.keyboard_arrow_down, color: Colors.black54, size: 16),
+//                       Container(
+//                         width: 1,
+//                         height: 20,
+//                         color: Colors.grey.shade300,
+//                         margin: const EdgeInsets.symmetric(horizontal: 10),
+//                       ),
+//                     ],
+//                   ),
+//                 ),
+//               ),
+
+//               // --- Address Field ---
+//               const CustomInputField(
+//                 label: 'Address',
+//                 initialValue: 'Tijuana, Baja California',
+//               ),
+
+//               const SizedBox(height: 30),
+
+//               // --- Save Button (Updated to navigate to ProfessionScreen) ---
+//               SizedBox(
+//                 width: double.infinity,
+//                 height: 50,
+//                 child: ElevatedButton(
+//                   onPressed: () {
+//                     // UPDATED NAVIGATION LOGIC
+//                     Navigator.push(
+//                       context,
+//                       MaterialPageRoute(builder: (context) => const ProfessionScreen()),
+//                     );
+//                   },
+//                   style: ElevatedButton.styleFrom(
+//                     backgroundColor: primaryBlue,
+//                     shape: RoundedRectangleBorder(
+//                       borderRadius: BorderRadius.circular(10),
+//                     ),
+//                     elevation: 5,
+//                   ),
+//                   child: const Text(
+//                     'Save',
+//                     style: TextStyle(
+//                       fontSize: 18,
+//                       fontWeight: FontWeight.bold,
+//                       color: Colors.white,
+//                     ),
+//                   ),
+//                 ),
+//               ),
+//             ],
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
+
+// // --- 2. ProfileScreen (الشاشة الأولى - نقطة البداية والربط) ---
+// class ProfileScreen extends StatelessWidget {
+//   const ProfileScreen({Key? key}) : super(key: key);
+
+//   // Helper for the Earnings/Orders/Completed boxes
+//   Widget _buildStatBox({
+//     required String value,
+//     required String label,
+//     required Color color,
+//     IconData? icon,
+//   }) {
+//     return Expanded(
+//       child: Padding(
+//         padding: const EdgeInsets.symmetric(horizontal: 4.0),
+//         child: Container(
+//           padding: const EdgeInsets.all(12),
+//           decoration: BoxDecoration(
+//             color: lightGreyBackground,
+//             borderRadius: BorderRadius.circular(10),
+//           ),
+//           child: Column(
+//             mainAxisAlignment: MainAxisAlignment.center,
+//             children: [
+//               Row(
+//                 mainAxisAlignment: MainAxisAlignment.center,
+//                 children: [
+//                   Text(
+//                     value,
+//                     style: TextStyle(
+//                       fontSize: 18,
+//                       fontWeight: FontWeight.bold,
+//                       color: color,
+//                     ),
+//                   ),
+//                   if (icon != null)
+//                     Padding(
+//                       padding: const EdgeInsets.only(left: 4.0),
+//                       child: Icon(icon, color: color, size: 20),
+//                     ),
+//                 ],
+//               ),
+//               const SizedBox(height: 4),
+//               Text(
+//                 label,
+//                 textAlign: TextAlign.center,
+//                 style: const TextStyle(
+//                   fontSize: 12,
+//                   color: Colors.black54,
+//                 ),
+//               ),
+//             ],
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+
+//   // Helper for section titles
+//   Widget _buildSectionTitle(String title) {
+//     return Padding(
+//       padding: const EdgeInsets.only(top: 20, bottom: 10),
+//       child: Text(
+//         title,
+//         style: const TextStyle(
+//           fontSize: 18,
+//           fontWeight: FontWeight.bold,
+//           color: Colors.black87,
+//         ),
+//       ),
+//     );
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       backgroundColor: Colors.white,
+//       appBar: AppBar(
+//         title: const Text('Profile', style: TextStyle(fontWeight: FontWeight.bold)),
+//         backgroundColor: Colors.white,
+//         elevation: 0,
+//       ),
+//       body: SingleChildScrollView(
+//         padding: const EdgeInsets.all(16.0),
+//         child: Column(
+//           crossAxisAlignment: CrossAxisAlignment.start,
+//           children: [
+//             // --- User Header Section ---
+//             Row(
+//               children: [
+//                 const CircleAvatar(
+//                   radius: 35,
+//                   backgroundImage: AssetImage('assets/profile_pic.png'),
+//                   backgroundColor: lightGreyBackground,
+//                 ),
+//                 const SizedBox(width: 15),
+//                 Column(
+//                   crossAxisAlignment: CrossAxisAlignment.start,
+//                   children: [
+//                     const Text(
+//                       'Mahrama',
+//                       style: TextStyle(
+//                         fontSize: 22,
+//                         fontWeight: FontWeight.bold,
+//                       ),
+//                     ),
+//                     const SizedBox(height: 4),
+//                     Row(
+//                       children: [
+//                         const Text(
+//                           'Electrician',
+//                           style: TextStyle(
+//                             fontSize: 16,
+//                             color: Colors.black54,
+//                           ),
+//                         ),
+//                         const SizedBox(width: 8),
+//                         const Icon(Icons.star, color: Colors.amber, size: 16),
+//                         Text(
+//                           '4.8',
+//                           style: TextStyle(
+//                             fontSize: 14,
+//                             color: Colors.amber[800],
+//                           ),
+//                         ),
+//                       ],
+//                     ),
+//                   ],
+//                 ),
+//               ],
+//             ),
+//             const SizedBox(height: 20),
+
+//             // --- Stats Section ---
+//             Row(
+//               children: [
+//                 _buildStatBox(
+//                   value: '\$343',
+//                   label: 'Earnings',
+//                   color: Colors.green,
+//                   icon: Icons.attach_money,
+//                 ),
+//                 _buildStatBox(
+//                   value: '2 Orders',
+//                   label: 'Active',
+//                   color: primaryBlue,
+//                 ),
+//                 _buildStatBox(
+//                   value: '56 Orders',
+//                   label: 'Completed',
+//                   color: Colors.orange,
+//                   icon: Icons.check_circle,
+//                 ),
+//               ],
+//             ),
+//             const SizedBox(height: 10),
+//             const Divider(), // Visual separator
+
+//             // --- Profile Information Section ---
+//             _buildSectionTitle('Profile information'),
             
-            // 2. The Red 24/7 Indicator (Circle with clock/time icon)
-            Positioned(
-              right: 15,
-              bottom: 15,
-              child: Container(
-                padding: const EdgeInsets.all(5),
-                decoration: BoxDecoration(
-                  color: redAccent, 
-                  shape: BoxShape.circle,
-                  border: Border.all(color: Colors.white, width: 3),
-                  boxShadow: [
-                    BoxShadow(
-                      color: redAccent.withOpacity(0.6),
-                      blurRadius: 10,
-                      offset: const Offset(0, 4),
-                    ),
-                  ],
-                ),
-                child: const Icon(
-                  Icons.watch_later_outlined, 
-                  color: Colors.white,
-                  size: 28,
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
+//             // هنا يتم الربط: Edit Profile
+//             ProfileListItem(
+//               title: 'Edit Profile',
+//               leadingWidget: const Icon(Icons.person_outline, color: primaryBlue),
+//               onTap: () {
+//                 Navigator.push(
+//                   context,
+//                   MaterialPageRoute(builder: (context) => const EditProfileScreen()),
+//                 );
+//               },
+//             ),
+            
+//             // باقي الروابط حالياً فارغة (onTap: (){}) ولكن جاهزة للربط
+//             ProfileListItem(
+//               title: 'Profession',
+//               leadingWidget: const Icon(Icons.business_center_outlined, color: primaryBlue),
+//               onTap: () {}, // يمكنكِ هنا إضافة شاشة ProfessionScreen
+//             ),
+//             ProfileListItem(
+//               title: 'Verification',
+//               leadingWidget: const Icon(Icons.verified_user_outlined, color: primaryBlue),
+//               onTap: () {}, // يمكنكِ هنا إضافة شاشة VerificationScreen
+//             ),
 
-// --- Main Screen Widget ---
-class HelpAndSupportScreen extends StatefulWidget {
-  const HelpAndSupportScreen({super.key});
+//             // --- Subscription & Payments Section ---
+//             _buildSectionTitle('Subscription & payments'),
+//             ProfileListItem(
+//               title: 'Payment method',
+//               leadingWidget: const Icon(Icons.credit_card_outlined, color: Colors.red), 
+//               onTap: () {},
+//             ),
+//             ProfileListItem(
+//               title: 'Upgrade',
+//               leadingWidget: const Icon(Icons.trending_up, color: Colors.red), 
+//               onTap: () {},
+//             ),
 
-  @override
-  State<HelpAndSupportScreen> createState() => _HelpAndSupportScreenState();
-}
+//             // --- General Preferences Section ---
+//             _buildSectionTitle('General Preferences'),
+//             ProfileListItem(
+//               title: 'Notification',
+//               leadingWidget: const Icon(Icons.notifications_none, color: primaryBlue),
+//               onTap: () {},
+//             ),
+//             ProfileListItem(
+//               title: 'Help & support',
+//               leadingWidget: const Icon(Icons.help_outline, color: primaryBlue),
+//               onTap: () {},
+//             ),
+//             ProfileListItem(
+//               title: 'Logout',
+//               leadingWidget: const Icon(Icons.logout, color: Colors.grey),
+//               onTap: () {},
+//               trailingWidget: const SizedBox.shrink(), // لإخفاء السهم في زر الخروج
+//             ),
+//             const SizedBox(height: 30),
 
-class _HelpAndSupportScreenState extends State<HelpAndSupportScreen> {
-  final _formKey = GlobalKey<FormState>();
-  final TextEditingController _titleController = TextEditingController();
-  final TextEditingController _messageController = TextEditingController();
+//             // --- Change Profile Mode Button ---
+//             const Text(
+//               'Change Profile to buying mode',
+//               style: TextStyle(
+//                 fontSize: 16,
+//                 color: Colors.black54,
+//               ),
+//             ),
+//             const SizedBox(height: 10),
+//             Container(
+//               width: double.infinity,
+//               height: 50,
+//               decoration: BoxDecoration(
+//                 border: Border.all(color: primaryBlue, width: 1.5),
+//                 borderRadius: BorderRadius.circular(10),
+//               ),
+//               child: TextButton.icon(
+//                 onPressed: () {},
+//                 icon: const CircleAvatar(
+//                   radius: 12,
+//                   backgroundImage: AssetImage('assets/profile_pic.png'), 
+//                   backgroundColor: lightGreyBackground,
+//                 ),
+//                 label: const Text(
+//                   'Mahrama',
+//                   style: TextStyle(
+//                     color: primaryBlue,
+//                     fontWeight: FontWeight.bold,
+//                     fontSize: 18,
+//                   ),
+//                 ),
+//               ),
+//             ),
+//             const SizedBox(height: 20),
+//           ],
+//         ),
+//       ),
+//       // --- Bottom Navigation Bar ---
+//       bottomNavigationBar: BottomNavigationBar(
+//         type: BottomNavigationBarType.fixed,
+//         selectedItemColor: primaryBlue,
+//         unselectedItemColor: Colors.grey,
+//         showUnselectedLabels: true,
+//         currentIndex: 3, 
+//         items: const [
+//           BottomNavigationBarItem(icon: Icon(Icons.home_outlined), label: 'Home'),
+//           BottomNavigationBarItem(icon: Icon(Icons.search), label: 'City'),
+//           BottomNavigationBarItem(icon: Icon(Icons.receipt_long), label: 'Order'),
+//           BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
+//         ],
+//       ),
+//     );
+//   }
+// }
 
-  InputDecoration _inputDecoration(String hintText) {
-    return InputDecoration(
-      hintText: hintText,
-      hintStyle: TextStyle(color: Colors.grey.shade500, fontSize: 16),
-      contentPadding: const EdgeInsets.symmetric(vertical: 14, horizontal: 16),
-      filled: true,
-      fillColor: Colors.grey.shade50,
-      border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(10.0),
-        borderSide: BorderSide(color: Colors.grey.shade300, width: 1),
-      ),
-      enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(10.0),
-        borderSide: BorderSide(color: Colors.grey.shade300, width: 1),
-      ),
-      focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(10.0),
-        borderSide: const BorderSide(color: strongBlue, width: 2), // Strong focus color
-      ),
-    );
-  }
+// // -----------------------------------------------------------------------------
+// // ************************** IV. وظيفة التشغيل الرئيسية ***********************
+// // -----------------------------------------------------------------------------
 
-  Widget _buildFieldLabel(String label) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 25.0, bottom: 8.0),
-      child: Text(
-        label,
-        style: const TextStyle(
-          fontSize: 17, // Slightly smaller
-          fontWeight: FontWeight.w600,
-          color: primaryTextColor,
-        ),
-      ),
-    );
-  }
+// void main() {
+//   runApp(const MyApp());
+// }
 
-  void _showSnackBar(String message, Color color) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(message, style: const TextStyle(color: Colors.white)),
-        backgroundColor: color,
-        duration: const Duration(seconds: 2),
-        behavior: SnackBarBehavior.floating,
-      ),
-    );
-  }
+// class MyApp extends StatelessWidget {
+//   const MyApp({super.key});
 
-  void _submitIssue() {
-    if (_formKey.currentState!.validate()) {
-      _showSnackBar(
-        'تم إرسال المشكلة بنجاح!',
-        Colors.green.shade600,
-      );
-      _titleController.clear();
-      _messageController.clear();
-    } else {
-       _showSnackBar(
-        'الرجاء إدخال العنوان وتفاصيل المشكلة.',
-        Colors.red.shade600,
-      );
-    }
-  }
-
-  void _startLiveChat() {
-    _showSnackBar(
-      'جاري الاتصال بخدمة الدردشة المباشرة...',
-      darkBlueAccent,
-    );
-  }
-
-  @override
-  void dispose() {
-    _titleController.dispose();
-    _messageController.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      // --- شريط التطبيق (AppBar) ---
-      appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: primaryTextColor),
-          onPressed: () {
-            // منطق العودة إلى الخلف
-          },
-        ),
-        title: const Text(
-          'Help & support',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            color: primaryTextColor,
-            fontSize: 20,
-          ),
-        ),
-        centerTitle: false,
-        backgroundColor: Colors.white,
-        elevation: 0,
-        actions: [
-          TextButton(
-            onPressed: _startLiveChat,
-            child: const Text(
-              'Live chat',
-              style: TextStyle(
-                color: strongBlue,
-                fontWeight: FontWeight.bold,
-                fontSize: 16,
-              ),
-            ),
-          ),
-        ],
-      ),
-
-      // --- جسم الصفحة (Body) ---
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20.0),
-        child: Column(
-          children: <Widget>[
-            Expanded(
-              child: Form(
-                key: _formKey,
-                child: ListView(
-                  padding: EdgeInsets.zero,
-                  children: <Widget>[
-                    const SizedBox(height: 30),
-
-                    // 1. الأيقونة الكبيرة المُحسّنة
-                    const SupportIcon(),
-
-                    const SizedBox(height: 30),
-
-                    // 2. نص "Hello, how can we assist you?"
-                    const Text(
-                      'Hello, how can we assist you?',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: secondaryTextColor,
-                      ),
-                    ),
-
-                    // 3. حقل العنوان (Title)
-                    _buildFieldLabel('Title'),
-                    TextFormField(
-                      controller: _titleController,
-                      keyboardType: TextInputType.text,
-                      decoration: _inputDecoration(
-                        'Enter the title of your issue',
-                      ),
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Title is required.';
-                        }
-                        return null;
-                      },
-                    ),
-
-                    // 4. حقل كتابة الرسالة (Write in bellow box)
-                    _buildFieldLabel('Write in bellow box'),
-                    TextFormField(
-                      controller: _messageController,
-                      keyboardType: TextInputType.multiline,
-                      maxLines: 7, 
-                      decoration: _inputDecoration('Write here..'),
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Message is required.';
-                        }
-                        return null;
-                      },
-                    ),
-
-                    const SizedBox(height: 30),
-                  ],
-                ),
-              ),
-            ),
-
-            // --- زر الإرسال (Send Button) ---
-            SizedBox(
-              width: double.infinity,
-              height: 55,
-              child: ElevatedButton(
-                onPressed: _submitIssue,
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: strongBlue, // Darker blue, more prominent
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12.0),
-                  ),
-                  elevation: 5,
-                ),
-                child: const Text(
-                  'Send',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-            ),
-
-            const SizedBox(height: 15),
-
-            // --- زر الدردشة المباشرة (Live chat Button) ---
-            SizedBox(
-              width: double.infinity,
-              height: 55,
-              child: OutlinedButton.icon(
-                onPressed: _startLiveChat,
-                icon: const Icon(
-                  Icons.chat_bubble_outline,
-                  color: strongBlue,
-                  size: 24,
-                ),
-                label: const Text(
-                  'Live chat',
-                  style: TextStyle(
-                    color: strongBlue,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                  ),
-                ),
-                style: OutlinedButton.styleFrom(
-                  backgroundColor: Colors.white,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12.0),
-                  ),
-                  side: const BorderSide(
-                    color: strongBlue,
-                    width: 2,
-                  ),
-                ),
-              ),
-            ),
-            const SizedBox(height: 20),
-          ],
-        ),
-      ),
-    );
-  }
-}
-import 'package:device_preview/device_preview.dart';
-import 'package:fixit/booking_services/cubit/booking_cubit.dart';
-import 'package:fixit/booking_services/view/providerprofile.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get/get.dart';
-
-void main() => runApp(
-  DevicePreview(
-    enabled: !kReleaseMode,
-    builder: (context) => BlocProvider(
-      create: (context) => BookingCubit(),
-      child: MyApp()), // Wrap your app
-  ),
-);
-import 'package:dpei_project/navigation_page.dart';
-import 'package:dpei_project/utalities/Services/logic/service_cubit.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-
-  List<Map<String, List<Map<String, String>>>> servicesCard = [
-    {
-      "Maintenance": [
-        {"img": "assets/images/Air Conditenior.png", "job": "Air Condition"},
-        {"img": "assets/images/Multimeter.png", "job": "Electric"},
-        {"img": "assets/images/image 100.png", "job": "Siding repair"},
-        {"img": "assets/images/Car Wash.png", "job": "Car Wash"},
-      ],
-    },
-    {
-      "Cleaning": [
-        {"img": "assets/images/Spin Mop.png", "job": "Home Flooring"},
-        {"img": "assets/images/image 101.png", "job": "Gutter"},
-        {"img": "assets/images/Frame 1000003290.png", "job": "Carpet"},
-        {"img": "assets/images/Pliers.png", "job": "Pliers"},
-      ],
-    },
-    {
-      "Home improvement": [
-        {"img": "assets/images/image 109.png", "job": "Drilling"},
-        {"img": "assets/images/image 102.png", "job": "lawn "},
-        {"img": "assets/images/image 103.png", "job": "Weed control"},
-        {"img": "assets/images/Water Tap.png", "job": "Water Tap"},
-      ],
-    },
-    {
-      "Security": [
-        {"img": "assets/images/CCTV (1).png", "job": "Cameras"},
-        {"img": "assets/images/image 104 (1).png", "job": "Burglar alarm"},
-        {"img": "assets/images/image 105 (1).png", "job": "Sturdy lock"},
-        {"img": "assets/images/Cctv (2).png", "job": "Cctv"},
-      ],
-    },
-    {
-      "Car Maintenance": [
-        {"img": "assets/images/Car Waxing.png", "job": "Car washer"},
-        {"img": "assets/images/image 109 (1).png", "job": "Oil change"},
-        {"img": "assets/images/image 110.png", "job": "Car battery"},
-        {"img": "assets/images/Car Wash.png", "job": "Car Waxing"},
-      ],
-    },
-    {
-      "Handyman Services": [
-        {"img": "assets/images/image 108 (1).png", "job": "Furniture"},
-        {"img": "assets/images/image 111.png", "job": "Door"},
-        {"img": "assets/images/image 112.png", "job": "Shelving "},
-        {
-          "img":
-              "assets/images/Painter holding paint roller and paint bucket.png",
-          "job": "Painting",
-        },
-      ],
-    },
-    {
-      "Other services": [
-        {"img": "assets/images/image 113.png", "job": "Interior"},
-        {"img": "assets/images/image 114.png", "job": "Exterior"},
-        {"img": "assets/images/image 115.png", "job": "Wall "},
-        {"img": "assets/images/image 116.png", "job": "Dish wash  "},
-        {"img": "assets/images/image 117 (1).png", "job": "Loading"},
-        {"img": "assets/images/image 118.png", "job": "Cutting"},
-        {
-          "img": "assets/images/Boy mopping the floor.png",
-          "job": "Mopping Floor",
-        },
-      ],
-    },
-  ];
-
-void main() {
-  runApp( BlocProvider(
-        create: (context) => ServiceCubit()..getServices(
-      servicesCard[0].values.first,),
-        child: MyApp()));
-}
-
-class MyApp extends StatelessWidget {
-    MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return GetMaterialApp(
-      useInheritedMediaQuery: true,
-      locale: DevicePreview.locale(context),
-      builder: DevicePreview.appBuilder,
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        scaffoldBackgroundColor: Color(0xfff9f9f9),
-      ),
-      home:  ProviderProfile(),
-    return MaterialApp(
-      home: NavigationPage(),
-      debugShowCheckedModeBanner: false,
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return const MaterialApp(
+//       debugShowCheckedModeBanner: false,
+//       // يبدأ التطبيق بالشاشة الأولى (ProfileScreen)
+//       home: ProfileScreen(),
+//     );
+//   }
+// }
