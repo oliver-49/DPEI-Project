@@ -199,7 +199,6 @@ class AcountDetails extends StatelessWidget {
                               FocusScope.of(context).unfocus();
                               cubit.submitDetails();
 
-                              // ✅ إظهار Dialog التأكيد بعد إدخال البيانات بشكل صحيح
                               showDialog(
                                 context: context,
                                 builder: (BuildContext dialogContext) {
@@ -285,6 +284,11 @@ class AcountDetails extends StatelessWidget {
                                                       Navigator.pop(
                                                         dialogContext,
                                                       );
+                                                      // Navigator.pushAndRemoveUntil(
+                                                      //  // context,
+                                                      //   //MaterialPageRoute(builder: (_) => const HomeScreen()),
+                                                      //   // (route) => false,
+                                                      // );
                                                     },
                                                   ),
                                                 ],
