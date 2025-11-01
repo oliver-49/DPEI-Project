@@ -79,7 +79,6 @@ class VerifyCodeCubit extends Cubit<VerifyCodeState> {
   }
 
   void resendCode() {
-    // هنا تحطي logic resend code Fake
     startCountdown();
   }
 

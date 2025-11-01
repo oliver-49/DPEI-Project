@@ -1,3 +1,4 @@
+import 'package:dpei_project/l10n/app_localizations.dart';
 import 'package:dpei_project/presentation/screens/account_service/acount_details/acount_details_cubit.dart';
 import 'package:dpei_project/presentation/screens/account_service/acount_details/acount_details_state.dart';
 import 'package:dpei_project/presentation/widgets/custombutton.dart';
@@ -13,6 +14,7 @@ class AcountDetails extends StatelessWidget {
     final mediaQuery = MediaQuery.of(context);
     final screenWidth = mediaQuery.size.width;
     final screenHeight = mediaQuery.size.height;
+
     return BlocProvider(
       create: (context) => AccountDetailsCubit(),
       child: Scaffold(
@@ -21,12 +23,12 @@ class AcountDetails extends StatelessWidget {
           automaticallyImplyLeading: false,
           backgroundColor: Colors.white,
           title: InkWell(
-            onTap: () {
-              Navigator.pop(context);
-            },
-            child: Padding(
+            onTap: () => Navigator.pop(context),
+            child: const Padding(
               padding: EdgeInsets.symmetric(horizontal: 24),
-              child: Image.asset('assets/images/account details.png'),
+              child: Image(
+                image: AssetImage('assets/images/account details.png'),
+              ),
             ),
           ),
         ),
@@ -40,6 +42,7 @@ class AcountDetails extends StatelessWidget {
           },
           builder: (context, state) {
             final cubit = context.read<AccountDetailsCubit>();
+            final t = AppLocalizations.of(context)!;
 
             return SingleChildScrollView(
               child: Padding(
@@ -51,7 +54,7 @@ class AcountDetails extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Add account details",
+                      t.addAccountDetails,
                       style: TextStyle(
                         fontFamily: 'Poppins',
                         fontSize: screenWidth * 0.05,
@@ -63,7 +66,7 @@ class AcountDetails extends StatelessWidget {
 
                     _buildInputField(
                       context,
-                      hintText: 'Owner name',
+                      hintText: t.ownerName,
                       initialValue: state.ownerName,
                       onChanged: (value) => cubit.updateField(ownerName: value),
                     ),
@@ -71,7 +74,7 @@ class AcountDetails extends StatelessWidget {
 
                     _buildInputField(
                       context,
-                      hintText: 'NIC Number',
+                      hintText: t.nicNumber,
                       initialValue: state.nicNumber,
                       keyboardType: TextInputType.number,
                       onChanged: (value) => cubit.updateField(nicNumber: value),
@@ -80,16 +83,15 @@ class AcountDetails extends StatelessWidget {
 
                     _buildInputField(
                       context,
-                      hintText: 'Phone number',
+                      hintText: t.phoneNumber,
                       initialValue: state.phoneNumber,
                       keyboardType: TextInputType.phone,
                       onChanged: (value) =>
                           cubit.updateField(phoneNumber: value),
                     ),
                     SizedBox(height: screenHeight * 0.03),
-
                     Text(
-                      "NIC Expiry date",
+                      t.nicExpiryDate,
                       style: TextStyle(
                         fontSize: screenWidth * 0.035,
                         fontWeight: FontWeight.w400,
@@ -97,9 +99,10 @@ class AcountDetails extends StatelessWidget {
                       ),
                     ),
                     SizedBox(height: screenHeight * 0.01),
+
                     _buildInputField(
                       context,
-                      hintText: 'DD/MM/YYYY',
+                      hintText: t.dateFormat,
                       initialValue: state.nicExpiryDate,
                       keyboardType: TextInputType.datetime,
                       onChanged: (value) =>
@@ -110,11 +113,10 @@ class AcountDetails extends StatelessWidget {
 
                     buttonItem(
                       context,
-                      text: 'Next',
+                      text: t.next,
                       onPressed: state.isFormValid
                           ? () {
                               cubit.submitDetails();
-
                               _showConfirmationDialog(
                                 context,
                                 screenWidth,
@@ -181,11 +183,13 @@ void _showConfirmationDialog(
   double screenWidth,
   double screenHeight,
 ) {
+  final t = AppLocalizations.of(context)!;
+
   showDialog(
     context: context,
     builder: (BuildContext dialogContext) {
       return Directionality(
-        textDirection: TextDirection.rtl,
+        textDirection: Directionality.of(context),
         child: Center(
           child: ClipRRect(
             borderRadius: BorderRadius.circular(15),
@@ -204,7 +208,6 @@ void _showConfirmationDialog(
                     children: [
                       SizedBox(
                         height: screenHeight * .080,
-
                         child: const Icon(
                           Icons.check_circle,
                           size: 60,
@@ -212,24 +215,27 @@ void _showConfirmationDialog(
                         ),
                       ),
                       SizedBox(height: screenHeight * .020),
-                      const Text(
-                        "Application received",
-                        style: TextStyle(
+
+                      Text(
+                        t.applicationReceived,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
                           decoration: TextDecoration.none,
                           fontSize: 18,
-                          fontFamily: 'poppins',
-
+                          fontFamily: 'Poppins',
                           color: Color(0xff565656),
                           fontWeight: FontWeight.w700,
                         ),
                       ),
                       SizedBox(height: screenHeight * .010),
-                      const Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 30),
+
+                      // الرسالة المترجمة العامة
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 30),
                         child: Text(
-                          "Your application for the service of plumping has received, you will  get conformation message from our staff",
+                          t.applicationReceivedMessage,
                           textAlign: TextAlign.center,
-                          style: TextStyle(
+                          style: const TextStyle(
                             decoration: TextDecoration.none,
                             fontSize: 14,
                             color: Color(0xff565656),
@@ -242,10 +248,9 @@ void _showConfirmationDialog(
 
                       buttonItem(
                         context,
-                        text: "Home",
+                        text: t.home,
                         onPressed: () {
                           Navigator.pop(dialogContext);
-                          // Navigator.push(context, MaterialPageRoute(builder: (context) => const ProviderProfile()));
                         },
                       ),
                     ],

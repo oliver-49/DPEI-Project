@@ -99,9 +99,7 @@ class LocationAccessUI extends StatelessWidget {
               },
             ),
 
-            SizedBox(
-              height: screenHeight * 0.04,
-            ), // padding تحت عشان المساحة متضربش
+            SizedBox(height: screenHeight * 0.04),
           ],
         ),
       ),
