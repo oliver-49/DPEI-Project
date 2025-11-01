@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../widgets/edit_profile_appbar.dart';    // App Bar
 import '../widgets/profile_text_field.dart';     //Text Fields
 import '../widgets/save_button.dart';            //Save Button
-import '../widgets/profile_header.dart'; 
+import '../widgets/profile_header_with_edit.dart'; 
 
 class EditProfileScreen extends StatefulWidget {
   const EditProfileScreen({super.key});
@@ -17,25 +17,12 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   final TextEditingController _emailController = TextEditingController(text: 'Mahrama@gmail.com');
   final TextEditingController _dobController = TextEditingController(text: '28/11/2005');
   final TextEditingController _countryController = TextEditingController(text: 'Mexico');
-  final TextEditingController _phoneController = TextEditingController(text: '3459864343'); // رقم فقط بدون رمز الدولة - Number only without country code
+  final TextEditingController _phoneController = TextEditingController(text: '3459864343'); //  Number only without country code
 
   // List of countries
   final List<String> _countries = [
-    'Mexico',
-    'Egypt',
-    'USA',
-    'UK',
-    'Canada',
-    'Germany',
-    'France',
-    'Italy',
-    'Spain',
-    'Japan',
-    'Brazil',
-    'Australia',
-    'India',
-    'China',
-    'South Korea'
+    'Mexico', 'Egypt', 'USA', 'UK', 'Canada', 'Germany', 'France', 
+    'Italy', 'Spain', 'Japan', 'Brazil', 'Australia', 'India', 'China', 'South Korea'
   ];
 
   // List of country codes
@@ -70,7 +57,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     //  Show success message
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(
-        content: Text('تم حفظ التعديلات بنجاح - Changes saved successfully'),
+        content: Text('Changes saved successfully'),
         backgroundColor: Colors.green,
       ),
     );
@@ -82,10 +69,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text(
-            'Select Country', 
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-          ),
+          title: const Text('Select Country', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
           content: SizedBox(
             width: double.maxFinite,
             child: ListView.builder(
@@ -105,18 +89,16 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       _countries[index],
                       style: TextStyle(
                         fontWeight: _countries[index] == _countryController.text 
-                            ? FontWeight.bold 
-                            : FontWeight.normal,
+                            ? FontWeight.bold : FontWeight.normal,
                         color: _countries[index] == _countryController.text 
-                            ? const Color(0xFF0054A5)  
-                            : Colors.black,
+                            ? const Color(0xFF0054A5) : Colors.black,
                       ),
                     ),
                     onTap: () {
                       setState(() {
                         _countryController.text = _countries[index];
                       });
-                      Navigator.pop(context); //  Close dialog
+                      Navigator.pop(context);
                     },
                   ),
                 );
@@ -125,13 +107,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
           ),
           actions: [
             TextButton(
-              onPressed: () {
-                Navigator.pop(context); // Close dialog
-              },
-              child: const Text(
-                'Cancel',
-                style: TextStyle(color: Colors.grey),
-              ),
+              onPressed: () => Navigator.pop(context),
+              child: const Text('Cancel', style: TextStyle(color: Colors.grey)),
             ),
           ],
         );
@@ -145,10 +122,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text(
-            'Select Country Code', 
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-          ),
+          title: const Text('Select Country Code', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
           content: SizedBox(
             width: double.maxFinite,
             child: ListView.builder(
@@ -159,25 +133,18 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   margin: const EdgeInsets.only(bottom: 4),
                   decoration: BoxDecoration(
                     color: _countryCodes[index]['code'] == _selectedCountryCode 
-                        ? const Color(0xFF0054A5).withOpacity(0.1)  
-                        : Colors.transparent,
+                        ? const Color(0xFF0054A5).withOpacity(0.1) : Colors.transparent,
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: ListTile(
-                    leading: Text(
-                      _countryCodes[index]['flag']!,  //  Flag icon
-                      style: const TextStyle(fontSize: 20),
-                    ),
-                    title: Text(
-                      '${_countryCodes[index]['code']} - ${_countryCodes[index]['name']}',
-                      style: const TextStyle(fontSize: 16),
-                    ),
+                    leading: Text(_countryCodes[index]['flag']!, style: const TextStyle(fontSize: 20)),
+                    title: Text('${_countryCodes[index]['code']} - ${_countryCodes[index]['name']}', style: const TextStyle(fontSize: 16)),
                     onTap: () {
                       setState(() {
                         _selectedCountryCode = _countryCodes[index]['code']!;
                         _selectedCountryFlag = _countryCodes[index]['flag']!;
                       });
-                      Navigator.pop(context);  // Close dialog
+                      Navigator.pop(context);
                     },
                   ),
                 );
@@ -186,13 +153,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
           ),
           actions: [
             TextButton(
-              onPressed: () {
-                Navigator.pop(context); //  Close dialog
-              },
-              child: const Text(
-                'Cancel',
-                style: TextStyle(color: Colors.grey),
-              ),
+              onPressed: () => Navigator.pop(context),
+              child: const Text('Cancel', style: TextStyle(color: Colors.grey)),
             ),
           ],
         );
@@ -219,40 +181,32 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white, //  White background
+      backgroundColor: Colors.white,
       appBar: EditProfileAppBar(
-        onBackPressed: () {
-          Navigator.pop(context); //  Back to previous screen
-        },
+        onBackPressed: () => Navigator.pop(context),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(20.0), //  Padding around content
+        padding: const EdgeInsets.all(20.0),
         child: Column(
           children: [
             
-            ProfileHeader(), 
+            ProfileHeaderWithEdit(), 
             const SizedBox(height: 40),
             
             //  Name field
-            ProfileTextField(
-              label: 'Name', 
-              controller: _nameController,
-            ),
-            const SizedBox(height: 20), // Space between fields
+            ProfileTextField(label: 'Name', controller: _nameController),
+            const SizedBox(height: 20),
             
             // Email field
-            ProfileTextField(
-              label: 'Email', 
-              controller: _emailController,
-            ),
+            ProfileTextField(label: 'Email', controller: _emailController),
             const SizedBox(height: 20),
             
             //  Date of Birth field 
             ProfileTextField(
               label: 'Date of Birth', 
               controller: _dobController,
-              showCalendarIcon: true, //  Show calendar icon
-              onTap: _showDatePicker, //  Date picker function
+              showCalendarIcon: true,
+              onTap: _showDatePicker,
             ),
             const SizedBox(height: 20),
             
@@ -260,8 +214,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
             ProfileTextField(
               label: 'Country', 
               controller: _countryController,
-              showDropdownIcon: true, //  Show dropdown icon
-              onTap: _showCountryDialog, //  Function to show country list
+              showDropdownIcon: true,
+              onTap: _showCountryDialog,
             ),
             const SizedBox(height: 20),
             
@@ -269,18 +223,16 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
             ProfileTextField(
               label: 'Phone number', 
               controller: _phoneController,
-              isPhoneField: true, //  Specify this is a phone field
-              countryFlag: _selectedCountryFlag, // Country flag icon
+              isPhoneField: true,
+              countryFlag: _selectedCountryFlag,
               countryCode: _selectedCountryCode, 
-              onTap: _showCountryCodeDialog, // Country code selection function
+              onTap: _showCountryCodeDialog,
             ),
             
-            const Spacer(), //  Empty space that fills the gap
+            const Spacer(),
             
             // Save button
-            SaveButton(
-              onPressed: _saveProfile, // Execute save function when pressed
-            ),
+            SaveButton(onPressed: _saveProfile),
           ],
         ),
       ),
@@ -289,7 +241,6 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
 
   @override
   void dispose() {
-    //  Cleanup controllers when screen closes
     _nameController.dispose();
     _emailController.dispose();
     _dobController.dispose();

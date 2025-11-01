@@ -14,7 +14,7 @@ class ProfilePage extends StatelessWidget {
           style: TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.bold,
-            color: Color(0xFF0054A5), // ← غيرت اللون هنا
+            color: Color(0xFF0054A5), 
           ),
         ),
         centerTitle: false,
@@ -25,7 +25,7 @@ class ProfilePage extends StatelessWidget {
         padding: const EdgeInsets.all(20.0),
         child: Column(
           children: [
-            // Profile Avatar Section - تم استبدال الأيقونة بالصورة
+            // Profile Avatar Section 
             Container(
               width: 96,
               height: 96,
@@ -51,12 +51,12 @@ class ProfilePage extends StatelessWidget {
             ),
             const SizedBox(height: 40),
             
-            // Logout Button - بنفس اللون الجديد
+            // Logout Button 
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF0054A5), // ← غيرت اللون هنا
+                  backgroundColor: const Color(0xFF0054A5), 
                   padding: const EdgeInsets.symmetric(vertical: 15),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
@@ -114,7 +114,7 @@ class ProfilePage extends StatelessWidget {
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              // الصورة الجديدة فوق كلمة Logout
+              
               Image.asset(
                 'assets/images/final_logout_pic.png',
                 width: 60,
@@ -135,15 +135,15 @@ class ProfilePage extends StatelessWidget {
                 style: TextStyle(fontSize: 16),
               ),
               const SizedBox(height: 20),
-              // الأزرار تحت بعض بدل جنب بعض
+              
               Column(
                 children: [
-                  // Logout Button - بنفس اللون الجديد
+                  // Logout Button 
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xFF0054A5), // ← غيرت اللون هنا
+                        backgroundColor: const Color(0xFF0054A5), 
                         padding: const EdgeInsets.symmetric(vertical: 15),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
@@ -164,12 +164,12 @@ class ProfilePage extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 10),
-                  // Cancel Button - نفس الشكل لكن بلون مختلف
+                  // Cancel Button 
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.grey[300], // لون رمادي
+                        backgroundColor: Colors.grey[300], 
                         padding: const EdgeInsets.symmetric(vertical: 15),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
@@ -204,7 +204,7 @@ class ProfilePage extends StatelessWidget {
       children: [
         Icon(
           icon,
-          color: isActive ? const Color(0xFF0054A5) : Colors.grey, // ← غيرت اللون هنا
+          color: isActive ? const Color(0xFF0054A5) : Colors.grey,
           size: 24,
         ),
         const SizedBox(height: 4),
@@ -212,7 +212,7 @@ class ProfilePage extends StatelessWidget {
           label,
           style: TextStyle(
             fontSize: 12,
-            color: isActive ? const Color(0xFF0054A5) : Colors.grey, // ← وغيرت هنا
+            color: isActive ? const Color(0xFF0054A5) : Colors.grey, 
           ),
         ),
       ],

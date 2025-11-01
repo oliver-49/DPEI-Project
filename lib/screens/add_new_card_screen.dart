@@ -110,8 +110,8 @@ class _AddNewCardScreenState extends State<AddNewCardScreen> {
                     ),
                   ),
                   Container(
-                    width: 24, // ← كبرنا الـ width
-                    height: 24, // ← كبرنا الـ height
+                    width: 24, 
+                    height: 24, 
                     child: Icon(
                       Icons.arrow_drop_down,
                       color: Color(0xFF5C5F62), 

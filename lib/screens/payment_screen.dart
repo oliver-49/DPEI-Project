@@ -1,7 +1,5 @@
-// FILE: lib/screens/payment_screen.dart
-// This is the main payment method selection screen
-
 import 'package:flutter/material.dart';
+import 'add_new_card_screen.dart';
 
 class PaymentScreen extends StatefulWidget {
   const PaymentScreen({super.key});
@@ -201,6 +199,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                         _selectedPaymentMethod = 'Bank account';
                       });
                     },
+                    imagePath: 'assets/images/bank_account_pic.png', // ← الصورة المضافة
                     height: 52,
                   ),
                   
@@ -213,6 +212,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                         _selectedPaymentMethod = 'Jazz cash';
                       });
                     },
+                    imagePath: 'assets/images/jazz_cash_pic.png', // ← الصورة المضافة
                     height: 52,
                   ),
                   
@@ -234,7 +234,10 @@ class _PaymentScreenState extends State<PaymentScreen> {
                   // Add New Card Button
                   AddCardButton(
                     onPressed: () {
-                      print('Add new card pressed');
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const AddNewCardScreen()),
+                      );
                     },
                   ),
 

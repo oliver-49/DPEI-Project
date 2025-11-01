@@ -7,13 +7,13 @@ class ProfileHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        // ⭐⭐ صورة البروفايل بدون إطار ⭐⭐
+        
         Container(
           width: 96,
           height: 96,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            // ⭐⭐ مسحنا الـ border ⭐⭐
+          
             image: const DecorationImage(
               image: AssetImage('assets/images/profile_pic.png'),
               fit: BoxFit.cover,
@@ -23,7 +23,7 @@ class ProfileHeader extends StatelessWidget {
         
         const SizedBox(height: 15),
         
-        // User Name - تحت الصورة
+        // User Name 
         const Text(
           'Mahrama',
           style: TextStyle(

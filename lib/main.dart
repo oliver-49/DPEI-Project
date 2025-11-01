@@ -1,11 +1,6 @@
-import 'package:flutter/material.dart'; 
-import 'screens/profile_screen.dart';
-import 'screens/edit_profile_screen.dart';
-import 'screens/notification_screen.dart';
-import 'screens/payment_screen.dart';
-import 'screens/add_new_card_screen.dart';
-import 'screens/help_support_screen.dart';
-import 'screens/profile_page.dart';
+import 'package:flutter/material.dart';
+import 'screens/main_navigation_screen.dart';
+import 'utils/app_routes.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,24 +16,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      // home: const ProfileScreen(),
-      // home: const EditProfileScreen(),
-      // home: const NotificationScreen(), // ← غيرت لـ const
-      // home: const PaymentScreen(),
-      // home: const AddNewCardScreen(),
-      // home: const HelpSupportScreen(),
-      // home: const ProfilePage(),
-       
+      initialRoute: AppRoutes.mainNavigation,
+      routes: AppRoutes.routes,
       debugShowCheckedModeBanner: false,
-      routes: {
-        '/help-support': (context) => const HelpSupportScreen(),
-        '/profile': (context) => const ProfileScreen(),
-        '/edit-profile': (context) => const EditProfileScreen(),
-        '/notification': (context) => const NotificationScreen(),
-        '/payment': (context) => const PaymentScreen(),
-        '/add-new-card': (context) => const AddNewCardScreen(),
-        '/profile-page': (context) => const ProfilePage(),
-      },
     );
   }
 }

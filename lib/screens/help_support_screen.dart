@@ -35,17 +35,16 @@ class _HelpSupportScreenState extends State<HelpSupportScreen> {
           child: const Text(
             'Help & support',
             style: TextStyle(
-              color: Color(0xFF2B54A4), // ← غيرت اللون هنا فقط
+              color: Color(0xFF2B54A4),
               fontSize: 18,
               fontWeight: FontWeight.bold,
             ),
             textAlign: TextAlign.left,
           ),
         ),
-        // إضافة كلمة Live chat في أعلى اليمين مع رفعها باستخدام Transform
         actions: [
           Transform.translate(
-            offset: const Offset(0, -8), // رفع 8 بكسل لأعلى
+            offset: const Offset(0, -8),
             child: Padding(
               padding: const EdgeInsets.only(right: 16.0),
               child: GestureDetector(
@@ -70,7 +69,7 @@ class _HelpSupportScreenState extends State<HelpSupportScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Image in the middle of the screen
+              
               _buildCenterImage(),
               const SizedBox(height: 20),
 
@@ -78,14 +77,14 @@ class _HelpSupportScreenState extends State<HelpSupportScreen> {
               _buildWelcomeMessage(),
               const SizedBox(height: 30),
 
-              // Title field - directly without container
+              // Title field
               CustomTextField(
                 title: 'Title',
                 hintText: 'Enter the title of your issue',
                 controller: _titleController,
               ),
 
-              // Description field - directly without container
+              // Description field
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -120,7 +119,7 @@ class _HelpSupportScreenState extends State<HelpSupportScreen> {
                 ],
               ),
 
-              // Send button - directly
+              // Send button
               PrimaryButton(
                 text: 'Send',
                 onPressed: _handleSubmit,
@@ -128,7 +127,7 @@ class _HelpSupportScreenState extends State<HelpSupportScreen> {
               ),
               const SizedBox(height: 30),
 
-              // Live chat button - white with blue text (with icon)
+              // Live chat button (with icon)
               Center(
                 child: SizedBox(
                   width: double.infinity,
@@ -172,22 +171,14 @@ class _HelpSupportScreenState extends State<HelpSupportScreen> {
     );
   }
 
-  // الباقي نفس الكود بدون تغيير...
+  
   Widget _buildCenterImage() {
     return Center(
-      child: Container(
-        width: 120,
-        height: 120,
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          color: Colors.grey[300],
-        ),
-        child: Image.asset(
-          'assets/images/support_pic.png',
-          width: 183,
-          height: 174,
-          fit: BoxFit.cover,
-        ),
+      child: Image.asset(
+        'assets/images/support_pic.png',
+        width: 183,
+        height: 174,
+        fit: BoxFit.cover,
       ),
     );
   }

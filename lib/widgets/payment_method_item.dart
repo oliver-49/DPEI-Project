@@ -43,7 +43,7 @@ class PaymentMethodItem extends StatelessWidget {
                   margin: const EdgeInsets.all(4),
                   decoration: const BoxDecoration(
                     shape: BoxShape.circle,
-                    color: Color(0xFF0062DC), // Blue dot when selected
+                    color: Color(0xFF0062DC), 
                   ),
                 )
               : null,

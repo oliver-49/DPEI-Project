@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-// هذا الـ Widget لزر الحفظ في شاشة التعديل - This widget for save button in edit profile screen
+// This widget for save button in edit profile screen
 class SaveButton extends StatelessWidget {
   final VoidCallback onPressed; // دالة التنفيذ عند الضغط - Function to execute when pressed
   
@@ -12,16 +12,16 @@ class SaveButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onPressed, // عند الضغط تنفيذ الدالة - Execute function when tapped
+      onTap: onPressed, // Execute function when tapped
       child: Container(
-        width: double.infinity, // عرض كامل - Full width
+        width: double.infinity, // Full width
         height: 50,
         decoration: BoxDecoration(
-          color: const Color(0xFF0054A5), // ← غيرت اللون هنا
+          color: const Color(0xFF0054A5), 
           borderRadius: BorderRadius.circular(12), // زوايا دائرية - Rounded corners
           boxShadow: [
             BoxShadow(
-              color: const Color(0xFF0054A5).withOpacity(0.3), // ← غيرت اللون هنا
+              color: const Color(0xFF0054A5).withOpacity(0.3), 
               blurRadius: 10,
               offset: const Offset(0, 4),
             ),
@@ -29,9 +29,9 @@ class SaveButton extends StatelessWidget {
         ),
         child: const Center(
           child: Text(
-            'Save', // نص الزر - Button text
+            'Save', //  Button text
             style: TextStyle(
-              color: Colors.white, // لون أبيض - White color
+              color: Colors.white, 
               fontSize: 16,
               fontWeight: FontWeight.bold,
             ),

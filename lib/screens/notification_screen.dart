@@ -28,7 +28,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
         backgroundColor: Colors.white,
         elevation: 0,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Color(0xFF0054A5)), // ← غيرنا اللون هنا
+          icon: const Icon(Icons.arrow_back, color: Color(0xFF0054A5)), 
           onPressed: () {
             Navigator.pop(context); // Goes back to previous screen
           },
@@ -38,7 +38,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
           child: const Text(
             'Notification',
             style: TextStyle(
-              color: Color(0xFF0054A5), // ← غيرنا اللون هنا
+              color: Color(0xFF0054A5), 
               fontSize: 18,
               fontWeight: FontWeight.bold,
             ),
@@ -123,7 +123,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
               ),
             ),
             
-            // ← غيرت المسافة هنا إلى 8 بس
+            
             const SizedBox(height: 8),
             
             // Save Button
@@ -136,7 +136,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                   _saveSettings();
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF0054A5), // ← غيرنا اللون هنا
+                  backgroundColor: const Color(0xFF0054A5),
                   padding: const EdgeInsets.symmetric(vertical: 16),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),

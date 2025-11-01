@@ -1,148 +1,135 @@
 import 'package:flutter/material.dart';
 
-// هذا الـ Widget لإنشاء حقل إدخال مخصص لبيانات الملف الشخصي
-// This widget creates a custom text field for profile data
 class ProfileTextField extends StatelessWidget {
-  final String label; // نص التسمية فوق الحقل - Label text above the field
-  final TextEditingController controller; // المتحكم في نص الحقل - Controller for field text
-  final bool showCalendarIcon; // هل نعرض أيقونة التقويم؟ - Should we show calendar icon?
-  final bool showDropdownIcon; // هل نعرض أيقونة القائمة المنسدلة？ - Should we show dropdown icon?
-  final bool isPhoneField; // هل هذا حقل رقم هاتف؟ - Is this a phone number field?
-  final String? countryFlag; // أيقونة العلم لحقل الهاتف - Country flag for phone field
-  final VoidCallback? onTap; // دالة التنفيذ عند الضغط على الحقل - Function when field is tapped
-  final String countryCode; // رمز الدولة
+  final String label;
+  final TextEditingController controller;
+  final bool showCalendarIcon;
+  final bool showDropdownIcon;
+  final bool isPhoneField;
+  final String? countryFlag;
+  final VoidCallback? onTap;
+  final String countryCode;
 
   const ProfileTextField({
     super.key,
     required this.label,
     required this.controller,
-    this.showCalendarIcon = false, // افتراضيًا لا تظهر الأيقونة - By default no icon
-    this.showDropdownIcon = false, // افتراضيًا لا تظهر أيقونة القائمة - By default no dropdown icon
-    this.isPhoneField = false, // افتراضيًا ليس حقل هاتف - By default not phone field
-    this.countryFlag, // أيقونة العلم - Country flag
-    this.onTap, // دالة اختيارية للضغط - Optional tap function
-    this.countryCode = '+92', // رمز الدولة الافتراضي
+    this.showCalendarIcon = false,
+    this.showDropdownIcon = false,
+    this.isPhoneField = false,
+    this.countryFlag,
+    this.onTap,
+    this.countryCode = '+92',
   });
 
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start, // محاذاة البداية - Start alignment
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // تسمية الحقل - Field label
         Text(
           label,
           style: const TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.w500,
-            color: Colors.black54, // لون رمادي غامق - Dark gray color
+            color: Colors.black54,
           ),
         ),
         
-        const SizedBox(height: 8), // مسافة بين التسمية والحقل - Space between label and field
+        const SizedBox(height: 8),
         
-        // حاوية الحقل - Field container
         GestureDetector(
-          onTap: onTap, // تفعيل الضغط إذا كانت هناك دالة - Enable tap if there's a function
+          onTap: onTap,
           child: Container(
             height: 50,
             decoration: BoxDecoration(
-              color: const Color(0xFFF5F5F5), // لون خلفية فاتح - Light background color
-              borderRadius: BorderRadius.circular(8), // زوايا دائرية - Rounded corners
+              color: Colors.white, 
+              borderRadius: BorderRadius.circular(8),
               border: Border.all(
-                color: const Color(0xFF0054A5), // اللون الأزرق للـ border
-                width: 1.5, // سمك الخط
+                color: const Color(0xFF0054A5),
+                width: 1.5,
               ), 
             ),
             child: Row(
               children: [
-                // جزء رمز الدولة (لحقل الهاتف فقط) - Country code part (for phone field only)
                 if (isPhoneField) ...[
-                  // أيقونة العلم/الهلال - Flag/Crescent icon
                   Padding(
                     padding: const EdgeInsets.only(left: 16.0),
-                    child: _buildPhoneIcon(), // ← استدعاء دالة منفصلة
+                    child: _buildPhoneIcon(),
                   ),
                   
-                  const SizedBox(width: 8), // مسافة صغيرة - Small space
+                  const SizedBox(width: 8),
                   
-                  // سهم للأسفل - Dropdown arrow
                   Icon(
-                    Icons.arrow_drop_down, // أيقونة السهم للأسفل - Dropdown arrow icon
+                    Icons.arrow_drop_down,
                     size: 20,
-                    color: Colors.grey[600], // اللون الرمادي
+                    color: Colors.grey[600],
                   ),
                   
-                  const SizedBox(width: 8), // مسافة صغيرة - Small space
+                  const SizedBox(width: 8),
                   
-                  // خط فاصل - Divider line
                   Container(
                     width: 1,
                     height: 24,
-                    color: const Color(0xFFE0E0E0), // اللون الرمادي
+                    color: const Color(0xFFE0E0E0),
                     margin: const EdgeInsets.only(right: 12.0),
                   ),
 
-                  // رمز الدولة
                   Padding(
                     padding: const EdgeInsets.only(right: 8.0),
                     child: Text(
-                      countryCode, // عرض رمز الدولة (+92)
+                      countryCode,
                       style: const TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w500,
-                        color: Colors.black, // ← لون أسود
+                        color: Colors.black,
                       ),
                     ),
                   ),
                 ],
                 
-                // حقل الإدخال - Text field
                 Expanded(
                   child: Container(
-                    // Container إضافي حول الـ TextField
                     padding: EdgeInsets.only(
-                      left: isPhoneField ? 8 : 16, // تعديل الـ padding
+                      left: isPhoneField ? 8 : 16,
                       right: 16,
                     ),
                     child: TextField(
-                      controller: controller, // ربط المتحكم - Connect controller
+                      controller: controller,
                       decoration: const InputDecoration(
-                        border: InputBorder.none, // إزالة الحدود الافتراضية - Remove default border
-                        enabledBorder: InputBorder.none, // إزالة border عندما يكون الحقل مفعل
-                        focusedBorder: InputBorder.none, // إزالة border عندما يكون الحقل نشط
-                        disabledBorder: InputBorder.none, // إزالة border عندما يكون الحقل معطل
-                        contentPadding: EdgeInsets.zero, // إزالة الـ padding الداخلي
+                        border: InputBorder.none,
+                        enabledBorder: InputBorder.none,
+                        focusedBorder: InputBorder.none,
+                        disabledBorder: InputBorder.none,
+                        contentPadding: EdgeInsets.zero,
                       ),
                       style: const TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w500,
-                        color: Colors.black, // ← غيرت اللون هنا لأسود
+                        color: Colors.black,
                       ),
-                      enabled: onTap == null, // تعطيل الكتابة إذا كان هناك دالة ضغط - Disable typing if there's tap function
+                      enabled: onTap == null,
                     ),
                   ),
                 ),
                 
-                // أيقونة التقويم (تظهر فقط في حقل Date of Birth) - Calendar icon (only for Date of Birth)
                 if (showCalendarIcon)
                   Padding(
                     padding: const EdgeInsets.only(right: 16.0),
                     child: Icon(
-                      Icons.calendar_today, // أيقونة التقويم - Calendar icon
+                      Icons.calendar_today,
                       size: 20,
-                      color: Colors.grey[600], // اللون الرمادي
+                      color: Colors.grey[600],
                     ),
                   ),
                 
-                // أيقونة القائمة المنسدلة (تظهر فقط في حقل Country) - Dropdown icon (only for Country field)
-                if (showDropdownIcon && !isPhoneField) // لا تظهر في حقل الهاتف - Don't show in phone field
+                if (showDropdownIcon && !isPhoneField)
                   Padding(
                     padding: const EdgeInsets.only(right: 16.0),
                     child: Icon(
-                      Icons.arrow_drop_down, // أيقونة السهم للأسفل - Dropdown arrow icon
+                      Icons.arrow_drop_down,
                       size: 24,
-                      color: Colors.grey[600], // اللون الرمادي
+                      color: Colors.grey[600],
                     ),
                   ),
               ],
@@ -153,7 +140,6 @@ class ProfileTextField extends StatelessWidget {
     );
   }
 
-  // دالة منفصلة لبناء أيقونة الهاتف - Separate function to build phone icon
   Widget _buildPhoneIcon() {
     try {
       return Image.asset(
@@ -163,7 +149,7 @@ class ProfileTextField extends StatelessWidget {
         fit: BoxFit.contain,
         errorBuilder: (context, error, stackTrace) {
           return Icon(
-            Icons.phone, // أيقونة هاتف افتراضية
+            Icons.phone,
             size: 24,
             color: Colors.grey[600],
           );
@@ -171,7 +157,7 @@ class ProfileTextField extends StatelessWidget {
       );
     } catch (e) {
       return Icon(
-        Icons.phone, // أيقونة هاتف افتراضية
+        Icons.phone,
         size: 24,
         color: Colors.grey[600],
       );

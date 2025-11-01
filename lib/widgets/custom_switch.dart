@@ -18,8 +18,8 @@ class CustomSwitch extends StatelessWidget {
     return Switch(
       value: value,
       onChanged: onChanged,
-      activeColor: const Color(0xFF0054A5), // ← غيرنا اللون هنا
-      activeTrackColor: const Color(0xFF0054A5).withOpacity(0.5), // ← وغيرنا هنا
+      activeColor: const Color(0xFF0054A5), 
+      activeTrackColor: const Color(0xFF0054A5).withOpacity(0.5), 
     );
   }
 }
