@@ -4,6 +4,7 @@ import 'package:dpei_project/presentation/screens/account_service/Phone%20number
 import 'package:dpei_project/presentation/widgets/custombutton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter/services.dart';
 import 'phone_cubit.dart';
 
 class PhoneNumberView extends StatelessWidget {
@@ -20,6 +21,8 @@ class PhoneNumberView extends StatelessWidget {
       create: (_) => PhoneNumberCubit(),
       child: BlocBuilder<PhoneNumberCubit, PhoneNumberState>(
         builder: (context, state) {
+          final cubit = context.read<PhoneNumberCubit>();
+
           return Scaffold(
             backgroundColor: Colors.white,
             appBar: AppBar(
@@ -57,9 +60,7 @@ class PhoneNumberView extends StatelessWidget {
                     ),
                   ),
                   InkWell(
-                    onTap: () => context.read<PhoneNumberCubit>().changeBorder(
-                      const Color(0xff0054A5),
-                    ),
+                    onTap: () => cubit.changeBorder(const Color(0xff0054A5)),
                     child: Container(
                       height: screenHeight * 0.07,
                       width: screenWidth * 0.85,
@@ -73,9 +74,8 @@ class PhoneNumberView extends StatelessWidget {
                       child: Row(
                         children: [
                           CountryCodePicker(
-                            onChanged: (code) => context
-                                .read<PhoneNumberCubit>()
-                                .setCountryCode(code.dialCode!),
+                            onChanged: (code) =>
+                                cubit.setCountryCode(code.dialCode!),
                             initialSelection: 'EG',
                             favorite: const ['+20', 'EG'],
                             showCountryOnly: true,
@@ -83,13 +83,16 @@ class PhoneNumberView extends StatelessWidget {
                           Expanded(
                             child: TextField(
                               controller: phoneController,
-                              keyboardType: TextInputType.phone,
-                              onChanged: (value) => context
-                                  .read<PhoneNumberCubit>()
-                                  .setPhone(value),
+                              keyboardType: TextInputType.number,
+                              inputFormatters: [
+                                FilteringTextInputFormatter.digitsOnly,
+                                LengthLimitingTextInputFormatter(11),
+                              ],
+                              onChanged: (value) => cubit.setPhone(value),
                               decoration: const InputDecoration(
                                 border: InputBorder.none,
-                                hintText: "10380480244",
+                                hintText: "01012345678",
+                                counterText: '',
                               ),
                             ),
                           ),
@@ -102,7 +105,6 @@ class PhoneNumberView extends StatelessWidget {
                     context,
                     text: AppLocalizations.of(context)!.sendCodeButton,
                     onPressed: () {
-                      final cubit = context.read<PhoneNumberCubit>();
                       final error = cubit.validatePhone();
                       if (error != null) {
                         ScaffoldMessenger.of(context).showSnackBar(
@@ -113,6 +115,7 @@ class PhoneNumberView extends StatelessWidget {
                         );
                         return;
                       }
+
                       final fullNumber =
                           '${cubit.state.countryCode}${cubit.state.phone}';
 

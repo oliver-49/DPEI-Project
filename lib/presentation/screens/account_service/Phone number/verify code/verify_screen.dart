@@ -20,18 +20,7 @@ class VerifyCode extends StatelessWidget {
     return BlocProvider(
       create: (_) => VerifyCodeCubit(),
       child: BlocListener<VerifyCodeCubit, VerifyCodeState>(
-        listener: (context, state) {
-          if (state.isSuccess) {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (_) => const LocationAccessUI()),
-            );
-          } else if (state.errorMessage != null) {
-            ScaffoldMessenger.of(
-              context,
-            ).showSnackBar(SnackBar(content: Text(state.errorMessage!)));
-          }
-        },
+        listener: (context, state) {},
         child: Scaffold(
           backgroundColor: const Color(0xffFFFFFF),
           appBar: AppBar(
@@ -104,6 +93,18 @@ class VerifyCode extends StatelessWidget {
                         ? null
                         : () {
                             context.read<VerifyCodeCubit>().verifyCode();
+                            if (state.isSuccess) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (_) => LocationAccessUI(),
+                                ),
+                              );
+                            } else if (state.errorMessage != null) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(content: Text(state.errorMessage!)),
+                              );
+                            }
                           },
                   ),
                   SizedBox(height: screenHeight * 0.03),
