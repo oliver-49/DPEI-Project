@@ -54,10 +54,11 @@ class AcountDetails extends StatelessWidget {
           backgroundColor: Colors.white,
           title: InkWell(
             onTap: () => Navigator.pop(context),
-            child: const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 24),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24),
               child: Image(
-                image: AssetImage('assets/images/account details.png'),
+                image: const AssetImage('assets/images/account details.png'),
+                width: screenWidth * 3,
               ),
             ),
           ),
