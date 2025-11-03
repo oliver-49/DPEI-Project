@@ -92,7 +92,7 @@ class Address extends StatelessWidget {
                             return ("أدخل رقم منزل صحيح");
                           }
                           return null;
-                        },
+                        }, prefixIcon: null,
                       ),
                       SizedBox(height: screenHeight * .025),
                       customTextfield(
@@ -103,7 +103,7 @@ class Address extends StatelessWidget {
                             return ("أدخل رقم شارع صحيح");
                           }
                           return null;
-                        },
+                        }, prefixIcon: null,
                       ),
                       SizedBox(height: screenHeight * .025),
                       customTextfield(
@@ -114,7 +114,7 @@ class Address extends StatelessWidget {
                             return ("أدخل العنوان بالكامل  ");
                           }
                           return null;
-                        },
+                        }, prefixIcon: null,
                       ),
                       SizedBox(height: screenHeight * .250),
                       BlocBuilder<BookingCubit, BookingState>(

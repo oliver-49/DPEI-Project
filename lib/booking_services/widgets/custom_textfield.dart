@@ -4,9 +4,10 @@ import 'package:flutter/services.dart';
 
 class customTextfield extends StatelessWidget {
   String label;
+  Widget? prefixIcon;
   TextEditingController? controller;
   String? Function(String?)? validator;
-  customTextfield({super.key, required this.label,required this.controller, required this.validator});
+  customTextfield({super.key,required this.prefixIcon, required this.label,required this.controller, required this.validator});
 
   @override
   Widget build(BuildContext context) {
@@ -15,6 +16,7 @@ class customTextfield extends StatelessWidget {
       validator: validator,
       cursorColor: Colors.black,
       decoration: InputDecoration(
+        prefixIcon: prefixIcon,
         fillColor: Color(0xffFFFFFF),
         labelText: label,
         labelStyle: TextStyle(color: Color(0xff0054A5)),
