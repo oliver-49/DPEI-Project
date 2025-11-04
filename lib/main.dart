@@ -5,8 +5,14 @@ import 'package:get/get.dart';
 import 'package:fixit/booking_services/cubit/booking_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:fixit/account_setup_service_seeker/view/verification_method.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
-void main() {
+import 'booking_services/view/providerprofile.dart';
+
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter();
+  await Hive.openBox('favoritesBox');
   runApp(
     DevicePreview(
       enabled: !kReleaseMode,
@@ -27,7 +33,7 @@ class MyApp extends StatelessWidget {
       builder: DevicePreview.appBuilder,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(scaffoldBackgroundColor: Color(0xfff9f9f9)),
-      home: VerificationMethod(),
+      home: ProviderProfile(),
     );
   }
 }

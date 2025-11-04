@@ -22,7 +22,11 @@ class ProviderProfile extends StatelessWidget {
     var screenHeight = MediaQuery.of(context).size.height;
     String name = "إميلي جاني";
     String type = "سباك";
-    var shadow=Shadow(color: Colors.grey, offset: Offset(0, 3), blurRadius: 10);
+    var shadow = Shadow(
+      color: Colors.grey,
+      offset: Offset(0, 3),
+      blurRadius: 10,
+    );
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
@@ -30,18 +34,45 @@ class ProviderProfile extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                Container(
-                  child: Image.asset(imagepath + "craftsman.png"),
-                  height: screenHeight * .350,
-                  width: screenWidth,
-                  decoration: BoxDecoration(
-                    color: Color(0xffe0e9f1),
-                    borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(32),
-                      bottomRight: Radius.circular(32),
+                Stack(
+                  children: [
+                    Container(
+                      height: screenHeight * .350,
+                      width: screenWidth,
+                      decoration: BoxDecoration(
+                        color: Color(0xffe0e9f1),
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(32),
+                          bottomRight: Radius.circular(32),
+                        ),
+                      ),
+                      child: Image.asset(imagepath + "craftsman.png"),
                     ),
-                  ),
+
+                    Positioned(
+                      top: 20,
+                      left: 15,
+                      child: GestureDetector(
+                        onTap: () {
+                          Get.back();
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Colors.white.withOpacity(0.7),
+                            shape: BoxShape.circle,
+                          ),
+                          padding: EdgeInsets.all(6),
+                          child: Icon(
+                            Icons.arrow_forward,
+                            color: Color(0xff2B54A4),
+                            size: 26,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
+
                 SizedBox(height: screenHeight * .024),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 24),
@@ -59,9 +90,7 @@ class ProviderProfile extends StatelessWidget {
                                   Text(
                                     name,
                                     style: TextStyle(
-                                      shadows: [
-                                        shadow
-                                      ],
+                                      shadows: [shadow],
                                       fontSize: 24,
                                       color: Color(0xff565656),
                                       fontWeight: FontWeight.bold,
@@ -112,18 +141,19 @@ class ProviderProfile extends StatelessWidget {
                               SizedBox(width: screenWidth * .048),
                               BlocBuilder<BookingCubit, BookingState>(
                                 builder: (context, state) {
-                                  bool isFav = true;
+                                  bool isFav = false;
                                   if (state is FavoritChange) {
                                     isFav = state.favorit;
                                   }
+
                                   return Container(
                                     decoration: BoxDecoration(
                                       shape: BoxShape.circle,
                                       boxShadow: [
                                         BoxShadow(
-                                          offset: Offset(0, 8),
+                                          offset: const Offset(0, 8),
                                           blurRadius: 4,
-                                          color: Color.fromARGB(
+                                          color: const Color.fromARGB(
                                             255,
                                             216,
                                             214,
@@ -134,20 +164,33 @@ class ProviderProfile extends StatelessWidget {
                                     ),
                                     child: CircleAvatar(
                                       radius: screenHeight * .030,
-                                      backgroundColor: Color(0xffEAEFF4),
+                                      backgroundColor: const Color(0xffEAEFF4),
                                       child: InkWell(
                                         onTap: () {
                                           context
                                               .read<BookingCubit>()
                                               .toggleFavorit();
                                         },
-                                        child: Icon(
-                                          isFav
-                                              ? Icons.favorite_border_outlined
-                                              : Icons.favorite,
-                                          color: isFav
-                                              ? Color(0xff0054A5)
-                                              : Color(0xff0054A5),
+                                        child: AnimatedSwitcher(
+                                          duration: const Duration(
+                                            milliseconds: 300,
+                                          ),
+                                          transitionBuilder:
+                                              (child, animation) {
+                                                return ScaleTransition(
+                                                  scale: animation,
+                                                  child: child,
+                                                );
+                                              },
+                                          child: Icon(
+                                            isFav
+                                                ? Icons.favorite
+                                                : Icons
+                                                      .favorite_border_outlined,
+                                            key: ValueKey<bool>(isFav),
+                                            color: const Color(0xff0054A5),
+                                            size: 28,
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -162,9 +205,7 @@ class ProviderProfile extends StatelessWidget {
                           Text(
                             "مهارات",
                             style: TextStyle(
-                              shadows: [
-                                shadow
-                              ],
+                              shadows: [shadow],
                               fontSize: 24,
                               color: Color(0xff565656),
                               fontWeight: FontWeight.bold,
@@ -192,9 +233,7 @@ class ProviderProfile extends StatelessWidget {
                           Text(
                             "السيرة الذاتية",
                             style: TextStyle(
-                              shadows: [
-                              shadow
-                              ],
+                              shadows: [shadow],
                               fontSize: 24,
                               color: Color(0xff565656),
                               fontWeight: FontWeight.bold,
@@ -211,9 +250,7 @@ class ProviderProfile extends StatelessWidget {
                               Text(
                                 "المعرض",
                                 style: TextStyle(
-                                  shadows: [
-                                    shadow
-                                  ],
+                                  shadows: [shadow],
                                   fontSize: 24,
                                   color: Color(0xff565656),
                                   fontWeight: FontWeight.bold,
@@ -227,9 +264,7 @@ class ProviderProfile extends StatelessWidget {
                                 child: Text(
                                   "عرض الكل",
                                   style: TextStyle(
-                                    shadows: [
-                                      shadow
-                                    ],
+                                    shadows: [shadow],
                                     fontSize: 20,
                                     color: Color(0xff0054A5),
                                     fontWeight: FontWeight.bold,
@@ -252,9 +287,7 @@ class ProviderProfile extends StatelessWidget {
                           Text(
                             "مراجعة",
                             style: TextStyle(
-                              shadows: [
-                                shadow
-                              ],
+                              shadows: [shadow],
                               fontSize: 24,
                               color: Color(0xff565656),
                               fontWeight: FontWeight.bold,

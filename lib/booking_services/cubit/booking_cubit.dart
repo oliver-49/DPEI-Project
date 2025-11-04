@@ -1,24 +1,36 @@
 import 'package:fixit/booking_services/cubit/booking_state.dart';
 import 'package:fixit/booking_services/model/Address_model.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 class BookingCubit extends Cubit<BookingState> {
-  BookingCubit() : super(BookingInitial());
+  BookingCubit() : super(BookingInitial()){
+    clearAll();
+  _loadFavorite();
+}
 
-  // change favorit icon*******************************
-  bool favorit = true;
-  void toggleFavorit() {
-    favorit = !favorit;
-    emit(FavoritChange(favorit));
+// change favorit icon*******************************
+  bool isFavorite = false;
+  final box = Hive.box('favoritesBox');
+
+  void _loadFavorite() {
+    isFavorite = box.get('isFavorite', defaultValue: false);
+    emit(FavoritChange(isFavorite));
   }
+
+  void toggleFavorit() {
+    isFavorite = !isFavorite;
+    box.put('isFavorite', isFavorite);
+    emit(FavoritChange(isFavorite));
+  }
+
 
   // setAddress**************************************
   void addressChange(AddressModel adressmodel) {
     try {
-      if (adressmodel.homeNo.length > 5 &&
-          adressmodel.streetNo.length > 5 &&
-          adressmodel.fullAddress.length > 5) {
+      if (adressmodel.homeNo.length > 2 &&
+          adressmodel.streetNo.length > 2 &&
+          adressmodel.fullAddress.length > 2) {
         emit(AddressSucsuessState());
       } else {
         emit(AddressErrorState());
