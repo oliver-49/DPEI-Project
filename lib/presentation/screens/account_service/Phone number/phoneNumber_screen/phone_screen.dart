@@ -104,7 +104,7 @@ class PhoneNumberView extends StatelessWidget {
                   buttonItem(
                     context,
                     text: AppLocalizations.of(context)!.sendCodeButton,
-                    onPressed: () {
+                    onPressed: () async {
                       final error = cubit.validatePhone();
                       if (error != null) {
                         ScaffoldMessenger.of(context).showSnackBar(
@@ -118,8 +118,10 @@ class PhoneNumberView extends StatelessWidget {
 
                       final fullNumber =
                           '${cubit.state.countryCode}${cubit.state.phone}';
+                      await cubit.savePhoneToHive();
 
                       Navigator.push(
+                        // ignore: use_build_context_synchronously
                         context,
                         MaterialPageRoute(
                           builder: (_) => VerifyCode(phoneNumber: fullNumber),

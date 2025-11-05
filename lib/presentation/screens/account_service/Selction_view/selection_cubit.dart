@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fixit/core/stores/app_box.dart';
 
 class SelectionState {
   final String? selectedRole;
@@ -31,8 +32,12 @@ class SelectionCubit extends Cubit<SelectionState> {
     emit(state.copyWith(selectedRole: role, errorMessage: null));
   }
 
-  void onNextTapped() {
+  Future<void> onNextTapped() async {
     if (state.selectedRole != null) {
+      await AppBox.setUserRole(state.selectedRole!);
+
+      await AppBox.setSetupDone(true);
+
       emit(state.copyWith(navigateNext: true, errorMessage: null));
     } else {
       emit(state.copyWith(errorMessage: 'من فضلك اختار دورك'));

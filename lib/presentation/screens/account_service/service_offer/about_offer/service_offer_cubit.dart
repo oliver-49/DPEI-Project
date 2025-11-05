@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fixit/core/stores/app_box.dart';
 import 'service_offer_state.dart';
 
 class ServiceOfferCubit extends Cubit<ServiceOfferState> {
@@ -6,17 +7,33 @@ class ServiceOfferCubit extends Cubit<ServiceOfferState> {
 
   void selectService(String value) {
     emit(state.copyWith(selectedService: value, errorMessage: null));
+
+    AppBox.box.put('selected_service', value);
   }
 
   void selectExperience(String value) {
     emit(state.copyWith(selectedExperience: value, errorMessage: null));
+
+    AppBox.box.put('selected_experience', value);
   }
 
   void selectArea(String value) {
     emit(state.copyWith(selectedArea: value, errorMessage: null));
+
+    AppBox.box.put('selected_area', value);
   }
 
-  void saveDataLocally() {}
+  void saveDataLocally() async {
+    if (state.selectedService != null) {
+      await AppBox.box.put('selected_service', state.selectedService);
+    }
+    if (state.selectedExperience != null) {
+      await AppBox.box.put('selected_experience', state.selectedExperience);
+    }
+    if (state.selectedArea != null) {
+      await AppBox.box.put('selected_area', state.selectedArea);
+    }
+  }
 
   Future<bool> submitToFirebase() async {
     if (state.selectedService == null ||

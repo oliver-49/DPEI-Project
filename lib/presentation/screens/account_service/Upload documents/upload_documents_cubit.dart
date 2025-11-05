@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
-
 import 'package:file_picker/file_picker.dart';
 import 'package:fixit/presentation/screens/account_service/Upload%20documents/upload_documents_state.dart';
 import 'package:flutter/foundation.dart';
+import 'package:fixit/core/stores/app_box.dart';
 
 class UploadDocumentsCubit extends Cubit<UploadDocumentsState> {
   UploadDocumentsCubit() : super(const UploadDocumentsInitial());
@@ -19,6 +19,8 @@ class UploadDocumentsCubit extends Cubit<UploadDocumentsState> {
         final fileBytes = result.files.single.bytes!;
 
         if (type == 'license') {
+          await AppBox.box.put('license_file', fileBytes);
+
           emit(
             UploadDocumentsSuccess(
               licenseBytes: fileBytes,
@@ -26,6 +28,8 @@ class UploadDocumentsCubit extends Cubit<UploadDocumentsState> {
             ),
           );
         } else if (type == 'certification') {
+          await AppBox.box.put('certification_file', fileBytes);
+
           emit(
             UploadDocumentsSuccess(
               licenseBytes: state.licenseBytes,

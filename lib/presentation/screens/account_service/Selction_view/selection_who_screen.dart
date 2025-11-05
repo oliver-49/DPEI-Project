@@ -31,7 +31,6 @@ class AccountSetup extends StatelessWidget {
     final screenWidth = mediaQuery.size.width;
     final screenHeight = mediaQuery.size.height;
 
-    // ✅ BlocProvider اتحذف من هنا
     return BlocListener<SelectionCubit, SelectionState>(
       listener: (context, state) async {
         if (state.navigateNext) {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fixit/core/stores/app_box.dart';
 import 'workhour_state.dart';
 
 class WorkhourCubit extends Cubit<WorkhourState> {
@@ -7,13 +8,33 @@ class WorkhourCubit extends Cubit<WorkhourState> {
 
   void setFromTime(TimeOfDay value) {
     emit(state.copyWith(fromTime: value, errorMessage: null));
+
+    final formatted =
+        '${value.hour.toString().padLeft(2, '0')}:${value.minute.toString().padLeft(2, '0')}';
+    AppBox.box.put('from_time', formatted);
   }
 
   void setToTime(TimeOfDay value) {
     emit(state.copyWith(toTime: value, errorMessage: null));
+
+    final formatted =
+        '${value.hour.toString().padLeft(2, '0')}:${value.minute.toString().padLeft(2, '0')}';
+    AppBox.box.put('to_time', formatted);
   }
 
-  void saveDataLocally() {}
+  Future<void> saveDataLocally() async {
+    if (state.fromTime != null) {
+      final formatted =
+          '${state.fromTime!.hour.toString().padLeft(2, '0')}:${state.fromTime!.minute.toString().padLeft(2, '0')}';
+      await AppBox.box.put('from_time', formatted);
+    }
+
+    if (state.toTime != null) {
+      final formatted =
+          '${state.toTime!.hour.toString().padLeft(2, '0')}:${state.toTime!.minute.toString().padLeft(2, '0')}';
+      await AppBox.box.put('to_time', formatted);
+    }
+  }
 
   int _toMinutes(TimeOfDay t) => t.hour * 60 + t.minute;
 
@@ -26,7 +47,6 @@ class WorkhourCubit extends Cubit<WorkhourState> {
       return false;
     }
 
-    // تأكد أن from < to
     if (_toMinutes(from) >= _toMinutes(to)) {
       emit(state.copyWith(errorMessage: 'وقت البداية يجب أن يسبق وقت النهاية'));
       return false;

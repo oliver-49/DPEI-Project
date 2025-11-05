@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:fixit/core/stores/app_box.dart';
 import 'acount_details_state.dart';
 
 class AccountDetailsCubit extends Cubit<AccountDetailsState> {
@@ -25,6 +26,13 @@ class AccountDetailsCubit extends Cubit<AccountDetailsState> {
         _isValidPhone(updatedPhoneNumber) &&
         updatedExpiry != null;
 
+    if (ownerName != null) AppBox.box.put('owner_name', updatedOwnerName);
+    if (nicNumber != null) AppBox.box.put('nic_number', updatedNicNumber);
+    if (phoneNumber != null) AppBox.box.put('phone_number', updatedPhoneNumber);
+    if (nicExpiryDate != null) {
+      AppBox.box.put('nic_expiry_date', updatedExpiry?.toIso8601String());
+    }
+
     emit(
       AccountDetailsUpdated(
         ownerName: updatedOwnerName,
@@ -37,8 +45,18 @@ class AccountDetailsCubit extends Cubit<AccountDetailsState> {
     );
   }
 
-  void submitDetails() {
+  void submitDetails() async {
     if (state.isFormValid) {
+      await AppBox.box.put('owner_name', state.ownerName);
+      await AppBox.box.put('nic_number', state.nicNumber);
+      await AppBox.box.put('phone_number', state.phoneNumber);
+      if (state.nicExpiryDate != null) {
+        await AppBox.box.put(
+          'nic_expiry_date',
+          state.nicExpiryDate!.toIso8601String(),
+        );
+      }
+
       emit(
         AccountDetailsUpdated(
           ownerName: state.ownerName,
