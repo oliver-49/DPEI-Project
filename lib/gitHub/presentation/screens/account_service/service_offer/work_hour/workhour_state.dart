@@ -1,10 +1,12 @@
+import 'package:flutter/material.dart';
+
 class WorkhourState {
-  final String? fromTime;
-  final String? toTime;
+  final TimeOfDay? fromTime;
+  final TimeOfDay? toTime;
   final bool isLoading;
   final String? errorMessage;
 
-  WorkhourState({
+  const WorkhourState({
     this.fromTime,
     this.toTime,
     this.isLoading = false,
@@ -12,8 +14,8 @@ class WorkhourState {
   });
 
   WorkhourState copyWith({
-    String? fromTime,
-    String? toTime,
+    TimeOfDay? fromTime,
+    TimeOfDay? toTime,
     bool? isLoading,
     String? errorMessage,
   }) {

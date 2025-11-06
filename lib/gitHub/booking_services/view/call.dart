@@ -1,5 +1,6 @@
 import 'package:fixit/gitHub/booking_services/view/const.dart';
 import 'package:fixit/gitHub/booking_services/view/providerprofile.dart';
+import 'package:fixit/ye/utalities/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -20,6 +21,7 @@ class _CallState extends State<Call> {
     return Directionality(
         textDirection: TextDirection.rtl,
         child: Scaffold(
+        backgroundColor: AppColors.bgColor,
             body: SafeArea(
                 child:SingleChildScrollView(
                   child: Center(

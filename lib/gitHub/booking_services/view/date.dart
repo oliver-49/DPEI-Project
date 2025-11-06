@@ -4,6 +4,7 @@ import 'package:fixit/gitHub/booking_services/view/const.dart';
 import 'package:fixit/gitHub/booking_services/view/reviewsummary.dart';
 import 'package:fixit/gitHub/booking_services/widgets/custom_button.dart';
 import 'package:fixit/gitHub/booking_services/widgets/custom_skills.dart';
+import 'package:fixit/ye/utalities/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
@@ -39,6 +40,7 @@ class Date extends StatelessWidget {
           }
         },
             child: Scaffold(
+        backgroundColor: AppColors.bgColor,
               body: SafeArea(
                 child: SingleChildScrollView(
                   child: Padding(

@@ -5,7 +5,7 @@ class ServiceOfferState {
   final bool isLoading;
   final String? errorMessage;
 
-  ServiceOfferState({
+  const ServiceOfferState({
     this.selectedService,
     this.selectedExperience,
     this.selectedArea,

@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:ui';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class VerifyCodeState {
@@ -47,14 +48,18 @@ class VerifyCodeCubit extends Cubit<VerifyCodeState> {
     );
   }
 
-  void verifyCode() {
+  void verifyCode({
+    required VoidCallback onSuccess,
+    required VoidCallback onError,
+    required Function(String) showError,
+  }) {
     final code = state.digits.join();
     emit(state.copyWith(isLoading: true, errorMessage: null, isSuccess: false));
 
     Future.delayed(const Duration(seconds: 1), () {
       if (code == "12345") {
-        // الكود التجريبي
         emit(state.copyWith(isSuccess: true, isLoading: false));
+        onSuccess();
       } else {
         emit(
           state.copyWith(
@@ -62,6 +67,8 @@ class VerifyCodeCubit extends Cubit<VerifyCodeState> {
             isLoading: false,
           ),
         );
+        showError("الكود غلط! حاول تاني");
+        onError();
       }
     });
   }
@@ -79,7 +86,6 @@ class VerifyCodeCubit extends Cubit<VerifyCodeState> {
   }
 
   void resendCode() {
-    // هنا تحطي logic resend code Fake
     startCountdown();
   }
 

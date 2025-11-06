@@ -1,4 +1,5 @@
 import 'package:fixit/gitHub/booking_services/view/const.dart';
+import 'package:fixit/ye/utalities/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -18,6 +19,7 @@ class _GalleryState extends State<Gallery> {
     return Directionality(
         textDirection: TextDirection.rtl,
         child: Scaffold(
+        backgroundColor: AppColors.bgColor,
             body: SafeArea(
                 child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 24),

@@ -6,6 +6,7 @@ import 'package:fixit/gitHub/booking_services/widgets/custom_button.dart';
 import 'package:fixit/gitHub/booking_services/widgets/custom_rateandorders.dart';
 import 'package:fixit/gitHub/booking_services/widgets/custom_review.dart';
 import 'package:fixit/gitHub/booking_services/widgets/custom_skills.dart';
+import 'package:fixit/ye/utalities/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
@@ -26,6 +27,7 @@ class ProviderProfile extends StatelessWidget {
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
+        backgroundColor: AppColors.bgColor,
         body: SafeArea(
           child: SingleChildScrollView(
             child: Column(

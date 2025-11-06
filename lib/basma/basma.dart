@@ -1,6 +1,8 @@
 
 // basma
 
+import 'package:fixit/ye/utalities/colors.dart';
+import 'package:fixit/yreyhan/auth/login_screen.dart';
 import 'package:flutter/material.dart';
 
 // -----------------------------------------------------------------------------
@@ -502,7 +504,7 @@ class EditProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: AppColors.bgColor,
         elevation: 0,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.black),
@@ -518,175 +520,178 @@ class EditProfileScreen extends StatelessWidget {
         ),
         centerTitle: false,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // --- Profile Image with Edit Button ---
-              Center(
-                child: Stack(
-                  children: [
-                    const CircleAvatar(
-                      radius: 50,
-                      // يجب وضع صورة هنا أو استخدام لون
-                      backgroundImage: AssetImage('assets/profile_edit.png'),
-                      backgroundColor: lightGreyBackground,
-                    ),
-                    Positioned(
-                      bottom: 0,
-                      right: 0,
-                      child: Container(
-                        height: 30,
-                        width: 30,
-                        decoration: BoxDecoration(
-                          color: primaryBlue,
-                          shape: BoxShape.circle,
-                          border: Border.all(
+      body: Container(
+        color:  AppColors.bgColor,
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // --- Profile Image with Edit Button ---
+                Center(
+                  child: Stack(
+                    children: [
+                      const CircleAvatar(
+                        radius: 50,
+                        // يجب وضع صورة هنا أو استخدام لون
+                        backgroundImage: AssetImage('assets/images/person1.png'),
+                        backgroundColor: lightGreyBackground,
+                      ),
+                      Positioned(
+                        bottom: 0,
+                        right: 0,
+                        child: Container(
+                          height: 30,
+                          width: 30,
+                          decoration: BoxDecoration(
+                            color: primaryBlue,
+                            shape: BoxShape.circle,
+                            border: Border.all(
+                              color: Colors.white,
+                              width: 2,
+                            ),
+                          ),
+                          child: const Icon(
+                            Icons.edit,
                             color: Colors.white,
-                            width: 2,
+                            size: 16,
                           ),
                         ),
-                        child: const Icon(
-                          Icons.edit,
-                          color: Colors.white,
-                          size: 16,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(height: 30),
-
-              // --- Form Fields ---
-              const CustomInputField(
-                label: 'Name',
-                initialValue: 'Mahrama',
-              ),
-              const CustomInputField(
-                label: 'Email',
-                initialValue: 'Mahrama@gmail.com',
-                keyboardType: TextInputType.emailAddress,
-              ),
-
-              // --- Date of Birth Field ---
-              const CustomInputField(
-                label: 'Date of Birth',
-                initialValue: '28/11/2006',
-                readOnly: true,
-                isDate: true,
-                suffixIcon: Icon(
-                  Icons.calendar_today_outlined,
-                  color: primaryBlue,
-                ),
-              ),
-
-              // --- Country Dropdown Field ---
-              const Padding(
-                padding: EdgeInsets.only(bottom: 8.0),
-                child: Text(
-                  'Country',
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: Colors.black54,
-                  ),
-                ),
-              ),
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 15),
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.grey, width: 1),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: DropdownButtonHideUnderline(
-                  child: DropdownButton<String>(
-                    isExpanded: true,
-                    value: 'Mexico',
-                    items: <String>['Mexico', 'USA', 'Canada', 'Other']
-                        .map((String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(value, style: const TextStyle(fontSize: 16)),
-                      );
-                    }).toList(),
-                    onChanged: (String? newValue) {
-                      // Logic to handle country change
-                    },
-                    icon: const Icon(Icons.keyboard_arrow_down, color: Colors.black54),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 20),
-
-              // --- Phone Number Field (FIXED WhatsApp icon issue) ---
-              CustomInputField(
-                label: 'Phone number',
-                initialValue: '+92 3459864343',
-                keyboardType: TextInputType.phone,
-                prefixWidget: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      // تم استخدام Icons.chat كبديل لـ Icons.whatsapp
-                      const Icon(Icons.chat, color: Colors.green),
-                      const SizedBox(width: 5),
-                      const Text(
-                        'v',
-                        style: TextStyle(fontSize: 16, color: Colors.black54),
-                      ),
-                      const Icon(Icons.keyboard_arrow_down, color: Colors.black54, size: 16),
-                      Container(
-                        width: 1,
-                        height: 20,
-                        color: Colors.grey.shade300,
-                        margin: const EdgeInsets.symmetric(horizontal: 10),
                       ),
                     ],
                   ),
                 ),
-              ),
-
-              // --- Address Field ---
-              const CustomInputField(
-                label: 'Address',
-                initialValue: 'Tijuana, Baja California',
-              ),
-
-              const SizedBox(height: 30),
-
-              // --- Save Button (Updated to navigate to ProfessionScreen) ---
-              SizedBox(
-                width: double.infinity,
-                height: 50,
-                child: ElevatedButton(
-                  onPressed: () {
-                    // UPDATED NAVIGATION LOGIC
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(builder: (context) => const ProfessionScreen()),
-                    // );
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: primaryBlue,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    elevation: 5,
+                const SizedBox(height: 30),
+        
+                // --- Form Fields ---
+                const CustomInputField(
+                  label: 'Name',
+                  initialValue: 'Mahrama',
+                ),
+                const CustomInputField(
+                  label: 'Email',
+                  initialValue: 'Mahrama@gmail.com',
+                  keyboardType: TextInputType.emailAddress,
+                ),
+        
+                // --- Date of Birth Field ---
+                const CustomInputField(
+                  label: 'Date of Birth',
+                  initialValue: '28/11/2006',
+                  readOnly: true,
+                  isDate: true,
+                  suffixIcon: Icon(
+                    Icons.calendar_today_outlined,
+                    color: primaryBlue,
                   ),
-                  child: const Text(
-                    'Save',
+                ),
+        
+                // --- Country Dropdown Field ---
+                const Padding(
+                  padding: EdgeInsets.only(bottom: 8.0),
+                  child: Text(
+                    'Country',
                     style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
+                      fontSize: 14,
+                      color: Colors.black54,
                     ),
                   ),
                 ),
-              ),
-            ],
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.grey, width: 1),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: DropdownButtonHideUnderline(
+                    child: DropdownButton<String>(
+                      isExpanded: true,
+                      value: 'Mexico',
+                      items: <String>['Mexico', 'USA', 'Canada', 'Other']
+                          .map((String value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Text(value, style: const TextStyle(fontSize: 16)),
+                        );
+                      }).toList(),
+                      onChanged: (String? newValue) {
+                        // Logic to handle country change
+                      },
+                      icon: const Icon(Icons.keyboard_arrow_down, color: Colors.black54),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 20),
+        
+                // --- Phone Number Field (FIXED WhatsApp icon issue) ---
+                CustomInputField(
+                  label: 'Phone number',
+                  initialValue: '+92 3459864343',
+                  keyboardType: TextInputType.phone,
+                  prefixWidget: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        // تم استخدام Icons.chat كبديل لـ Icons.whatsapp
+                        const Icon(Icons.chat, color: Colors.green),
+                        const SizedBox(width: 5),
+                        const Text(
+                          'v',
+                          style: TextStyle(fontSize: 16, color: Colors.black54),
+                        ),
+                        const Icon(Icons.keyboard_arrow_down, color: Colors.black54, size: 16),
+                        Container(
+                          width: 1,
+                          height: 20,
+                          color: Colors.grey.shade300,
+                          margin: const EdgeInsets.symmetric(horizontal: 10),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+        
+                // --- Address Field ---
+                const CustomInputField(
+                  label: 'Address',
+                  initialValue: 'Tijuana, Baja California',
+                ),
+        
+                const SizedBox(height: 30),
+        
+                // --- Save Button (Updated to navigate to ProfessionScreen) ---
+                SizedBox(
+                  width: double.infinity,
+                  height: 50,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      // UPDATED NAVIGATION LOGIC
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(builder: (context) => const ProfessionScreen()),
+                      // );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: primaryBlue,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      elevation: 5,
+                    ),
+                    child: const Text(
+                      'Save',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -705,47 +710,45 @@ class ProfileScreen extends StatelessWidget {
     required Color color,
     IconData? icon,
   }) {
-    return Expanded(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 4.0),
-        child: Container(
-          padding: const EdgeInsets.all(12),
-          decoration: BoxDecoration(
-            color: lightGreyBackground,
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    value,
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: color,
-                    ),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 4.0),
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 4,vertical: 12),
+        decoration: BoxDecoration(
+          color: lightGreyBackground,
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  value,
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: color,
                   ),
-                  if (icon != null)
-                    Padding(
-                      padding: const EdgeInsets.only(left: 4.0),
-                      child: Icon(icon, color: color, size: 20),
-                    ),
-                ],
-              ),
-              const SizedBox(height: 4),
-              Text(
-                label,
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                  fontSize: 12,
-                  color: Colors.black54,
                 ),
+                if (icon != null)
+                  Padding(
+                    padding: const EdgeInsets.only(left: 4.0),
+                    child: Icon(icon, color: color, size: 20),
+                  ),
+              ],
+            ),
+            const SizedBox(height: 4),
+            Text(
+              label,
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                fontSize: 12,
+                color: Colors.black54,
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
@@ -829,22 +832,28 @@ class ProfileScreen extends StatelessWidget {
             // --- Stats Section ---
             Row(
               children: [
-                _buildStatBox(
-                  value: '\$343',
-                  label: 'Earnings',
-                  color: Colors.green,
-                  icon: Icons.attach_money,
+                Expanded(
+                  child: _buildStatBox(
+                    value: '343',
+                    label: 'Earnings',
+                    color: Colors.green,
+                    icon: Icons.attach_money,
+                  ),
                 ),
-                _buildStatBox(
-                  value: '2 Orders',
-                  label: 'Active',
-                  color: primaryBlue,
+                Expanded(
+                  child: _buildStatBox(
+                    value: '2 Orders',
+                    label: 'Active',
+                    color: primaryBlue,
+                  ),
                 ),
-                _buildStatBox(
-                  value: '56 Orders',
-                  label: 'Completed',
-                  color: Colors.orange,
-                  icon: Icons.check_circle,
+                Expanded(
+                  child: _buildStatBox(
+                    value: '56 Orders',
+                    label: 'Completed',
+                    color: Colors.orange,
+                    icon: Icons.check_circle,
+                  ),
                 ),
               ],
             ),
@@ -908,12 +917,56 @@ class ProfileScreen extends StatelessWidget {
               leadingWidget: const Icon(Icons.help_outline, color: primaryBlue),
               onTap: () {},
             ),
+            // ProfileListItem(
+            //   title: 'Logout',
+            //   leadingWidget: const Icon(Icons.logout, color: Colors.grey),
+            //   onTap: () {
+            //     Navigator.of(context, rootNavigator: true).pushAndRemoveUntil(
+                          
+            //               MaterialPageRoute(builder: (context) => const LoginScreen()),
+            //               (route) => false,
+            //             );
+            //             },
+            //   trailingWidget: const SizedBox.shrink(), // لإخفاء السهم في زر الخروج
+            // ),
             ProfileListItem(
-              title: 'Logout',
-              leadingWidget: const Icon(Icons.logout, color: Colors.grey),
-              onTap: () {},
-              trailingWidget: const SizedBox.shrink(), // لإخفاء السهم في زر الخروج
+  title: 'Logout',
+  leadingWidget: const Icon(Icons.logout, color: Colors.grey),
+  onTap: () {
+    showDialog(
+      
+      context: context,
+      builder: (context) => AlertDialog(
+        backgroundColor: AppColors.bgColor,
+        title: const Text('Confirm Logout'),
+        content: const Text('Are you sure you want to log out?'),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop(); // يغلق الـ dialog فقط
+            },
+            child: const Text('Cancel',style: TextStyle(color: Colors.black),),
+          ),
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.red,
             ),
+            onPressed: () {
+              Navigator.of(context).pop(); // يغلق الـ dialog
+              Navigator.of(context, rootNavigator: true).pushAndRemoveUntil(
+                MaterialPageRoute(builder: (context) => const LoginScreen()),
+                (route) => false,
+              );
+            },
+            child: const Text('Logout',style: TextStyle(color: Colors.white)),
+          ),
+        ],
+      ),
+    );
+  },
+  trailingWidget: const SizedBox.shrink(), // لإخفاء السهم في زر الخروج
+),
+
             const SizedBox(height: 30),
 
             // --- Change Profile Mode Button ---

@@ -34,9 +34,12 @@ class SelectionCubit extends Cubit<SelectionState> {
   void onNextTapped() {
     if (state.selectedRole != null) {
       emit(state.copyWith(navigateNext: true, errorMessage: null));
-      // هنا ممكن بعدين نضيف save في Firestore
     } else {
       emit(state.copyWith(errorMessage: 'من فضلك اختار دورك'));
     }
+  }
+
+  void resetNavigation() {
+    emit(state.copyWith(navigateNext: false));
   }
 }

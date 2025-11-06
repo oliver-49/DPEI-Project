@@ -2,6 +2,7 @@ import 'package:fixit/gitHub/booking_services/cubit/booking_cubit.dart';
 import 'package:fixit/gitHub/booking_services/cubit/booking_state.dart';
 import 'package:fixit/gitHub/booking_services/view/providerprofile.dart';
 import 'package:fixit/gitHub/booking_services/widgets/custom_button.dart';
+import 'package:fixit/ye/utalities/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -25,6 +26,7 @@ class _ReviewsummaryState extends State<Reviewsummary> {
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
+        backgroundColor: AppColors.bgColor,
         body: SafeArea(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 24),

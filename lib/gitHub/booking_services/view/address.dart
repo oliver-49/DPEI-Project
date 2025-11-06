@@ -4,6 +4,7 @@ import 'package:fixit/gitHub/booking_services/model/Address_model.dart';
 import 'package:fixit/gitHub/booking_services/view/date.dart';
 import 'package:fixit/gitHub/booking_services/widgets/custom_button.dart';
 import 'package:fixit/gitHub/booking_services/widgets/custom_textfield.dart';
+import 'package:fixit/ye/utalities/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
@@ -44,6 +45,7 @@ class Address extends StatelessWidget {
             }
           },
           child: Scaffold(
+        backgroundColor: AppColors.bgColor,
             body: SafeArea(
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 24),
@@ -92,7 +94,7 @@ class Address extends StatelessWidget {
                             return ("أدخل رقم منزل صحيح");
                           }
                           return null;
-                        },
+                        }, prefixIcon: null,
                       ),
                       SizedBox(height: screenHeight * .025),
                       customTextfield(
@@ -103,7 +105,7 @@ class Address extends StatelessWidget {
                             return ("أدخل رقم شارع صحيح");
                           }
                           return null;
-                        },
+                        }, prefixIcon: null,
                       ),
                       SizedBox(height: screenHeight * .025),
                       customTextfield(
@@ -114,7 +116,7 @@ class Address extends StatelessWidget {
                             return ("أدخل العنوان بالكامل  ");
                           }
                           return null;
-                        },
+                        }, prefixIcon: null,
                       ),
                       SizedBox(height: screenHeight * .250),
                       BlocBuilder<BookingCubit, BookingState>(

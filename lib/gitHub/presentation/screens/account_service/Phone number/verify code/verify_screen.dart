@@ -1,6 +1,6 @@
 import 'package:fixit/l10n/app_localizations.dart';
-import 'package:fixit/gitHub/presentation/screens/account_service/Phone%20number/verify%20code/verify_code_cubit.dart';
 import 'package:fixit/gitHub/presentation/screens/account_service/Location/LocationAccess/location_acssess_view.dart';
+import 'package:fixit/gitHub/presentation/screens/account_service/Phone%20number/verify%20code/verify_code_cubit.dart';
 import 'package:fixit/gitHub/presentation/widgets/custombutton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,18 +20,7 @@ class VerifyCode extends StatelessWidget {
     return BlocProvider(
       create: (_) => VerifyCodeCubit(),
       child: BlocListener<VerifyCodeCubit, VerifyCodeState>(
-        listener: (context, state) {
-          // if (state.isSuccess) {
-          //   Navigator.push(
-          //     context,
-          //     MaterialPageRoute(builder: (_) => const LocationAccessUI()),
-          //   );
-          // } else if (state.errorMessage != null) {
-          //   ScaffoldMessenger.of(
-          //     context,
-          //   ).showSnackBar(SnackBar(content: Text(state.errorMessage!)));
-          // }
-        },
+        listener: (context, state) {},
         child: Scaffold(
           backgroundColor: const Color(0xffFFFFFF),
           appBar: AppBar(
@@ -103,17 +92,28 @@ class VerifyCode extends StatelessWidget {
                     onPressed: state.isLoading
                         ? null
                         : () {
-                            context.read<VerifyCodeCubit>().verifyCode();
-                            if (state.isSuccess) {
+                            context.read<VerifyCodeCubit>().verifyCode(
+                              onError: () {
+                                // امسح الأرقام بعد الخطأ
+                                for (final c in controllers) {
+                                  c.clear();
+                                }
+                                FocusScope.of(context).unfocus();
+                              },
+                              onSuccess: () {
                                 Navigator.push(
                                   context,
-                                  MaterialPageRoute(builder: (_) =>  LocationAccessUI()),
+                                  MaterialPageRoute(
+                                    builder: (_) => LocationAccessUI(),
+                                  ),
                                 );
-                              } else if (state.errorMessage != null) {
+                              },
+                              showError: (msg) {
                                 ScaffoldMessenger.of(
                                   context,
-                                ).showSnackBar(SnackBar(content: Text(state.errorMessage!)));
-                              }
+                                ).showSnackBar(SnackBar(content: Text(msg)));
+                              },
+                            );
                           },
                   ),
                   SizedBox(height: screenHeight * 0.03),

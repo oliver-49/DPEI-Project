@@ -1,10 +1,14 @@
-import 'package:fixit/gitHub/presentation/screens/account_service/widgets.dart';
+import 'package:fixit/gitHub/core/stores/app_box.dart';
+import 'package:fixit/l10n/app_localizations.dart';
+import 'package:fixit/gitHub/presentation/homescreen.dart';
+import 'package:fixit/gitHub/presentation/screens/account_service/Phone%20number/phoneNumber_screen/phone_screen.dart';
+import 'package:fixit/gitHub/presentation/widgets/widgets.dart';
+import 'package:fixit/gitHub/presentation/screens/customescreens/customer_phone/customer_phone_view.dart';
+import 'package:fixit/gitHub/presentation/widgets/custombutton.dart';
+import 'package:fixit/ye/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fixit/l10n/app_localizations.dart';
-import 'package:fixit/gitHub/presentation/screens/account_service/Phone%20number/phoneNumber_screen/phone_screen.dart';
-import 'package:fixit/gitHub/presentation/screens/customescreens/customerphone.dart';
-import 'package:fixit/gitHub/presentation/widgets/custombutton.dart';
+
 import 'selection_cubit.dart';
 
 class AccountSetup extends StatelessWidget {
@@ -12,13 +16,28 @@ class AccountSetup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (AppBox.isSetupDone()) {
+      Future.microtask(() {
+        Navigator.pushAndRemoveUntil(
+          // ignore: use_build_context_synchronously
+          context,
+          MaterialPageRoute(builder: (_) =>  HomeScreen()),
+          (route) => false,
+        );
+      });
+      return const SizedBox.shrink();
+    }
+
     final mediaQuery = MediaQuery.of(context);
     final screenWidth = mediaQuery.size.width;
     final screenHeight = mediaQuery.size.height;
 
+    // ✅ BlocProvider اتحذف من هنا
     return BlocListener<SelectionCubit, SelectionState>(
-      listener: (context, state) {
+      listener: (context, state) async {
         if (state.navigateNext) {
+          context.read<SelectionCubit>().resetNavigation();
+
           if (state.selectedRole == 'Service Provider') {
             Navigator.push(
               context,
@@ -27,7 +46,7 @@ class AccountSetup extends StatelessWidget {
           } else if (state.selectedRole == 'Looking for service') {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (_) => const Customerphone()),
+              MaterialPageRoute(builder: (_) => const CustomerPhoneView()),
             );
           }
         }
@@ -68,6 +87,7 @@ class AccountSetup extends StatelessWidget {
                 ),
               ),
               SizedBox(height: screenHeight * 0.03),
+
               BlocBuilder<SelectionCubit, SelectionState>(
                 builder: (context, state) {
                   return Column(
@@ -110,7 +130,9 @@ class AccountSetup extends StatelessWidget {
                   );
                 },
               ),
+
               SizedBox(height: screenHeight * 0.06),
+
               buttonItem(
                 context,
                 text: AppLocalizations.of(context)!.nextButton,
