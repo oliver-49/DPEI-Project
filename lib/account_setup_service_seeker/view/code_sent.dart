@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:get/get.dart';
+import '../../../l10n/app_localizations.dart';
 import '../../booking_services/view/const.dart';
 import '../../booking_services/widgets/custom_button.dart';
 import '../cubit/code_cubit.dart';
@@ -18,18 +19,19 @@ class CodeSent extends StatelessWidget {
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.of(context).size.width;
     var screenHeight = MediaQuery.of(context).size.height;
+    var lang=AppLocalizations.of(context)!;
 
     return BlocProvider(
       create: (context) => VerifyCubit(),
       child: BlocListener<VerifyCubit, VerifyState>(
         listener: (context, state) {
            if (state is VerifyError) {
-          Get.snackbar("Error", state.message,
+          Get.snackbar(lang.error, state.message,
           backgroundColor: Colors.red,
           colorText: Colors.white,);
           }
            else if (state is VerifySuccess) {
-            Get.snackbar("Success", "the code is correct",
+            Get.snackbar(lang.success, lang.theCodeIsCorrect,
             backgroundColor: Colors.green,
           colorText: Colors.white,);
              Get.to(CreatePassword());
@@ -53,7 +55,7 @@ class CodeSent extends StatelessWidget {
               children: [
                 SizedBox(height: screenHeight * .04),
                  Text(
-                  "Enter 5-digit PIN code sent to your Email address",
+                  lang.enter5digit,
                   style: TextStyle(
                     fontSize: 20,
                     color: Color(0xff565656),
@@ -76,7 +78,7 @@ class CodeSent extends StatelessWidget {
                       return  Center(child: CircularProgressIndicator());
                     }
                     return customButton(
-                      title:"Verify",
+                      title:lang.verify,
                       onTap: () {
                         context.read<VerifyCubit>().verifyCode(otpCode);
                       },
@@ -96,9 +98,9 @@ class CodeSent extends StatelessWidget {
                       child:Center(child: Text("60")),
                     ),
                     SizedBox(width: screenWidth * .03),
-                    Text("Did not received code?", style: TextStyle(fontSize: 16)),
+                    Text(lang.didNotReceiveCode, style: TextStyle(fontSize: 16)),
                     Text(
-                      " send again",
+                     lang.sendAgain,
                       style: TextStyle(color: Colors.blue, fontSize: 16),
                     ),
                   ],

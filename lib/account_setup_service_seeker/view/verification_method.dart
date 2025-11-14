@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 
+import '../../../l10n/app_localizations.dart';
 import '../../booking_services/widgets/custom_button.dart';
 import '../../booking_services/widgets/custom_select.dart';
 
@@ -27,17 +28,18 @@ class VerificationMethod extends StatelessWidget {
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.of(context).size.width;
     var screenHeight = MediaQuery.of(context).size.height;
+    var lang=AppLocalizations.of(context)!;
 
     return BlocProvider(
       create: (context) => VerificationCubit(),
       child: BlocListener<VerificationCubit, VerificationState>(
         listener: (context, state) {
           if (state is VerificationError) {
-            Get.snackbar("Error", state.message, backgroundColor: Colors.red);
+            Get.snackbar(lang.error, state.message, backgroundColor: Colors.red);
           } else if (state is VerificationNext) {
-            if (state.method == "email") {
+            if (state.method == lang.email) {
               Get.to(() => Emailaddress());
-            } else if (state.method == "phone") {
+            } else if (state.method == lang.phone) {
               Get.to(() => const PhoneVerificationPage());
             }
           }
@@ -68,8 +70,8 @@ class VerificationMethod extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(height: screenHeight * .04),
-                    const Text(
-                      "Select Verification method",
+                     Text(
+                      lang.selectVerifcationMethod,
                       style: TextStyle(
                         fontSize: 20,
                         color: Color(0xff565656),
@@ -79,26 +81,26 @@ class VerificationMethod extends StatelessWidget {
                     SizedBox(height: screenHeight * .03),
 
                     GestureDetector(
-                      onTap: () => cubit.selectMethod("email"),
+                      onTap: () => cubit.selectMethod(lang.email),
                       child: Select(
                         icon: Icons.email_rounded,
-                        text: "Email",
-                        isSelected: selected == "email",
+                        text: lang.email,
+                        isSelected: selected == lang.email,
                       ),
                     ),
                     SizedBox(height: screenHeight * .02),
 
                     GestureDetector(
-                      onTap: () => cubit.selectMethod("phone"),
+                      onTap: () => cubit.selectMethod(lang.phone),
                       child: Select(
                         icon: Icons.call,
-                        text: "Mobile Phone",
-                        isSelected: selected == "phone",
+                        text: lang.phone,
+                        isSelected: selected == lang.phone,
                       ),
                     ),
                     SizedBox(height: screenHeight * .04),
 
-                    customButton(title: "Next", onTap: () => cubit.goNext()),
+                    customButton(title: lang.next, onTap: () => cubit.goNext()),
                   ],
                 ),
               );

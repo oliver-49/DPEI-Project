@@ -2,6 +2,7 @@ import 'package:fixit/account_setup_service_seeker/view/code_sent.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
+import '../../../l10n/app_localizations.dart';
 import '../../booking_services/view/const.dart';
 import '../../booking_services/widgets/custom_textfield.dart';
 import '../../booking_services/widgets/custom_button.dart';
@@ -18,13 +19,14 @@ class Emailaddress extends StatelessWidget {
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.of(context).size.width;
     var screenHeight = MediaQuery.of(context).size.height;
+    var lang=AppLocalizations.of(context)!;
 
     return BlocProvider(
       create: (context) => EmailCubit(),
       child: BlocListener<EmailCubit, EmailState>(
         listener: (context, state) {
           if (state is EmailSuccess) {
-            Get.snackbar("Success", "code sends successfully ",
+            Get.snackbar(lang.success, lang.codeSendsSuccessfully,
                 backgroundColor: Colors.green,
                 colorText: Colors.white);
             Get.to(CodeSent());
@@ -53,7 +55,7 @@ class Emailaddress extends StatelessWidget {
                 children: [
                   SizedBox(height: screenHeight * .04),
                    Text(
-                    "Enter your Email address to verify",
+                    lang.enterEmail,
                     style: TextStyle(
                       fontSize: 20,
                       color: Color(0xff565656),
@@ -62,15 +64,15 @@ class Emailaddress extends StatelessWidget {
                   ),
                   SizedBox(height: screenHeight * .04),
                   customTextfield(
-                    label: "Email",
+                    label: lang.email,
                     prefixIcon: Icon(Icons.email_rounded),
                     controller: controller,
                     validator: (val) {
                       if (val == null || val.isEmpty) {
-                        return "Please enter your email";
+                        return lang.pleaseEnterYourEmail;
                       } else if (!RegExp(r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]+$")
                           .hasMatch(val)) {
-                        return "Enter a valid email address";
+                        return lang.enterValidEmailAddress;
                       }
                       return null;
                     },
@@ -82,7 +84,7 @@ class Emailaddress extends StatelessWidget {
                         return  Center(child: CircularProgressIndicator());
                       }
                       return customButton(
-                        title: "Send code",
+                        title: lang.sendCode,
                         onTap: () {
                           if (formKey.currentState!.validate()) {
                             context

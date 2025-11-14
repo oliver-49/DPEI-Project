@@ -1,6 +1,8 @@
 import 'package:fixit/booking_services/view/const.dart';
 import 'package:flutter/material.dart';
 
+import '../../../l10n/app_localizations.dart';
+
 class RatingANDOrders extends StatelessWidget {
   const RatingANDOrders({
     super.key,
@@ -11,6 +13,8 @@ class RatingANDOrders extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var lang=AppLocalizations.of(context)!;
+
     return Container(
       padding: EdgeInsets.symmetric(vertical: 20),
       decoration: BoxDecoration(
@@ -34,7 +38,7 @@ class RatingANDOrders extends StatelessWidget {
                 height: screenHeight * .04,
               ),
               Text("4.8", style: TextStyle(fontSize: 18)),
-              Text("التقيم"),
+              Text(lang.rate),
             ],
           ),
           Column(
@@ -44,19 +48,19 @@ class RatingANDOrders extends StatelessWidget {
                 height: screenHeight * .04,
               ),
               Text(
-                "56 طلب",
+                lang.order,
                 style: TextStyle(fontSize: 18),
               ),
-              Text("مكتمل"),
+              Text(lang.complete),
             ],
           ),
           Column(
             children: [
               Text(
-                "4 سنوات ",
+                lang.years,
                 style: TextStyle(fontSize: 18),
               ),
-              Text("خبرة"),
+              Text(lang.experience),
             ],
           ),
         ],
