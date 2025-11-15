@@ -235,4 +235,134 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get home => 'Home';
+
+  @override
+  String get myOrders => 'My Orders';
+
+  @override
+  String get city => 'City';
+
+  @override
+  String get orders => 'Orders';
+
+  @override
+  String get profile => 'Profile';
+
+  @override
+  String get unpaid => 'Unpaid';
+
+  @override
+  String get paid => 'Paid';
+
+  @override
+  String get schedule => 'Scheduled';
+
+  @override
+  String get noOrders => 'No Orders Found';
+
+  @override
+  String get egp => 'EGP';
+
+  @override
+  String get providerName => 'Provider';
+
+  @override
+  String get date => 'Date';
+
+  @override
+  String get arrivalTime => 'Arrival Time';
+
+  @override
+  String get payNow => 'Pay Now';
+
+  @override
+  String get viewReceipt => 'View Receipt';
+
+  @override
+  String get cancelBooking => 'Cancel Booking';
+
+  @override
+  String get amountToPay => 'Amount to pay';
+
+  @override
+  String get unpaidSubtitle => 'You have not paid yet for below service';
+
+  @override
+  String get paidSubtitle => 'Paid services';
+
+  @override
+  String get scheduleSubtitle => 'Upcoming Booking services';
+
+  @override
+  String get amountToPaid => 'Amount to paid';
+
+  @override
+  String get bookingDate => 'Booking date';
+
+  @override
+  String get payment => 'Payment';
+
+  @override
+  String get selectPaymentMethod => 'Select Payment method';
+
+  @override
+  String get addNewCard => 'Add new card';
+
+  @override
+  String get cardNumber => 'Card number';
+
+  @override
+  String get cardHolderName => 'Card holder name';
+
+  @override
+  String get cardExpiryDate => 'Card expiry date';
+
+  @override
+  String get cvv => 'CVV';
+
+  @override
+  String get continueBtn => 'Continue';
+
+  @override
+  String get hour => 'hour';
+
+  @override
+  String get hourLabel => 'H';
+
+  @override
+  String get perHour => 'H';
+
+  @override
+  String get enterValidCardNumber =>
+      'Please enter a valid 16-digit card number';
+
+  @override
+  String get enterExpiryDate => 'Please choose an expiry date';
+
+  @override
+  String get enterValidCvv => 'CVV must be 3 to 4 digits';
+
+  @override
+  String get paymentSuccessful => 'Payment successful';
+
+  @override
+  String get paymentOf => 'Payment of';
+
+  @override
+  String get paidSuccessfully => 'has been paid successfully';
+
+  @override
+  String get giveFeedback => 'Give Feedback';
+
+  @override
+  String get howWasExperience => 'How was your experience with Fix it?';
+
+  @override
+  String get writeFeedback => 'Write in the box below';
+
+  @override
+  String get send => 'Send';
+
+  @override
+  String get pay => 'pay';
 }

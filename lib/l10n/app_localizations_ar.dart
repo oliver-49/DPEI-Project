@@ -236,4 +236,134 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get home => 'الصفحة الرئيسية';
+
+  @override
+  String get myOrders => 'طلباتي';
+
+  @override
+  String get city => 'المدينة';
+
+  @override
+  String get orders => 'الطلبات';
+
+  @override
+  String get profile => 'الملف الشخصي';
+
+  @override
+  String get unpaid => 'غير مدفوعة';
+
+  @override
+  String get paid => 'مدفوعة';
+
+  @override
+  String get schedule => 'مجدولة';
+
+  @override
+  String get noOrders => 'لا توجد طلبات';
+
+  @override
+  String get egp => 'ج.م';
+
+  @override
+  String get providerName => 'اسم المزود';
+
+  @override
+  String get date => 'التاريخ';
+
+  @override
+  String get arrivalTime => 'وقت الوصول';
+
+  @override
+  String get payNow => 'ادفع الآن';
+
+  @override
+  String get viewReceipt => 'عرض الفاتورة';
+
+  @override
+  String get cancelBooking => 'إلغاء الحجز';
+
+  @override
+  String get amountToPay => 'المبلغ المستحق';
+
+  @override
+  String get unpaidSubtitle => 'لم تقم بالدفع بعد للخدمة التالية';
+
+  @override
+  String get paidSubtitle => 'الخدمات المدفوعة';
+
+  @override
+  String get scheduleSubtitle => 'الخدمات القادمة';
+
+  @override
+  String get amountToPaid => 'المبلغ المدفوع';
+
+  @override
+  String get bookingDate => 'تاريخ الحجز';
+
+  @override
+  String get payment => 'الدفع';
+
+  @override
+  String get selectPaymentMethod => 'اختر طريقة الدفع';
+
+  @override
+  String get addNewCard => 'إضافة بطاقة جديدة';
+
+  @override
+  String get cardNumber => 'رقم البطاقة';
+
+  @override
+  String get cardHolderName => 'اسم صاحب البطاقة';
+
+  @override
+  String get cardExpiryDate => 'تاريخ انتهاء البطاقة';
+
+  @override
+  String get cvv => 'رمز الأمان CVV';
+
+  @override
+  String get continueBtn => 'متابعة';
+
+  @override
+  String get hour => 'ساعة';
+
+  @override
+  String get hourLabel => 'ساعة';
+
+  @override
+  String get perHour => 'ساعة';
+
+  @override
+  String get enterValidCardNumber =>
+      'من فضلك أدخل رقم بطاقة صحيح مكون من 16 رقم';
+
+  @override
+  String get enterExpiryDate => 'من فضلك اختر تاريخ الإنتهاء';
+
+  @override
+  String get enterValidCvv => 'يجب أن يكون CVV من 3 إلى 4 أرقام';
+
+  @override
+  String get paymentSuccessful => 'تم الدفع بنجاح';
+
+  @override
+  String get paymentOf => 'تم دفع مبلغ';
+
+  @override
+  String get paidSuccessfully => 'بنجاح';
+
+  @override
+  String get giveFeedback => 'إرسال تقييم';
+
+  @override
+  String get howWasExperience => 'كيف كانت تجربتك مع Fix it؟';
+
+  @override
+  String get writeFeedback => 'اكتب ملاحظاتك هنا';
+
+  @override
+  String get send => 'إرسال';
+
+  @override
+  String get pay => 'ادفع';
 }

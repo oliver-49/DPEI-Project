@@ -298,7 +298,84 @@
   "home": "Home",
   "@home": {
     "description": "Button text that takes the user back to the home screen"
-  }
+  },
+  "myOrders": "My Orders",
+  "@myOrders": {
+    "description": "Title for the user's orders section"
+  },
+  "city": "City",
+  "@city": {},
+  "orders": "Orders",
+  "@orders": {},
+  "profile": "Profile",
+  "@profile": {},
+
+  "unpaid": "Unpaid",
+  "@unpaid": {},
+  "paid": "Paid",
+  "@paid": {},
+  "schedule": "Scheduled",
+  "@schedule": {},
+
+  "noOrders": "No Orders Found",
+  "@noOrders": {},
+
+  "egp": "EGP",
+  "@egp": {},
+  "providerName": "Provider",
+  "@providerName": {},
+  "date": "Date",
+  "@date": {},
+  "arrivalTime": "Arrival Time",
+  "@arrivalTime": {},
+
+  "payNow": "Pay Now",
+  "@payNow": {},
+  "viewReceipt": "View Receipt",
+  "@viewReceipt": {},
+  "cancelBooking": "Cancel Booking",
+  "@cancelBooking": {},
+  
+  "amountToPay": "Amount to pay",
+  "@amountToPay": {},
+   "unpaidSubtitle": "You have not paid yet for below service",
+
+  "paidSubtitle": "Paid services",
+  "scheduleSubtitle": "Upcoming Booking services",
+   "amountToPaid": "Amount to paid",
+   "bookingDate": "Booking date",
+   "payment": "Payment",
+  "selectPaymentMethod": "Select Payment method",
+  "addNewCard": "Add new card",
+ 
+  "cardNumber": "Card number",
+  "cardHolderName": "Card holder name",
+  "cardExpiryDate": "Card expiry date",
+  "cvv": "CVV",
+  "continueBtn": "Continue",
+  "hour": "hour",
+"@hour": {},
+"hourLabel": "H",
+"@hourLabel": {},
+"perHour": "H",
+"@perHour": {},
+"enterValidCardNumber": "Please enter a valid 16-digit card number",
+"enterExpiryDate": "Please choose an expiry date",
+"enterValidCvv": "CVV must be 3 to 4 digits",
+"paymentSuccessful": "Payment successful",
+"paymentOf": "Payment of",
+"paidSuccessfully": "has been paid successfully",
+
+"giveFeedback": "Give Feedback",
+"howWasExperience": "How was your experience with Fix it?",
+"writeFeedback": "Write in the box below",
+"send": "Send",
+"pay" : "pay"
+
+
+
+
+
 
 
 }

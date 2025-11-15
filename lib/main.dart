@@ -2,6 +2,8 @@ import 'package:fixit/core/stores/app_box.dart';
 import 'package:fixit/l10n/app_localizations.dart';
 import 'package:fixit/presentation/screens/account_service/Selction_view/selection_cubit.dart';
 import 'package:fixit/presentation/screens/account_service/Selction_view/selection_who_screen.dart';
+// import 'package:fixit/presentation/screens/account_service/Selction_view/selection_who_screen.dart';
+// import 'package:fixit/presentation/screens/order_booking/order/order_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -38,7 +40,9 @@ class MyApp extends StatelessWidget {
       home: BlocProvider(
         create: (context) => SelectionCubit(),
         child: const AccountSetup(),
+        //AccountSetup(),
       ),
+      // home: const OrdersView(),
     );
   }
 }
