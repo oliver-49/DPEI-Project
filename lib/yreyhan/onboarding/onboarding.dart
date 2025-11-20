@@ -140,41 +140,41 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       ),
                     ),
                   ),
-                  Positioned(
-                    top: 50,
-                    right: 0,
-                    left: 0,
-                    child: Center(
-                      child: InkWell(
-                        onTap: () {
-                          context.read<LanguageCubit>().toggleLanguage();
-                        },
-                        child: Container(
-                          child: Text(
-                            context.watch<LanguageCubit>().state.languageCode ==
-                                    'en'
-                                ? "Change Language"
-                                : "تغير اللغة ",
-                            style: TextStyle(color: Colors.white),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    top: 50,
-                    right: 0,
-                    child: Center(
-                      child: Builder(
-                        builder: (context) {
-                          return Text(
-                            AppLocalizations.of(context)!.nextButton,
-                            style: const TextStyle(color: Colors.white),
-                          );
-                        },
-                      ),
-                    ),
-                  ),
+                  // Positioned(
+                  //   top: 50,
+                  //   right: 0,
+                  //   left: 0,
+                  //   child: Center(
+                  //     child: InkWell(
+                  //       onTap: () {
+                  //         context.read<LanguageCubit>().toggleLanguage();
+                  //       },
+                  //       child: Container(
+                  //         child: Text(
+                  //           context.watch<LanguageCubit>().state.languageCode ==
+                  //                   'en'
+                  //               ? "Change Language"
+                  //               : "تغير اللغة ",
+                  //           style: TextStyle(color: Colors.white),
+                  //         ),
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
+                  // Positioned(
+                  //   top: 50,
+                  //   right: 0,
+                  //   child: Center(
+                  //     child: Builder(
+                  //       builder: (context) {
+                  //         return Text(
+                  //           AppLocalizations.of(context)!.nextButton,
+                  //           style: const TextStyle(color: Colors.white),
+                  //         );
+                  //       },
+                  //     ),
+                  //   ),
+                  // ),
                 ],
               ),
             ),

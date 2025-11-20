@@ -1,10 +1,13 @@
+import 'package:fixit/userModel/service_provider_model.dart';
+import 'package:fixit/userModel/service_provider_state.dart';
 import 'package:fixit/ye/utalities/colors.dart';
 import 'package:fixit/yreyhan/auth/login_screen.dart';
 import 'package:fixit/yreyhan/const.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fixit/gitHub/presentation/screens/account_service/Selction_view/selection_who_screen.dart';
-
+import 'package:fixit/firebase/auth_service.dart';
+import 'package:provider/provider.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -17,6 +20,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
   bool _isPasswordVisible = false;
   bool _isChecked = false;
   final _key = GlobalKey<FormState>();
+
+  final TextEditingController nameController = TextEditingController();
+  // final TextEditingController phoneController = TextEditingController();
+  final String phoneController = '';
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+
+  final AuthService _authService = AuthService();
+  bool loading = false;
+
+   
 
   @override
   Widget build(BuildContext context) {
@@ -63,6 +77,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
                   // Full Name
                   TextFormField(
+                    controller: nameController,
                     decoration: InputDecoration(
                       labelText: 'Full name',
                       prefixIcon: Padding(
@@ -78,6 +93,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
                   // Email
                   TextFormField(
+                    controller: emailController,
                     decoration: InputDecoration(
                       labelText: 'Enter your email',
                       prefixIcon: Padding(
@@ -105,6 +121,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
                   // Password
                   TextFormField(
+                    controller: passwordController,
                     obscureText: !_isPasswordVisible,
                     decoration: InputDecoration(
                       labelText: 'Enter password',
@@ -179,17 +196,58 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     height: 56,
                     child: ElevatedButton(
                       onPressed: _isChecked
-                          ? () {
+                          ? () async {
                               if (_key.currentState!.validate()) {
-                                Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => 
-                                    AccountSetup(),
-                                    // LoginScreen(),
-                                  ),
+                                setState(() => loading = true);
+                                
+                                String? res = await _authService.signUp(
+                                  name: nameController.text,
+                                  phone: phoneController,
+                                  email: emailController.text,
+                                  password: passwordController.text,
                                 );
-                                setState(() {});
+
+                                setState(() => loading = false);
+
+                                if (res == "success") {
+                                  String uid=await _authService.getUserUid()??"";
+                                   final provider = ServiceProviderModel(
+  uid: uid,
+  email: emailController.text,
+  name: nameController.text
+);
+                                  
+                                  Navigator.pushReplacement(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => 
+                                  //       ChangeNotifierProvider(
+                                  //           create: (_) => ServiceProviderState(model: initialModel),
+                                  //           child: AccountSetup()
+                                  // ),
+                                  
+                                      AccountSetup(provider: provider),
+                                      // LoginScreen(),
+                                    ),
+                                  );
+
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    
+                                    SnackBar(
+                                      backgroundColor: Colors.green,
+                                      content: Text(
+                                        "Account created successfully",style: TextStyle(color:Colors.white),
+                                      ),
+                                    ),
+                                  );
+                                  // Navigator.pop(context);
+                                } else {
+                                  ScaffoldMessenger.of(
+                                    context,
+                                  ).showSnackBar(SnackBar(
+                                    backgroundColor: Colors.red,
+                                    content: Text(res!,style: TextStyle(color:Colors.white))));
+                                }
                               }
                             }
                           : null,
@@ -200,15 +258,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           borderRadius: BorderRadius.circular(6),
                         ),
                       ),
-                      child: Text(
-                        "Sign Up",
-                        style: Theme.of(context).textTheme.titleMedium
-                            ?.copyWith(
-                              color: Colors.white,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 18,
+                      child: loading
+                          ? CircularProgressIndicator(color: Colors.white)
+                          : Text(
+                              "Sign Up",
+                              style: Theme.of(context).textTheme.titleMedium
+                                  ?.copyWith(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 18,
+                                  ),
                             ),
-                      ),
                     ),
                   ),
                   const SizedBox(height: 24),
@@ -231,8 +291,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             context,
                             MaterialPageRoute(
                               builder: (context) =>
-                              // AccountSetup() 
-                              const LoginScreen(),
+                                  // AccountSetup()
+                                  const LoginScreen(),
                             ),
                           );
                         },

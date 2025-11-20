@@ -45,7 +45,7 @@ dependencies:
   cupertino_icons: ^1.0.8
   country_code_picker: ^3.4.0
   flutter_gen: ^5.12.0
-  firebase_core: ^4.2.0
+  firebase_core: ^4.2.1
   cloud_firestore: ^6.0.3
 
   get: ^4.7.2
@@ -55,6 +55,8 @@ dependencies:
   smooth_page_indicator: ^1.2.1
   flutter_otp_text_field: ^1.5.1+1
   hive_flutter: ^1.1.0
+  firebase_auth: ^6.1.2
+  provider: ^6.1.5+1
 
 dev_dependencies:
   flutter_test:

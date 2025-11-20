@@ -34,20 +34,21 @@ class PhoneNumberCubit extends Cubit<PhoneNumberState> {
     if (p.isEmpty) {
       return 'من فضلك أدخل رقم الهاتف';
     }
-    if (p.length != 11) {
-      return 'رقم الهاتف يجب أن يكون 11 رقمًا';
+    if (p.length != 10) {
+      return 'رقم الهاتف يجب أن يكون 10 أرقام';
     }
 
-    const allowedPrefixes = ['010', '011', '012', '015'];
+
+    const allowedPrefixes = ['10', '11', '12', '15'];
     final hasValidPrefix = allowedPrefixes.any((pre) => p.startsWith(pre));
 
     if (!hasValidPrefix) {
-      return 'رقم المحمول يجب أن يبدأ بـ 010 أو 011 أو 012 أو 015';
+      return 'رقم المحمول يجب أن يبدأ بـ 10 أو 11 أو 12 أو 15';
     }
 
-    final isAllDigits = RegExp(r'^\d{11}$').hasMatch(p);
+    final isAllDigits = RegExp(r'^\d{10}$').hasMatch(p);
     if (!isAllDigits) {
-      return 'رقم الهاتف يجب أن يحتوي على أرقام فقط';
+      return 'رقم الهاتف يجب أن يحتوي على 10 أرقام فقط';
     }
 
     return null;

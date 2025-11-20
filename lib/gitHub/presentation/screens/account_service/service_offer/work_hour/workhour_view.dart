@@ -1,14 +1,18 @@
+import 'package:fixit/firebase/work_hour.dart';
 import 'package:fixit/l10n/app_localizations.dart';
 import 'package:fixit/gitHub/presentation/screens/account_service/Upload%20documents/upload_documents_screen.dart';
 import 'package:fixit/gitHub/presentation/screens/account_service/service_offer/work_hour/workhour_state.dart';
 import 'package:fixit/gitHub/presentation/widgets/custombutton.dart';
+import 'package:fixit/userModel/service_provider_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'workhour_cubit.dart';
 
 class Workhour extends StatelessWidget {
-  const Workhour({super.key});
+  final ServiceProviderModel provider;
+  
+  const Workhour({super.key, required this.provider});
 
   @override
   Widget build(BuildContext context) {
@@ -149,10 +153,18 @@ class Workhour extends StatelessWidget {
                             if (!ok) return;
 
                             if (context.mounted) {
-                              Navigator.push(
+                              await WorkHourMode().setUserWorkHour(
+                                startingTime: cubit.state.fromTime!,
+                               endingTime: cubit.state.toTime!);
+                             
+                              provider.startingTime=cubit.state.fromTime!.toString();
+                               provider.endingTime=cubit.state.toTime!.toString();
+                              print("-----------------/n");
+                              print(provider);
+                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (_) => const UploadDocuments(),
+                                  builder: (_) =>  UploadDocuments(provider:provider),
                                 ),
                               );
                             }

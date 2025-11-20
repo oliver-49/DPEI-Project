@@ -1,3 +1,7 @@
+import 'package:fixit/firebase/auth_service.dart';
+import 'package:fixit/firebase/role_mode.dart';
+import 'package:fixit/userModel/service_provider_model.dart';
+import 'package:fixit/ye/navigation_page.dart';
 import 'package:fixit/ye/utalities/colors.dart';
 import 'package:fixit/yreyhan/auth/singup_screen.dart';
 import 'package:fixit/yreyhan/const.dart';
@@ -15,6 +19,14 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   bool _isPasswordVisible = false;
   final _key = GlobalKey<FormState>();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+
+  final AuthService _authService = AuthService();
+  bool loading = false;
+
+  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,7 +40,8 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Column(
                 children: [
                   //back button and logo
-                  Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       // IconButton(
                       //   onPressed:null,
@@ -53,6 +66,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   const SizedBox(height: 30),
                   //email
                   TextFormField(
+                    controller: emailController,
                     decoration: InputDecoration(
                       labelText: 'Enter your email',
                       prefixIcon: Padding(
@@ -67,7 +81,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       if (value == null || value.isEmpty) {
                         return 'Please enter your email';
                       }
-                     if (!value.contains('@')) {
+                      if (!value.contains('@')) {
                         return 'Email must contains with @';
                       }
                       if (!value.endsWith('.com')) {
@@ -79,6 +93,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   const SizedBox(height: 16),
                   // Password
                   TextFormField(
+                    controller: passwordController,
                     obscureText: !_isPasswordVisible,
                     decoration: InputDecoration(
                       labelText: 'Enter password',
@@ -136,34 +151,78 @@ class _LoginScreenState extends State<LoginScreen> {
                     width: double.infinity,
                     height: 56,
                     child: ElevatedButton(
-                      onPressed: () {
+                      onPressed: () async {
                         if (_key.currentState!.validate()) {
-                           Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => 
-                                    AccountSetup()
-                                    // LoginScreen(),
-                                  ),
+                          setState(() => loading = true);
+
+                          String? res = await _authService.signIn(
+                            email: emailController.text,
+                            password: passwordController.text,
+                          );
+
+                          setState(() => loading = false);
+
+                          if (res == "success") {
+                            String uid=await _authService.getUserUid()??"";
+                               final provider = ServiceProviderModel(
+  uid: uid,
+);
+                            String? role = await RoleMode().getUserRole();//allsetup
+                            if( role == 'not-detect'){
+                                 Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => AccountSetup(provider: provider,),
+                                ),
+                              );
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(content: Text("Logged in successfully")),
                                 );
-                          setState(() {});
-                        }
+                            }else{
+                                Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => NavigationPage(),
+                                ),
+                              );
+                            
+                            }
+                          } else {
+                            ScaffoldMessenger.of(
+                              context,
+                            ).showSnackBar(SnackBar(
+                              backgroundColor: Colors.red,
+                              content: Text(res!,style: TextStyle(color: Colors.white),)));
+                          }
+
+                          
+                        }else {
+                            ScaffoldMessenger.of(
+                              context,
+                            ).showSnackBar(SnackBar(
+                              backgroundColor: Colors.red,
+                              content: Text("please , input valid data",style: TextStyle(color: Colors.white),)));
+                          }
+                      
                       },
+
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Color(0xFF0054A5),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(6),
                         ),
                       ),
-                      child: Text(
-                        "Sign In",
-                        style: Theme.of(context).textTheme.titleMedium
-                            ?.copyWith(
-                              color: Colors.white,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 18,
+                      child: loading
+                          ? CircularProgressIndicator(color: Colors.white)
+                          : Text(
+                              "Sign In",
+                              style: Theme.of(context).textTheme.titleMedium
+                                  ?.copyWith(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 18,
+                                  ),
                             ),
-                      ),
                     ),
                   ),
                   const SizedBox(height: 24),

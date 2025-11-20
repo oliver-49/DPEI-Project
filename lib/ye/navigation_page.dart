@@ -77,12 +77,15 @@
 
 import 'package:fixit/basma/basma.dart';
 import 'package:fixit/gitHub/city_page.dart';
+import 'package:fixit/userModel/service_provider_model.dart';
 import 'package:fixit/ye/home_screen.dart';
 import 'package:fixit/ye/utalities/colors.dart';
 import 'package:flutter/material.dart';
 
 class NavigationPage extends StatefulWidget {
-  const NavigationPage({super.key});
+  
+  final ServiceProviderModel provider;
+  const NavigationPage({super.key, required this.provider});
 
   @override
   State<NavigationPage> createState() => _NavigationPageState();
@@ -91,15 +94,20 @@ class NavigationPage extends StatefulWidget {
 class _NavigationPageState extends State<NavigationPage> {
   int index = 0;
 
-  final List<Widget> _pages = [
-    _NavigatorTab(child: HomeScreen()),
-    // _NavigatorTab(child:CityPage()),
-    // _NavigatorTab(child: Center(child: Text("City Page"))),ProfileScreen
-    
-    _NavigatorTab(child: Center(child: Text("City Page"))),
-    _NavigatorTab(child: Center(child: Text("Profile Page"))),
-    _NavigatorTab(child: ProfileScreen()),
-  ];
+late List<Widget> _pages;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _pages = [
+      _NavigatorTab(child: HomeScreen()),
+      const _NavigatorTab(child: Center(child: Text("City Page"))),
+      _NavigatorTab(child: ProfileScreen(provider: widget.provider)),
+    ];
+  }
+
+  
 
   @override
   Widget build(BuildContext context) {
@@ -124,10 +132,10 @@ class _NavigationPageState extends State<NavigationPage> {
               icon: Icon(Icons.home_outlined),
               activeIcon: Icon(Icons.home),
               label: "Home"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.holiday_village_outlined),
-              activeIcon: Icon(Icons.holiday_village),
-              label: "City"),
+          // BottomNavigationBarItem(
+          //     icon: Icon(Icons.holiday_village_outlined),
+          //     activeIcon: Icon(Icons.holiday_village),
+          //     label: "City"),
           BottomNavigationBarItem(
               icon: Icon(Icons.shopping_bag_outlined),
               activeIcon: Icon(Icons.shopping_bag),

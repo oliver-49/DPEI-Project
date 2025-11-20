@@ -1,15 +1,20 @@
 
+import 'dart:typed_data';
+
 import 'package:fixit/l10n/app_localizations.dart';
 import 'package:fixit/gitHub/presentation/screens/account_service/Upload%20documents/upload_documents_cubit.dart';
 import 'package:fixit/gitHub/presentation/screens/account_service/Upload%20documents/upload_documents_state.dart';
 import 'package:fixit/gitHub/presentation/screens/account_service/acount_details/details_view.dart';
 import 'package:fixit/gitHub/presentation/widgets/custombutton.dart';
+import 'package:fixit/userModel/service_provider_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 
 class UploadDocuments extends StatelessWidget {
-  const UploadDocuments({super.key});
+  
+  final ServiceProviderModel provider;
+  const UploadDocuments({super.key, required this.provider});
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +72,8 @@ class UploadDocuments extends StatelessWidget {
                     _buildUploadButton(
                       context,
                       label: AppLocalizations.of(context)!.uploadServiceLicense,
-                      fileSelected: state.licenseBytes != null,
+                      fileBytes: state.licenseBytes,
+                      // fileSelected: state.licenseBytes != null,
                       onPressed: () => cubit.pickFile(type: 'license'),
                       screenWidth: screenWidth,
                       screenHeight: screenHeight,
@@ -77,7 +83,8 @@ class UploadDocuments extends StatelessWidget {
                     _buildUploadButton(
                       context,
                       label: AppLocalizations.of(context)!.uploadCertification,
-                      fileSelected: state.certificationBytes != null,
+                      // fileSelected: state.certificationBytes != null,
+                      fileBytes: state.certificationBytes,
                       onPressed: () => cubit.pickFile(type: 'certification'),
                       screenWidth: screenWidth,
                       screenHeight: screenHeight,
@@ -91,7 +98,7 @@ class UploadDocuments extends StatelessWidget {
                           ? () => Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (_) => const AcountDetails(),
+                                builder: (_) =>  AcountDetails(provider:provider),
                               ),
                             )
                           : null,
@@ -106,69 +113,164 @@ class UploadDocuments extends StatelessWidget {
     );
   }
 
+  // Widget _buildUploadButton(
+  //   BuildContext context, {
+  //   required String label,
+  //   required bool fileSelected,
+  //   required VoidCallback onPressed,
+  //   required double screenWidth,
+  //   required double screenHeight,
+  //   required bool isLoading,
+  // }) {
+  //   final buttonText = fileSelected
+  //       ? AppLocalizations.of(context)!.change
+  //       : AppLocalizations.of(context)!.upload;
+
+  //   final buttonTextColor = const Color(0xff0054A5);
+  //   final borderColor = fileSelected
+  //       ? const Color(0xffE0E0E0)
+  //       : const Color(0xff0054A5);
+
+  //   final buttonHeight = screenHeight * 0.06;
+
+  //   return Column(
+  //     crossAxisAlignment: CrossAxisAlignment.start,
+  //     children: [
+  //       Text(
+  //         label,
+  //         style: TextStyle(
+  //           fontSize: screenWidth * 0.035,
+  //           fontWeight: FontWeight.w400,
+  //           color: const Color(0xff565656),
+  //         ),
+  //       ),
+  //       SizedBox(height: screenHeight * 0.015),
+  //       GestureDetector(
+  //         onTap: onPressed,
+  //         child: Container(
+  //           height: buttonHeight,
+  //           decoration: BoxDecoration(
+  //             color: Colors.white,
+  //             border: Border.all(color: borderColor, width: 1),
+  //             borderRadius: BorderRadius.circular(6.0),
+  //           ),
+  //           child: Center(
+  //             child: isLoading
+  //                 ? SizedBox(
+  //                     width: screenWidth * 0.05,
+  //                     height: screenWidth * 0.05,
+  //                     child: const CircularProgressIndicator(
+  //                       color: Color(0xff0054A5),
+  //                       strokeWidth: 2,
+  //                     ),
+  //                   )
+  //                 : Text(
+  //                     buttonText,
+  //                     style: TextStyle(
+  //                       fontSize: screenWidth * 0.04,
+  //                       color: buttonTextColor,
+  //                       fontWeight: FontWeight.w500,
+  //                     ),
+  //                   ),
+  //           ),
+  //         ),
+  //       ),
+  //     ],
+  //   );
+  // }
+
   Widget _buildUploadButton(
-    BuildContext context, {
-    required String label,
-    required bool fileSelected,
-    required VoidCallback onPressed,
-    required double screenWidth,
-    required double screenHeight,
-    required bool isLoading,
-  }) {
-    final buttonText = fileSelected
-        ? AppLocalizations.of(context)!.change
-        : AppLocalizations.of(context)!.upload;
+  BuildContext context, {
+  required String label,
+  required Uint8List? fileBytes, // خليها optional عشان نعرض preview
+  required VoidCallback onPressed,
+  required double screenWidth,
+  required double screenHeight,
+  required bool isLoading,
+}) {
+  final buttonText = fileBytes != null
+      ? AppLocalizations.of(context)!.change
+      : AppLocalizations.of(context)!.upload;
 
-    final buttonTextColor = const Color(0xff0054A5);
-    final borderColor = fileSelected
-        ? const Color(0xffE0E0E0)
-        : const Color(0xff0054A5);
+  final buttonTextColor = const Color(0xff0054A5);
+  final borderColor = fileBytes != null
+      ? const Color(0xffE0E0E0)
+      : const Color(0xff0054A5);
 
-    final buttonHeight = screenHeight * 0.06;
+  final buttonHeight = screenHeight * 0.06;
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          label,
-          style: TextStyle(
-            fontSize: screenWidth * 0.035,
-            fontWeight: FontWeight.w400,
-            color: const Color(0xff565656),
-          ),
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Text(
+        label,
+        style: TextStyle(
+          fontSize: screenWidth * 0.035,
+          fontWeight: FontWeight.w400,
+          color: const Color(0xff565656),
         ),
-        SizedBox(height: screenHeight * 0.015),
-        GestureDetector(
-          onTap: onPressed,
-          child: Container(
-            height: buttonHeight,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              border: Border.all(color: borderColor, width: 1),
-              borderRadius: BorderRadius.circular(6.0),
-            ),
-            child: Center(
-              child: isLoading
-                  ? SizedBox(
-                      width: screenWidth * 0.05,
-                      height: screenWidth * 0.05,
-                      child: const CircularProgressIndicator(
-                        color: Color(0xff0054A5),
-                        strokeWidth: 2,
-                      ),
-                    )
-                  : Text(
-                      buttonText,
-                      style: TextStyle(
-                        fontSize: screenWidth * 0.04,
-                        color: buttonTextColor,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
+      ),
+      SizedBox(height: screenHeight * 0.015),
+      Row(
+        children: [
+          // زرار الرفع
+          Expanded(
+            child: GestureDetector(
+              onTap: onPressed,
+              child: Container(
+                height: buttonHeight,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  border: Border.all(color: borderColor, width: 1),
+                  borderRadius: BorderRadius.circular(6.0),
+                ),
+                child: Center(
+                  child: isLoading
+                      ? SizedBox(
+                          width: screenWidth * 0.05,
+                          height: screenWidth * 0.05,
+                          child: const CircularProgressIndicator(
+                            color: Color(0xff0054A5),
+                            strokeWidth: 2,
+                          ),
+                        )
+                      : Text(
+                          buttonText,
+                          style: TextStyle(
+                            fontSize: screenWidth * 0.04,
+                            color: buttonTextColor,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                ),
+              ),
             ),
           ),
-        ),
-      ],
-    );
-  }
+
+          // مساحة صغيرة بين الزرار والصورة
+          SizedBox(width: screenWidth * 0.03),
+
+          // عرض الصورة إذا تم اختيارها
+          if (fileBytes != null)
+            Container(
+              width: screenWidth * 0.2,
+              height: buttonHeight,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(6),
+                border: Border.all(color: Colors.grey.shade300),
+              ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(6),
+                child: Image.memory(
+                  fileBytes,
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+        ],
+      ),
+    ],
+  );
+}
+
 }

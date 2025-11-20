@@ -1,6 +1,8 @@
 
 // basma
 
+import 'package:fixit/firebase/auth_service.dart';
+import 'package:fixit/userModel/service_provider_model.dart';
 import 'package:fixit/ye/utalities/colors.dart';
 import 'package:fixit/yreyhan/auth/login_screen.dart';
 import 'package:flutter/material.dart';
@@ -701,7 +703,8 @@ class EditProfileScreen extends StatelessWidget {
 
 // --- 2. ProfileScreen (الشاشة الأولى - نقطة البداية والربط) ---
 class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({Key? key}) : super(key: key);
+    final ServiceProviderModel provider;
+    ProfileScreen({Key? key, required this.provider}) : super(key: key);
 
   // Helper for the Earnings/Orders/Completed boxes
   Widget _buildStatBox({
@@ -769,6 +772,7 @@ class ProfileScreen extends StatelessWidget {
     );
   }
 
+  final AuthService _authService = AuthService();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -951,12 +955,16 @@ class ProfileScreen extends StatelessWidget {
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.red,
             ),
-            onPressed: () {
+            onPressed: () async {
               Navigator.of(context).pop(); // يغلق الـ dialog
               Navigator.of(context, rootNavigator: true).pushAndRemoveUntil(
                 MaterialPageRoute(builder: (context) => const LoginScreen()),
                 (route) => false,
               );
+                // await _authService.signOut();
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text("Signed Out!")),
+                );
             },
             child: const Text('Logout',style: TextStyle(color: Colors.white)),
           ),

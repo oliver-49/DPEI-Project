@@ -1,6 +1,8 @@
+import 'package:fixit/firebase/service_offer.dart';
 import 'package:fixit/l10n/app_localizations.dart';
 import 'package:fixit/gitHub/presentation/screens/account_service/service_offer/work_hour/workhour_view.dart';
 import 'package:fixit/gitHub/presentation/widgets/custombutton.dart';
+import 'package:fixit/userModel/service_provider_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -8,7 +10,8 @@ import 'service_offer_cubit.dart';
 import 'service_offer_state.dart';
 
 class ServiceOffer extends StatelessWidget {
-  const ServiceOffer({super.key});
+  final ServiceProviderModel provider;
+   ServiceOffer({super.key, required this.provider});
 
   @override
   Widget build(BuildContext context) {
@@ -48,6 +51,10 @@ class ServiceOffer extends StatelessWidget {
             AppLocalizations.of(context)!.fayoum,
           ];
 
+          String Service;
+          String experienceYear;
+          String serviceArea;
+          
           return Scaffold(
             backgroundColor: const Color(0xffFFFFFF),
             appBar: AppBar(
@@ -88,7 +95,10 @@ class ServiceOffer extends StatelessWidget {
                     context,
                     AppLocalizations.of(context)!.selectService,
                     state.selectedService,
-                    (value) => cubit.selectService(value!),
+                    (value) {
+                      cubit.selectService(value!);
+                      Service=value;
+                      },
                     servicesOptions,
                     screenWidth,
                     screenHeight,
@@ -99,7 +109,10 @@ class ServiceOffer extends StatelessWidget {
                     context,
                     AppLocalizations.of(context)!.selectExperience,
                     state.selectedExperience,
-                    (value) => cubit.selectExperience(value!),
+                    (value) { cubit.selectExperience(value!);
+                    experienceYear=value;
+                      
+                    },
                     ['1 سنة', '2 سنة', '3 سنوات', '5 سنوات', 'أكثر من 5 سنوات'],
                     screenWidth,
                     screenHeight,
@@ -110,7 +123,11 @@ class ServiceOffer extends StatelessWidget {
                     context,
                     AppLocalizations.of(context)!.selectServiceArea,
                     state.selectedArea,
-                    (value) => cubit.selectArea(value!),
+                    (value)  {
+                      cubit.selectArea(value!);
+                      serviceArea=value;
+                      
+                    },
                     governoratesOptions,
                     screenWidth,
                     screenHeight,
@@ -144,10 +161,18 @@ class ServiceOffer extends StatelessWidget {
                             if (!ok) return;
 
                             if (context.mounted) {
+                              await ServiceOfferclassFirebase().setUserOffer(service: cubit.state.selectedService!,
+                              experienceYear: cubit.state.selectedExperience!, serviceArea: cubit.state.selectedArea!,);
+                              
+                               provider.service=cubit.state.selectedService!;
+                               provider.experienceYear=cubit.state.selectedExperience!;
+                               provider.serviceArea=cubit.state.selectedArea!;
+                              print("-----------------/n");
+                              print(provider);
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (_) => const Workhour(),
+                                  builder: (_) =>  Workhour(provider: provider),
                                 ),
                               );
                             }
@@ -172,6 +197,7 @@ class ServiceOffer extends StatelessWidget {
     double screenHeight,
   ) {
     return DropdownButtonFormField<String>(
+      dropdownColor: Colors.white,
       initialValue: selectedValue,
       decoration: InputDecoration(
         focusedBorder: const OutlineInputBorder(

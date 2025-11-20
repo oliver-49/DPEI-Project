@@ -1,10 +1,12 @@
 import 'package:fixit/l10n/app_localizations.dart';
 import 'package:fixit/gitHub/presentation/screens/account_service/Location/set_location/setlocation_view.dart';
 import 'package:fixit/gitHub/presentation/widgets/custombutton.dart';
+import 'package:fixit/userModel/service_provider_model.dart';
 import 'package:flutter/material.dart';
 
 class LocationAccessUI extends StatelessWidget {
-  const LocationAccessUI({super.key});
+   final ServiceProviderModel provider;
+  const LocationAccessUI({super.key, required this.provider});
 
   @override
   Widget build(BuildContext context) {
@@ -87,10 +89,13 @@ class LocationAccessUI extends StatelessWidget {
                   text: AppLocalizations.of(context)!.continueButton,
                   onPressed: value.isNotEmpty
                       ? () {
+                        
+                        print("-------------------------");
+                        print(provider);
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (_) => const Setlocation(),
+                              builder: (_) =>  Setlocation(provider: provider),
                             ),
                           );
                         }

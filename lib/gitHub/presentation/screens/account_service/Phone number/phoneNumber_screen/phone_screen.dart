@@ -1,14 +1,18 @@
 import 'package:country_code_picker/country_code_picker.dart';
+import 'package:fixit/firebase/phone_mode.dart';
 import 'package:fixit/l10n/app_localizations.dart';
 import 'package:fixit/gitHub/presentation/screens/account_service/Phone%20number/verify%20code/verify_screen.dart';
 import 'package:fixit/gitHub/presentation/widgets/custombutton.dart';
+import 'package:fixit/userModel/service_provider_model.dart';
+import 'package:fixit/userModel/service_provider_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/services.dart';
 import 'phone_cubit.dart';
 
 class PhoneNumberView extends StatelessWidget {
-  const PhoneNumberView({super.key});
+   final ServiceProviderModel provider;
+  const PhoneNumberView({super.key, required this.provider});
 
   @override
   Widget build(BuildContext context) {
@@ -86,7 +90,7 @@ class PhoneNumberView extends StatelessWidget {
                               keyboardType: TextInputType.number,
                               inputFormatters: [
                                 FilteringTextInputFormatter.digitsOnly,
-                                LengthLimitingTextInputFormatter(11),
+                                LengthLimitingTextInputFormatter(10),
                               ],
                               onChanged: (value) => cubit.setPhone(value),
                               decoration: const InputDecoration(
@@ -104,7 +108,7 @@ class PhoneNumberView extends StatelessWidget {
                   buttonItem(
                     context,
                     text: AppLocalizations.of(context)!.sendCodeButton,
-                    onPressed: () {
+                    onPressed: () async {
                       final error = cubit.validatePhone();
                       if (error != null) {
                         ScaffoldMessenger.of(context).showSnackBar(
@@ -118,11 +122,17 @@ class PhoneNumberView extends StatelessWidget {
 
                       final fullNumber =
                           '${cubit.state.countryCode}${cubit.state.phone}';
+                          provider.phone=fullNumber;
 
+                            print("-------------------/n");
+                            print('User UID: ${provider}');
+
+
+                      // await PhoneMode().updateUserPhone(fullNumber);
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (_) => VerifyCode(phoneNumber: fullNumber),
+                          builder: (_) => VerifyCode(provider: provider,phoneNumber: fullNumber),
                         ),
                       );
                     },

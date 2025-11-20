@@ -5,6 +5,7 @@ Widget buttonItem(
     BuildContext context, {
     required String text,
     VoidCallback? onPressed, 
+    bool loading=false
 }) {
 
     final mediaQuery = MediaQuery.of(context);
@@ -26,7 +27,9 @@ Widget buttonItem(
                     backgroundColor: const Color(0xff0054A5),
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
                 ),
-                child: Text(
+                child: loading ?
+                CircularProgressIndicator()
+                : Text(
                     text,
                     style: TextStyle(
                         fontFamily: 'Poppins',

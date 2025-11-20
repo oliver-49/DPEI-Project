@@ -1,8 +1,13 @@
 
+import 'package:fixit/firebase/account_details.dart';
+import 'package:fixit/firebase/add_alluser_data.dart';
+import 'package:fixit/firebase/done_setup.dart';
 import 'package:fixit/gitHub/core/stores/app_box.dart';
 import 'package:fixit/gitHub/presentation/homescreen.dart';
 import 'package:fixit/gitHub/presentation/widgets/custombutton.dart';
 import 'package:fixit/l10n/app_localizations.dart';
+import 'package:fixit/userModel/service_provider_model.dart';
+import 'package:fixit/ye/navigation_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -13,7 +18,9 @@ import 'acount_details_cubit.dart';
 import 'acount_details_state.dart';
 
 class AcountDetails extends StatelessWidget {
-  const AcountDetails({super.key});
+  
+  final ServiceProviderModel provider;
+    AcountDetails({super.key, required this.provider});
 
   String _formatDate(DateTime? d) {
     if (d == null) return '';
@@ -30,6 +37,7 @@ class AcountDetails extends StatelessWidget {
   ) async {
     final now = DateTime.now();
     final picked = await showDatePicker(
+      
       context: context,
       initialDate: current ?? now,
       firstDate: DateTime(now.year, now.month, now.day),
@@ -43,6 +51,7 @@ class AcountDetails extends StatelessWidget {
     }
   }
 
+bool l=false;
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
@@ -86,18 +95,18 @@ class AcountDetails extends StatelessWidget {
              // ✅ Validation Messages
             String? nameError;
             String? nicError;
-            String? phoneError;
+            // String? phoneError;
 
-            if (state.ownerName.trim().isEmpty) {
-              nameError = 'الاسم مطلوب';
+            if (state.ownerName.trim().isNotEmpty && state.ownerName.trim().length<8) {
+              nameError = 'الاسم كامل مطلوب';
             }
-            if (state.nicNumber.length<13 || state.nicNumber.isEmpty || !RegExp(r'^\d{14}$').hasMatch(state.nicNumber)) {
+            if ( state.nicNumber.length<13 && state.nicNumber.isNotEmpty && !RegExp(r'^\d{14}$').hasMatch(state.nicNumber)) {
               nicError = 'الرقم القومي يجب أن يحتوي على 14 رقم';
             }
-            if (state.phoneNumber.isEmpty ||
-                !RegExp(r'^(010|011|012|015)\d{8}$').hasMatch(state.phoneNumber)) {
-              phoneError = 'رقم الهاتف يجب أن يبدأ بـ 01 و يكون 11 رقم ';
-            }
+            // if (state.phoneNumber.isNotEmpty &&
+            //     !RegExp(r'^(010|011|012|015)\d{8}$').hasMatch(state.phoneNumber)) {
+            //   phoneError = 'رقم الهاتف يجب أن يبدأ بـ 01 و يكون 11 رقم ';
+            // }
             
             return SingleChildScrollView(
               child: Padding(
@@ -142,18 +151,18 @@ class AcountDetails extends StatelessWidget {
                     ),
                     SizedBox(height: screenHeight * 0.03),
 
-                    _buildTextField(
-                      context,
-                      hintText: t.phoneNumber,
-                      initialValue: state.phoneNumber,
-                      keyboardType: TextInputType.phone,
-                      inputFormatters: [
-                        FilteringTextInputFormatter.digitsOnly,
-                        LengthLimitingTextInputFormatter(11),
-                      ],
-                      onChanged: (v) => cubit.updateField(phoneNumber: v),
-                      errorText: phoneError,
-                    ),
+                    // _buildTextField(
+                    //   context,
+                    //   hintText: t.phoneNumber,
+                    //   initialValue: state.phoneNumber,
+                    //   keyboardType: TextInputType.phone,
+                    //   inputFormatters: [
+                    //     FilteringTextInputFormatter.digitsOnly,
+                    //     LengthLimitingTextInputFormatter(11),
+                    //   ],
+                    //   onChanged: (v) => cubit.updateField(phoneNumber: v),
+                    //   errorText: phoneError,
+                    // ),
                     SizedBox(height: screenHeight * 0.03),
 
                     Text(
@@ -168,6 +177,7 @@ class AcountDetails extends StatelessWidget {
                     SizedBox(
                       width: double.infinity,
                       child: TextFormField(
+                        
                         controller: expiryController,
                         readOnly: true,
                         showCursor: false,
@@ -178,6 +188,8 @@ class AcountDetails extends StatelessWidget {
                         ),
                         decoration: InputDecoration(
                           hintText: t.dateFormat,
+                          filled: true,
+                          fillColor: Colors.white, 
                           hintStyle: TextStyle(
                             // ignore: deprecated_member_use
                             color: const Color(0xff565656).withOpacity(0.6),
@@ -219,10 +231,18 @@ class AcountDetails extends StatelessWidget {
                       context,
                       text: t.next,
                       onPressed: state.isFormValid
-                          ? () {
+                          ? () async{
                               FocusScope.of(context).unfocus();
                               cubit.submitDetails();
+                              await AccountDetailsData().setUserAccountDetailsData(
+                                ownerName: cubit.state.ownerName,
+                                nicNumber:  cubit.state.nicNumber,
+                                
+                               
 
+                              );
+                                provider.nicNumber= cubit.state.nicNumber;
+                                provider.ownerName= cubit.state.ownerName;
                               showDialog(
                                 context: context,
                                 builder: (BuildContext dialogContext) {
@@ -304,19 +324,27 @@ class AcountDetails extends StatelessWidget {
                                                   buttonItem(
                                                     context,
                                                     text: t.home,
+                                                    loading: l,
                                                     onPressed: () async {
+                                                    l=true;
+                                                    // await DoneSetup().setDone() ;
+                                                      provider.allSetup= true;
+                                                    final service = ServiceProviderService();
+                                                    provider.createdAt=DateTime.now();
+                                                      await service.addServiceProvider(provider);
                                                       Navigator.pop(
                                                         dialogContext,
                                                       );
                                                       await AppBox.setSetupDone(
                                                         true,
                                                       );
+                                                      l=false;
                                                       Navigator.pushAndRemoveUntil(
                                                         // ignore: use_build_context_synchronously
                                                         context,
                                                         MaterialPageRoute(
                                                           builder: (_) =>
-                                                                HomeScreen(),
+                                                                NavigationPage(provider:provider),
                                                         ),
                                                         (route) => false,
                                                       );

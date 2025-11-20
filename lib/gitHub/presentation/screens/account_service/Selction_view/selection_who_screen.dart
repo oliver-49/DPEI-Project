@@ -5,32 +5,38 @@ import 'package:fixit/gitHub/presentation/screens/account_service/Phone%20number
 import 'package:fixit/gitHub/presentation/widgets/widgets.dart';
 import 'package:fixit/gitHub/presentation/screens/customescreens/customer_phone/customer_phone_view.dart';
 import 'package:fixit/gitHub/presentation/widgets/custombutton.dart';
+import 'package:fixit/userModel/service_provider_model.dart';
+import 'package:fixit/userModel/service_provider_state.dart';
 import 'package:fixit/ye/home_screen.dart';
+import 'package:fixit/ye/navigation_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'selection_cubit.dart';
 
 class AccountSetup extends StatelessWidget {
-  const AccountSetup({super.key});
+  final ServiceProviderModel provider;
+  const AccountSetup({required this.provider});
 
   @override
   Widget build(BuildContext context) {
-    if (AppBox.isSetupDone()) {
-      Future.microtask(() {
-        Navigator.pushAndRemoveUntil(
-          // ignore: use_build_context_synchronously
-          context,
-          MaterialPageRoute(builder: (_) =>  HomeScreen()),
-          (route) => false,
-        );
-      });
-      return const SizedBox.shrink();
-    }
 
+    // if (AppBox.isSetupDone()) {
+    //   Future.microtask(() {
+    //     Navigator.pushAndRemoveUntil(
+    //       // ignore: use_build_context_synchronously
+    //       context,
+    //       MaterialPageRoute(builder: (_) =>  NavigationPage()),
+    //       (route) => false,
+    //     );
+    //   });
+    //   return const SizedBox.shrink();
+    // }
+  
     final mediaQuery = MediaQuery.of(context);
     final screenWidth = mediaQuery.size.width;
     final screenHeight = mediaQuery.size.height;
+    bool providerr=false;
 
     // ✅ BlocProvider اتحذف من هنا
     return BlocListener<SelectionCubit, SelectionState>(
@@ -41,12 +47,12 @@ class AccountSetup extends StatelessWidget {
           if (state.selectedRole == 'Service Provider') {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (_) => const PhoneNumberView()),
+              MaterialPageRoute(builder: (_) =>  PhoneNumberView(provider: provider)),
             );
           } else if (state.selectedRole == 'Looking for service') {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (_) => const CustomerPhoneView()),
+              MaterialPageRoute(builder: (_) =>  CustomerPhoneView(provider: provider))//provider: provider)),
             );
           }
         }
@@ -54,6 +60,7 @@ class AccountSetup extends StatelessWidget {
       child: Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           backgroundColor: Colors.white,
           title: InkWell(
             onTap: () => Navigator.pop(context),
@@ -98,9 +105,11 @@ class AccountSetup extends StatelessWidget {
                           context,
                         )!.roleProviderSubtitle,
                         isSelected: state.selectedRole == 'Service Provider',
-                        onTap: () => context
+                        onTap: () {
+                          providerr=true;
+                            context
                             .read<SelectionCubit>()
-                            .selectOption('Service Provider'),
+                            .selectOption('Service Provider');}
                       ),
                       SizedBox(height: screenHeight * 0.02),
                       containerItem(
@@ -109,9 +118,11 @@ class AccountSetup extends StatelessWidget {
                           context,
                         )!.roleCustomerSubtitle,
                         isSelected: state.selectedRole == 'Looking for service',
-                        onTap: () => context
+                        onTap: () { 
+                           providerr=false;
+                          context
                             .read<SelectionCubit>()
-                            .selectOption('Looking for service'),
+                            .selectOption('Looking for service');}
                       ),
                       if (state.errorMessage != null)
                         Padding(
@@ -136,7 +147,17 @@ class AccountSetup extends StatelessWidget {
               buttonItem(
                 context,
                 text: AppLocalizations.of(context)!.nextButton,
-                onPressed: () => context.read<SelectionCubit>().onNextTapped(),
+                onPressed: () { 
+                  
+                  provider.role= providerr? 'provider'
+                       : 'customer';
+                    
+
+                            print("-------------------/n");
+                            print('User model: ${provider}');
+
+
+                  context.read<SelectionCubit>().onNextTapped();},
               ),
             ],
           ),

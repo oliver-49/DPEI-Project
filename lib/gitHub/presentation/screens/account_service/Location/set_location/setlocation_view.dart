@@ -1,19 +1,25 @@
+import 'package:fixit/firebase/business_mode.dart';
 import 'package:fixit/l10n/app_localizations.dart';
 import 'package:fixit/gitHub/presentation/screens/account_service/Location/set_location/setlocation_cubit.dart';
 import 'package:fixit/gitHub/presentation/screens/account_service/Location/set_location/setlocation_state.dart';
 import 'package:fixit/gitHub/presentation/screens/account_service/service_offer/about_offer/aboutoffer.dart';
 import 'package:fixit/gitHub/presentation/widgets/custombutton.dart';
+import 'package:fixit/userModel/service_provider_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class Setlocation extends StatelessWidget {
-  const Setlocation({super.key});
+  final ServiceProviderModel provider;
+  const Setlocation({super.key, required this.provider});
 
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
     final screenWidth = mediaQuery.size.width;
     final screenHeight = mediaQuery.size.height;
+
+    final TextEditingController? buesinessAddressController =TextEditingController();
+    final TextEditingController? buesinessNameController =TextEditingController();
 
     return BlocProvider(
       create: (_) => SetLocationCubit(),
@@ -96,6 +102,7 @@ class Setlocation extends StatelessWidget {
                     SizedBox(height: screenHeight * 0.025),
 
                     TextField(
+                      controller: buesinessNameController,
                       onChanged: cubit.updateBusinessName,
                       decoration: InputDecoration(
                         hintText: AppLocalizations.of(
@@ -109,6 +116,7 @@ class Setlocation extends StatelessWidget {
                     SizedBox(height: screenHeight * 0.02),
 
                     TextField(
+                      controller: buesinessAddressController,
                       onChanged: cubit.updateBusinessAddress,
                       decoration: InputDecoration(
                         hintText: AppLocalizations.of(
@@ -139,14 +147,21 @@ class Setlocation extends StatelessWidget {
                     buttonItem(
                       context,
                       text: AppLocalizations.of(context)!.continueButton,
-                      onPressed: () {
+                      onPressed: () async {
                         cubit.saveData();
                         if (state.businessName.isNotEmpty &&
                             state.businessAddress.isNotEmpty) {
+                              await BusinessMode().setUserBusiness(
+                                business_name : buesinessNameController!.text
+                              , address : buesinessAddressController!.text, );
+                              provider.businessAddress=buesinessAddressController.text;
+                              provider.businessName=buesinessNameController.text;
+                              print("-----------------");
+                              print(provider);
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (_) => const ServiceOffer(),
+                              builder: (_) =>  ServiceOffer(provider: provider,),
                             ),
                           );
                         }
