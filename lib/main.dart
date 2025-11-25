@@ -1,14 +1,8 @@
-import 'package:fixit/basma/basma.dart';
-import 'package:fixit/esraa/screens/profile_screen.dart';
-import 'package:fixit/esraa/utils/app_routes.dart';
 import 'package:fixit/gitHub/booking_services/cubit/booking_cubit.dart';
-import 'package:fixit/gitHub/core/services/firebase_options.dart';
 import 'package:fixit/gitHub/core/stores/app_box.dart';
 import 'package:fixit/l10n/app_localizations.dart';
-import 'package:fixit/gitHub/presentation/screens/account_service/Selction_view/selection_who_screen.dart';
 import 'package:fixit/l10n/cubit/lang_cubit.dart';
-import 'package:fixit/ye/navigation_page.dart';
-import 'package:fixit/yreyhan/splash/splash_screen.dart';
+import 'package:fixit/Set_up/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fixit/gitHub/presentation/screens/account_service/Selction_view/selection_cubit.dart';
@@ -63,11 +57,15 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
       
         home: 
+        // Nav(),// activity
+          SplashScreen(),//yossef reyhan
+
+
         // ProfileScreen2()//esraa
        
             // NavigationPage(),// yElgammal
             // AccountSetup(),// aya
-            SplashScreen(),//yossef reyhan
+            // SplashScreen(),//yossef reyhan
             
             // initialRoute: AppRoutes.mainNavigation,//esraa
             // routes: AppRoutes.routes,

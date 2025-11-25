@@ -1,5 +1,6 @@
 import 'package:fixit/gitHub/booking_services/cubit/booking_state.dart';
 import 'package:fixit/gitHub/booking_services/model/Address_model.dart';
+import 'package:fixit/gitHub/booking_services/model/Booking_summary_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -113,4 +114,19 @@ class BookingCubit extends Cubit<BookingState> {
     time = "";
     emit(InfoResetState());
   }
+
+  BookingSummaryModel getAll() {
+  return BookingSummaryModel(
+    name: name,
+    type: type,
+    salary: salary,
+    fullAddress: fullAddress,
+    homeNo: homeNo,
+    streetNo: streetNo,
+    date: date,
+    time: time,
+  );
+}
+
+
 }

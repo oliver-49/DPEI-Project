@@ -1,4 +1,4 @@
-import 'package:fixit/firebase/service_offer.dart';
+// import 'package:fixit/firebase/service_offer.dart';
 import 'package:fixit/l10n/app_localizations.dart';
 import 'package:fixit/gitHub/presentation/screens/account_service/service_offer/work_hour/workhour_view.dart';
 import 'package:fixit/gitHub/presentation/widgets/custombutton.dart';
@@ -161,8 +161,8 @@ class ServiceOffer extends StatelessWidget {
                             if (!ok) return;
 
                             if (context.mounted) {
-                              await ServiceOfferclassFirebase().setUserOffer(service: cubit.state.selectedService!,
-                              experienceYear: cubit.state.selectedExperience!, serviceArea: cubit.state.selectedArea!,);
+                              // await ServiceOfferclassFirebase().setUserOffer(service: cubit.state.selectedService!,
+                              // experienceYear: cubit.state.selectedExperience!, serviceArea: cubit.state.selectedArea!,);
                               
                                provider.service=cubit.state.selectedService!;
                                provider.experienceYear=cubit.state.selectedExperience!;

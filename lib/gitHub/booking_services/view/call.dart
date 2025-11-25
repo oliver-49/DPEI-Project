@@ -86,7 +86,7 @@ class _CallState extends State<Call> {
                         SizedBox(height: screenHeight * .030),
                         InkWell(
                           onTap: (){
-                            Get.off(ProviderProfile());
+                            Get.off(ProviderProfile(imagePath: "",));
                           },
                           child: CircleAvatar(
                             radius: screenHeight * .030,

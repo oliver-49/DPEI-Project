@@ -363,7 +363,107 @@
   "home": "الصفحة الرئيسية",
   "@home": {
     "description": "زر يعيد المستخدم إلى الصفحة الرئيسية"
-  }
+  },
+  "myOrders": "طلباتي",
+  "@myOrders": {},
+  
+  "city": "المدينة",
+  "@city": {},
+  "orders": "الطلبات",
+  "@orders": {},
+  "profile": "الملف الشخصي",
+  "@profile": {},
+
+  "unpaid": "غير مدفوعة",
+  "@unpaid": {},
+  "paid": "مدفوعة",
+  "@paid": {},
+  "schedule": "مجدولة",
+  "@schedule": {},
+
+  "noOrders": "لا توجد طلبات",
+  "@noOrders": {},
+
+  "egp": "ج.م",
+  "@egp": {},
+  "providerName": "اسم المزود",
+  "@providerName": {},
+  "date": "التاريخ",
+  "@date": {},
+  "arrivalTime": "وقت الوصول",
+  "@arrivalTime": {},
+
+  "payNow": "ادفع الآن",
+  "@payNow": {},
+  "viewReceipt": "عرض الفاتورة",
+  "@viewReceipt": {},
+  "cancelBooking": "إلغاء الحجز",
+  "@cancelBooking": {},
+   "amountToPay": "المبلغ المستحق",
+  "@amountToPay": {},
+  
+  "unpaidSubtitle": "لم تقم بالدفع بعد للخدمة التالية",
+  "@unpaidSubtitle": {},
+  "paidSubtitle": "الخدمات المدفوعة",
+  "@paidSubtitle": {},
+  "scheduleSubtitle": "الخدمات القادمة",
+  "@scheduleSubtitle": {},
+    "amountToPaid": "المبلغ المدفوع",
+  "@amountToPaid": {},
+    "bookingDate": "تاريخ الحجز",
+  "@bookingDate": {},
+    "payment": "الدفع",
+  "@payment": {},
+  "selectPaymentMethod": "اختر طريقة الدفع",
+  "@selectPaymentMethod": {},
+  "addNewCard": "إضافة بطاقة جديدة",
+  "@addNewCard": {},
+ 
+  
+  "cardNumber": "رقم البطاقة",
+  "@cardNumber": {},
+  "cardHolderName": "اسم صاحب البطاقة",
+  "@cardHolderName": {},
+  "cardExpiryDate": "تاريخ انتهاء البطاقة",
+  "@cardExpiryDate": {},
+  "cvv": "رمز الأمان CVV",
+  "@cvv": {},
+  "continueBtn": "متابعة",
+  "@continueBtn": {},
+  "hour": "ساعة",
+"@hour": {},
+"hourLabel": "ساعة",
+"@hourLabel": {},
+"perHour": "ساعة",
+"@perHour": {},
+"enterValidCardNumber": "من فضلك أدخل رقم بطاقة صحيح مكون من 16 رقم",
+"@enterValidCardNumber": {},
+"enterExpiryDate": "من فضلك اختر تاريخ الإنتهاء",
+"@enterExpiryDate": {},
+"enterValidCvv": "يجب أن يكون CVV من 3 إلى 4 أرقام",
+"@enterValidCvv": {},
+"paymentSuccessful": "تم الدفع بنجاح",
+"@paymentSuccessful": {},
+"paymentOf": "تم دفع مبلغ",
+"@paymentOf": {},
+"paidSuccessfully": "بنجاح",
+"@paidSuccessfully": {},
+
+"giveFeedback": "إرسال تقييم",
+"@giveFeedback": {},
+"howWasExperience": "كيف كانت تجربتك مع Fix it؟",
+"@howWasExperience": {},
+"writeFeedback": "اكتب ملاحظاتك هنا",
+"@writeFeedback": {},
+"send": "إرسال",
+"@send": {},
+"pay" : "ادفع",
+"@pay": {}
+
+
+
+
+
 
 
 }  

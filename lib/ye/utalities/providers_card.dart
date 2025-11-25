@@ -1,3 +1,4 @@
+import 'package:fixit/gitHub/booking_services/view/providerprofile.dart';
 import 'package:fixit/ye/utalities/Dimensions.dart';
 import 'package:fixit/ye/utalities/colors.dart';
 import 'package:fixit/ye/utalities/divider_title.dart';
@@ -11,12 +12,17 @@ class ProvidersCard extends StatelessWidget {
   final bool more;
   final bool  ViewAll;
   final List<Map<String, List<Map<String, String>>>> Data;
-  const ProvidersCard({super.key, 
+
+    ProvidersCard({super.key, 
                 this.ftext='', this.ltext='View all', 
                 required this.Data, required this.ontapView,required this.ontap, this.more=true,
-                this.ViewAll=false
+                this.ViewAll=false,
                 });
+String path='';
+ String? imageUrl(){
 
+  return path;
+ }
   @override
   Widget build(BuildContext context) {
     return    Column(
@@ -36,15 +42,21 @@ class ProvidersCard extends StatelessWidget {
                   height: Dimensions(context).height10*27,
                   width: double.infinity,
                 child: 
-                  InkWell(
-                    onTap: ontapView,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children:  [
-                    
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.all(6.0),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children:  [
+                  
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.all(6.0),
+                      child:  InkWell(
+                  // onTap: ontapView,
+                  onTap: () {
+                     Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) =>  ProviderProfile(imagePath:"${list[(i+1)*2-2]['img']!}")),
+                  );
+                  },
                         child: Container(
                         // height: Dimensions(context).height10*10,
                         // width: Dimensions(context).height10*10,
@@ -120,11 +132,20 @@ class ProvidersCard extends StatelessWidget {
                         ),
                                   
                                   ),
-                                   ),
-                     ) ,
-                      Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.all(6.0),
+                      ),
+                                 ),
+                   ) ,
+                    Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.all(6.0),
+                      child:  InkWell(
+                  // onTap: ontapView,
+                  onTap: () {
+                     Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) =>  ProviderProfile(imagePath:"${list[(i+1)*2-1]['img']!}")),
+                  );
+                  },
                         child: Container(
                         // height: Dimensions(context).height10*10,
                         // width: Dimensions(context).height10*10,
@@ -200,10 +221,10 @@ class ProvidersCard extends StatelessWidget {
                         ),
                                   
                                   ),
-                                   ),
-                     ) ,
-                                    ]),
-                  )
+                      ),
+                                 ),
+                   ) ,
+                                  ])
                 ,
                 ),
               ),

@@ -1,8 +1,13 @@
 // lib/screens/profile_page.dart
+import 'package:fixit/userModel/service_provider_model.dart';
 import 'package:flutter/material.dart';
 
 class ProfilePage extends StatelessWidget {
-  const ProfilePage({super.key});
+  
+  // final ServiceProviderModel provider;
+  const ProfilePage({super.key, 
+  // required this.provider
+  });
 
   @override
   Widget build(BuildContext context) {

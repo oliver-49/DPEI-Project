@@ -4,13 +4,17 @@ import 'package:fixit/gitHub/booking_services/model/Address_model.dart';
 import 'package:fixit/gitHub/booking_services/view/date.dart';
 import 'package:fixit/gitHub/booking_services/widgets/custom_button.dart';
 import 'package:fixit/gitHub/booking_services/widgets/custom_textfield.dart';
+import 'package:fixit/userModel/service_provider_model.dart';
 import 'package:fixit/ye/utalities/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 
 class Address extends StatelessWidget {
-  Address({super.key});
+  final ServiceProviderModel? customer_data ;
+   final ServiceProviderModel? provider_data ;
+  Address({super.key, this.customer_data,
+        this.provider_data});
 
   final formKey = GlobalKey<FormState>();
 
@@ -34,7 +38,11 @@ class Address extends StatelessWidget {
                 "تم اضافه عنوان موقعك بنجاح ",
                 backgroundColor: Colors.green,
               );
-              Get.to(Date());
+              Get.to(Date(
+                 customer_data:customer_data,
+                 provider_data:provider_data,
+                 
+              ));
             }
             if (state is AddressErrorState) {
               Get.snackbar(

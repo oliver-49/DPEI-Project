@@ -1,4 +1,4 @@
-import 'package:fixit/firebase/business_mode.dart';
+// import 'package:fixit/firebase/business_mode.dart';
 import 'package:fixit/l10n/app_localizations.dart';
 import 'package:fixit/gitHub/presentation/screens/account_service/Location/set_location/setlocation_cubit.dart';
 import 'package:fixit/gitHub/presentation/screens/account_service/Location/set_location/setlocation_state.dart';
@@ -151,11 +151,11 @@ class Setlocation extends StatelessWidget {
                         cubit.saveData();
                         if (state.businessName.isNotEmpty &&
                             state.businessAddress.isNotEmpty) {
-                              await BusinessMode().setUserBusiness(
-                                business_name : buesinessNameController!.text
-                              , address : buesinessAddressController!.text, );
-                              provider.businessAddress=buesinessAddressController.text;
-                              provider.businessName=buesinessNameController.text;
+                              // await BusinessMode().setUserBusiness(
+                              //   business_name : buesinessNameController!.text
+                              // , address : buesinessAddressController!.text, );
+                              provider.businessAddress=buesinessAddressController!.text;
+                              provider.businessName=buesinessNameController!.text;
                               print("-----------------");
                               print(provider);
                           Navigator.push(

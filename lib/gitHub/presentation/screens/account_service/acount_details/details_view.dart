@@ -1,19 +1,19 @@
 
-import 'package:fixit/firebase/account_details.dart';
-import 'package:fixit/firebase/add_alluser_data.dart';
-import 'package:fixit/firebase/done_setup.dart';
+// import 'package:fixit/firebase/account_details.dart';
+// import 'package:fixit/firebase/done_setup.dart';
+import 'package:fixit/firebase/getORadd_allData_user.dart';
 import 'package:fixit/gitHub/core/stores/app_box.dart';
 import 'package:fixit/gitHub/presentation/homescreen.dart';
 import 'package:fixit/gitHub/presentation/widgets/custombutton.dart';
 import 'package:fixit/l10n/app_localizations.dart';
 import 'package:fixit/userModel/service_provider_model.dart';
-import 'package:fixit/ye/navigation_page.dart';
+import 'package:fixit/ye/Main_Home/navigation_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../../ye/home_screen.dart';
+import '../../../../../ye/Main_Home/home_screen.dart';
 import 'acount_details_cubit.dart';
 import 'acount_details_state.dart';
 
@@ -234,13 +234,13 @@ bool l=false;
                           ? () async{
                               FocusScope.of(context).unfocus();
                               cubit.submitDetails();
-                              await AccountDetailsData().setUserAccountDetailsData(
-                                ownerName: cubit.state.ownerName,
-                                nicNumber:  cubit.state.nicNumber,
+                              // await AccountDetailsData().setUserAccountDetailsData(
+                              //   ownerName: cubit.state.ownerName,
+                              //   nicNumber:  cubit.state.nicNumber,
                                 
                                
 
-                              );
+                              // );
                                 provider.nicNumber= cubit.state.nicNumber;
                                 provider.ownerName= cubit.state.ownerName;
                               showDialog(

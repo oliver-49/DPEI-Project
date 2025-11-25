@@ -4,6 +4,7 @@ import 'package:fixit/gitHub/booking_services/view/const.dart';
 import 'package:fixit/gitHub/booking_services/view/reviewsummary.dart';
 import 'package:fixit/gitHub/booking_services/widgets/custom_button.dart';
 import 'package:fixit/gitHub/booking_services/widgets/custom_skills.dart';
+import 'package:fixit/userModel/service_provider_model.dart';
 import 'package:fixit/ye/utalities/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -12,7 +13,11 @@ import 'package:table_calendar/table_calendar.dart';
 import 'package:intl/intl.dart' as Intl;
 
 class Date extends StatelessWidget {
-  Date({super.key});
+   final ServiceProviderModel? customer_data ;
+   final ServiceProviderModel? provider_data ;
+  Date({super.key,
+        this.customer_data,
+        this.provider_data});
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +34,13 @@ class Date extends StatelessWidget {
               "تم اضافه  التاريخ بنجاح ",
               backgroundColor: Colors.green,
             );
-            Get.to(Reviewsummary());
+            Get.to(Reviewsummary(
+
+              customer_data:customer_data,
+              provider_data:provider_data,
+
+
+            ));
           }
           if (state is TimeErrorState) {
             Get.snackbar(
@@ -107,8 +118,8 @@ class Date extends StatelessWidget {
                               ),
                               child: TableCalendar(
                                 focusedDay: cubit.focusedDay,
-                                firstDay: DateTime.utc(2025, 9, 1),
-                                lastDay: DateTime.utc(2026, 12, 31),
+                                firstDay: DateTime.now(),
+                                lastDay: DateTime.utc(2027, 12, 31),
                                 selectedDayPredicate: (day) =>
                                     isSameDay(cubit.selectedDay, day),
                                 onDaySelected: cubit.dateChange,

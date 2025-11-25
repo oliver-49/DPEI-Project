@@ -7,8 +7,8 @@ import 'package:fixit/gitHub/presentation/screens/customescreens/customer_phone/
 import 'package:fixit/gitHub/presentation/widgets/custombutton.dart';
 import 'package:fixit/userModel/service_provider_model.dart';
 import 'package:fixit/userModel/service_provider_state.dart';
-import 'package:fixit/ye/home_screen.dart';
-import 'package:fixit/ye/navigation_page.dart';
+import 'package:fixit/ye/Main_Home/home_screen.dart';
+import 'package:fixit/ye/Main_Home/navigation_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

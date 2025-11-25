@@ -1,7 +1,11 @@
+import 'package:fixit/esraa/screens/main_navigation_screen.dart';
+import 'package:fixit/firebase/order.dart';
 import 'package:fixit/gitHub/booking_services/cubit/booking_cubit.dart';
 import 'package:fixit/gitHub/booking_services/cubit/booking_state.dart';
 import 'package:fixit/gitHub/booking_services/view/providerprofile.dart';
 import 'package:fixit/gitHub/booking_services/widgets/custom_button.dart';
+import 'package:fixit/userModel/service_provider_model.dart';
+import 'package:fixit/ye/Main_Home/navigation_page.dart';
 import 'package:fixit/ye/utalities/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -12,7 +16,10 @@ import 'package:intl/intl.dart' as Intl;
 import 'const.dart';
 
 class Reviewsummary extends StatefulWidget {
-  const Reviewsummary({super.key});
+  final ServiceProviderModel? customer_data;
+   final ServiceProviderModel? provider_data ;
+   Reviewsummary({super.key,  this.customer_data,
+        this.provider_data});
 
   @override
   State<Reviewsummary> createState() => _ReviewsummaryState();
@@ -88,7 +95,7 @@ class _ReviewsummaryState extends State<Reviewsummary> {
                             children: [
                               SizedBox(height: screenHeight * .040),
                               Text(
-                                cubit.name,
+                                widget.provider_data?.name??"ايميلى جانى ",
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 20,
@@ -172,7 +179,7 @@ class _ReviewsummaryState extends State<Reviewsummary> {
                                   Spacer(),
                                   Expanded(
                                     child: Text(
-                                      "${cubit.fullAddress}/منزل رقم ${cubit.homeNo}/شارع رقم ${cubit.streetNo}",
+                                      "${cubit.fullAddress}\nمنزل رقم ${cubit.homeNo}\nشارع رقم ${cubit.streetNo}",
                                       style: TextStyle(
                                         fontSize: 13,
                                         fontWeight: FontWeight.bold,
@@ -251,7 +258,29 @@ class _ReviewsummaryState extends State<Reviewsummary> {
                       SizedBox(height: screenHeight * .099),
                       customButton(
                         title: "تأكيد",
-                        onTap: () {
+                        onTap: () async{
+                          final summary = context.read<BookingCubit>().getAll();
+                          print(summary);
+                           print("////////  \n\n\n\n");
+                            print(widget.customer_data?.uid);
+                            print( widget.provider_data?.uid);
+
+                          await Order().create(
+                            widget.customer_data?.uid,
+                            widget.provider_data?.uid, 
+                            summary.name, 
+                            summary.type, 
+                            summary.salary.toString(), 
+                            summary.fullAddress, 
+                            summary.homeNo, 
+                            summary.streetNo, 
+                            summary.date, 
+                            summary.time
+                            );
+
+
+
+
                           Dialog(context, screenHeight);
                         },
                       ),
@@ -325,7 +354,9 @@ class _ReviewsummaryState extends State<Reviewsummary> {
                                 title: "الصفحة الرئيسة",
                                 onTap: () {
                                   context.read<BookingCubit>().clearAll();
-                                  Get.offAll(ProviderProfile());
+                                  Get.offAll(
+                                    NavigationPage(provider:widget.customer_data)
+                                    );
                                   
                                 },
                               ),

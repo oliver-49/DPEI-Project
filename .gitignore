@@ -181,3 +181,7 @@ GeneratedPluginRegistrant.java
 key.properties
 **/*.keystore
 **/*.jks
+
+
+# Exclude Paymob sensitive constants
+lib/order/presentation/screens/order_booking/payment/paymob_payment/constants/constants.dart

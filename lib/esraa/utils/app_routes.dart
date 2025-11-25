@@ -1,4 +1,5 @@
 // FILE: lib/utils/app_routes.dart
+import 'package:fixit/userModel/service_provider_model.dart';
 import 'package:flutter/material.dart';
 import '../screens/profile_screen.dart';
 import '../screens/edit_profile_screen.dart';
@@ -30,7 +31,7 @@ class AppRoutes {
       payment: (context) => const PaymentScreen(),
       addNewCard: (context) => const AddNewCardScreen(),
       helpSupport: (context) => const HelpSupportScreen(),
-      profilePage: (context) => const ProfilePage(),
+      profilePage: (context) =>  ProfilePage(),
     };
   }
 

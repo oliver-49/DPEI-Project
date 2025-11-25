@@ -1,4 +1,4 @@
-import 'package:fixit/firebase/work_hour.dart';
+// import 'package:fixit/firebase/work_hour.dart';
 import 'package:fixit/l10n/app_localizations.dart';
 import 'package:fixit/gitHub/presentation/screens/account_service/Upload%20documents/upload_documents_screen.dart';
 import 'package:fixit/gitHub/presentation/screens/account_service/service_offer/work_hour/workhour_state.dart';
@@ -153,9 +153,9 @@ class Workhour extends StatelessWidget {
                             if (!ok) return;
 
                             if (context.mounted) {
-                              await WorkHourMode().setUserWorkHour(
-                                startingTime: cubit.state.fromTime!,
-                               endingTime: cubit.state.toTime!);
+                              // await WorkHourMode().setUserWorkHour(
+                              //   startingTime: cubit.state.fromTime!,
+                              //  endingTime: cubit.state.toTime!);
                              
                               provider.startingTime=cubit.state.fromTime!.toString();
                                provider.endingTime=cubit.state.toTime!.toString();

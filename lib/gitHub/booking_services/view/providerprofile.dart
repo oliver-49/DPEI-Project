@@ -6,6 +6,7 @@ import 'package:fixit/gitHub/booking_services/widgets/custom_button.dart';
 import 'package:fixit/gitHub/booking_services/widgets/custom_rateandorders.dart';
 import 'package:fixit/gitHub/booking_services/widgets/custom_review.dart';
 import 'package:fixit/gitHub/booking_services/widgets/custom_skills.dart';
+import 'package:fixit/userModel/service_provider_model.dart';
 import 'package:fixit/ye/utalities/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,15 +15,30 @@ import 'const.dart';
 import 'location.dart';
 
 class ProviderProfile extends StatelessWidget {
-  ProviderProfile({super.key});
+  String imagePath;
+  // List<ServiceProviderModel>? providers=[];
+final ServiceProviderModel? customer_data ;
+   final ServiceProviderModel? provider_data ;
+  ProviderProfile( {
+    super.key,required this.imagePath,
+        // this.providers,
+        this.customer_data,
+        this.provider_data
+                      });
   bool isSelected = true;
 
   @override
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.of(context).size.width;
     var screenHeight = MediaQuery.of(context).size.height;
-    String name = "إميلي جاني";
-    String type = "سباك";
+    String name =
+    ((provider_data?.name ?? "").trim().isNotEmpty)
+        ? provider_data!.name
+        : "إميلي جاني";
+
+    String type =  ((provider_data?.service ?? "").trim().isNotEmpty)
+        ? provider_data!.service
+          : "سباك";
     var shadow=Shadow(color: Colors.grey, offset: Offset(0, 3), blurRadius: 10);
     return Directionality(
       textDirection: TextDirection.rtl,
@@ -32,17 +48,42 @@ class ProviderProfile extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                Container(
-                  child: Image.asset(imagepath + "craftsman.png"),
-                  height: screenHeight * .350,
-                  width: screenWidth,
-                  decoration: BoxDecoration(
-                    color: Color(0xffe0e9f1),
-                    borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(32),
-                      bottomRight: Radius.circular(32),
+                Stack(
+                  children:[
+                   Container(
+                    child: Stack(children: [
+                       Positioned(
+                        top:  screenHeight * .350*0.1,
+                        right: 80,
+                        left: 80,
+                         child: SizedBox(
+                          
+                          
+                          child: Image.asset(imagePath!=''?imagePath:(imagepath + "craftsman.png"),
+                          
+                          fit: BoxFit.cover,
+                          
+                          ),
+                                               ),
+                       ),]
+                    ),
+                    height: screenHeight * .350,
+                    width: screenWidth,
+                    decoration: BoxDecoration(
+                      color: Color(0xffe0e9f1),
+                      borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(32),
+                        bottomRight: Radius.circular(32),
+                      ),
                     ),
                   ),
+                  Positioned(
+                    top:10, left:10,
+                    child: InkWell(child: Icon(Icons.cancel,color: Colors.blue[200],size: 40,),onTap: () {
+                      Navigator.pop(context);
+
+                    },))
+                  ]
                 ),
                 SizedBox(height: screenHeight * .024),
                 Padding(
@@ -185,9 +226,14 @@ class ProviderProfile extends StatelessWidget {
                           customButton(
                             title: "حجز",
                             onTap: () {
+                              
                               cubit.setName(name);
                               cubit.setType(type);
-                              Get.to(Location());
+                              Get.to(Location(
+                                customer_data:customer_data,
+                                provider_data:provider_data,
+
+                              ));
                             },
                           ),
                           SizedBox(height: screenHeight * .028),

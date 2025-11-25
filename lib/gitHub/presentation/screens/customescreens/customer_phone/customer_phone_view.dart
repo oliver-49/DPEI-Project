@@ -1,5 +1,5 @@
 import 'package:country_code_picker/country_code_picker.dart';
-import 'package:fixit/firebase/phone_mode.dart';
+// import 'package:fixit/firebase/phone_mode.dart';
 import 'package:fixit/l10n/app_localizations.dart';
 import 'package:fixit/gitHub/presentation/screens/customescreens/Verify_code/customer_verify_code_view.dart';
 import 'package:fixit/gitHub/presentation/widgets/custombutton.dart';
@@ -122,7 +122,8 @@ class CustomerPhoneView extends StatelessWidget {
 
                       final fullNumber =
                           '${cubit.state.countryCode}${cubit.state.phone}';
-                            await PhoneMode().updateUserPhone(fullNumber);
+                            // await PhoneMode().updateUserPhone(fullNumber);
+                            provider.phone=fullNumber;
                       Navigator.push(
                         context,
                         MaterialPageRoute(

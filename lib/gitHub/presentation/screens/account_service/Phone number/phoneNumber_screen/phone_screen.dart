@@ -1,5 +1,5 @@
 import 'package:country_code_picker/country_code_picker.dart';
-import 'package:fixit/firebase/phone_mode.dart';
+// import 'package:fixit/firebase/phone_mode.dart';
 import 'package:fixit/l10n/app_localizations.dart';
 import 'package:fixit/gitHub/presentation/screens/account_service/Phone%20number/verify%20code/verify_screen.dart';
 import 'package:fixit/gitHub/presentation/widgets/custombutton.dart';

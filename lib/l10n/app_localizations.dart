@@ -547,6 +547,264 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Home'**
   String get home;
+
+  /// Title for the user's orders section
+  ///
+  /// In en, this message translates to:
+  /// **'My Orders'**
+  String get myOrders;
+
+  /// No description provided for @city.
+  ///
+  /// In en, this message translates to:
+  /// **'City'**
+  String get city;
+
+  /// No description provided for @orders.
+  ///
+  /// In en, this message translates to:
+  /// **'Orders'**
+  String get orders;
+
+  /// No description provided for @profile.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile'**
+  String get profile;
+
+  /// No description provided for @unpaid.
+  ///
+  /// In en, this message translates to:
+  /// **'Unpaid'**
+  String get unpaid;
+
+  /// No description provided for @paid.
+  ///
+  /// In en, this message translates to:
+  /// **'Paid'**
+  String get paid;
+
+  /// No description provided for @schedule.
+  ///
+  /// In en, this message translates to:
+  /// **'Scheduled'**
+  String get schedule;
+
+  /// No description provided for @noOrders.
+  ///
+  /// In en, this message translates to:
+  /// **'No Orders Found'**
+  String get noOrders;
+
+  /// No description provided for @egp.
+  ///
+  /// In en, this message translates to:
+  /// **'EGP'**
+  String get egp;
+
+  /// No description provided for @providerName.
+  ///
+  /// In en, this message translates to:
+  /// **'Provider'**
+  String get providerName;
+
+  /// No description provided for @date.
+  ///
+  /// In en, this message translates to:
+  /// **'Date'**
+  String get date;
+
+  /// No description provided for @arrivalTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Arrival Time'**
+  String get arrivalTime;
+
+  /// No description provided for @payNow.
+  ///
+  /// In en, this message translates to:
+  /// **'Pay Now'**
+  String get payNow;
+
+  /// No description provided for @viewReceipt.
+  ///
+  /// In en, this message translates to:
+  /// **'View Receipt'**
+  String get viewReceipt;
+
+  /// No description provided for @cancelBooking.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel Booking'**
+  String get cancelBooking;
+
+  /// No description provided for @amountToPay.
+  ///
+  /// In en, this message translates to:
+  /// **'Amount to pay'**
+  String get amountToPay;
+
+  /// No description provided for @unpaidSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'You have not paid yet for below service'**
+  String get unpaidSubtitle;
+
+  /// No description provided for @paidSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Paid services'**
+  String get paidSubtitle;
+
+  /// No description provided for @scheduleSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Upcoming Booking services'**
+  String get scheduleSubtitle;
+
+  /// No description provided for @amountToPaid.
+  ///
+  /// In en, this message translates to:
+  /// **'Amount to paid'**
+  String get amountToPaid;
+
+  /// No description provided for @bookingDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Booking date'**
+  String get bookingDate;
+
+  /// No description provided for @payment.
+  ///
+  /// In en, this message translates to:
+  /// **'Payment'**
+  String get payment;
+
+  /// No description provided for @selectPaymentMethod.
+  ///
+  /// In en, this message translates to:
+  /// **'Select Payment method'**
+  String get selectPaymentMethod;
+
+  /// No description provided for @addNewCard.
+  ///
+  /// In en, this message translates to:
+  /// **'Add new card'**
+  String get addNewCard;
+
+  /// No description provided for @cardNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Card number'**
+  String get cardNumber;
+
+  /// No description provided for @cardHolderName.
+  ///
+  /// In en, this message translates to:
+  /// **'Card holder name'**
+  String get cardHolderName;
+
+  /// No description provided for @cardExpiryDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Card expiry date'**
+  String get cardExpiryDate;
+
+  /// No description provided for @cvv.
+  ///
+  /// In en, this message translates to:
+  /// **'CVV'**
+  String get cvv;
+
+  /// No description provided for @continueBtn.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue'**
+  String get continueBtn;
+
+  /// No description provided for @hour.
+  ///
+  /// In en, this message translates to:
+  /// **'hour'**
+  String get hour;
+
+  /// No description provided for @hourLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'H'**
+  String get hourLabel;
+
+  /// No description provided for @perHour.
+  ///
+  /// In en, this message translates to:
+  /// **'H'**
+  String get perHour;
+
+  /// No description provided for @enterValidCardNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter a valid 16-digit card number'**
+  String get enterValidCardNumber;
+
+  /// No description provided for @enterExpiryDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Please choose an expiry date'**
+  String get enterExpiryDate;
+
+  /// No description provided for @enterValidCvv.
+  ///
+  /// In en, this message translates to:
+  /// **'CVV must be 3 to 4 digits'**
+  String get enterValidCvv;
+
+  /// No description provided for @paymentSuccessful.
+  ///
+  /// In en, this message translates to:
+  /// **'Payment successful'**
+  String get paymentSuccessful;
+
+  /// No description provided for @paymentOf.
+  ///
+  /// In en, this message translates to:
+  /// **'Payment of'**
+  String get paymentOf;
+
+  /// No description provided for @paidSuccessfully.
+  ///
+  /// In en, this message translates to:
+  /// **'has been paid successfully'**
+  String get paidSuccessfully;
+
+  /// No description provided for @giveFeedback.
+  ///
+  /// In en, this message translates to:
+  /// **'Give Feedback'**
+  String get giveFeedback;
+
+  /// No description provided for @howWasExperience.
+  ///
+  /// In en, this message translates to:
+  /// **'How was your experience with Fix it?'**
+  String get howWasExperience;
+
+  /// No description provided for @writeFeedback.
+  ///
+  /// In en, this message translates to:
+  /// **'Write in the box below'**
+  String get writeFeedback;
+
+  /// No description provided for @send.
+  ///
+  /// In en, this message translates to:
+  /// **'Send'**
+  String get send;
+
+  /// No description provided for @pay.
+  ///
+  /// In en, this message translates to:
+  /// **'pay'**
+  String get pay;
 }
 
 class _AppLocalizationsDelegate

@@ -2,6 +2,7 @@
 import 'package:fixit/gitHub/booking_services/cubit/booking_cubit.dart';
 import 'package:fixit/gitHub/booking_services/view/address.dart';
 import 'package:fixit/gitHub/booking_services/widgets/custom_button.dart';
+import 'package:fixit/userModel/service_provider_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
@@ -10,7 +11,13 @@ import '../../../ye/utalities/colors.dart';
 import 'const.dart';
 
 class Location extends StatefulWidget {
-  const Location({super.key});
+  final ServiceProviderModel? customer_data ;
+  final ServiceProviderModel? provider_data ;
+   Location({super.key,
+        this.customer_data,
+        this.provider_data
+  
+  });
 
   @override
   State<Location> createState() => _LocationState();
@@ -82,7 +89,10 @@ class _LocationState extends State<Location> {
                      Get.to(
       BlocProvider.value(
         value: context.read<BookingCubit>(),
-        child: Address(),
+        child: Address(
+                                customer_data:widget.customer_data,
+                                provider_data:widget.provider_data,
+        ),
       ),
     );
                   })
