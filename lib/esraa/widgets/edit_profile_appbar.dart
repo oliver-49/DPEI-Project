@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../l10n/app_localizations.dart';
+
 class EditProfileAppBar extends StatelessWidget implements PreferredSizeWidget {
   final VoidCallback onBackPressed;  // Back button function
   
@@ -14,6 +16,8 @@ class EditProfileAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    var lang =AppLocalizations.of(context)!;
+
     return AppBar(
       backgroundColor: Colors.white, 
       elevation: 0, 
@@ -24,8 +28,8 @@ class EditProfileAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: Row(
         mainAxisAlignment: MainAxisAlignment.start,  //Left alignment
         children: [
-          const Text(
-            'Edit Profile',  //  Screen title
+           Text(
+            lang.edit_profile,  //  Screen title
             style: TextStyle(
               color: Color(0xFF0054A5), 
               fontSize: 18,

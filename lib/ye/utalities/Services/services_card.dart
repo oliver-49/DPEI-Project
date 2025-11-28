@@ -1,3 +1,4 @@
+import 'package:fixit/l10n/app_localizations.dart';
 import 'package:fixit/ye/utalities/Dimensions.dart';
 import 'package:fixit/ye/utalities/colors.dart';
 import 'package:fixit/ye/utalities/divider_title.dart';
@@ -25,7 +26,7 @@ class ServicesCard extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 10),
           child: Column(
                 children: [
-                DividerTitle(ftext: title,ltext:"View all", ontap:ontap ,more:more),
+                DividerTitle(ftext: title,ltext:AppLocalizations.of(context)!.viewAll, ontap:ontap ,more:more),
                 
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,

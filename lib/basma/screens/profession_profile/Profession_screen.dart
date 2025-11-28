@@ -9,6 +9,8 @@ import 'package:fixit/ye/utalities/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../l10n/app_localizations.dart';
+
 class ProfessionScreen extends StatelessWidget {
   
   final ServiceProviderModel? provider;
@@ -18,6 +20,8 @@ class ProfessionScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var lang =AppLocalizations.of(context)!;
+
     return Scaffold(
       backgroundColor: AppColors.bgColor,
       appBar: AppBar(
@@ -27,8 +31,8 @@ class ProfessionScreen extends StatelessWidget {
           icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () => Navigator.of(context).pop(),
         ),
-        title: const Text(
-          'Profession',
+        title:  Text(
+          lang.profession,
           style: TextStyle(
             color: Colors.black,
             fontWeight: FontWeight.bold,
@@ -44,23 +48,23 @@ class ProfessionScreen extends StatelessWidget {
             children: [
               // 1. Service Name
                CustomProfessionField(
-                label: 'Service name',
-                initialValue: provider?.service??"Plumber",
+                label: lang.service_name,
+                initialValue: provider?.service??lang.plumber,
               ),
 
               // 2. Expert in
               // Note: maxLines is used to simulate the height seen in the image
-              const CustomProfessionField(
-                label: 'Expert in',
-                initialValue: 'Home clean, lawn clean, Washing',
+               CustomProfessionField(
+                label: lang.expert_in,
+                initialValue: lang.home_clean_lawn_clean_washing,
                 maxLines: 2,
               ),
 
               // 3. Service Timing (Split Row)
-              const Padding(
+               Padding(
                 padding: EdgeInsets.only(bottom: 8.0),
                 child: Text(
-                  'Service Timing',
+                  lang.service_timing,
                   style: TextStyle(
                     fontSize: 14,
                     color: Colors.black54,
@@ -72,7 +76,7 @@ class ProfessionScreen extends StatelessWidget {
                   // From Time
                   Expanded(
                     child: CustomProfessionField(
-                      label: 'From',
+                      label: lang.from,
                       initialValue:  provider?.startingTime.substring(10,15)??"",
                       readOnly: true, // Typically readOnly for TimePicker
                       suffixWidget: Icon(
@@ -86,7 +90,7 @@ class ProfessionScreen extends StatelessWidget {
                   // To Time
                   Expanded(
                     child: CustomProfessionField(
-                      label: 'TO',
+                      label: lang.to,
                       initialValue: provider?.endingTime.substring(10,15)??"",
                       readOnly: true,
                       suffixWidget: Icon(
@@ -106,8 +110,8 @@ class ProfessionScreen extends StatelessWidget {
                   Expanded(
                     flex: 1, // Takes less space
                     child: CustomProfessionField(
-                      label: 'Experience in years',
-                      initialValue: provider?.experienceYear??"4 year",
+                      label: lang.experience_in_years,
+                      initialValue: provider?.experienceYear??lang.years,
                       // Removed suffixWidget here
                     ),
                   ),
@@ -136,13 +140,13 @@ class ProfessionScreen extends StatelessWidget {
 
               // 5. Service Area
                CustomProfessionField(
-                label: 'Service Area',
-                initialValue:  provider?.serviceArea??"elmonofia",
+                label: lang.service_area,
+                initialValue:  provider?.serviceArea??lang.menofia,
               ),
 
               // 6. Upload Services License
               FileUploadItem(
-                label: 'Upload your services license',
+                label: lang.upload_services_license,
                 fileName: 'License.pdf',
                 onUpload: () {
                   // Logic to open file picker for license
@@ -151,7 +155,7 @@ class ProfessionScreen extends StatelessWidget {
 
               // 7. Upload Certification
               FileUploadItem(
-                label: 'Upload your Certification',
+                label: lang.upload_certification,
                 fileName: 'Certificate.pdf',
                 onUpload: () {
                   // Logic to open file picker for certificate
@@ -175,8 +179,8 @@ class ProfessionScreen extends StatelessWidget {
                     ),
                     elevation: 5,
                   ),
-                  child: const Text(
-                    'Save',
+                  child:  Text(
+                   lang.save ,
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,

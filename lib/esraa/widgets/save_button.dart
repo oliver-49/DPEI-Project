@@ -1,3 +1,4 @@
+import 'package:fixit/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 
 // This widget for save button in edit profile screen
@@ -11,6 +12,7 @@ class SaveButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var lang=AppLocalizations.of(context)!;
     return GestureDetector(
       onTap: onPressed, // Execute function when tapped
       child: Container(
@@ -27,9 +29,9 @@ class SaveButton extends StatelessWidget {
             ),
           ],
         ),
-        child: const Center(
+        child:  Center(
           child: Text(
-            'Save', //  Button text
+            lang.save, //  Button text
             style: TextStyle(
               color: Colors.white, 
               fontSize: 16,

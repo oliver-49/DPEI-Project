@@ -1,4 +1,44 @@
 {
+  "error_loading": "حدث خطأ أثناء تحميل البيانات",
+
+  "welcome_title": "مرحبًا بك في FixIt",
+  "welcome_subtitle": "اكتشف عالم من الراحة والموثوقية. FixIt هو الحل الشامل لكل احتياجاتك المنزلية.",
+  "find_services_title": "ابحث عن الخدمات",
+  "find_services_subtitle": "تصفح واحجز مجموعة واسعة من الخدمات من السباكة والكهرباء إلى إصلاح الأجهزة. كل ما تحتاجه متوفر.",
+  "fast_reliable_title": "سريع وموثوق",
+  "fast_reliable_subtitle": "يضمن محترفونا خدمة سريعة وموثوقة في كل مرة. استرخِ ودعنا نعتني بالأمر.",
+  "skip": "تخطي",
+  "get_started": "ابدأ الآن",
+
+  "login_title": "أدخل بريدك الإلكتروني وكلمة المرور لتسجيل الدخول",
+  "email_label": "أدخل بريدك الإلكتروني",
+  "email_required": "من فضلك أدخل بريدك الإلكتروني",
+  "email_invalid_at": "يجب أن يحتوي البريد الإلكتروني على @",
+  "email_invalid_com": "يجب أن ينتهي البريد الإلكتروني بـ .com",
+  "password_label": "أدخل كلمة المرور",
+  "password_required": "من فضلك أدخل كلمة المرور",
+  "password_short": "يجب أن تتكون كلمة المرور من 6 أحرف على الأقل",
+  "forgot_password": "هل نسيت كلمة المرور؟",
+  "sign_in": "تسجيل الدخول",
+  "login_success": "تم تسجيل الدخول بنجاح",
+  "login_invalid_data": "من فضلك أدخل بيانات صحيحة",
+  "new_to_fixit": "جديد في FixIt؟",
+  "sign_up_now": "أنشئ حسابًا الآن",
+  "or": "أو",
+  "login_with": "تسجيل الدخول باستخدام",
+  "google": "جوجل",
+  "facebook": "فيسبوك",
+
+  "signup_title": "أدخل بريدك الإلكتروني وكلمة المرور للتسجيل",
+  "full_name": "الاسم الكامل",
+  "agree_terms": "أوافق على",
+  "terms_conditions": "الشروط والأحكام الخاصة بـ FixIt",
+  "sign_up": "إنشاء حساب",
+  "account_created": "تم إنشاء الحساب بنجاح",
+  "already_have_account": "هل لديك حساب بالفعل؟",
+  "sign_in_now": "سجّل الدخول الآن",
+  "signup_with": "سجّل باستخدام",
+
   "@@locale": "ar",
 
   "accountSetupTitle": "أنا",
@@ -418,6 +458,8 @@
   "@selectPaymentMethod": {},
   "addNewCard": "إضافة بطاقة جديدة",
   "@addNewCard": {},
+
+  "details": "التفاصيل",
  
   
   "cardNumber": "رقم البطاقة",
@@ -458,13 +500,342 @@
 "send": "إرسال",
 "@send": {},
 "pay" : "ادفع",
-"@pay": {}
+"@pay": {},
+
+  "write_here": "اكتب هنا...",
 
 
 
 
 
+  "electric_work": "أعمال كهربائية",
+  "solar": "طاقة شمسية",
+  "search_here": "ابحث هنا...",
+  "get_30_off": "احصل على خصم 30%",
+  "booking_home_services": "بالحجز لخدمات المنزل",
+  "home_get_offer": "احصل على خصم 30%",
+  "home_booking_services": "بمجرد حجز خدمات المنزل",
+  "home_search_placeholder": "ابحث هنا..",
+  "home_popular_services": "الخدمات الشائعة",
+  "home_service_providers": "مقدمي الخدمات",
+  "maskot_kota": "ماسكت كوتا",
+  "shams_jan": "شمس جان",
+  "nav_home": "الرئيسية",
+  "nav_order": "الطلبات",
+  "nav_profile": "الملف الشخصي",
 
+  "popular_services": "الخدمات الشائعة",
+  "maintenance": "صيانة",
+  "home_improvement": "تحسين المنزل",
+  "security": "أمن",
+  "car_maintenance": "صيانة السيارات",
+  "handyman_services": "خدمات الحرفيين",
+  "other_services": "خدمات أخرى",
+
+  "electrician": "فني كهرباء",
+  "carpenter": "نجار",
+  "painter": "دهان",
+  "cleaner": "عامل نظافة",
+  "locksmith": "فني أقفال",
+
+  "jackson": "جاكسون",
+  "ethan_lita": "إيثان ليتا",
+  "isabella_una": "إيزابيلا أونا",
+  "aiden": "آيدن",
+  "logan": "لوغان",
+  "lucas": "لوكاس",
+  "ethan": "إيثان",
+  "harper": "هاربر",
+  "caleb": "كاليب",
+  "benjamin": "بنجامين",
+  "carter": "كارتر",
+
+
+  "air_condition": "تكييف",
+  "electric": "كهرباء",
+  "siding_repair": "إصلاح الجوانب",
+  "car_wash": "غسيل السيارات",
+  "home_flooring": "أرضيات المنزل",
+  "gutter": "مزاريب",
+  "carpet": "سجاد",
+  "pliers": "كماشة",
+  "drilling": "حفر",
+  "lawn": "عشب",
+  "weed_control": "مكافحة الأعشاب",
+  "water_tap": "حنفية",
+  "cameras": "كاميرات",
+  "burglar_alarm": "إنذار ضد السرقة",
+  "sturdy_lock": "قفل متين",
+  "cctv": "كاميرات مراقبة",
+  "car_washer": "غسالة سيارات",
+  "oil_change": "تغيير الزيت",
+  "car_battery": "بطارية السيارة",
+  "furniture": "أثاث",
+  "door": "باب",
+  "shelving": "أرفف",
+  "interior": "الداخلية",
+  "exterior": "الخارجية",
+  "wall": "حائط",
+  "dish_wash": "غسيل الصحون",
+  "cutting": "قص",
+  "mopping_floor": "كنس الأرضية",
+
+  "rating": "التقييم",
+  "no_providers": "لا يوجد مزودين في الوقت الحالي.",
+  "loading_providers": "جاري تحميل المزودين...",
+  "provider_details": "تفاصيل المزود",
+  "service_type": "نوع الخدمة",
+
+  "services_providers": "مزودي الخدمات",
+  "electrician_providers": "مزودي الكهرباء",
+  "plumber_providers": "مزودي السباكة",
+  "carpenter_providers": "مزودي النجارة",
+  "painter_providers": "مزودي الطلاء",
+  "cleaner_providers": "مزودي التنظيف",
+  "locksmith_providers": "مزودي الأقفال",
+
+"name": "الاسم",
+  "emily_jani":"إميلي جاني",
+  "plumber":"سباك",
+  "rate":"التقيم",
+  "order":"56 طلب",
+  "complete":"مكتمل",
+  "years":"3 سنوات",
+  "experience":"خبرة",
+  "skills":"مهارات",
+  "sink":"حوض",
+  "shower":"دش",
+  "boiler":"غلايه",
+  "toilet":"مرحاض",
+  "book":"حجز",
+  "bio":"السيرة الذاتية",
+  "bioDescription":"أنا إميلي جاني، سباك متفاني، شغوف بتقديم خدمة ممتازة لضمان سير أعمال السباكة في منزلك بسلاسة. بخبرة عملية تمتد لسنوات.",
+  "gallary":"المعرض",
+  "viewAll":"عرض الكل",
+  "review":"مراجعة",
+  "nameUser":"يوسف",
+  "comment":"لقد فاق إميلي جاني توقعاتي! سريع وموثوق، وأصلح مشكلة السباكة بدقة. أنصح به بشدة.",
+  "bookPlumber":"حجز سباك",
+  "allowForFixit":"السماح لـ Fixlt باستخدام موقعك",
+  "weAreNeedToKnowYourLocation":"نحن بحاجة إلى معرفة موقعك الدقيق حتى يتمكن الكهربائي من زيارتك بسهولة.",
+  "allowDuringUsingFixit":"السماح أثناء استخدام FixIt",
+  "dontAllow":"لا تسمح",
+  "fillManually":"املأ يدويًا",
+  "enterYourLocation":"أدخل عنوان موقعك",
+  "houseNumber":"أدخل رقم المنزل",
+  "streetNumber":"أدخل رقم الشارع",
+  "fullLocation":"أدخل العنوان الكامل",
+  "success": "نجاح",
+  "locationIsAdded": "تم اضافه عنوان موقعك بنجاح ",
+  "error":"خطا",
+  "pleaseEnterVaildData": "من فضلك ادخل بيانات صحيحه",
+  "selectDate":"حدد التاريخ",
+  "selectHour":"حدد الساعة",
+  "theDateHasBeenAddedSuccessfully": "تم اضافه  التاريخ بنجاح ",
+  "pleaseSelectTime":"من فضلك اختر الوقت ",
+  "am":"صباحا",
+  "pm":"مساء",
+  "reviewSummary":"ملخص الحجز",
+  "craftsmanType":"النوع",
+  "salary":"السعر",
+  "address": "العنوان",
+  "fullAddressFormat": "{fullAddress}/منزل رقم {homeNo}/شارع رقم {streetNo}",
+  "@fullAddressFormat": {
+    "description": "Formatted full address",
+    "placeholders": {
+      "fullAddress": {},
+      "homeNo": {},
+      "streetNo": {}
+    }
+  },
+
+  "bookingHour":"ساعة الحجز",
+  "total":"الاجمالي",
+  "confirm":"تأكيد",
+  "orderRecive":"تم استلام الطلب",
+  "plumberArrival": "بناءً على طلبك للحجز الذي تلقاه السباك، سيصل السباك في الساعة {time}.",
+  "@plumberArrival": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+
+
+
+
+
+  "selectVerifcationMethod":"اختر طريقة التحقق",
+  "email":"البريد الإلكترون",
+  "phone":"رقم الجوال",
+  "enterEmail":"أدخل عنوان بريدك الإلكتروني للتحقق",
+  "sendCode":"إرسال الرمز",
+  "pleaseEnterYourEmail":"الرجاء إدخال بريدك الإلكتروني",
+  "enterValidEmailAddress":"أدخل عنوان البريد الإلكتروني صحيح",
+  "codeSendsSuccessfully":"تم إرسال الكود بنجاح",
+  "enter5digit":"أدخل رمز PIN المكون من 5 أرقام المُرسل إلى بريدك الإلكتروني",
+  "theCodeIsCorrect":"الكود صحيح",
+  "verify":"التحقق",
+  "didNotRecivedCode":"ألم تستلم الرمز؟",
+  "createPassword":"أنشئ كلمة مرور جديدة",
+  "newPassword":"كلمة مرور جديدة",
+  "confirmPassword":"تأكيد كلمة المرور",
+  "save":"حفظ",
+  "passwordUpdatedSuccessfully":"تم تحديث كلمة المرور بنجاح",
+
+
+  "edit_profile": "تعديل الملف الشخصي",
+  "country": "الدولة",
+  "phone_number": "رقم الهاتف",
+  "egy": "مصر",
+  "egypt": "مصر",
+  "mexico": "المكسيك",
+  "usa": "الولايات المتحدة",
+  "canada": "كندا",
+  "other": "أخرى",
+
+  "profession": "المهنة",
+  "verification": "التحقق",
+  "subscription_payments": "الاشتراك والمدفوعات",
+  "payment_method": "طريقة الدفع",
+  "upgrade": "ترقية",
+  "general_preferences": "التفضيلات العامة",
+  "notification": "الإشعارات",
+  "help_support": "المساعدة والدعم",
+  "logout": "تسجيل الخروج",
+  "confirm_logout": "تأكيد تسجيل الخروج",
+  "logout_confirmation": "هل أنت متأكد أنك تريد تسجيل الخروج؟",
+  "cancel": "إلغاء",
+  "change_profile_mode": "تغيير الملف الشخصي إلى وضع الشراء",
+  "earnings": "الأرباح",
+  "active": "نشط",
+  "completed": "مكتمل",
+  "profile_information":"معلومات الملف الشخص",
+
+
+  "service_name": "اسم الخدمة",
+  "expert_in": "خبير في",
+  "service_timing": "مواعيد الخدمة",
+  "experience_in_years": "عدد سنوات الخبرة",
+  "service_area": "منطقة الخدمة",
+  "upload_services_license": "رفع رخصة الخدمة",
+  "upload_certification": "رفع الشهادة",
+
+
+
+  "order_success_title": "تم تنفيذ الطلب بنجاح",
+  "order_failed_title": "تم إلغاء الطلب",
+  "order_success_status": "بنجاح",
+  "order_failed_status": "فشل",
+  "back_to_home": "ارجع إلى الصفحة الرئيسية",
+
+
+  "payment_page_title": "صفحة الدفع",
+  "payment_loading": "جارٍ فتح صفحة الدفع...",
+  "payment_error_title": "خطأ",
+  "payment_error_message": " حدث خطأ في الدفع: {error}",
+
+  "payment_success_title": "نجاح",
+  "payment_success_message": "✅ تم الدفع بنجاح",
+  "payment_failed_title": "فشل",
+  "payment_failed_message": "❌ فشل في الدفع",
+  "close_button_tooltip": "إغلاق",
+
+
+  "payment_auth_error": "فشل في الحصول على رمز المصادقة.",
+  "payment_order_error": "فشل في إنشاء الطلب.",
+  "payment_key_error": "فشل في الحصول على مفتاح الدفع.",
+  "payment_general_error": "حدث خطأ في PaymobManager: {error}",
+  "payment_failed_to_get_key": "فشل الحصول على مفتاح الدفع",
+
+  "change_to_selling_mode": "تبديل الملف إلى وضع البيع",
+
+
+  "logout_title": "تسجيل الخروج",
+  "logout_button": "تسجيل الخروج",
+  "cancel_button": "إلغاء",
+
+  "my_profile": "ملفي الشخصي",
+
+  "add_new_card": "+ أضف بطاقة جديدة",
+
+  "mahrama": "محرمًا",
+
+  "select_payment_method": "اختر طريقة الدفع",
+  "easypaisa": "إيزي باي",
+  "bank_account": "الحساب البنكي",
+  "jazz_cash": "جاز كاش",
+  "paypal": "باي بال",
+  "payment_saved": "تم حفظ  بنجاح!",
+  "please_select_payment": "الرجاء اختيار طريقة الدفع",
+
+  "general_notification": "الإشعارات العامة",
+  "sound": "الصوت",
+  "vibrate": "الاهتزاز",
+  "new_service": "خدمة جديدة",
+  "notification_saved": "تم حفظ إعدادات الإشعارات بنجاح!",
+  "home_clean_lawn_clean_washing": "تنظيف المنزل، تنظيف الحديقة، الغسيل",
+  "home_screen": "الشاشة الرئيسية",
+  "city_screen": "شاشة المدينة",
+  "order_screen": "شاشة الطلبات",
+
+  "live_chat": "الدردشة المباشرة",
+  "hello_assist": "مرحبًا، كيف يمكننا مساعدتك؟",
+  "title": "العنوان",
+  "title_hint": "أدخل عنوان المشكلة",
+  "description": "اكتب في الصندوق أدناه",
+  "description_hint": "اكتب هنا...",
+  "enter_title": "يرجى إدخال عنوان المشكلة",
+  "enter_description": "يرجى وصف المشكلة",
+  "ticket_submitted": "تم إرسال المشكلة بنجاح!",
+
+
+  "dob": "تاريخ الميلاد",
+  "select_country": "اختر الدولة",
+  "select_country_code": "اختر كود الدولة",
+  "changes_saved": "تم حفظ التعديلات بنجاح",
+
+
+  "card": "بطاقة",
+  "credit_card": "بطاقة ائتمان",
+  "card_number": "رقم البطاقة",
+  "card_number_hint": "أدخل رقم مكون من 14 رقم",
+  "card_holder_name": "اسم حامل البطاقة",
+  "card_holder_name_hint": "أدخل الاسم",
+  "card_expiry_date": "تاريخ انتهاء البطاقة",
+  "card_expiry_date_hint": "يوم/شهر/سنة",
+
+  "pick_image_example": "مثال اختيار صورة",
+  "no_image_selected": "لم يتم اختيار صورة",
+  "pick_image": "اختر صورة",
+  "camera": "الكاميرا",
+
+  "payment_success": "✅ الدفع تم بنجاح",
+  "payment_failed": "❌ فشل في الدفع",
+  "close_button": "إغلاق",
+
+
+  "dob_label": "تاريخ الميلاد",
+  "select_country_title": "اختر الدولة",
+  "select_country_code_title": "اختر كود الدولة",
+  "data_saved_success": "تم حفظ التغييرات بنجاح",
+  "data_saved_console": "تم حفظ البيانات",
+  "success_message": "تم تحديث الملف الشخصي بنجاح",
+  "choose_date_hint": "اختر تاريخ ميلادك",
+
+
+  "uk": "المملكة المتحدة",
+  "germany": "ألمانيا",
+  "france": "فرنسا",
+  "italy": "إيطاليا",
+  "spain": "إسبانيا",
+  "japan": "اليابان",
+  "brazil": "البرازيل",
+  "australia": "أستراليا",
+  "india": "الهند",
+  "china": "الصين",
+  "south_korea": "كوريا الجنوبية"
 
 }  
 

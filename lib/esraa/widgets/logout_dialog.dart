@@ -1,21 +1,25 @@
 // lib/widgets/logout_dialog.dart
 import 'package:flutter/material.dart';
 
+import '../../l10n/app_localizations.dart';
+
 class LogoutDialog extends StatelessWidget {
   const LogoutDialog({super.key});
 
   @override
   Widget build(BuildContext context) {
+    var lang =AppLocalizations.of(context)!;
+
     return AlertDialog(
-      title: const Text(
-        'Logout',
+      title:  Text(
+        lang.logout,
         style: TextStyle(
           fontSize: 18,
           fontWeight: FontWeight.bold,
         ),
       ),
-      content: const Text(
-        'Are you sure to logout?',
+      content:  Text(
+        lang.logout_confirmation,
         style: TextStyle(fontSize: 16),
       ),
       actions: [
@@ -23,8 +27,8 @@ class LogoutDialog extends StatelessWidget {
           onPressed: () {
             Navigator.of(context).pop();
           },
-          child: const Text(
-            'Cancel',
+          child:  Text(
+            lang.cancel,
             style: TextStyle(color: Colors.grey),
           ),
         ),
@@ -37,8 +41,8 @@ class LogoutDialog extends StatelessWidget {
             Navigator.of(context).pop();
             // Navigate to login screen or clear user data
           },
-          child: const Text(
-            'Logout',
+          child:  Text(
+            lang.logout,
             style: TextStyle(color: Colors.white),
           ),
         ),

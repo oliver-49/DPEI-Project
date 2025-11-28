@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../l10n/app_localizations.dart';
+
 class ProfileAppBar extends StatelessWidget implements PreferredSizeWidget {
   const ProfileAppBar({super.key});
 
@@ -8,12 +10,14 @@ class ProfileAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    var lang =AppLocalizations.of(context)!;
+
     return AppBar(
       backgroundColor: Colors.white,
       elevation: 0,
       centerTitle: false,
-      title: const Text(
-        'My Profile',
+      title:  Text(
+        lang.my_profile,
         style: TextStyle(
           color: Color(0xFF0054A5), 
           fontSize: 18,

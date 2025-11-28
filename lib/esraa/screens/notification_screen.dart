@@ -2,6 +2,7 @@
 // This is the main notification settings screen
 
 import 'package:flutter/material.dart';
+import '../../l10n/app_localizations.dart';
 import '../widgets/custom_switch.dart';
 import '../widgets/setting_item.dart';
 
@@ -22,6 +23,8 @@ class _NotificationScreenState extends State<NotificationScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var lang =AppLocalizations.of(context)!;
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -35,8 +38,8 @@ class _NotificationScreenState extends State<NotificationScreen> {
         ),
         title: Container(
           width: double.infinity, // Takes full width
-          child: const Text(
-            'Notification',
+          child:  Text(
+            lang.notification,
             style: TextStyle(
               color: Color(0xFF0054A5), 
               fontSize: 18,
@@ -57,7 +60,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                 children: [
                   // General Notification Switch
                   SettingItem(
-                    title: 'General notification',
+                    title: lang.general_notification,
                     trailing: CustomSwitch(
                       value: _generalNotification,
                       onChanged: (bool newValue) {
@@ -70,7 +73,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                   
                   // Sound Switch
                   SettingItem(
-                    title: 'Sound',
+                    title: lang.sound,
                     trailing: CustomSwitch(
                       value: _soundEnabled,
                       onChanged: (bool newValue) {
@@ -83,7 +86,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                   
                   // Vibrate Switch
                   SettingItem(
-                    title: 'Vibrate',
+                    title: lang.vibrate,
                     trailing: CustomSwitch(
                       value: _vibrateEnabled,
                       onChanged: (bool newValue) {
@@ -96,7 +99,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                   
                   // New Service Switch
                   SettingItem(
-                    title: 'New Service',
+                    title: lang.new_service,
                     trailing: CustomSwitch(
                       value: _newServiceEnabled,
                       onChanged: (bool newValue) {
@@ -109,7 +112,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                   
                   // Payment Switch
                   SettingItem(
-                    title: 'Payment',
+                    title: lang.payment,
                     trailing: CustomSwitch(
                       value: _paymentEnabled,
                       onChanged: (bool newValue) {
@@ -142,8 +145,8 @@ class _NotificationScreenState extends State<NotificationScreen> {
                     borderRadius: BorderRadius.circular(12),
                   ),
                 ),
-                child: const Text(
-                  'Save',
+                child:  Text(
+                  lang.save,
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 16,
@@ -170,8 +173,8 @@ class _NotificationScreenState extends State<NotificationScreen> {
     
     // Show success message
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('Notification settings saved successfully!'),
+       SnackBar(
+        content: Text(AppLocalizations.of(context)!.notification_saved),
         backgroundColor: Colors.green,
       ),
     );

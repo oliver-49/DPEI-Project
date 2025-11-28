@@ -1,3 +1,4 @@
+import 'package:fixit/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'profile_menu_item.dart';
 import '../screens/edit_profile_screen.dart';
@@ -10,10 +11,11 @@ class ProfileMenuOptions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var lang =AppLocalizations.of(context)!;
     return Column(
       children: [
         ProfileMenuItem(
-          title: 'Edit Profile', 
+          title: lang.edit_profile,
           iconPath: 'assets/icons/edit_profile_icon.png',
           onTap: () {
             Navigator.push(
@@ -25,7 +27,7 @@ class ProfileMenuOptions extends StatelessWidget {
         const SizedBox(height: 8),
         
         ProfileMenuItem(
-          title: 'Notification', 
+          title: lang.notification,
           iconPath: 'assets/icons/notification_icon.png',
           onTap: () {
             Navigator.push(
@@ -37,7 +39,7 @@ class ProfileMenuOptions extends StatelessWidget {
         const SizedBox(height: 8),
         
         ProfileMenuItem(
-          title: 'Payment method', 
+          title: lang.payment_method,
           iconPath: 'assets/icons/payment_icon.png',
           onTap: () {
             Navigator.push(
@@ -49,7 +51,7 @@ class ProfileMenuOptions extends StatelessWidget {
         const SizedBox(height: 8),
         
         ProfileMenuItem(
-          title: 'Help & support', 
+          title: lang.help_support,
           iconPath: 'assets/icons/help_icon.png',
           onTap: () {
             Navigator.push(
@@ -61,7 +63,7 @@ class ProfileMenuOptions extends StatelessWidget {
         const SizedBox(height: 8),
         
         ProfileMenuItem(
-          title: 'Logout', 
+          title: lang.logout,
           iconPath: 'assets/icons/logout_icon.png', 
           isLogout: true,
           onTap: () {
@@ -73,6 +75,7 @@ class ProfileMenuOptions extends StatelessWidget {
   }
 
   void _showLogoutDialog(BuildContext context) {
+    var lang =AppLocalizations.of(context)!;
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -87,16 +90,16 @@ class ProfileMenuOptions extends StatelessWidget {
                 fit: BoxFit.contain,
               ),
               const SizedBox(height: 10),
-              const Text(
-                'Logout',
+               Text(
+                lang.logout,
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               const SizedBox(height: 10),
-              const Text(
-                'Are you sure to logout?',
+               Text(
+                lang.logout_confirmation,
                 style: TextStyle(fontSize: 16),
               ),
               const SizedBox(height: 20),
@@ -115,8 +118,8 @@ class ProfileMenuOptions extends StatelessWidget {
                       onPressed: () {
                         Navigator.of(context).pop();
                       },
-                      child: const Text(
-                        'Logout',
+                      child:  Text(
+                        lang.logout,
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 16,
@@ -139,8 +142,8 @@ class ProfileMenuOptions extends StatelessWidget {
                       onPressed: () {
                         Navigator.of(context).pop();
                       },
-                      child: const Text(
-                        'Cancel',
+                      child:  Text(
+                        lang.cancel,
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: 16,

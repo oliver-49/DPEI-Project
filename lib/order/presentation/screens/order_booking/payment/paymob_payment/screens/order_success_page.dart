@@ -4,6 +4,8 @@ import 'package:fixit/ye/utalities/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../../../../../l10n/app_localizations.dart';
+
 
 class OrderSuccessPage extends StatelessWidget {
   // final String orderID;
@@ -15,6 +17,7 @@ class OrderSuccessPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var lang=AppLocalizations.of(context)!;
     if (status == 0) {
       Future.delayed(Duration(seconds: 1), () {
         //    Get.dialog(PaymentFailedDialog(orderId:orderID),barrierDismissible: false);
@@ -53,7 +56,7 @@ class OrderSuccessPage extends StatelessWidget {
                       height: 20*2.25,
                     ),
                      Text(
-      status==1? "You placed the order successfully":"your order has been canceled",
+      status==1? lang.order_success_title:lang.order_failed_title,
       maxLines: 1,
       overflow: TextOverflow.ellipsis,
       style: TextStyle(
@@ -72,7 +75,7 @@ class OrderSuccessPage extends StatelessWidget {
                     status==1? 
                         
             Text(
-            'successfully',    style: TextStyle(fontSize:20,
+            lang.order_success_status,    style: TextStyle(fontSize:20,
                       color: status==1?Colors.green:Colors.grey[500]),
                       textAlign: TextAlign.center,
           )
@@ -80,7 +83,7 @@ class OrderSuccessPage extends StatelessWidget {
          :
         
             Text(
-            'failed',    style: TextStyle(fontSize:20,
+            lang.order_failed_status,    style: TextStyle(fontSize:20,
                       color: status==1?Colors.green:Colors.grey[500]),
                       textAlign: TextAlign.center,
           ),
@@ -96,7 +99,7 @@ class OrderSuccessPage extends StatelessWidget {
                         bkcolor: status==1?Colors.green:Colors.redAccent,
                         buttonText: 
                         //  controller.currentLang == 'ar' ? 
-                        "  ارجع الى الصفحة الرئيسية  " 
+                        lang.back_to_home
                         // : "Back to Home"
                         ,fontSize: 20/1.1,
                         onPressed: 

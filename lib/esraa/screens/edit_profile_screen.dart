@@ -1,3 +1,4 @@
+import 'package:fixit/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import '../widgets/edit_profile_appbar.dart';    // App Bar
 import '../widgets/profile_text_field.dart';     //Text Fields
@@ -56,8 +57,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     
     //  Show success message
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('Changes saved successfully'),
+       SnackBar(
+        content: Text(AppLocalizations.of(context)!.data_saved_success),
         backgroundColor: Colors.green,
       ),
     );
@@ -69,7 +70,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Select Country', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+          title:  Text(AppLocalizations.of(context)!.select_country, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
           content: SizedBox(
             width: double.maxFinite,
             child: ListView.builder(
@@ -108,7 +109,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context),
-              child: const Text('Cancel', style: TextStyle(color: Colors.grey)),
+              child:  Text(AppLocalizations.of(context)!.cancel, style: TextStyle(color: Colors.grey)),
             ),
           ],
         );
@@ -118,11 +119,12 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
 
   //  Function to show country codes list
   void _showCountryCodeDialog() {
+    var lang=AppLocalizations.of(context)!;
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Select Country Code', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+          title:  Text(lang.select_country_code_title, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
           content: SizedBox(
             width: double.maxFinite,
             child: ListView.builder(
@@ -154,7 +156,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context),
-              child: const Text('Cancel', style: TextStyle(color: Colors.grey)),
+              child:  Text('Cancel', style: TextStyle(color: Colors.grey)),
             ),
           ],
         );
@@ -180,6 +182,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var lang=AppLocalizations.of(context)!;
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: EditProfileAppBar(
@@ -194,16 +197,16 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
             const SizedBox(height: 40),
             
             //  Name field
-            ProfileTextField(label: 'Name', controller: _nameController),
+            ProfileTextField(label: lang.name, controller: _nameController),
             const SizedBox(height: 20),
             
             // Email field
-            ProfileTextField(label: 'Email', controller: _emailController),
+            ProfileTextField(label: lang.email, controller: _emailController),
             const SizedBox(height: 20),
             
             //  Date of Birth field 
             ProfileTextField(
-              label: 'Date of Birth', 
+              label: lang.dob_label,
               controller: _dobController,
               showCalendarIcon: true,
               onTap: _showDatePicker,
@@ -212,7 +215,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
             
             //  Country field 
             ProfileTextField(
-              label: 'Country', 
+              label: lang.country,
               controller: _countryController,
               showDropdownIcon: true,
               onTap: _showCountryDialog,
@@ -221,7 +224,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
             
             // Phone number field 
             ProfileTextField(
-              label: 'Phone number', 
+              label: lang.phone,
               controller: _phoneController,
               isPhoneField: true,
               countryFlag: _selectedCountryFlag,

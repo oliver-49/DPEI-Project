@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 
+import '../../l10n/app_localizations.dart';
+
 class ProfileLogoutDialog extends StatelessWidget {
   const ProfileLogoutDialog({super.key});
 
   @override
   Widget build(BuildContext context) {
+    var lang =AppLocalizations.of(context)!;
+
     return AlertDialog(
       content: Column(
         mainAxisSize: MainAxisSize.min,
@@ -16,16 +20,16 @@ class ProfileLogoutDialog extends StatelessWidget {
             fit: BoxFit.contain,
           ),
           const SizedBox(height: 10),
-          const Text(
-            'Logout',
+           Text(
+            lang.logout,
             style: TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.bold,
             ),
           ),
           const SizedBox(height: 10),
-          const Text(
-            'Are you sure to logout?',
+           Text(
+            lang.logout_confirmation,
             style: TextStyle(fontSize: 16),
           ),
           const SizedBox(height: 20),
@@ -44,8 +48,8 @@ class ProfileLogoutDialog extends StatelessWidget {
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
-                  child: const Text(
-                    'Logout',
+                  child:  Text(
+                    lang.logout,
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 16,
@@ -68,8 +72,8 @@ class ProfileLogoutDialog extends StatelessWidget {
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
-                  child: const Text(
-                    'Cancel',
+                  child:  Text(
+                    lang.cancel,
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: 16,

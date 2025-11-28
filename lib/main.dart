@@ -13,24 +13,19 @@ import 'package:get/get_navigation/src/root/get_material_app.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await AppBox.init();
-   WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
-  runApp( 
+  runApp(
     MultiBlocProvider(
-  providers: [
-    BlocProvider(
-        create: (context) => BookingCubit(),
+      providers: [
+        BlocProvider(create: (context) => BookingCubit()),
+        BlocProvider(create: (context) => SelectionCubit()),
+        BlocProvider(create: (context) => LanguageCubit()),
+      ],
+      child: MyApp(),
     ),
-    BlocProvider(
-        create: (context) => SelectionCubit(),
-      ),
-      BlocProvider(
-        create: (context) => LanguageCubit(),
-      ),
-  ],
-  child: MyApp(),
-));
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -38,50 +33,28 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<LanguageCubit,Locale>(
+    return BlocBuilder<LanguageCubit, Locale>(
       builder: (context, state) {
-        
-    
-      return GetMaterialApp (
-        locale: state ,//const Locale("en"),
-      
-        localizationsDelegates: [
-          AppLocalizations.delegate,
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
-        ],
-      
-        supportedLocales: const <Locale>[Locale('en', 'US'), Locale('ar', 'AE')],
-      
-        debugShowCheckedModeBanner: false,
-      
-        home: 
-        // Nav(),// activity
-          SplashScreen(),//yossef reyhan
+        return GetMaterialApp(
+          locale: state, //const Locale("en"),
 
+          localizationsDelegates: [
+            AppLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
 
-        // ProfileScreen2()//esraa
-       
-            // NavigationPage(),// yElgammal
-            // AccountSetup(),// aya
-            // SplashScreen(),//yossef reyhan
-            
-            // initialRoute: AppRoutes.mainNavigation,//esraa
-            // routes: AppRoutes.routes,
-            // AppRoutes.mainNavigation,//esraa
-      
-      
-      
-      
-        // BlocProvider(
-        //   create: (context) => SelectionCubit(),
-        //   child: const AccountSetup(),
-        // ),
-      ); 
+          supportedLocales: const <Locale>[
+            Locale('en', 'US'),
+            Locale('ar', 'AE'),
+          ],
+
+          debugShowCheckedModeBanner: false,
+
+          home: SplashScreen(),
+        );
       },
     );
   }
 }
-
-

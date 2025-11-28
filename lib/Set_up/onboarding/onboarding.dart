@@ -20,6 +20,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var lang=AppLocalizations.of(context)!;
     return BlocBuilder<LanguageCubit, Locale>(
       builder: (context, locale) {
         return Scaffold(
@@ -43,21 +44,21 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     children: [
                       buildOnboardPage(
                         image: '${imagePath}worker1.png',
-                        title: 'Welcome to FixIt',
+                        title: lang.welcome_title,
                         subtitle:
-                            'Discover a world of convenience and reliability. FixIt is your one stop solution for all your home service needs.',
+                            lang.welcome_subtitle,
                       ),
                       buildOnboardPage(
                         image: '${imagePath}worker2.png',
-                        title: 'Find Services',
+                        title: lang.find_services_title,
                         subtitle:
-                            'Browse and book a wide range of services from plumbing and electrical to appliance repair. We’ve got it all covered.',
+                          lang.find_services_subtitle,
                       ),
                       buildOnboardPage(
                         image: '${imagePath}worker3.png',
-                        title: 'Fast & Reliable',
+                        title: lang.fast_reliable_title,
                         subtitle:
-                            'Our professionals ensure quick and reliable service every time. Sit back and relax, we’ve got you covered.',
+                            lang.fast_reliable_subtitle,
                       ),
                     ],
                   ),
@@ -76,8 +77,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           builder: (context) => const LoginScreen(),
                         ),
                       );},
-                      child: const Text(
-                        'Skip',
+                      child:  Text(
+                        lang.skip,
                         style: TextStyle(color: Colors.white, fontSize: 16),
                       ),
                     ),
@@ -136,7 +137,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             ),
                           ),
                           child: Text(
-                            isLastPage ? 'Get Started' : 'Next',
+                            isLastPage ? lang.get_started : lang.next,
                             style: const TextStyle(
                               color: Colors.white,
                               fontSize: 18,

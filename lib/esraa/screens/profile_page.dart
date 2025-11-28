@@ -2,6 +2,8 @@
 import 'package:fixit/userModel/service_provider_model.dart';
 import 'package:flutter/material.dart';
 
+import '../../l10n/app_localizations.dart';
+
 class ProfilePage extends StatelessWidget {
   
   // final ServiceProviderModel provider;
@@ -11,11 +13,13 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var lang =AppLocalizations.of(context)!;
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text(
-          'My Profile',
+        title:  Text(
+          lang.my_profile,
           style: TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.bold,
@@ -70,8 +74,8 @@ class ProfilePage extends StatelessWidget {
                 onPressed: () {
                   _showLogoutDialog(context);
                 },
-                child: const Text(
-                  'Logout',
+                child:  Text(
+                  lang.logout,
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
@@ -100,10 +104,10 @@ class ProfilePage extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            _buildNavItem(Icons.home, 'Home', isActive: false),
-            _buildNavItem(Icons.location_city, 'City', isActive: false),
-            _buildNavItem(Icons.shopping_bag, 'Order', isActive: false),
-            _buildNavItem(Icons.person, 'Profile', isActive: true),
+            _buildNavItem(Icons.home, lang.home, isActive: false),
+            _buildNavItem(Icons.location_city, lang.city, isActive: false),
+            _buildNavItem(Icons.shopping_bag, lang.orders, isActive: false),
+            _buildNavItem(Icons.person, lang.profile, isActive: true),
           ],
         ),
       ),
@@ -112,6 +116,8 @@ class ProfilePage extends StatelessWidget {
 
   // Function to show logout confirmation dialog - SIMPLE VERSION
   void _showLogoutDialog(BuildContext context) {
+    var lang =AppLocalizations.of(context)!;
+
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -127,16 +133,16 @@ class ProfilePage extends StatelessWidget {
                 fit: BoxFit.contain,
               ),
               const SizedBox(height: 10),
-              const Text(
-                'Logout',
+               Text(
+                lang.logout,
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               const SizedBox(height: 10),
-              const Text(
-                'Are you sure to logout?',
+               Text(
+                lang.logout_confirmation,
                 style: TextStyle(fontSize: 16),
               ),
               const SizedBox(height: 20),
@@ -158,8 +164,8 @@ class ProfilePage extends StatelessWidget {
                         Navigator.of(context).pop();
                         // Add logout logic here
                       },
-                      child: const Text(
-                        'Logout',
+                      child:  Text(
+                        lang.logout,
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 16,
@@ -183,8 +189,8 @@ class ProfilePage extends StatelessWidget {
                       onPressed: () {
                         Navigator.of(context).pop();
                       },
-                      child: const Text(
-                        'Cancel',
+                      child:  Text(
+                        lang.cancel,
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: 16,

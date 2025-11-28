@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 
+import '../../../l10n/app_localizations.dart';
 import '../../booking_services/widgets/custom_button.dart';
 
 import '../cubit/verification_cubit.dart';
@@ -25,6 +26,7 @@ class VerificationMethod extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var lang =AppLocalizations.of(context)!;
     var screenWidth = MediaQuery.of(context).size.width;
     var screenHeight = MediaQuery.of(context).size.height;
 
@@ -33,7 +35,7 @@ class VerificationMethod extends StatelessWidget {
       child: BlocListener<VerificationCubit, VerificationState>(
         listener: (context, state) {
           if (state is VerificationError) {
-            Get.snackbar("Error", state.message, backgroundColor: Colors.red);
+            Get.snackbar(lang.error, state.message, backgroundColor: Colors.red);
           } else if (state is VerificationNext) {
             if (state.method == "email") {
               Get.to(() => Emailaddress());
@@ -68,8 +70,8 @@ class VerificationMethod extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(height: screenHeight * .04),
-                    const Text(
-                      "Select Verification method",
+                     Text(
+                      lang.selectVerifcationMethod,
                       style: TextStyle(
                         fontSize: 20,
                         color: Color(0xff565656),
@@ -82,7 +84,7 @@ class VerificationMethod extends StatelessWidget {
                       onTap: () => cubit.selectMethod("email"),
                       child: Select(
                         icon: Icons.email_rounded,
-                        text: "Email",
+                        text: lang.email,
                         isSelected: selected == "email",
                       ),
                     ),
@@ -92,13 +94,13 @@ class VerificationMethod extends StatelessWidget {
                       onTap: () => cubit.selectMethod("phone"),
                       child: Select(
                         icon: Icons.call,
-                        text: "Mobile Phone",
+                        text: lang.phone,
                         isSelected: selected == "phone",
                       ),
                     ),
                     SizedBox(height: screenHeight * .04),
 
-                    customButton(title: "Next", onTap: () => cubit.goNext()),
+                    customButton(title: lang.next, onTap: () => cubit.goNext()),
                   ],
                 ),
               );

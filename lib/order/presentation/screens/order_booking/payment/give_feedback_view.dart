@@ -92,10 +92,10 @@ class _GiveFeedbackViewState extends State<GiveFeedbackView> {
               child: TextField(
                 controller: controller,
                 maxLines: 5,
-                decoration: const InputDecoration(
+                decoration:  InputDecoration(
                   contentPadding: EdgeInsets.all(12),
                   border: InputBorder.none,
-                  hintText: "Write here...",
+                  hintText: t.write_here,
                 ),
               ),
             ),

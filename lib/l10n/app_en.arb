@@ -1,4 +1,46 @@
 {
+  "error_loading": "Error loading provider data",
+
+  "welcome_title": "Welcome to FixIt",
+  "welcome_subtitle": "Discover a world of convenience and reliability. FixIt is your one stop solution for all your home service needs.",
+  "find_services_title": "Find Services",
+  "find_services_subtitle": "Browse and book a wide range of services from plumbing and electrical to appliance repair. We’ve got it all covered.",
+  "fast_reliable_title": "Fast & Reliable",
+  "fast_reliable_subtitle": "Our professionals ensure quick and reliable service every time. Sit back and relax, we’ve got you covered.",
+  "skip": "Skip",
+  "get_started": "Get Started",
+
+  "login_title": "Enter your email and password to login",
+  "email_label": "Enter your email",
+  "email_required": "Please enter your email",
+  "email_invalid_at": "Email must contain @",
+  "email_invalid_com": "Email must end with .com",
+  "password_label": "Enter password",
+  "password_required": "Please enter your password",
+  "password_short": "Password must be at least 6 characters long",
+  "forgot_password": "Forgot Password?",
+  "sign_in": "Sign In",
+  "login_success": "Logged in successfully",
+  "login_invalid_data": "Please, input valid data",
+  "new_to_fixit": "New to FixIt?",
+  "sign_up_now": "Sign Up now",
+  "or": "Or",
+  "login_with": "Log in with",
+  "google": "Google",
+  "facebook": "Facebook",
+
+  "signup_title": "Enter your email and password to sign up",
+  "full_name": "Full name",
+  "agree_terms": "I Agree With FixIt’s",
+  "terms_conditions": "Term & Conditions",
+  "sign_up": "Sign Up",
+  "account_created": "Account created successfully",
+  "already_have_account": "Already have an account?",
+  "sign_in_now": "Sign in now",
+  "signup_with": "Sign up with",
+
+
+
   "@@locale": "en",
 
   "accountSetupTitle": "I am",
@@ -340,6 +382,8 @@
   "@amountToPay": {},
    "unpaidSubtitle": "You have not paid yet for below service",
 
+  "details": "Details",
+
   "paidSubtitle": "Paid services",
   "scheduleSubtitle": "Upcoming Booking services",
    "amountToPaid": "Amount to paid",
@@ -370,12 +414,344 @@
 "howWasExperience": "How was your experience with Fix it?",
 "writeFeedback": "Write in the box below",
 "send": "Send",
-"pay" : "pay"
+"pay" : "pay",
+
+  "write_here": "Write here...",
+
+
+
+  "electric_work": "Electric Work",
+  "solar": "Solar",
+  "search_here": "Search Here...",
+  "get_30_off": "Get 30% off",
+  "booking_home_services": "Just by Booking Home Services",
+  "maskot_kota": "Maskot Kota",
+  "shams_jan": "Shams Jan",
+
+  "home_booking_services": "Just by Booking Home Services",
+  "home_search_placeholder": "Search Here..",
+  "home_popular_services": "Popular Services",
+  "home_service_providers": "Service Providers",
+
+  "nav_home": "Home",
+  "nav_order": "Order",
+  "nav_profile": "Profile",
+
+
+
+  "rating": "Rating",
+  "no_providers": "No providers available at the moment.",
+  "loading_providers": "Loading providers...",
+  "provider_details": "Provider Details",
+  "service_type": "Service Type",
+
+  "electrician": "Electrician",
+  "carpenter": "Carpenter",
+  "painter": "Painter",
+  "cleaner": "Cleaner",
+  "locksmith": "Locksmith",
+
+  "jackson": "Jackson",
+  "ethan_lita": "Ethan Lita",
+  "isabella_una": "Isabella Una",
+  "aiden": "Aiden",
+  "logan": "Logan",
+  "lucas": "Lucas",
+  "ethan": "Ethan",
+  "harper": "Harper",
+  "caleb": "Caleb",
+  "benjamin": "Benjamin",
+  "carter": "Carter",
+
+
+  "popular_services": "Popular Services",
+
+  "maintenance": "Maintenance",
+  "home_improvement": "Home Improvement",
+  "security": "Security",
+  "car_maintenance": "Car Maintenance",
+  "handyman_services": "Handyman Services",
+  "other_services": "Other Services",
+
+  "air_condition": "Air Condition",
+  "electric": "Electric",
+  "siding_repair": "Siding Repair",
+  "car_wash": "Car Wash",
+  "home_flooring": "Home Flooring",
+  "gutter": "Gutter",
+  "carpet": "Carpet",
+  "pliers": "Pliers",
+  "drilling": "Drilling",
+  "lawn": "Lawn",
+  "weed_control": "Weed Control",
+  "water_tap": "Water Tap",
+  "cameras": "Cameras",
+  "burglar_alarm": "Burglar Alarm",
+  "sturdy_lock": "Sturdy Lock",
+  "cctv": "CCTV",
+  "car_washer": "Car Washer",
+  "oil_change": "Oil Change",
+  "car_battery": "Car Battery",
+  "furniture": "Furniture",
+  "door": "Door",
+  "shelving": "Shelving",
+  "interior": "Interior",
+  "exterior": "Exterior",
+  "wall": "Wall",
+  "dish_wash": "Dish Wash",
+  "cutting": "Cutting",
+  "mopping_floor": "Mopping Floor",
+
+  "services_providers": "Services Providers",
+  "electrician_providers": "Electrician Providers",
+  "plumber_providers": "Plumber Providers",
+  "carpenter_providers": "Carpenter Providers",
+  "painter_providers": "Painter Providers",
+  "cleaner_providers": "Cleaner Providers",
+  "locksmith_providers": "Locksmith Providers",
+
+  "name": "Name",
+  "emily_jani":"Emily jani",
+  "plumber":"Plumber",
+  "rate":"Rating",
+  "order":"56 Orders ",
+  "complete":"Completed",
+  "years":"3 Years",
+  "experience":"Experience",
+  "skills":"Skills",
+  "sink":"Sink",
+  "shower":"Shower",
+  "boiler":"Boiler",
+  "toilet":"Toilet",
+  "book":"Book",
+  "bio":"Bio",
+  "bioDescription":"I'm Emily Jani, a dedicated plumbing professional with a passion for delivering top notch service to ensure your home's plumbing runs smoothly. With years of hands-on experience.",
+  "gallary":"Gallery",
+  "viewAll":"View all",
+  "review":"Review",
+  "nameUser":"yousef",
+  "comment":"Emily Jani exceeded my expectations! Quick, reliable, and fixed my plumbing issue with precision. Highly recommend.",
+  "bookPlumber":"Plumber booking",
+  "allowForFixit":"Allow “FixIt” to use your location",
+  "weAreNeedToKnowYourLocation":"We need to know your exact location so that The electrician can visit you easily.",
+  "allowDuringUsingFixit":"Allow While Using FixIt",
+  "dontAllow":"Don’t Allow",
+  "fillManually":"Fill Manually",
+  "enterYourLocation":"Enter your location address",
+  "houseNumber":"Enter house number",
+  "streetNumber":"Enter street number",
+  "fullLocation":"Enter street number",
+  "success":"Success",
+  "locationIsAdded":"Your address has been successfully added.",
+  "error":"Error",
+  "pleaseEnterVaildData":"Please enter correct information.",
+  "selectDate":"Select Date",
+  "selectHour":"Select Hours",
+  "theDateHasBeenAddedSuccessfully": "The date has been added successfully.",
+  "pleaseSelectTime":"Please select a time.",
+  "am":"AM",
+  "pm":"PM",
+  "reviewSummary":"Review Summary",
+  "craftsmanType":"Type",
+  "salary":"Price",
+  "address": "Address",
+  "fullAddressFormat": "{fullAddress}/House No {homeNo}/Street No {streetNo}",
+  "@fullAddressFormat": {
+    "description": "Formatted full address",
+    "placeholders": {
+      "fullAddress": {},
+      "homeNo": {},
+      "streetNo": {}
+    }
+  },
+  "bookingHour":"Booking Hours",
+  "total":"Total",
+  "confirm":"Confirm",
+  "orderRecive":"Order received",
+  "plumberArrival": "Based on your booking request received by the plumber, he will arrive at {time}.",
+  "@plumberArrival": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
 
 
 
 
+  "selectVerifcationMethod":"Select Verification method ",
+  "email":"Email",
+  "phone":"Mobile number",
+  "enterEmail":"Enter your Email address to verify",
+  "sendCode":"Send Code",
+  "pleaseEnterYourEmail":"Please enter your email",
+  "enterValidEmailAddress": "Enter a valid email address",
+  "codeSendsSuccessfully": "code sends successfully ",
+  "enter5digit":"Enter 5-digit PIN code sent to your Email address",
+  "theCodeIsCorrect": "the code is correct",
+  "verify":"Verify",
+  "didNotRecivedCode":"Did not received code?",
+  "createPassword":"Create new password",
+  "newPassword":"New Password",
+  "confirmPassword":"Confirm Password",
+  "save":"Save",
+  "passwordUpdatedSuccessfully": "Password updated successfully",
 
 
+  "edit_profile": "Edit Profile",
+  "country": "Country",
+  "phone_number": "Phone number",
+  "egy": "egy",
+  "egypt": "Egypt",
+  "mexico": "Mexico",
+  "usa": "USA",
+  "canada": "Canada",
+  "other": "Other",
+
+  "profession": "Profession",
+  "verification": "Verification",
+  "profile_information": "Profile information",
+  "home_clean_lawn_clean_washing": "Home clean, lawn clean, washing",
+  "subscription_payments": "Subscription & payments",
+  "payment_method": "Payment method",
+  "upgrade": "Upgrade",
+  "general_preferences": "General Preferences",
+  "notification": "Notification",
+  "help_support": "Help & support",
+  "logout": "Logout",
+  "confirm_logout": "Confirm Logout",
+  "logout_confirmation": "Are you sure you want to log out?",
+  "cancel": "Cancel",
+  "change_profile_mode": "Change Profile to buying mode",
+  "earnings": "Earnings",
+  "active": "Active",
+  "completed": "Completed",
+
+  "service_name": "Service name",
+  "expert_in": "Expert in",
+  "service_timing": "Service Timing",
+  "experience_in_years": "Experience in years",
+  "service_area": "Service Area",
+  "upload_services_license": "Upload your services license",
+  "upload_certification": "Upload your Certification",
+
+
+
+
+  "order_success_title": "You placed the order successfully",
+  "order_failed_title": "Your order has been canceled",
+  "order_success_status": "successfully",
+  "order_failed_status": "failed",
+  "back_to_home": "Back to Home",
+
+
+
+  "payment_page_title": "Payment Page",
+  "payment_loading": "Redirecting to payment...",
+  "payment_error_title": "Error",
+  "payment_error_message": " Payment error occurred: {error}",
+
+
+  "payment_success_title": "Success",
+  "payment_success_message": "✅ Payment completed successfully",
+  "payment_failed_title": "Failed",
+  "payment_failed_message": "❌ Payment failed",
+  "close_button_tooltip": "Close",
+
+  "payment_auth_error": "Failed to get authentication token.",
+  "payment_order_error": "Failed to create payment order.",
+  "payment_key_error": "Failed to get payment key.",
+  "payment_general_error": "Error in PaymobManager: {error}",
+  "payment_failed_to_get_key": "Failed to get payment key",
+
+  "change_to_selling_mode": "Change Profile to selling mode",
+
+
+  "logout_title": "Logout",
+  "logout_button": "Logout",
+  "cancel_button": "Cancel",
+
+  "my_profile": "My Profile",
+
+  "add_new_card": "+ Add new card",
+
+  "mahrama": "Mahrama",
+
+  "select_payment_method": "Select Payment method",
+  "easypaisa": "Easypaisa",
+  "bank_account": "Bank account",
+  "jazz_cash": "Jazz cash",
+  "paypal": "PayPal",
+  "payment_saved": " saved successfully!",
+  "please_select_payment": "Please select a payment method",
+
+  "general_notification": "General notification",
+  "sound": "Sound",
+  "vibrate": "Vibrate",
+  "new_service": "New Service",
+  "notification_saved": "Notification settings saved successfully!",
+
+  "home_screen": "Home Screen",
+  "city_screen": "City Screen",
+  "order_screen": "Order Screen",
+
+
+  "live_chat": "Live chat",
+  "hello_assist": "Hello, how can we assist you?",
+  "title": "Title",
+  "title_hint": "Enter the title of your issue",
+  "description": "Write in bellow box",
+  "description_hint": "Write here...",
+  "enter_title": "Please enter a title for your issue",
+  "enter_description": "Please describe your issue",
+  "ticket_submitted": "Your issue has been submitted successfully!",
+
+
+  "dob": "Date of Birth",
+  "select_country": "Select Country",
+  "select_country_code": "Select Country Code",
+  "changes_saved": "Changes saved successfully",
+
+
+  "card": "Card",
+  "credit_card": "Credit card",
+  "card_number": "Card number",
+  "card_number_hint": "Enter 14 digit number",
+  "card_holder_name": "Card holder name",
+  "card_holder_name_hint": "Enter name",
+  "card_expiry_date": "Card expiry date",
+  "card_expiry_date_hint": "DD/MM/YYYY",
+
+
+  "pick_image_example": "Pick Image Example",
+  "no_image_selected": "No image selected",
+  "pick_image": "Pick Image",
+  "camera": "Camera",
+
+  "payment_success": "✅ Payment Successful",
+  "payment_failed": "❌ Payment Failed",
+  "close_button": "Close",
+
+  "dob_label": "Date of Birth",
+  "select_country_title": "Select Country",
+  "select_country_code_title": "Select Country Code",
+  "data_saved_success": "Changes saved successfully",
+  "data_saved_console": "Data saved",
+  "success_message": "Profile updated successfully",
+  "choose_date_hint": "Choose your date of birth",
+
+
+  "uk": "United Kingdom",
+  "germany": "Germany",
+  "france": "France",
+  "italy": "Italy",
+  "spain": "Spain",
+  "japan": "Japan",
+  "brazil": "Brazil",
+  "australia": "Australia",
+  "india": "India",
+  "china": "China",
+  "south_korea": "South Korea"
 
 }

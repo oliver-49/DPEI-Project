@@ -7,6 +7,7 @@
 // --- 1. EditProfileScreen (الشاشة الثانية) ---
 import 'package:fixit/basma/screens/main_profile_screen/profile_screen.dart';
 import 'package:fixit/basma/widget/Custom_input_field.dart';
+import 'package:fixit/l10n/app_localizations.dart';
 import 'package:fixit/userModel/service_provider_model.dart';
 import 'package:fixit/ye/utalities/colors.dart';
 import 'package:flutter/material.dart';
@@ -18,6 +19,7 @@ class EditProfileScreen extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
+    var lang =AppLocalizations.of(context)!;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.bgColor,
@@ -27,8 +29,8 @@ class EditProfileScreen extends StatelessWidget {
           // زر الرجوع
           onPressed: () => Navigator.of(context).pop(),
         ),
-        title: const Text(
-          'Edit Profile',
+        title:  Text(
+          lang.edit_profile,
           style: TextStyle(
             color: Colors.black,
             fontWeight: FontWeight.bold,
@@ -82,11 +84,11 @@ class EditProfileScreen extends StatelessWidget {
         
                 // --- Form Fields ---
                  CustomInputField(
-                  label: 'Name',
-                  initialValue: provider?.name??"ايميلى",
+                  label: lang.name,
+                  initialValue: provider?.name??lang.emily_jani,
                 ),
                  CustomInputField(
-                  label: 'Email',
+                  label: lang.email,
                   initialValue: provider?.email??"emely@gmail.com",
                   keyboardType: TextInputType.emailAddress,
                 ),
@@ -97,7 +99,7 @@ class EditProfileScreen extends StatelessWidget {
                  Padding(
                   padding: EdgeInsets.only(bottom: 8.0),
                   child: Text(
-                    'Country',
+                   lang.country,
                     style: TextStyle(
                       fontSize: 14,
                       color: Colors.black54,
@@ -113,8 +115,8 @@ class EditProfileScreen extends StatelessWidget {
                   child: DropdownButtonHideUnderline(
                     child: DropdownButton<String>(
                       isExpanded: true,
-                      value: 'Egypt',
-                      items: <String>['Egypt','Mexico', 'USA', 'Canada', 'Other']
+                      value: lang.egypt,
+                      items: <String>[lang.egypt,lang.mexico, lang.usa, lang.canada, lang.other]
                           .map((String value) {
                         return DropdownMenuItem<String>(
                           value: value,
@@ -133,7 +135,7 @@ class EditProfileScreen extends StatelessWidget {
                 // --- Phone Number Field (FIXED WhatsApp icon issue) ---
                 CustomInputField(
                   readOnly: true,
-                  label: 'Phone number',
+                  label: lang.phone_number,
                   initialValue: provider?.phone??"01202369242",
                   keyboardType: TextInputType.phone,
                   prefixWidget: Container(
@@ -144,8 +146,8 @@ class EditProfileScreen extends StatelessWidget {
                         // تم استخدام Icons.chat كبديل لـ Icons.whatsapp
                          Icon(Icons.chat, color: Colors.red[800]),
                         const SizedBox(width: 5),
-                        const Text(
-                          'egy',
+                         Text(
+                          lang.egy,
                           style: TextStyle(fontSize: 16, color: Colors.black),
                         ),
                         const Icon(Icons.keyboard_arrow_down, color: Colors.black54, size: 16),
@@ -162,7 +164,7 @@ class EditProfileScreen extends StatelessWidget {
         
                 // --- Address Field ---
                  CustomInputField(
-                  label: 'Address',
+                  label: lang.address,
                   initialValue: provider?.businessAddress??"gesr elbahr street",
                 ),
         
@@ -187,8 +189,8 @@ class EditProfileScreen extends StatelessWidget {
                       ),
                       elevation: 5,
                     ),
-                    child: const Text(
-                      'Save',
+                    child:  Text(
+                      lang.save,
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,

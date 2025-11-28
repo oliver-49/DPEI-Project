@@ -1,3 +1,4 @@
+import 'package:fixit/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 
 class SellingModeButton extends StatelessWidget {
@@ -5,6 +6,7 @@ class SellingModeButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var lang =AppLocalizations.of(context)!;
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 16.0),
@@ -21,7 +23,7 @@ class SellingModeButton extends StatelessWidget {
           ),
           
           Text(
-            'Change Profile to selling mode',
+            lang.change_to_selling_mode,
             style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.w600,

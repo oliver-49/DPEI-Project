@@ -9,6 +9,8 @@ import 'package:fixit/gitHub/presentation/screens/account_service/Selction_view/
 import 'package:fixit/firebase/auth_service.dart';
 import 'package:provider/provider.dart';
 
+import '../../l10n/app_localizations.dart';
+
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
 
@@ -30,10 +32,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final AuthService _authService = AuthService();
   bool loading = false;
 
-   
-
   @override
   Widget build(BuildContext context) {
+    var lang = AppLocalizations.of(context)!;
+
     return Scaffold(
       backgroundColor: AppColors.bgColor,
       body: SafeArea(
@@ -66,7 +68,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
                   // Title
                   Text(
-                    "Enter your email and password to login",
+                    lang.signup_title,
                     style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                       color: Color(0xFF565656),
                       fontSize: 18,
@@ -79,7 +81,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   TextFormField(
                     controller: nameController,
                     decoration: InputDecoration(
-                      labelText: 'Full name',
+                      labelText: lang.full_name,
                       prefixIcon: Padding(
                         padding: EdgeInsets.only(left: 16, right: 12),
                         child: Icon(Icons.person_outline, size: 24),
@@ -95,7 +97,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   TextFormField(
                     controller: emailController,
                     decoration: InputDecoration(
-                      labelText: 'Enter your email',
+                      labelText: lang.email_label,
                       prefixIcon: Padding(
                         padding: EdgeInsets.only(left: 16, right: 12),
                         child: Icon(Icons.email_outlined, size: 24),
@@ -106,13 +108,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Please enter your email';
+                        return lang.email_required;
                       }
                       if (!value.contains('@')) {
-                        return 'Email must contains with @';
+                        return lang.email_invalid_at;
                       }
                       if (!value.endsWith('.com')) {
-                        return 'Email must end with .com';
+                        return lang.email_invalid_com;
                       }
                       return null;
                     },
@@ -124,7 +126,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     controller: passwordController,
                     obscureText: !_isPasswordVisible,
                     decoration: InputDecoration(
-                      labelText: 'Enter password',
+                      labelText: lang.password_label,
                       prefixIcon: Padding(
                         padding: EdgeInsets.only(left: 16, right: 12),
                         child: Icon(Icons.lock_outline, size: 24),
@@ -147,10 +149,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Please enter your password';
+                        return lang.password_required;
                       }
                       if (value.length < 6) {
-                        return 'Password must be at least 6 characters long';
+                        return lang.password_short;
                       }
                       return null;
                     },
@@ -172,11 +174,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       Expanded(
                         child: RichText(
                           text: TextSpan(
-                            text: 'I Agree With FixIt’s ',
+                            text: lang.agree_terms,
                             style: TextStyle(color: Colors.black, fontSize: 14),
                             children: [
                               TextSpan(
-                                text: 'Term & Conditions',
+                                text: lang.terms_conditions,
                                 style: TextStyle(
                                   color: Color(0xFF0054A5),
                                   fontWeight: FontWeight.w500,
@@ -199,7 +201,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           ? () async {
                               if (_key.currentState!.validate()) {
                                 setState(() => loading = true);
-                                
+
                                 String? res = await _authService.signUp(
                                   name: nameController.text,
                                   phone: phoneController,
@@ -210,43 +212,47 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 setState(() => loading = false);
 
                                 if (res == "success") {
-                                  String uid=await _authService.getUserUid()??"";
-                                   final provider = ServiceProviderModel(
-  uid: uid,
-  email: emailController.text,
-  name: nameController.text
-);
-                                  
+                                  String uid =
+                                      await _authService.getUserUid() ?? "";
+                                  final provider = ServiceProviderModel(
+                                    uid: uid,
+                                    email: emailController.text,
+                                    name: nameController.text,
+                                  );
+
                                   Navigator.pushReplacement(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => 
-                                  //       ChangeNotifierProvider(
-                                  //           create: (_) => ServiceProviderState(model: initialModel),
-                                  //           child: AccountSetup()
-                                  // ),
-                                  
-                                      AccountSetup(provider: provider),
+                                      builder: (context) =>
+                                          //       ChangeNotifierProvider(
+                                          //           create: (_) => ServiceProviderState(model: initialModel),
+                                          //           child: AccountSetup()
+                                          // ),
+                                          AccountSetup(provider: provider),
                                       // LoginScreen(),
                                     ),
                                   );
 
                                   ScaffoldMessenger.of(context).showSnackBar(
-                                    
                                     SnackBar(
                                       backgroundColor: Colors.green,
                                       content: Text(
-                                        "Account created successfully",style: TextStyle(color:Colors.white),
+                                        lang.account_created,
+                                        style: TextStyle(color: Colors.white),
                                       ),
                                     ),
                                   );
                                   // Navigator.pop(context);
                                 } else {
-                                  ScaffoldMessenger.of(
-                                    context,
-                                  ).showSnackBar(SnackBar(
-                                    backgroundColor: Colors.red,
-                                    content: Text(res!,style: TextStyle(color:Colors.white))));
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      backgroundColor: Colors.red,
+                                      content: Text(
+                                        res!,
+                                        style: TextStyle(color: Colors.white),
+                                      ),
+                                    ),
+                                  );
                                 }
                               }
                             }
@@ -261,7 +267,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       child: loading
                           ? CircularProgressIndicator(color: Colors.white)
                           : Text(
-                              "Sign Up",
+                              lang.sign_up,
                               style: Theme.of(context).textTheme.titleMedium
                                   ?.copyWith(
                                     color: Colors.white,
@@ -278,7 +284,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "Already have an account?",
+                        lang.already_have_account,
                         style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                           color: const Color.fromARGB(255, 0, 0, 0),
                           fontSize: 16,
@@ -297,7 +303,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           );
                         },
                         child: Text(
-                          "Sign in now",
+                          lang.sign_in_now,
                           style: Theme.of(context).textTheme.bodyMedium
                               ?.copyWith(
                                 color: const Color(0xFF0054A5),
@@ -312,14 +318,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
                   // Divider
                   Row(
-                    children: const [
+                    children: [
                       Expanded(
                         child: Divider(color: Color(0xFFBEBEBE), thickness: 1),
                       ),
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: 9.0),
                         child: Text(
-                          "Or",
+                          lang.or,
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: 12,
@@ -337,7 +343,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   // Sign up with text
                   Center(
                     child: Text(
-                      "Sign up with",
+                      lang.signup_with,
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                         color: Colors.black,
                         fontSize: 14,
@@ -361,7 +367,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               width: 24,
                             ),
                             label: Text(
-                              'Google',
+                              lang.google,
                               style: const TextStyle(
                                 color: Colors.black,
                                 fontSize: 16,
@@ -390,7 +396,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               width: 24,
                             ),
                             label: Text(
-                              'Facebook',
+                              lang.facebook,
                               style: const TextStyle(
                                 color: Colors.black,
                                 fontSize: 16,

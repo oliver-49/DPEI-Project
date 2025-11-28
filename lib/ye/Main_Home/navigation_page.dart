@@ -1,6 +1,7 @@
 import 'package:fixit/basma/screens/main_profile_screen/profile_screen.dart';
 import 'package:fixit/esraa/screens/profile_page.dart';
 import 'package:fixit/gitHub/city_page.dart';
+import 'package:fixit/l10n/app_localizations.dart';
 import 'package:fixit/order/presentation/screens/order_booking/order/order_view.dart';
 import 'package:fixit/userModel/service_provider_model.dart';
 import 'package:fixit/ye/Main_Home/home_screen.dart';
@@ -8,7 +9,7 @@ import 'package:fixit/ye/utalities/colors.dart';
 import 'package:flutter/material.dart';
 
 class NavigationPage extends StatefulWidget {
-  
+
   final ServiceProviderModel? provider;
   const NavigationPage({super.key, required this.provider});
 
@@ -39,10 +40,11 @@ late List<Widget> _pages;
     ];
   }
 
-  
+
 
   @override
   Widget build(BuildContext context) {
+    var lang=AppLocalizations.of(context)!;
     return Scaffold(
       backgroundColor: AppColors.bgColor,
       body: IndexedStack(
@@ -59,11 +61,11 @@ late List<Widget> _pages;
         onTap: (value) => setState(() {
           index = value;
         }),
-        items: const [
+        items:  [
           BottomNavigationBarItem(
               icon: Icon(Icons.home_outlined),
               activeIcon: Icon(Icons.home),
-              label: "Home"),
+              label: lang.home),
           // BottomNavigationBarItem(
           //     icon: Icon(Icons.holiday_village_outlined),
           //     activeIcon: Icon(Icons.holiday_village),
@@ -71,11 +73,11 @@ late List<Widget> _pages;
           BottomNavigationBarItem(
               icon: Icon(Icons.shopping_bag_outlined),
               activeIcon: Icon(Icons.shopping_bag),
-              label: "Order"),
+              label: lang.orders),
           BottomNavigationBarItem(
               icon: Icon(Icons.account_circle_outlined),
               activeIcon: Icon(Icons.account_circle),
-              label: "Profile"),
+              label: lang.profile),
         ],
       ),
     );

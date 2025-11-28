@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:fixit/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -12,6 +13,7 @@ class _ImagePickerScreenState extends State<ImagePickerScreen> {
   final ImagePicker _picker = ImagePicker();
 
   Future<void> _pickImage() async {
+    var lang =AppLocalizations.of(context)!;
     showModalBottomSheet(
       context: context,
       builder: (context) {
@@ -20,7 +22,7 @@ class _ImagePickerScreenState extends State<ImagePickerScreen> {
             children: [
               ListTile(
                 leading: Icon(Icons.photo_camera),
-                title: Text('Camera'),
+                title: Text(lang.camera),
                 onTap: () async {
                   final pickedFile =
                       await _picker.pickImage(source: ImageSource.camera);
@@ -34,7 +36,7 @@ class _ImagePickerScreenState extends State<ImagePickerScreen> {
               ),
               ListTile(
                 leading: Icon(Icons.photo_library),
-                title: Text('Gallery'),
+                title: Text(lang.gallary),
                 onTap: () async {
                   final pickedFile =
                       await _picker.pickImage(source: ImageSource.gallery);
@@ -55,19 +57,21 @@ class _ImagePickerScreenState extends State<ImagePickerScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var lang =AppLocalizations.of(context)!;
+
     return Scaffold(
-      appBar: AppBar(title: Text("Pick Image Example")),
+      appBar: AppBar(title: Text(lang.pick_image_example)),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             _selectedImage == null
-                ? Text("No image selected")
+                ? Text(lang.no_image_selected)
                 : Image.file(_selectedImage!, height: 250),
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: _pickImage,
-              child: Text("Pick Image"),
+              child: Text(lang.pick_image),
             ),
           ],
         ),

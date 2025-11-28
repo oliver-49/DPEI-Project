@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fixit/firebase/auth_service.dart';
 import 'package:fixit/firebase/getORadd_allData_user.dart';
 import 'package:fixit/gitHub/core/stores/app_box.dart';
+import 'package:fixit/l10n/app_localizations.dart';
 import 'package:fixit/l10n/cubit/lang_cubit.dart';
 import 'package:fixit/userModel/service_provider_model.dart';
 import 'package:fixit/ye/Main_Home/home_screen.dart';
@@ -27,8 +28,8 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     Timer(Duration(seconds: 4), () {
       if (AppBox.isSetupDone()) {
-        
-        
+
+
           Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
@@ -51,7 +52,7 @@ class _SplashScreenState extends State<SplashScreen> {
         // );
 
       // });
-     
+
     }
     else{
      Navigator.pushReplacement(
@@ -97,6 +98,8 @@ class AuthWrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var lang=AppLocalizations.of(context)!;
+
     return StreamBuilder<User?>(
       stream: FirebaseAuth.instance.authStateChanges(),
       builder: (context, snapshot) {
@@ -124,7 +127,7 @@ class AuthWrapper extends StatelessWidget {
 
             if (providerSnapshot.hasError) {
               return Scaffold(
-                body: Center(child: Text("Error loading provider data")),
+                body: Center(child: Text(lang.error_loading)),
               );
             }
 

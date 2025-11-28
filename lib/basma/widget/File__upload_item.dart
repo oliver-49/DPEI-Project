@@ -3,6 +3,7 @@
 
 import 'dart:ui';
 
+import 'package:fixit/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 
 class FileUploadItem extends StatelessWidget {
@@ -54,7 +55,7 @@ class FileUploadItem extends StatelessWidget {
               GestureDetector(
                 onTap: onUpload,
                 child: Text(
-                  'Change',
+                  AppLocalizations.of(context)!.change,
                   style: TextStyle(
                     fontSize: 16,
                     color: primaryBlue,

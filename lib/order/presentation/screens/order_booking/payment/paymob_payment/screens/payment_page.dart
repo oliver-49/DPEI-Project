@@ -9,6 +9,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
+import '../../../../../../../l10n/app_localizations.dart';
+
 
 class PaymentPage extends StatefulWidget {
 
@@ -50,8 +52,8 @@ class _PaymentPageState extends State<PaymentPage> {
         _isLoading = false;
       });
       Get.snackbar(
-        "خطأ",
-        "❌ حدث خطأ في الدفع: $e",
+        AppLocalizations.of(context)!.error,
+        AppLocalizations.of(context)!.payment_failed_message,
         backgroundColor: Colors.red,
         colorText: Colors.white,
         snackPosition: SnackPosition.BOTTOM,
@@ -69,7 +71,7 @@ class _PaymentPageState extends State<PaymentPage> {
             title: 
             // controller.currentLang == 'ar'
             //     ? 
-            Text("  صفحة الدفع ")
+            Text(AppLocalizations.of(context)!.payment_page_title)
                 // : 
                 // Text("Paymob ")
                 ,
@@ -84,7 +86,7 @@ class _PaymentPageState extends State<PaymentPage> {
                 : Text(
                     // controller.currentLang == 'ar'
                     //     ?
-                         "جارٍ فتح صفحة الدفع...",
+              AppLocalizations.of(context)!.payment_loading,
                         // :
                         //  "Redirecting to payment...",
                     style: TextStyle(

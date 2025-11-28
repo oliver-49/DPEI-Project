@@ -9,6 +9,8 @@ import 'package:fixit/ye/utalities/colors.dart';
 import 'package:fixit/Set_up/auth/login_screen.dart';
 import 'package:flutter/material.dart';
 
+import '../../../l10n/app_localizations.dart';
+
 // -----------------------------------------------------------------------------
 // ************************** I. الثوابت والألوان **************************
 // -----------------------------------------------------------------------------
@@ -39,7 +41,7 @@ class ProfileListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // تحديد لون الأيقونة: إذا كان هناك leadingWidget نستخدم لونه، وإلا نستخدم اللون الأزرق الافتراضي.
+    var lang =AppLocalizations.of(context)!;
     final Color iconColor = (leadingWidget is Icon)
         ? (leadingWidget as Icon).color ?? primaryBlue
         : primaryBlue;
@@ -47,8 +49,8 @@ class ProfileListItem extends StatelessWidget {
     // تعديل لون الخط لزر الخروج
     final TextStyle titleStyle = TextStyle(
         fontSize: 16,
-        color: title == 'Logout' ? Colors.black : Colors.black87,
-        fontWeight: title == 'Logout' ? FontWeight.w500 : FontWeight.normal,
+        color: title == lang.logout ? Colors.black : Colors.black87,
+        fontWeight: title == lang.logout ? FontWeight.w500 : FontWeight.normal,
     );
 
 
@@ -165,10 +167,12 @@ class ProfileScreen extends StatelessWidget {
   final AuthService _authService = AuthService();
   @override
   Widget build(BuildContext context) {
+    var lang =AppLocalizations.of(context)!;
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text('Profile', style: TextStyle(fontWeight: FontWeight.bold)),
+        title:  Text(lang.profile, style: TextStyle(fontWeight: FontWeight.bold)),
         backgroundColor: Colors.white,
         elevation: 0,
       ),
@@ -190,7 +194,7 @@ class ProfileScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                       Text(
-                      provider?.name??"ايميلى ",
+                      provider?.name??lang.emily_jani,
                       style: TextStyle(
                         fontSize: 22,
                         fontWeight: FontWeight.bold,
@@ -200,7 +204,7 @@ class ProfileScreen extends StatelessWidget {
                     Row(
                       children: [
                          Text(
-                          provider?.businessName??"Electricty",
+                          provider?.businessName??lang.electricity,
                           style: TextStyle(
                             fontSize: 16,
                             color: Colors.black54,
@@ -229,7 +233,7 @@ class ProfileScreen extends StatelessWidget {
                 Expanded(
                   child: _buildStatBox(
                     value: '343',
-                    label: 'Earnings',
+                    label: lang.earnings,
                     color: Colors.green,
                     icon: Icons.attach_money,
                   ),
@@ -237,14 +241,14 @@ class ProfileScreen extends StatelessWidget {
                 Expanded(
                   child: _buildStatBox(
                     value: '2 Orders',
-                    label: 'Active',
+                    label: lang.active,
                     color: primaryBlue,
                   ),
                 ),
                 Expanded(
                   child: _buildStatBox(
-                    value: '56 Orders',
-                    label: 'Completed',
+                    value: lang.order,
+                    label: lang.complete,
                     color: Colors.orange,
                     icon: Icons.check_circle,
                   ),
@@ -255,11 +259,11 @@ class ProfileScreen extends StatelessWidget {
             const Divider(), // Visual separator
 
             // --- Profile Information Section ---
-            _buildSectionTitle('Profile information'),
+            _buildSectionTitle(lang.profile_information),
             
             // هنا يتم الربط: Edit Profile
             ProfileListItem(
-              title: 'Edit Profile',
+              title: lang.edit_profile,
               leadingWidget: const Icon(Icons.person_outline, color: primaryBlue),
               onTap: () {
                 Navigator.push(
@@ -271,7 +275,7 @@ class ProfileScreen extends StatelessWidget {
             
             // باقي الروابط حالياً فارغة (onTap: (){}) ولكن جاهزة للربط
             ProfileListItem(
-              title: 'Profession',
+              title: lang.profession,
               leadingWidget: const Icon(Icons.business_center_outlined, color: primaryBlue),
               onTap: () {
                   Navigator.push(
@@ -281,33 +285,33 @@ class ProfileScreen extends StatelessWidget {
               }, // يمكنكِ هنا إضافة شاشة ProfessionScreen
             ),
             ProfileListItem(
-              title: 'Verification',
+              title: lang.verification,
               leadingWidget: const Icon(Icons.verified_user_outlined, color: primaryBlue),
               onTap: () {}, // يمكنكِ هنا إضافة شاشة VerificationScreen
             ),
 
             // --- Subscription & Payments Section ---
-            _buildSectionTitle('Subscription & payments'),
+            _buildSectionTitle(lang.subscription_payments),
             ProfileListItem(
-              title: 'Payment method',
+              title: lang.payment_method,
               leadingWidget: const Icon(Icons.credit_card_outlined, color: Colors.red), 
               onTap: () {},
             ),
             ProfileListItem(
-              title: 'Upgrade',
+              title: lang.upgrade,
               leadingWidget: const Icon(Icons.trending_up, color: Colors.red), 
               onTap: () {},
             ),
 
             // --- General Preferences Section ---
-            _buildSectionTitle('General Preferences'),
+            _buildSectionTitle(lang.general_preferences),
             ProfileListItem(
-              title: 'Notification',
+              title: lang.notification,
               leadingWidget: const Icon(Icons.notifications_none, color: primaryBlue),
               onTap: () {},
             ),
             ProfileListItem(
-              title: 'Help & support',
+              title: lang.help_support,
               leadingWidget: const Icon(Icons.help_outline, color: primaryBlue),
               onTap: () {},
             ),
@@ -324,7 +328,7 @@ class ProfileScreen extends StatelessWidget {
             //   trailingWidget: const SizedBox.shrink(), // لإخفاء السهم في زر الخروج
             // ),
             ProfileListItem(
-  title: 'Logout',
+  title: lang.logout,
   leadingWidget: const Icon(Icons.logout, color: Colors.grey),
   onTap: () {
     showDialog(
@@ -332,14 +336,14 @@ class ProfileScreen extends StatelessWidget {
       context: context,
       builder: (context) => AlertDialog(
         backgroundColor: AppColors.bgColor,
-        title: const Text('Confirm Logout'),
-        content: const Text('Are you sure you want to log out?'),
+        title:  Text(lang.confirm_logout),
+        content:  Text(lang.logout_confirmation),
         actions: [
           TextButton(
             onPressed: () {
               Navigator.of(context).pop(); // يغلق الـ dialog فقط
             },
-            child: const Text('Cancel',style: TextStyle(color: Colors.black),),
+            child:  Text(lang.cancel,style: TextStyle(color: Colors.black),),
           ),
           ElevatedButton(
             style: ElevatedButton.styleFrom(
@@ -356,7 +360,7 @@ class ProfileScreen extends StatelessWidget {
                   SnackBar(content: Text("Signed Out!")),
                 );
             },
-            child: const Text('Logout',style: TextStyle(color: Colors.white)),
+            child:  Text(lang.logout,style: TextStyle(color: Colors.white)),
           ),
         ],
       ),
@@ -368,8 +372,8 @@ class ProfileScreen extends StatelessWidget {
             const SizedBox(height: 30),
 
             // --- Change Profile Mode Button ---
-            const Text(
-              'Change Profile to buying mode',
+             Text(
+              lang.change_profile_mode,
               style: TextStyle(
                 fontSize: 16,
                 color: Colors.black54,
@@ -391,7 +395,7 @@ class ProfileScreen extends StatelessWidget {
                   backgroundColor: lightGreyBackground,
                 ),
                 label:  Text(
-                  provider?.name??"ايميلى",
+                  provider?.name??lang.emily_jani,
                   style: TextStyle(
                     color: primaryBlue,
                     fontWeight: FontWeight.bold,

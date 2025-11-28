@@ -1,4 +1,6 @@
+import 'package:fixit/gitHub/booking_services/view/const.dart';
 import 'package:fixit/gitHub/booking_services/view/providerprofile.dart';
+import 'package:fixit/l10n/app_localizations.dart';
 import 'package:fixit/ye/utalities/Dimensions.dart';
 import 'package:fixit/ye/utalities/colors.dart';
 import 'package:fixit/ye/utalities/divider_title.dart';
@@ -119,7 +121,7 @@ String path='';
                           
                                         horizontal: 10,vertical: 5
                                       ),
-                                      child: Text("Details",style: TextStyle(
+                                      child: Text(AppLocalizations.of(context)!.details,style: TextStyle(
                                       color: Colors.white
                                       ,fontSize: 16
                                                                 ),),
@@ -208,7 +210,7 @@ String path='';
                           
                                         horizontal: 10,vertical: 5
                                       ),
-                                      child: Text("Details",style: TextStyle(
+                                      child: Text(AppLocalizations.of(context)!.details,style: TextStyle(
                                       color: Colors.white
                                       ,fontSize: 16
                                                                 ),),

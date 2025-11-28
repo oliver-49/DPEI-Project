@@ -3,6 +3,8 @@
 
 import 'package:flutter/material.dart';
 
+import '../../l10n/app_localizations.dart';
+
 class AddCardButton extends StatelessWidget {
   final VoidCallback onPressed;
 
@@ -13,6 +15,8 @@ class AddCardButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var lang =AppLocalizations.of(context)!;
+
     return Container(
       margin: const EdgeInsets.only(bottom: 12),
       decoration: BoxDecoration(
@@ -41,8 +45,8 @@ class AddCardButton extends StatelessWidget {
             size: 16,
           ),
         ),
-        title: const Text(
-          '+ Add new card',
+        title:  Text(
+          lang.add_new_card,
           style: TextStyle(
             color: Color(0xFF0062DC), // Blue text
             fontSize: 16,

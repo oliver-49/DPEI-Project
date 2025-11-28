@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../l10n/app_localizations.dart';
 import 'add_new_card_screen.dart';
 
 class PaymentScreen extends StatefulWidget {
@@ -107,9 +108,9 @@ class AddCardButton extends StatelessWidget {
         onTap: onPressed,
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-          child: const Center(
+          child:  Center(
             child: Text(
-              '+ Add new card',
+              AppLocalizations.of(context)!.add_new_card,
               style: TextStyle(
                 color: Color(0xFF0054A5),
                 fontSize: 16,
@@ -142,8 +143,8 @@ class _PaymentScreenState extends State<PaymentScreen> {
         ),
         title: Container(
           width: double.infinity,
-          child: const Text(
-            'Payment',
+          child:  Text(
+            AppLocalizations.of(context)!.payment,
             style: TextStyle(
               color: Color(0xFF2B54A4),
               fontSize: 18,
@@ -159,10 +160,10 @@ class _PaymentScreenState extends State<PaymentScreen> {
         child: Column(
           children: [
             // Select Payment Method Title
-            const Row(
+             Row(
               children: [
                 Text(
-                  'Select Payment method',
+                  AppLocalizations.of(context)!.select_payment_method,
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 14,
@@ -178,7 +179,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                 children: [
                   // Easypaisa Option
                   PaymentMethodItem(
-                    title: 'Easypaisa',
+                    title: AppLocalizations.of(context)!.easypaisa,
                     isSelected: _selectedPaymentMethod == 'Easypaisa',
                     onTap: () {
                       setState(() {
@@ -192,7 +193,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                   
                   // Bank Account Option
                   PaymentMethodItem(
-                    title: 'Bank account',
+                    title: AppLocalizations.of(context)!.bank_account,
                     isSelected: _selectedPaymentMethod == 'Bank account',
                     onTap: () {
                       setState(() {
@@ -205,7 +206,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                   
                   // Jazz Cash Option
                   PaymentMethodItem(
-                    title: 'Jazz cash',
+                    title: AppLocalizations.of(context)!.jazz_cash,
                     isSelected: _selectedPaymentMethod == 'Jazz cash',
                     onTap: () {
                       setState(() {
@@ -218,7 +219,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                   
                   // PayPal Option
                   PaymentMethodItem(
-                    title: 'PayPal',
+                    title: AppLocalizations.of(context)!.paypal,
                     isSelected: _selectedPaymentMethod == 'PayPal',
                     onTap: () {
                       setState(() {
@@ -262,8 +263,8 @@ class _PaymentScreenState extends State<PaymentScreen> {
                       borderRadius: BorderRadius.circular(12),
                     ),
                   ),
-                  child: const Text(
-                    'Save',
+                  child:  Text(
+                    AppLocalizations.of(context)!.save ,
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 16,
@@ -284,8 +285,8 @@ class _PaymentScreenState extends State<PaymentScreen> {
   void _savePaymentMethod() {
     if (_selectedPaymentMethod == null) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Please select a payment method'),
+         SnackBar(
+          content: Text(AppLocalizations.of(context)!.please_select_payment),
           backgroundColor: Colors.red,
         ),
       );

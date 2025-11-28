@@ -13,6 +13,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart' as Intl;
 
+import '../../../l10n/app_localizations.dart';
 import 'const.dart';
 
 class Reviewsummary extends StatefulWidget {
@@ -28,266 +29,265 @@ class Reviewsummary extends StatefulWidget {
 class _ReviewsummaryState extends State<Reviewsummary> {
   @override
   Widget build(BuildContext context) {
+    var lang =AppLocalizations.of(context)!;
+
     var screenWidth = MediaQuery.of(context).size.width;
     var screenHeight = MediaQuery.of(context).size.height;
-    return Directionality(
-      textDirection: TextDirection.rtl,
-      child: Scaffold(
-        backgroundColor: AppColors.bgColor,
-        body: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24),
-            child: SingleChildScrollView(
-              child: BlocBuilder<BookingCubit, BookingState>(
-                builder: (context, state) {
-                  final cubit = context.read<BookingCubit>();
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(height: screenHeight * .040),
-                      Row(
-                        children: [
-                          GestureDetector(
-                            onTap: () {
-                              Get.back();
-                            },
-                            child: const Icon(
-                              Icons.arrow_back,
-                              color: Color(0xff2B54A4),
-                            ),
+    return Scaffold(
+      backgroundColor: AppColors.bgColor,
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 24),
+          child: SingleChildScrollView(
+            child: BlocBuilder<BookingCubit, BookingState>(
+              builder: (context, state) {
+                final cubit = context.read<BookingCubit>();
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(height: screenHeight * .040),
+                    Row(
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            Get.back();
+                          },
+                          child: const Icon(
+                            Icons.arrow_back,
+                            color: Color(0xff2B54A4),
                           ),
-                          SizedBox(width: screenWidth * .020),
-                          const Text(
-                            "حجز سباك",
-                            style: TextStyle(
-                              color: Color(0xff2B54A4),
-                              fontSize: 25,
-                              fontWeight: FontWeight.bold,
-                            ),
+                        ),
+                        SizedBox(width: screenWidth * .020),
+                         Text(
+                          lang.bookPlumber,
+                          style: TextStyle(
+                            color: Color(0xff2B54A4),
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: screenHeight * .030),
+                     Text(
+                      lang.reviewSummary,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                      ),
+                    ),
+                    SizedBox(height: screenHeight * .010),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: const Color(0xffFFFFFF),
+                        borderRadius: BorderRadius.circular(5),
+                        boxShadow: const [
+                          BoxShadow(
+                            offset: Offset(0, 5),
+                            blurRadius: 4,
+                            color: Color.fromARGB(255, 216, 214, 214),
                           ),
                         ],
                       ),
-                      SizedBox(height: screenHeight * .030),
-                      const Text(
-                        "ملخص الحجز",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
-                        ),
-                      ),
-                      SizedBox(height: screenHeight * .010),
-                      Container(
-                        decoration: BoxDecoration(
-                          color: const Color(0xffFFFFFF),
-                          borderRadius: BorderRadius.circular(5),
-                          boxShadow: const [
-                            BoxShadow(
-                              offset: Offset(0, 5),
-                              blurRadius: 4,
-                              color: Color.fromARGB(255, 216, 214, 214),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 17),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(height: screenHeight * .040),
+                            Text(
+                              widget.provider_data?.name??lang.emily_jani,
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20,
+                              ),
                             ),
-                          ],
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 17),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              SizedBox(height: screenHeight * .040),
-                              Text(
-                                widget.provider_data?.name??"ايميلى جانى ",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 20,
+                            SizedBox(height: screenHeight * .040),
+                            Divider(),
+                            SizedBox(height: screenHeight * .020),
+                            Row(
+                              children: [
+                                Text(
+                                  lang.craftsmanType,
+                                  style: TextStyle(
+                                    color: Color(0xff919191),
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
-                              ),
-                              SizedBox(height: screenHeight * .040),
-                              Divider(),
-                              SizedBox(height: screenHeight * .020),
-                              Row(
-                                children: [
-                                  Text(
-                                    "النوع",
-                                    style: TextStyle(
-                                      color: Color(0xff919191),
-                                      fontWeight: FontWeight.bold,
-                                    ),
+                                Spacer(),
+                                Text(
+                                  cubit.type,
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
                                   ),
-                                  Spacer(),
-                                  Text(
-                                    cubit.type,
-                                    style: TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(height: screenHeight * .010),
-                              Row(
-                                children: [
-                                  Text(
-                                    "السعر",
-                                    style: TextStyle(
-                                      color: Color(0xff919191),
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  Spacer(),
-                                  Text(
-                                    cubit.salary.toString(),
-                                    style: TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(height: screenHeight * .010),
-                            ],
-                          ),
-                        ),
-                      ),
-                      SizedBox(height: screenHeight * .020),
-                      Container(
-                        decoration: BoxDecoration(
-                          color: const Color(0xffFFFFFF),
-                          borderRadius: BorderRadius.circular(5),
-                          boxShadow: const [
-                            BoxShadow(
-                              offset: Offset(0, 5),
-                              blurRadius: 4,
-                              color: Color.fromARGB(255, 216, 214, 214),
+                                ),
+                              ],
                             ),
+                            SizedBox(height: screenHeight * .010),
+                            Row(
+                              children: [
+                                Text(
+                                  lang.salary,
+                                  style: TextStyle(
+                                    color: Color(0xff919191),
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                Spacer(),
+                                Text(
+                                  cubit.salary.toString(),
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: screenHeight * .010),
                           ],
                         ),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 17),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              SizedBox(height: screenHeight * .020),
-                              Row(
-                                children: [
-                                  Text(
-                                    "العنوان",
-                                    style: TextStyle(
-                                      color: Color(0xff919191),
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  Spacer(),
-                                  Expanded(
-                                    child: Text(
-                                      "${cubit.fullAddress}\nمنزل رقم ${cubit.homeNo}\nشارع رقم ${cubit.streetNo}",
-                                      style: TextStyle(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(height: screenHeight * .010),
-                              Row(
-                                children: [
-                                  Text(
-                                    "موعد الحجز",
-                                    style: TextStyle(
-                                      color: Color(0xff919191),
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  Spacer(),
-                                  Text(
-                                    Intl.DateFormat.yMMMEd().format(
-                                      cubit.date as DateTime,
-                                    ),
-                                    style: TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(height: screenHeight * .010),
-                              Row(
-                                children: [
-                                  Text(
-                                    "ساعة الحجز",
-                                    style: TextStyle(
-                                      color: Color(0xff919191),
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  Spacer(),
-                                  Text(
-                                    cubit.time,
-                                    style: TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(height: screenHeight * .010),
-                              Divider(),
-                              Row(
-                                children: [
-                                  Text(
-                                    "الاجمالي",
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  Spacer(),
-                                  Text(
-                                    cubit.salary.toString(),
-                                    style: TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(height: screenHeight * .010),
-                            ],
+                      ),
+                    ),
+                    SizedBox(height: screenHeight * .020),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: const Color(0xffFFFFFF),
+                        borderRadius: BorderRadius.circular(5),
+                        boxShadow: const [
+                          BoxShadow(
+                            offset: Offset(0, 5),
+                            blurRadius: 4,
+                            color: Color.fromARGB(255, 216, 214, 214),
                           ),
+                        ],
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 17),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(height: screenHeight * .020),
+                            Row(
+                              children: [
+                                Text(
+                                  lang.address,
+                                  style: TextStyle(
+                                    color: Color(0xff919191),
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                Spacer(),
+                                Expanded(
+                                  child: Text(
+                                    AppLocalizations.of(context)!.fullAddressFormat(
+                                       cubit.fullAddress,
+                                      cubit.homeNo,
+                                       cubit.streetNo,
+                                    ),
+                                    style: TextStyle(
+                                      fontSize: 13,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: screenHeight * .010),
+                            Row(
+                              children: [
+                                Text(
+                                  lang.bookingDate,
+                                  style: TextStyle(
+                                    color: Color(0xff919191),
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                Spacer(),
+                                Text(
+                                  Intl.DateFormat.yMMMEd().format(
+                                    cubit.date as DateTime,
+                                  ),
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: screenHeight * .010),
+                            Row(
+                              children: [
+                                Text(
+                                  lang.bookingHour,
+                                  style: TextStyle(
+                                    color: Color(0xff919191),
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                Spacer(),
+                                Text(
+                                  cubit.time,
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: screenHeight * .010),
+                            Divider(),
+                            Row(
+                              children: [
+                                Text(
+                                  lang.total,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                Spacer(),
+                                Text(
+                                  cubit.salary.toString(),
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: screenHeight * .010),
+                          ],
                         ),
                       ),
-                      SizedBox(height: screenHeight * .099),
-                      customButton(
-                        title: "تأكيد",
-                        onTap: () async{
-                          final summary = context.read<BookingCubit>().getAll();
-                          print(summary);
-                           print("////////  \n\n\n\n");
-                            print(widget.customer_data?.uid);
-                            print( widget.provider_data?.uid);
+                    ),
+                    SizedBox(height: screenHeight * .099),
+                    customButton(
+                      title: lang.confirm,
+                      onTap: () async{
+                        final summary = context.read<BookingCubit>().getAll();
+                        print(summary);
+                         print("////////  \n\n\n\n");
+                          print(widget.customer_data?.uid);
+                          print( widget.provider_data?.uid);
 
-                          await Order().create(
-                            widget.customer_data?.uid,
-                            widget.provider_data?.uid, 
-                            summary.name, 
-                            summary.type, 
-                            summary.salary.toString(), 
-                            summary.fullAddress, 
-                            summary.homeNo, 
-                            summary.streetNo, 
-                            summary.date, 
-                            summary.time
-                            );
-
-
-
-
-                          Dialog(context, screenHeight);
-                        },
-                      ),
-                    ],
-                  );
-                },
-              ),
+                        await Order().create(
+                          widget.customer_data?.uid,
+                          widget.provider_data?.uid,
+                          summary.name,
+                          summary.type,
+                          summary.salary.toString(),
+                          summary.fullAddress,
+                          summary.homeNo,
+                          summary.streetNo,
+                          summary.date,
+                          summary.time
+                          );
+                        Dialog(context, screenHeight);
+                      },
+                    ),
+                  ],
+                );
+              },
             ),
           ),
         ),
@@ -299,6 +299,8 @@ class _ReviewsummaryState extends State<Reviewsummary> {
     return showDialog(
       context: context,
       builder: (BuildContext context) {
+        var lang =AppLocalizations.of(context)!;
+
         return BlocBuilder<BookingCubit, BookingState>(
           builder: (context, state) {
             return Directionality(
@@ -327,7 +329,7 @@ class _ReviewsummaryState extends State<Reviewsummary> {
                               ),
                               SizedBox(height: screenHeight * .020),
                               Text(
-                                "تم استلام الطلب",
+                                lang.orderRecive,
                                 style: TextStyle(
                                   decoration: TextDecoration.none,
                                   fontSize: 20,
@@ -341,7 +343,9 @@ class _ReviewsummaryState extends State<Reviewsummary> {
                                 ),
                                 child: Text(
                                   textAlign: TextAlign.center,
-                                  " بناءً على طلبك للحجز الذي تلقاه السباك ، سيصل السباك في الساعة ${context.read<BookingCubit>().time}.",
+                                  AppLocalizations.of(context)!.plumberArrival(
+                                    context.read<BookingCubit>().time,
+                                  ),
                                   style: TextStyle(
                                     decoration: TextDecoration.none,
                                     fontSize: 16,
@@ -351,7 +355,7 @@ class _ReviewsummaryState extends State<Reviewsummary> {
                               ),
                               SizedBox(height: screenHeight * .040),
                               customButton(
-                                title: "الصفحة الرئيسة",
+                                title: lang.home,
                                 onTap: () {
                                   context.read<BookingCubit>().clearAll();
                                   Get.offAll(

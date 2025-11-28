@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../l10n/app_localizations.dart';
 import '../widgets/custom_text_field.dart';
 import '../models/card_model.dart';
 import '../utils/app_colors.dart';
@@ -36,6 +37,8 @@ class _AddNewCardScreenState extends State<AddNewCardScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var lang =AppLocalizations.of(context)!;
+
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBar(
@@ -53,7 +56,7 @@ class _AddNewCardScreenState extends State<AddNewCardScreen> {
               ),
               SizedBox(width: 8),
               Text(
-                'Add new card',
+                lang.add_new_card,
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
@@ -73,17 +76,17 @@ class _AddNewCardScreenState extends State<AddNewCardScreen> {
           children: [
             // Header text
             Text(
-              'Select your payment method',
+              lang.selectPaymentMethod,
               style: TextStyle(
                 fontSize: 16,
                 color: AppColors.textPrimary,
               ),
             ),
-            const SizedBox(height: 20),
+             SizedBox(height: 20),
 
             // Card title ABOVE the container
             Text(
-              'Card',
+              lang.card,
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
@@ -103,7 +106,7 @@ class _AddNewCardScreenState extends State<AddNewCardScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween, // To separate text and arrow
                 children: [
                   Text(
-                    'Credit card',
+                    lang.credit_card,
                     style: TextStyle(
                       fontSize: 14,
                       color: AppColors.textHint,
@@ -129,16 +132,16 @@ class _AddNewCardScreenState extends State<AddNewCardScreen> {
                   children: [
                     // Card Number Field
                     CustomTextField(
-                      title: 'Card number',
-                      hintText: 'Enter 14 digit number',
+                      title: lang.card_number,
+                      hintText: lang.card_number_hint,
                       controller: _cardNumberController,
                       keyboardType: TextInputType.number,
                     ),
 
                     // Card Holder Name Field
                     CustomTextField(
-                      title: 'Card holder name',
-                      hintText: 'Enter name',
+                      title: lang.card_holder_name,
+                      hintText: lang.card_holder_name_hint,
                       controller: _cardHolderController,
                     ),
 
@@ -148,8 +151,8 @@ class _AddNewCardScreenState extends State<AddNewCardScreen> {
                         // Expiry Date Field - takes half width
                         Expanded(
                           child: CustomTextField(
-                            title: 'Card expiry date',
-                            hintText: 'DD/MM/YYYY',
+                            title: lang.card_expiry_date,
+                            hintText: lang.card_expiry_date_hint,
                             controller: _expiryDateController,
                           ),
                         ),
@@ -184,8 +187,8 @@ class _AddNewCardScreenState extends State<AddNewCardScreen> {
                       borderRadius: BorderRadius.circular(8),
                     ),
                   ),
-                  child: const Text(
-                    'Save',
+                  child:  Text(
+                    lang.save,
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,

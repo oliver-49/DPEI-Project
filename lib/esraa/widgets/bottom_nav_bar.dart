@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 
+import '../../l10n/app_localizations.dart';
+
 class CustomBottomNavBar extends StatelessWidget {
   const CustomBottomNavBar({super.key});
 
   @override
   Widget build(BuildContext context) {
+    var lang =AppLocalizations.of(context)!;
+
     return Container(
       height: 70,
       decoration: BoxDecoration(
@@ -20,10 +24,10 @@ class CustomBottomNavBar extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          _buildNavItem(Icons.home, 'Home', isActive: false),
-          _buildNavItem(Icons.location_city, 'City', isActive: false),
-          _buildNavItem(Icons.shopping_bag, 'Order', isActive: false),
-          _buildNavItem(Icons.person, 'Profile', isActive: true),
+          _buildNavItem(Icons.home, lang.home, isActive: false),
+          _buildNavItem(Icons.location_city, lang.city, isActive: false),
+          _buildNavItem(Icons.shopping_bag, lang.orders, isActive: false),
+          _buildNavItem(Icons.person, lang.profile, isActive: true),
         ],
       ),
     );

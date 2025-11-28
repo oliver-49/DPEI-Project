@@ -11,61 +11,68 @@ import 'package:fixit/ye/utalities/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
+import '../../../l10n/app_localizations.dart';
 import 'const.dart';
 import 'location.dart';
 
 class ProviderProfile extends StatelessWidget {
   String imagePath;
   // List<ServiceProviderModel>? providers=[];
-final ServiceProviderModel? customer_data ;
-   final ServiceProviderModel? provider_data ;
-  ProviderProfile( {
-    super.key,required this.imagePath,
-        // this.providers,
-        this.customer_data,
-        this.provider_data
-                      });
+  final ServiceProviderModel? customer_data;
+  final ServiceProviderModel? provider_data;
+  ProviderProfile({
+    super.key,
+    required this.imagePath,
+    // this.providers,
+    this.customer_data,
+    this.provider_data,
+  });
   bool isSelected = true;
 
   @override
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.of(context).size.width;
     var screenHeight = MediaQuery.of(context).size.height;
-    String name =
-    ((provider_data?.name ?? "").trim().isNotEmpty)
-        ? provider_data!.name
-        : "إميلي جاني";
+    var lang = AppLocalizations.of(context)!;
 
-    String type =  ((provider_data?.service ?? "").trim().isNotEmpty)
+    String name = ((provider_data?.name ?? "").trim().isNotEmpty)
+        ? provider_data!.name
+        : lang.emily_jani;
+
+    String type = ((provider_data?.service ?? "").trim().isNotEmpty)
         ? provider_data!.service
-          : "سباك";
-    var shadow=Shadow(color: Colors.grey, offset: Offset(0, 3), blurRadius: 10);
-    return Directionality(
-      textDirection: TextDirection.rtl,
-      child: Scaffold(
-        backgroundColor: AppColors.bgColor,
-        body: SafeArea(
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                Stack(
-                  children:[
-                   Container(
-                    child: Stack(children: [
-                       Positioned(
-                        top:  screenHeight * .350*0.1,
-                        right: 80,
-                        left: 80,
-                         child: SizedBox(
-                          
-                          
-                          child: Image.asset(imagePath!=''?imagePath:(imagepath + "craftsman.png"),
-                          
-                          fit: BoxFit.cover,
-                          
+        : lang.plumber;
+    var shadow = Shadow(
+      color: Colors.grey,
+      offset: Offset(0, 3),
+      blurRadius: 10,
+    );
+    return Scaffold(
+      backgroundColor: AppColors.bgColor,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Stack(
+                children: [
+                  Container(
+                    child: Stack(
+                      children: [
+                        Positioned(
+                          top: screenHeight * .350 * 0.1,
+                          right: 80,
+                          left: 80,
+                          child: SizedBox(
+                            child: Image.asset(
+                              imagePath != ''
+                                  ? imagePath
+                                  : (imagepath + "craftsman.png"),
+
+                              fit: BoxFit.cover,
+                            ),
                           ),
-                                               ),
-                       ),]
+                        ),
+                      ],
                     ),
                     height: screenHeight * .350,
                     width: screenWidth,
@@ -78,55 +85,89 @@ final ServiceProviderModel? customer_data ;
                     ),
                   ),
                   Positioned(
-                    top:10, left:10,
-                    child: InkWell(child: Icon(Icons.cancel,color: Colors.blue[200],size: 40,),onTap: () {
-                      Navigator.pop(context);
-
-                    },))
-                  ]
-                ),
-                SizedBox(height: screenHeight * .024),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 24),
-                  child: BlocBuilder<BookingCubit, BookingState>(
-                    builder: (context, state) {
-                      final cubit = context.read<BookingCubit>();
-                      return Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            children: [
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    name,
-                                    style: TextStyle(
-                                      shadows: [
-                                        shadow
-                                      ],
-                                      fontSize: 24,
-                                      color: Color(0xff565656),
-                                      fontWeight: FontWeight.bold,
-                                    ),
+                    top: 10,
+                    left: 10,
+                    child: InkWell(
+                      child: Icon(
+                        Icons.cancel,
+                        color: Colors.blue[200],
+                        size: 40,
+                      ),
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: screenHeight * .024),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 24),
+                child: BlocBuilder<BookingCubit, BookingState>(
+                  builder: (context, state) {
+                    final cubit = context.read<BookingCubit>();
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  name,
+                                  style: TextStyle(
+                                    shadows: [shadow],
+                                    fontSize: 24,
+                                    color: Color(0xff565656),
+                                    fontWeight: FontWeight.bold,
                                   ),
-                                  SizedBox(height: screenHeight * .012),
-                                  Text(
-                                    type,
-                                    style: TextStyle(
-                                      fontSize: 20,
-                                      color: Color(0xff565656),
-                                      fontWeight: FontWeight.w700,
-                                    ),
+                                ),
+                                SizedBox(height: screenHeight * .012),
+                                Text(
+                                  type,
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    color: Color(0xff565656),
+                                    fontWeight: FontWeight.w700,
                                   ),
-                                ],
+                                ),
+                              ],
+                            ),
+                            Spacer(),
+                            GestureDetector(
+                              onTap: () {
+                                Get.to(Call());
+                              },
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  boxShadow: [
+                                    BoxShadow(
+                                      offset: Offset(0, 8),
+                                      blurRadius: 4,
+                                      color: Color.fromARGB(255, 216, 214, 214),
+                                    ),
+                                  ],
+                                ),
+                                child: CircleAvatar(
+                                  radius: screenHeight * .030,
+                                  backgroundColor: Color(0xffEAEFF4),
+                                  child: Icon(
+                                    Icons.call,
+                                    color: Color(0xff0054A5),
+                                  ),
+                                ),
                               ),
-                              Spacer(),
-                              GestureDetector(
-                                onTap: () {
-                                  Get.to(Call());
-                                },
-                                child: Container(
+                            ),
+                            SizedBox(width: screenWidth * .048),
+                            BlocBuilder<BookingCubit, BookingState>(
+                              builder: (context, state) {
+                                bool isFav = true;
+                                if (state is FavoritChange) {
+                                  isFav = state.favorit;
+                                }
+                                return Container(
                                   decoration: BoxDecoration(
                                     shape: BoxShape.circle,
                                     boxShadow: [
@@ -145,191 +186,148 @@ final ServiceProviderModel? customer_data ;
                                   child: CircleAvatar(
                                     radius: screenHeight * .030,
                                     backgroundColor: Color(0xffEAEFF4),
-                                    child: Icon(
-                                      Icons.call,
-                                      color: Color(0xff0054A5),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              SizedBox(width: screenWidth * .048),
-                              BlocBuilder<BookingCubit, BookingState>(
-                                builder: (context, state) {
-                                  bool isFav = true;
-                                  if (state is FavoritChange) {
-                                    isFav = state.favorit;
-                                  }
-                                  return Container(
-                                    decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      boxShadow: [
-                                        BoxShadow(
-                                          offset: Offset(0, 8),
-                                          blurRadius: 4,
-                                          color: Color.fromARGB(
-                                            255,
-                                            216,
-                                            214,
-                                            214,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    child: CircleAvatar(
-                                      radius: screenHeight * .030,
-                                      backgroundColor: Color(0xffEAEFF4),
-                                      child: InkWell(
-                                        onTap: () {
-                                          context
-                                              .read<BookingCubit>()
-                                              .toggleFavorit();
-                                        },
-                                        child: Icon(
-                                          isFav
-                                              ? Icons.favorite_border_outlined
-                                              : Icons.favorite,
-                                          color: isFav
-                                              ? Color(0xff0054A5)
-                                              : Color(0xff0054A5),
-                                        ),
+                                    child: InkWell(
+                                      onTap: () {
+                                        context
+                                            .read<BookingCubit>()
+                                            .toggleFavorit();
+                                      },
+                                      child: Icon(
+                                        isFav
+                                            ? Icons.favorite_border_outlined
+                                            : Icons.favorite,
+                                        color: isFav
+                                            ? Color(0xff0054A5)
+                                            : Color(0xff0054A5),
                                       ),
                                     ),
-                                  );
-                                },
+                                  ),
+                                );
+                              },
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: screenHeight * .024),
+                        RatingANDOrders(screenHeight: screenHeight),
+                        SizedBox(height: screenHeight * .024),
+                        Text(
+                          lang.skills,
+                          style: TextStyle(
+                            shadows: [shadow],
+                            fontSize: 24,
+                            color: Color(0xff565656),
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        SizedBox(height: screenHeight * .024),
+                        Wrap(
+                          spacing: 20,
+                          runSpacing: 10,
+                          alignment: WrapAlignment.center,
+                          children: skills(context).map((time) {
+                            return customSkill(txt: time);
+                          }).toList(),
+                        ),
+                        SizedBox(height: screenHeight * .032),
+                        customButton(
+                          title: lang.book,
+                          onTap: () {
+                            cubit.setName(name);
+                            cubit.setType(type);
+                            Get.to(
+                              Location(
+                                customer_data: customer_data,
+                                provider_data: provider_data,
                               ),
-                            ],
+                            );
+                          },
+                        ),
+                        SizedBox(height: screenHeight * .028),
+                        Text(
+                          lang.bio,
+                          style: TextStyle(
+                            shadows: [shadow],
+                            fontSize: 24,
+                            color: Color(0xff565656),
+                            fontWeight: FontWeight.bold,
                           ),
-                          SizedBox(height: screenHeight * .024),
-                          RatingANDOrders(screenHeight: screenHeight),
-                          SizedBox(height: screenHeight * .024),
-                          Text(
-                            "مهارات",
-                            style: TextStyle(
-                              shadows: [
-                                shadow
-                              ],
-                              fontSize: 24,
-                              color: Color(0xff565656),
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          SizedBox(height: screenHeight * .024),
-                          Wrap(
-                            spacing: 20,
-                            runSpacing: 10,
-                            alignment: WrapAlignment.center,
-                            children: skills.map((time) {
-                              return customSkill(txt: time);
-                            }).toList(),
-                          ),
-                          SizedBox(height: screenHeight * .032),
-                          customButton(
-                            title: "حجز",
-                            onTap: () {
-                              
-                              cubit.setName(name);
-                              cubit.setType(type);
-                              Get.to(Location(
-                                customer_data:customer_data,
-                                provider_data:provider_data,
+                        ),
+                        SizedBox(height: screenHeight * .012),
+                        Text(
+                          lang.bioDescription,
 
-                              ));
-                            },
-                          ),
-                          SizedBox(height: screenHeight * .028),
-                          Text(
-                            "السيرة الذاتية",
-                            style: TextStyle(
-                              shadows: [
-                              shadow
-                              ],
-                              fontSize: 24,
-                              color: Color(0xff565656),
-                              fontWeight: FontWeight.bold,
+                          style: TextStyle(fontSize: 18),
+                        ),
+                        SizedBox(height: screenHeight * .024),
+                        Row(
+                          children: [
+                            Text(
+                              lang.gallary,
+                              style: TextStyle(
+                                shadows: [shadow],
+                                fontSize: 24,
+                                color: Color(0xff565656),
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
-                          ),
-                          SizedBox(height: screenHeight * .012),
-                          Text(
-                            "أنا إميلي جاني، سباك متفاني، شغوف بتقديم خدمة ممتازة لضمان سير أعمال السباكة في منزلك بسلاسة. بخبرة عملية تمتد لسنوات.",
-                            style: TextStyle(fontSize: 18),
-                          ),
-                          SizedBox(height: screenHeight * .024),
-                          Row(
-                            children: [
-                              Text(
-                                "المعرض",
+                            Spacer(),
+                            InkWell(
+                              onTap: () {
+                                Get.to(Gallery());
+                              },
+                              child: Text(
+                                lang.viewAll,
                                 style: TextStyle(
-                                  shadows: [
-                                    shadow
-                                  ],
-                                  fontSize: 24,
-                                  color: Color(0xff565656),
+                                  shadows: [shadow],
+                                  fontSize: 20,
+                                  color: Color(0xff0054A5),
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
-                              Spacer(),
-                              InkWell(
-                                onTap: () {
-                                  Get.to(Gallery());
-                                },
-                                child: Text(
-                                  "عرض الكل",
-                                  style: TextStyle(
-                                    shadows: [
-                                      shadow
-                                    ],
-                                    fontSize: 20,
-                                    color: Color(0xff0054A5),
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              for (var i in gall)
-                                Container(
-                                  width: screenWidth * .20,
-                                  height: screenHeight * .20,
-                                  child: Image.asset(imagepath + i),
-                                ),
-                            ],
-                          ),
-                          Text(
-                            "مراجعة",
-                            style: TextStyle(
-                              shadows: [
-                                shadow
-                              ],
-                              fontSize: 24,
-                              color: Color(0xff565656),
-                              fontWeight: FontWeight.bold,
                             ),
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            for (var i in gall)
+                              Container(
+                                width: screenWidth * .20,
+                                height: screenHeight * .20,
+                                child: Image.asset(imagepath + i),
+                              ),
+                          ],
+                        ),
+                        Text(
+                          lang.review,
+                          style: TextStyle(
+                            shadows: [shadow],
+                            fontSize: 24,
+                            color: Color(0xff565656),
+                            fontWeight: FontWeight.bold,
                           ),
-                          SizedBox(height: screenHeight * .011),
-                          Wrap(
-                            spacing: 30,
-                            runSpacing: 10,
-                            alignment: WrapAlignment.center,
-                            children: reviews.map((rev) {
-                              return CustomReview(
-                                date: "8/10/2025",
-                                icon: Icons.star,
-                                image: imagepath + "craftsman3.png",
-                                name: "yousef",
-                                text: rev,
-                              );
-                            }).toList(),
-                          ),
-                        ],
-                      );
-                    },
-                  ),
+                        ),
+                        SizedBox(height: screenHeight * .011),
+                        Wrap(
+                          spacing: 30,
+                          runSpacing: 10,
+                          alignment: WrapAlignment.center,
+                          children: reviews(context).map((rev) {
+                            return CustomReview(
+                              date: "8/10/2025",
+                              icon: Icons.star,
+                              image: imagepath + "craftsman3.png",
+                              name: lang.nameUser,
+                              text: rev,
+                            );
+                          }).toList(),
+                        ),
+                      ],
+                    );
+                  },
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

@@ -1,3 +1,7 @@
+import 'package:flutter/cupertino.dart';
+
+import '../../../l10n/app_localizations.dart';
+
 const imagepath = "assets/images/";
 
 List<String> craftsMansImages = [
@@ -29,11 +33,15 @@ List<String> timesPM = [
   "07:00",
   "08:00",
 ];
+lang(BuildContext context)=>AppLocalizations.of(context)!;
+List<String> skills(BuildContext context) => [
+  lang(context).sink,
+  lang(context).shower,
+  lang(context).boiler,
+  lang(context).toilet];
 
-List<String> skills = ["حوض", "دش", "غلايه", "مرحاض"];
-
-List<String> reviews = [
-  "لقد فاق إميلي جاني توقعاتي! سريع وموثوق، وأصلح مشكلة السباكة بدقة. أنصح به بشدة.",
-  "لقد فاق إميلي جاني توقعاتي! سريع وموثوق، وأصلح مشكلة السباكة بدقة. أنصح به بشدة.",
-  "لقد فاق إميلي جاني توقعاتي! سريع وموثوق، وأصلح مشكلة السباكة بدقة. أنصح به بشدة.",
+List<String> reviews(BuildContext context) => [
+  lang(context).comment,
+  lang(context).comment,
+  lang(context).comment
 ];

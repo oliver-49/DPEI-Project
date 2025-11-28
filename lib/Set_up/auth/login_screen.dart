@@ -9,6 +9,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fixit/gitHub/presentation/screens/account_service/Selction_view/selection_who_screen.dart';
 
+import '../../l10n/app_localizations.dart';
+
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
@@ -29,6 +31,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var lang=AppLocalizations.of(context)!;
+
     return Scaffold(
       backgroundColor: AppColors.bgColor,
       body: SafeArea(
@@ -58,7 +62,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   const SizedBox(height: 36),
                   //welcome back text
                   Text(
-                    "Enter your email and password to login",
+                    lang.login_title,
                     style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                       color: const Color(0xFF565656),
                     ),
@@ -68,7 +72,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   TextFormField(
                     controller: emailController,
                     decoration: InputDecoration(
-                      labelText: 'Enter your email',
+                      labelText: lang.email_label,
                       prefixIcon: Padding(
                         padding: EdgeInsets.only(left: 16, right: 12),
                         child: Icon(Icons.email_outlined, size: 24),
@@ -79,13 +83,13 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Please enter your email';
+                        return lang.email_required;
                       }
                       if (!value.contains('@')) {
-                        return 'Email must contains with @';
+                        return lang.email_invalid_at;
                       }
                       if (!value.endsWith('.com')) {
-                        return 'Email must end with .com';
+                        return lang.email_invalid_com;
                       }
                       return null;
                     },
@@ -96,7 +100,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     controller: passwordController,
                     obscureText: !_isPasswordVisible,
                     decoration: InputDecoration(
-                      labelText: 'Enter password',
+                      labelText: lang.password_label,
                       prefixIcon: const Padding(
                         padding: EdgeInsets.only(left: 16, right: 12),
                         child: Icon(Icons.lock_outline, size: 24),
@@ -119,10 +123,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Please enter your password';
+                        return lang.password_required;
                       }
                       if (value.length < 6) {
-                        return 'Password must be at least 6 characters long';
+                        return lang.password_short;
                       }
                       return null;
                     },
@@ -135,7 +139,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       TextButton(
                         onPressed: () {},
                         child: Text(
-                          "Forgot Password?",
+                          lang.forgot_password,
                           style: Theme.of(context).textTheme.bodyMedium
                               ?.copyWith(
                                 color: const Color.fromARGB(255, 0, 0, 0),
@@ -178,7 +182,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 ),
                               );
                                 ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(content: Text("Logged in successfully")),
+                                  SnackBar(content: Text(lang.login_success)),
                                 );
                             }else{
                                 Navigator.push(
@@ -203,7 +207,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               context,
                             ).showSnackBar(SnackBar(
                               backgroundColor: Colors.red,
-                              content: Text("please , input valid data",style: TextStyle(color: Colors.white),)));
+                              content: Text(lang.login_invalid_data,style: TextStyle(color: Colors.white),)));
                           }
                       
                       },
@@ -217,7 +221,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: loading
                           ? CircularProgressIndicator(color: Colors.white)
                           : Text(
-                              "Sign In",
+                              lang.sign_in,
                               style: Theme.of(context).textTheme.titleMedium
                                   ?.copyWith(
                                     color: Colors.white,
@@ -234,7 +238,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "New to fixIt?",
+                        lang.new_to_fixit,
                         style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                           color: const Color.fromARGB(255, 0, 0, 0),
                           fontSize: 16,
@@ -251,7 +255,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           );
                         },
                         child: Text(
-                          "Sign Up now",
+                          lang.sign_up_now,
                           style: Theme.of(context).textTheme.bodyMedium
                               ?.copyWith(
                                 color: const Color(0xFF0054A5),
@@ -273,7 +277,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: 9.0),
                         child: Text(
-                          "Or",
+                          lang.or,
                           style: Theme.of(context).textTheme.bodyMedium
                               ?.copyWith(
                                 color: Color.fromARGB(255, 0, 0, 0),
@@ -291,7 +295,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   SizedBox(height: 12),
                   //log in with
                   Text(
-                    "Log in with",
+                    lang.login_with,
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                       color: Color.fromARGB(255, 0, 0, 0),
                       fontSize: 14,
@@ -318,7 +322,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
 
                             label: Text(
-                              'Google',
+                              lang.google,
                               style: Theme.of(context).textTheme.bodyMedium
                                   ?.copyWith(
                                     color: Colors.black,
@@ -354,7 +358,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               width: 24,
                             ),
                             label: Text(
-                              'Facebook',
+                              lang.facebook,
                               style: Theme.of(context).textTheme.bodyMedium
                                   ?.copyWith(
                                     color: Colors.black,

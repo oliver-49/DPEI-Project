@@ -1,12 +1,9 @@
 // payment manager
 import 'dart:convert';
-import 'package:fixit/order/presentation/screens/order_booking/payment/paymob_payment/constants/constants.dart';
+//import 'package:fixit/order/presentation/screens/order_booking/payment/paymob_payment/constants/constants.dart';
 import 'package:get/get.dart';
 
-
-
 class PaymobManager extends GetConnect {
-
   Future<String> getPaymentKey(double amount, String currency) async {
     try {
       String authenticationToken = await _getAuthenticationToken();
@@ -45,25 +42,22 @@ class PaymobManager extends GetConnect {
   //   }
   // }
 
+  Future<String> _getAuthenticationToken() async {
+    final response = await post(
+      "https://accept.paymob.com/api/auth/tokens",
+      jsonEncode({"api_key": KConstants.apiKey}), // أهم خطوة
+      headers: {"Content-Type": "application/json"},
+    );
 
-Future<String> _getAuthenticationToken() async {
-  final response = await post(
-    "https://accept.paymob.com/api/auth/tokens",
-    jsonEncode({"api_key": KConstants.apiKey}), // أهم خطوة
-    headers: {"Content-Type": "application/json"},
-  );
+    print("Status Code: ${response.statusCode}");
+    print("Response: ${response.body}");
 
-  print("Status Code: ${response.statusCode}");
-  print("Response: ${response.body}");
-
-  if (response.statusCode == 200 || response.statusCode == 201) {
-    return response.body["token"];
-  } else {
-    throw Exception("Failed to get auth token: ${response.statusCode}");
+    if (response.statusCode == 200 || response.statusCode == 201) {
+      return response.body["token"];
+    } else {
+      throw Exception("Failed to get auth token: ${response.statusCode}");
+    }
   }
-}
-
-
 
   Future<int> _getOrderId({
     required String authToken,
@@ -101,7 +95,7 @@ Future<String> _getAuthenticationToken() async {
         "expiration": 3600,
         "auth_token": authToken,
         "order_id": orderId,
-        "integration_id": KConstants.cardPaymentMethodIntegrationId,
+        // "integration_id": KConstants.cardPaymentMethodIntegrationId,
         "amount_cents": amountCents,
         "currency": currency,
         "billing_data": {
@@ -117,7 +111,7 @@ Future<String> _getAuthenticationToken() async {
           "postal_code": "NA",
           "city": "NA",
           "country": "NA",
-          "state": "NA"
+          "state": "NA",
         },
       },
       headers: {"Content-Type": "application/json"},

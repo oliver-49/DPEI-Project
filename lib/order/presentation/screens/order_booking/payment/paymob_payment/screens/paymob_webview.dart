@@ -1,6 +1,7 @@
 // paymob webview
 import 'dart:convert';
 
+import 'package:fixit/l10n/app_localizations.dart';
 import 'package:fixit/order/presentation/screens/order_booking/order/order_view.dart';
 import 'package:fixit/order/presentation/screens/order_booking/payment/paymob_payment/screens/order_success_page.dart';
 import 'package:fixit/ye/utalities/colors.dart';
@@ -88,10 +89,10 @@ onPageFinished: (String url) async {
   // //  }
 
     if (status == "APPROVED") {
-      Get.snackbar("نجاح", "✅ الدفع تم بنجاح", snackPosition: SnackPosition.TOP);
+      Get.snackbar(AppLocalizations.of(context)!.success, AppLocalizations.of(context)!.payment_success, snackPosition: SnackPosition.TOP);
       Get.to(OrderSuccessPage(status: 1,));
     } else {
-      Get.snackbar("فشل", "❌ فشل في الدفع", snackPosition: SnackPosition.TOP);
+      Get.snackbar(AppLocalizations.of(context)!.error, AppLocalizations.of(context)!.payment_failed, snackPosition: SnackPosition.TOP);
       Get.to(OrderSuccessPage(status: 0,));
     }
   }
@@ -112,9 +113,7 @@ onPageFinished: (String url) async {
           backgroundColor: Colors.white,
           appBar: AppBar(
             title:  
-            // controller.currentLang == 'ar' ? 
-            Text("  صفحة الدفع ") ,
-            // :   Text("Paymob "),
+            Text(AppLocalizations.of(context)!.payment_page_title) ,
             automaticallyImplyLeading: false,
             backgroundColor: AppColors.mainColor,
             foregroundColor: Colors.white,

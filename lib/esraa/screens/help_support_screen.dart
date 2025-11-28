@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../l10n/app_localizations.dart';
 import '../widgets/custom_app_bar.dart';
 import '../widgets/custom_text_field.dart';
 import '../widgets/primary_button.dart';
@@ -19,6 +20,8 @@ class _HelpSupportScreenState extends State<HelpSupportScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var lang =AppLocalizations.of(context)!;
+
     return Scaffold(
       backgroundColor: const Color(0xFFF8F9FA),
       appBar: AppBar(
@@ -32,8 +35,8 @@ class _HelpSupportScreenState extends State<HelpSupportScreen> {
         ),
         title: Container(
           width: double.infinity,
-          child: const Text(
-            'Help & support',
+          child:  Text(
+            lang.help_support,
             style: TextStyle(
               color: Color(0xFF2B54A4),
               fontSize: 18,
@@ -49,8 +52,8 @@ class _HelpSupportScreenState extends State<HelpSupportScreen> {
               padding: const EdgeInsets.only(right: 16.0),
               child: GestureDetector(
                 onTap: _handleLiveChat,
-                child: const Text(
-                  'Live chat',
+                child:  Text(
+                  lang.live_chat,
                   style: TextStyle(
                     color: Color(0xFF0054A5),
                     fontSize: 16,
@@ -79,8 +82,8 @@ class _HelpSupportScreenState extends State<HelpSupportScreen> {
 
               // Title field
               CustomTextField(
-                title: 'Title',
-                hintText: 'Enter the title of your issue',
+                title: lang.title,
+                hintText: lang.title_hint,
                 controller: _titleController,
               ),
 
@@ -89,7 +92,7 @@ class _HelpSupportScreenState extends State<HelpSupportScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Write in bellow box',
+                    lang.description,
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
@@ -108,7 +111,7 @@ class _HelpSupportScreenState extends State<HelpSupportScreen> {
                       maxLines: null,
                       expands: true,
                       decoration: InputDecoration(
-                        hintText: 'Write here...',
+                        hintText: lang.description_hint,
                         border: InputBorder.none,
                         contentPadding: const EdgeInsets.all(12),
                         hintStyle: TextStyle(color: AppColors.textHint),
@@ -121,7 +124,7 @@ class _HelpSupportScreenState extends State<HelpSupportScreen> {
 
               // Send button
               PrimaryButton(
-                text: 'Send',
+                text: lang.send,
                 onPressed: _handleSubmit,
                 backgroundColor: const Color(0xFF0054A5),
               ),
@@ -152,8 +155,8 @@ class _HelpSupportScreenState extends State<HelpSupportScreen> {
                           fit: BoxFit.contain,
                         ),
                         const SizedBox(width: 8),
-                        const Text(
-                          'Live chat',
+                         Text(
+                          lang.live_chat,
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
@@ -184,9 +187,11 @@ class _HelpSupportScreenState extends State<HelpSupportScreen> {
   }
 
   Widget _buildWelcomeMessage() {
-    return const Center(
+    var lang =AppLocalizations.of(context)!;
+
+    return  Center(
       child: Text(
-        'Hello, how can we assist you?',
+        lang.hello_assist,
         style: TextStyle(
           fontSize: 18,
           color: Colors.black87,
@@ -197,16 +202,18 @@ class _HelpSupportScreenState extends State<HelpSupportScreen> {
   }
 
   void _handleSubmit() {
+    var lang =AppLocalizations.of(context)!;
+
     final title = _titleController.text.trim();
     final description = _descriptionController.text.trim();
 
     if (title.isEmpty) {
-      _showSnackBar('Please enter a title for your issue');
+      _showSnackBar(lang.enter_title);
       return;
     }
 
     if (description.isEmpty) {
-      _showSnackBar('Please describe your issue');
+      _showSnackBar(lang.enter_description);
       return;
     }
 
@@ -217,16 +224,18 @@ class _HelpSupportScreenState extends State<HelpSupportScreen> {
     );
 
     print('Ticket submitted: ${ticket.toMap()}');
-    _showSnackBar('Your issue has been submitted successfully!');
+    _showSnackBar(lang.ticket_submitted);
     _titleController.clear();
     _descriptionController.clear();
   }
 
   void _handleLiveChat() {
+    var lang =AppLocalizations.of(context)!;
+
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Live Chat'),
+        title:  Text(lang.live_chat),
         content: const Text('Connecting to customer support...'),
         actions: [
           TextButton(
