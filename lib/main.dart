@@ -19,9 +19,9 @@ void main() async {
   runApp(
     MultiBlocProvider(
       providers: [
+        BlocProvider(create: (context) => LanguageCubit()),
         BlocProvider(create: (context) => BookingCubit()),
         BlocProvider(create: (context) => SelectionCubit()),
-        BlocProvider(create: (context) => LanguageCubit()),
       ],
       child: MyApp(),
     ),
@@ -36,8 +36,7 @@ class MyApp extends StatelessWidget {
     return BlocBuilder<LanguageCubit, Locale>(
       builder: (context, state) {
         return GetMaterialApp(
-          locale: state, //const Locale("en"),
-
+          locale: state,
           localizationsDelegates: [
             AppLocalizations.delegate,
             GlobalMaterialLocalizations.delegate,
